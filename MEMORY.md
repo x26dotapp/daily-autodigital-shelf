@@ -43,6 +43,8 @@
 - Verified 2026-06-02: Manual fallback run `26803177994` succeeded on commit `4c3b5a2` and logged `No generated changes to publish`; this proves the fallback can execute without creating repeat same-day churn.
 - Added 2026-06-02: Generator now normalizes text bytes inside ZIPs, fixes ZIP creator metadata, forces LF CSV output, and uses `.gitattributes` for generated text files so Windows and GitHub runners stay stable.
 - Verified 2026-06-02: Direct IndexNow submission after fallback/determinism updates accepted 5 changed URLs with HTTP 200; follow-up dry run showed 0 queued URLs.
+- Added 2026-06-02: Generated shelf writes store-readiness policy pages: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html`. Homepage/archive/import/bundle surfaces link policies; starter bundle and store upload kit include the policy files.
+- Verified 2026-06-02: Store policy commit `190d77c` deployed successfully. Live browser check passed for `terms.html` and `store-import.html`; `verify-system.ps1` now checks 4 policy pages and 28 files; IndexNow accepted 9 policy/discovery URLs and follow-up dry run showed 0 queued URLs.
 - Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
 
 ## Operator Rule
