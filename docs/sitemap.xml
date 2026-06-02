@@ -2,12 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/archive.html</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/starter-bundle.html</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/store-import.html</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/catalog.json</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/topics.json</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/imports/store-listings.csv</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/imports/store-listings.json</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/feed.json</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html</loc></url>
+  <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/</loc></url>
   <url><loc>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/</loc></url>

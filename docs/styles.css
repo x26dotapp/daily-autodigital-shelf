@@ -334,6 +334,24 @@ section {
   width: 100%;
 }
 
+.topic-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--teal);
+  font-weight: 800;
+  text-decoration: none;
+}
+
 .setup-list {
   padding: 8px;
 }

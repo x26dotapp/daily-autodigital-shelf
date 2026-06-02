@@ -83,6 +83,7 @@ def add_candidate(candidates: list[dict[str, str]], config: dict[str, Any], rel_
 def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[dict[str, str]]:
     status = read_json(DOCS / "status.json")
     catalog = read_json(DOCS / "catalog.json", {"items": []})
+    topics = read_json(DOCS / "topics" / "topics.json", {"topics": []})
     candidates: list[dict[str, str]] = []
 
     for rel_path in [
@@ -90,6 +91,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "archive.html",
         "starter-bundle.html",
         "store-import.html",
+        "topics/index.html",
+        "topics/topics.json",
         "catalog.json",
         "catalog.csv",
         "imports/store-listings.json",
@@ -108,6 +111,11 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
             path = str(item.get("url", "")).replace(site_base(config) + "/", "")
             if path:
                 add_candidate(candidates, config, path.rstrip("/") + "/index.html")
+
+    for topic in topics.get("topics", []):
+        slug = str(topic.get("slug", "")).strip()
+        if slug:
+            add_candidate(candidates, config, f"topics/{slug}.html")
 
     deduped: list[dict[str, str]] = []
     seen: set[str] = set()

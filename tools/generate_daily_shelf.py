@@ -16,6 +16,7 @@ DOCS = ROOT / "docs"
 BUNDLES = DOCS / "bundles"
 DOWNLOADS = DOCS / "downloads"
 IMPORTS = DOCS / "imports"
+TOPICS = DOCS / "topics"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
@@ -714,6 +715,10 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
     }
     worksheet_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["worksheets"])
     checklist_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["checklist"])
+    topic_links = " ".join(
+        f"""<a class="topic-link" href="../../topics/{esc(slug)}.html">{esc(TOPIC_DEFINITIONS[slug]["label"])}</a>"""
+        for slug in topic_slugs_for_item(pack)
+    )
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -751,6 +756,8 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
       </div>
       <h2>Who This Helps</h2>
       <p>{esc(pack["buyer"])}</p>
+      <h2>Related Topics</h2>
+      <p class="topic-links">{topic_links}</p>
       <h2>Worksheet Prompts</h2>
       <ol>{worksheet_items}</ol>
       <h2>Pack Checklist</h2>
@@ -888,6 +895,8 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
         "store-import.html",
+        "topics/index.html",
+        "topics/topics.json",
         "catalog.csv",
         "catalog.json",
         "imports/store-listings.csv",
@@ -933,6 +942,125 @@ def pack_slug_from_manifest(item: dict[str, Any]) -> str:
 
 def pack_download_path(item: dict[str, Any]) -> str:
     return str(item.get("download") or f"downloads/{pack_slug_from_manifest(item)}.zip")
+
+
+TOPIC_DEFINITIONS: dict[str, dict[str, Any]] = {
+    "small-business-ops": {
+        "label": "Small Business Ops",
+        "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
+        "keywords": [
+            "client",
+            "invoice",
+            "sop",
+            "store",
+            "listing",
+            "offer",
+            "follow-up",
+            "landing",
+            "content",
+            "business",
+            "service",
+        ],
+    },
+    "home-admin": {
+        "label": "Home Admin",
+        "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
+        "keywords": [
+            "home",
+            "appointment",
+            "renewal",
+            "subscription",
+            "budget",
+            "receipt",
+            "inventory",
+            "folder",
+            "downloads",
+            "bill",
+        ],
+    },
+    "low-energy-systems": {
+        "label": "Low-Energy Systems",
+        "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
+        "keywords": [
+            "low-energy",
+            "energy",
+            "focus",
+            "calm",
+            "gentle",
+            "shutdown",
+            "neurodivergent",
+            "bounded",
+            "planner",
+        ],
+    },
+    "digital-product-prep": {
+        "label": "Digital Product Prep",
+        "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
+        "keywords": [
+            "digital",
+            "product",
+            "store",
+            "import",
+            "marketplace",
+            "listing",
+            "landing",
+            "content",
+            "link-in-bio",
+            "launch",
+        ],
+    },
+    "cleanup-and-reset": {
+        "label": "Cleanup And Reset",
+        "description": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
+        "keywords": [
+            "reset",
+            "declutter",
+            "downloads",
+            "folder",
+            "cleanup",
+            "receipt",
+            "weekly",
+            "rescue",
+            "triage",
+        ],
+    },
+}
+
+
+def item_search_text(item: dict[str, Any]) -> str:
+    parts = [
+        str(item.get("title", "")),
+        str(item.get("summary", "")),
+        str(item.get("description", "")),
+        str(item.get("buyer", "")),
+        str(item.get("slug", "")),
+        str(item.get("path", "")),
+        str(item.get("id", "")),
+    ]
+    return " ".join(parts).lower()
+
+
+def topic_slugs_for_item(item: dict[str, Any]) -> list[str]:
+    text = item_search_text(item)
+    matches = [
+        slug
+        for slug, topic in TOPIC_DEFINITIONS.items()
+        if any(keyword in text for keyword in topic["keywords"])
+    ]
+    if not matches:
+        matches.append("cleanup-and-reset")
+    return matches
+
+
+def topic_records_for_item(item: dict[str, Any], config: dict[str, Any]) -> list[dict[str, str]]:
+    return [
+        {
+            "slug": slug,
+            "label": TOPIC_DEFINITIONS[slug]["label"],
+            "url": pack_url(config, f"topics/{slug}.html"),
+        }
+        for slug in topic_slugs_for_item(item)
+    ]
 
 
 def render_pack_downloads() -> dict[str, Any]:
@@ -1022,6 +1150,8 @@ def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
                 "checklist_url": pack_url(config, item["checklist"]),
                 "cover_url": pack_url(config, item["cover"]),
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "topic_labels": "|".join(record["label"] for record in topic_records_for_item(item, config)),
+                "topic_urls": "|".join(record["url"] for record in topic_records_for_item(item, config)),
                 "tags": listing_keywords(item),
                 "fulfillment": "digital download",
                 "status": "ready for external store import; checkout not connected",
@@ -1050,6 +1180,8 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         "checklist_url",
         "cover_url",
         "seller_copy_url",
+        "topic_labels",
+        "topic_urls",
         "tags",
         "fulfillment",
         "status",
@@ -1144,6 +1276,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
       <nav class="topnav" aria-label="Import kit navigation">
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
+        <a href="./topics/">Topics</a>
         <a href="./starter-bundle.html">Starter bundle</a>
       </nav>
     </header>
@@ -1160,7 +1293,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
           <div>
             <p class="label">Import files</p>
             <h3>{len(rows)} product listings prepared</h3>
-            <p>Use the CSV, JSON, or ZIP when a legitimate payout-enabled store exists. Each row points at a direct product ZIP and public preview page.</p>
+            <p>Use the CSV, JSON, or ZIP when a legitimate payout-enabled store exists. Each row points at a direct product ZIP, public preview page, topic_labels, and topic_urls.</p>
             <div class="actions">
               <a class="button primary" href="./{esc(zip_rel_path)}">Download import kit</a>
               <a class="button" href="./{esc(csv_rel_path)}">Listing CSV</a>
@@ -1199,6 +1332,201 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         "zip_path": zip_rel_path,
         "page_path": page_rel_path,
         "zip_bytes": zip_bytes,
+    }
+
+
+def topic_index(manifests: list[dict[str, Any]], config: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    topics: dict[str, list[dict[str, Any]]] = {slug: [] for slug in TOPIC_DEFINITIONS}
+    for item in manifests:
+        for slug in topic_slugs_for_item(item):
+            topics.setdefault(slug, []).append(item)
+    return {slug: items for slug, items in topics.items() if items}
+
+
+def render_topic_pages(config: dict[str, Any]) -> dict[str, Any]:
+    TOPICS.mkdir(parents=True, exist_ok=True)
+    manifests = read_manifests()
+    topics = topic_index(manifests, config)
+    topic_export = {
+        "topics": [
+            {
+                "slug": slug,
+                "label": TOPIC_DEFINITIONS[slug]["label"],
+                "description": TOPIC_DEFINITIONS[slug]["description"],
+                "url": pack_url(config, f"topics/{slug}.html"),
+                "count": len(items),
+                "items": [
+                    {
+                        "id": item["id"],
+                        "title": item["title"],
+                        "summary": item["summary"],
+                        "url": pack_url(config, item["path"]),
+                        "download_url": pack_url(config, pack_download_path(item)),
+                    }
+                    for item in items
+                ],
+            }
+            for slug, items in topics.items()
+        ]
+    }
+    (TOPICS / "topics.json").write_text(json.dumps(topic_export, indent=2), encoding="utf-8")
+
+    index_cards = "\n".join(
+        f"""<article class="pack-card">
+          <span class="pack-date">{len(items)} packs</span>
+          <h3>{esc(TOPIC_DEFINITIONS[slug]["label"])}</h3>
+          <p>{esc(TOPIC_DEFINITIONS[slug]["description"])}</p>
+          <a class="button" href="./{esc(slug)}.html">Open topic</a>
+        </article>"""
+        for slug, items in topics.items()
+    )
+    if not index_cards:
+        index_cards = "<p>No topics generated yet.</p>"
+
+    first_cover = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    index_url = pack_url(config, "topics/")
+    index_data = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Daily Autodigital Shelf Topics",
+        "description": "Topic groups for generated printable digital packs.",
+        "url": index_url,
+        "hasPart": [
+            {
+                "@type": "CollectionPage",
+                "name": TOPIC_DEFINITIONS[slug]["label"],
+                "url": pack_url(config, f"topics/{slug}.html"),
+            }
+            for slug in topics
+        ],
+    }
+    index_html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Topics | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Topic groups for Daily Autodigital Shelf generated digital packs.">
+  <link rel="canonical" href="{esc(index_url)}">
+{social_meta("Daily Autodigital Shelf Topics", "Topic groups for generated printable digital packs.", index_url, first_cover, "Daily Autodigital Shelf topics")}
+  <script type="application/ld+json">{json_for_script(index_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Topics navigation">
+        <a href="../">Home</a>
+        <a href="../archive.html">Archive</a>
+        <a href="../store-import.html">Import kit</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Topics</p>
+            <h2>Browse generated packs by use case</h2>
+          </div>
+          <p>These topic pages group generated packs into searchable collections without claiming checkout or revenue.</p>
+        </div>
+        <div class="pack-grid">
+          {index_cards}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+    (TOPICS / "index.html").write_text(index_html, encoding="utf-8")
+
+    for slug, items in topics.items():
+        topic = TOPIC_DEFINITIONS[slug]
+        page_url = pack_url(config, f"topics/{slug}.html")
+        image_url = pack_url(config, items[0]["cover"])
+        rows = "\n".join(
+            f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="../{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="../{esc(pack_download_path(item))}">Product ZIP</a>
+            <a class="button" href="../{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+          </div>
+        </article>"""
+            for item in items
+        )
+        page_data = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": topic["label"],
+            "description": topic["description"],
+            "url": page_url,
+            "hasPart": [
+                {
+                    "@type": "CreativeWork",
+                    "name": item["title"],
+                    "description": item["summary"],
+                    "url": pack_url(config, item["path"]),
+                    "image": pack_url(config, item["cover"]),
+                }
+                for item in items[:50]
+            ],
+        }
+        html_content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(topic["label"])} | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="{esc(topic["description"])}">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta(topic["label"], topic["description"], page_url, image_url, f"{topic['label']} topic")}
+  <script type="application/ld+json">{json_for_script(page_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Topic navigation">
+        <a href="../">Home</a>
+        <a href="./">Topics</a>
+        <a href="../archive.html">Archive</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Topic</p>
+            <h2>{esc(topic["label"])}</h2>
+          </div>
+          <p>{esc(topic["description"])}</p>
+        </div>
+        <div class="ledger">
+          {rows}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+        (TOPICS / f"{slug}.html").write_text(html_content, encoding="utf-8")
+
+    return {
+        "count": len(topics),
+        "items": sum(len(items) for items in topics.values()),
+        "index_path": "topics/index.html",
+        "json_path": "topics/topics.json",
     }
 
 
@@ -1319,6 +1647,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
       <nav class="topnav" aria-label="Bundle navigation">
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
+        <a href="./topics/">Topics</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
     </header>
@@ -1456,6 +1785,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
       <nav class="topnav" aria-label="Primary">
         <a href="#today">Today's pack</a>
         <a href="./archive.html">Archive</a>
+        <a href="./topics/">Topics</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
         <a href="./store-import.html">Import kit</a>
         <a href="#ledger">Automation ledger</a>
@@ -1514,7 +1844,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -1650,7 +1980,8 @@ def render_catalog(config: dict[str, Any]) -> None:
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
                 "download_url": pack_url(config, pack_download_path(item)),
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
-                "tags": "printable planner,digital download,worksheet,low maintenance",
+                "topic_urls": "|".join(record["url"] for record in topic_records_for_item(item, config)),
+                "tags": listing_keywords(item),
                 "monetization_enabled": bool(config["monetization"].get("enabled")),
             }
         )
@@ -1675,6 +2006,7 @@ def render_catalog(config: dict[str, Any]) -> None:
         "seller_copy_url",
         "download_url",
         "starter_bundle_url",
+        "topic_urls",
         "tags",
         "monetization_enabled",
     ]
@@ -1740,6 +2072,7 @@ def render_archive(config: dict[str, Any]) -> None:
       </a>
       <nav class="topnav" aria-label="Archive navigation">
         <a href="./">Home</a>
+        <a href="./topics/">Topics</a>
         <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./catalog.json">Catalog JSON</a>
@@ -1753,7 +2086,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. The <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, and the <a href="./store-import.html">import kit</a> packages marketplace listing metadata. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, and the <a href="./store-import.html">import kit</a> packages marketplace listing metadata. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -1771,13 +2104,16 @@ def render_sitemap(config: dict[str, Any]) -> None:
     urls = [
         pack_url(config, ""),
         pack_url(config, "archive.html"),
+        pack_url(config, "topics/"),
         pack_url(config, "starter-bundle.html"),
         pack_url(config, "store-import.html"),
         pack_url(config, "catalog.json"),
+        pack_url(config, "topics/topics.json"),
         pack_url(config, "imports/store-listings.csv"),
         pack_url(config, "imports/store-listings.json"),
         pack_url(config, "feed.json"),
     ]
+    urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
     rows = "\n".join(f"  <url><loc>{esc(url)}</loc></url>" for url in urls if url)
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -1851,6 +2187,7 @@ def write_status(
     bundle: dict[str, Any],
     downloads: dict[str, Any],
     import_kit: dict[str, Any],
+    topics: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
     status_path = DOCS / "status.json"
@@ -1883,6 +2220,11 @@ def write_status(
         "store_import_json": import_kit.get("json_path", "imports/store-listings.json"),
         "store_import_zip": import_kit.get("zip_path", "imports/store-upload-kit.zip"),
         "store_import_zip_bytes": int(import_kit.get("zip_bytes", 0)),
+        "topic_pages_ready": bool(topics.get("count")),
+        "topic_page_count": int(topics.get("count", 0)),
+        "topic_item_count": int(topics.get("items", 0)),
+        "topics_index": topics.get("index_path", "topics/index.html"),
+        "topics_json": topics.get("json_path", "topics/topics.json"),
         "indexnow_enabled": bool(discovery.get("enabled")),
         "indexnow_key_file": discovery.get("key_file", ""),
         "indexnow_key_location": discovery.get("key_location", ""),
@@ -1936,6 +2278,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_feed(config)
     render_catalog(config)
     render_archive(config)
+    topics = render_topic_pages(config)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
     render_index(pack, config, bundle)
@@ -1943,7 +2286,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, import_kit, discovery)
+    write_status(pack, config, bundle, downloads, import_kit, topics, discovery)
     append_ledger(pack)
     return manifest
 

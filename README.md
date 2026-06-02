@@ -33,6 +33,7 @@ Each generated pack includes:
 The site also publishes:
 
 - `archive.html` for all generated packs
+- `topics/index.html`, topic pages, and `topics/topics.json` for use-case browsing
 - `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
 - `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
