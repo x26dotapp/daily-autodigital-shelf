@@ -90,6 +90,7 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     offers = read_json(DOCS / "offers" / "offers.json", {"offers": []})
     use_cases = read_json(DOCS / "use-cases" / "use-cases.json", {"items": []})
     templates = read_json(DOCS / "templates" / "templates.json", {"items": []})
+    guides = read_json(DOCS / "guides" / "guides.json", {"items": []})
     candidates: list[dict[str, str]] = []
 
     for rel_path in [
@@ -113,6 +114,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "use-cases/use-cases.json",
         "templates/index.html",
         "templates/templates.json",
+        "guides/index.html",
+        "guides/guides.json",
         "catalog.json",
         "catalog.csv",
         "product-feed.json",
@@ -174,6 +177,11 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
 
     for template in templates.get("items", []):
         path = str(template.get("path", "")).strip("/")
+        if path:
+            add_candidate(candidates, config, path)
+
+    for guide in guides.get("items", []):
+        path = str(guide.get("path", "")).strip("/")
         if path:
             add_candidate(candidates, config, path)
 
