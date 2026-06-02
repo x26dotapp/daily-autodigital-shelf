@@ -16,9 +16,9 @@ Verified 2026-06-02:
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
-- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 323,728 bytes and includes policy pages, support page, offer pages, `llms.txt`, `llms-full.txt`, and RSS/Atom feed files
+- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 326,576 bytes and includes policy pages, support page, pay-what-you-can page, offer pages, `llms.txt`, `llms-full.txt`, and RSS/Atom feed files
 - Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 161,610 bytes and rows include topic fields plus policy pages
-- Support/discovery surfaces: `support.html`, `llms.txt`, and `llms-full.txt` live; the support page links to `https://gift.calmsprout.com` while stating that product checkout is not connected
+- Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` live; the support and pay-what-you-can pages link to `https://gift.calmsprout.com` while stating that product checkout is not connected
 - Offer surfaces: `offers/index.html`, `offers/offers.json`, and 5 topic collection offer pages live; offer pages link the starter bundle, expose CollectionPage JSON-LD, route support CTAs to `https://gift.calmsprout.com`, and state that product checkout is not connected
 - CalmSprout bridge: `C:\scripts\CalmSprout` commits `f063a55` (`Add Daily Shelf bridge`), `d8fa6d9` (`Add Daily Shelf landing page`), and `8a689e1` (`Add CalmSprout IndexNow key`) deployed directly to Cloudflare. Latest Worker version is `61361a87-0bab-4cdc-b477-d332b254cf23`. Live `https://www.calmsprout.com/daily-shelf` is an indexable landing page; `/daily-shelf/offers` redirects to the offer index; `/daily-shelf/support` redirects to the public Square support page; `robots.txt`, `sitemap.xml`, and public IndexNow key file `a4f604db6d2046939ff6c7e3d29d341e.txt` are live; the `www.calmsprout.com` homepage includes a Daily Shelf banner.
 - Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
@@ -34,7 +34,8 @@ Verified 2026-06-02:
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: public support destination connected; public site says `Status: Connected`, shows `Support this shelf`, and links to `https://gift.calmsprout.com`, which resolves to the Square-hosted CalmSprout gift/support page. Product checkout is not connected, `store_connected` is false, and daily revenue is not proven.
 - Direct deploy note: CalmSprout has local Git but no remote, so bridge changes were committed locally before direct Wrangler deploy. Keep future CalmSprout changes committed locally and record deployed Worker version IDs.
-- Latest verifier baseline: `files_checked: 36`, `bundle_bytes: 323728`, `pack_download_bytes: 126854`, `store_import_zip_bytes: 161610`, `support_connected: true`, `store_connected: false`
+- Latest verifier baseline: `files_checked: 37`, `bundle_bytes: 326576`, `pack_download_bytes: 126854`, `store_import_zip_bytes: 161610`, `support_connected: true`, `store_connected: false`
+- Pay-what-you-can proof: local browser QA loaded `pay-what-you-can.html`, found the generated support tiers and starter ZIP link, reported no console errors, and verified the hero support CTA navigated to `https://app.squareup.com/gift/MLZ021BP45QKH/order`.
 - CalmSprout discovery proof: public key `https://www.calmsprout.com/a4f604db6d2046939ff6c7e3d29d341e.txt` returned HTTP 200; IndexNow accepted 6 CalmSprout URLs with HTTP 202: homepage, `/daily-shelf`, `/daily-shelf/offers`, `/daily-shelf/support`, `robots.txt`, and `sitemap.xml`.
 
 ## Where To Start
@@ -66,6 +67,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\feed.xml`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\atom.xml`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\support.html`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\pay-what-you-can.html`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\offers`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\llms.txt`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\llms-full.txt`

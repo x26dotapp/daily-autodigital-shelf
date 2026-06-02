@@ -39,6 +39,7 @@ The site also publishes:
 - `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
 - `support.html` as a dedicated support/conversion page for the connected public support path
+- `pay-what-you-can.html` as a generated support-first bundle funnel with suggested support tiers
 - `offers/index.html`, `offers/offers.json`, and topic-based offer pages that
   group related packs into support-backed collection surfaces
 - `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
@@ -71,10 +72,11 @@ domain. It does not make CalmSprout product checkout and does not prove revenue.
 
 A public support destination is configured in `config/config.public.json`:
 `https://gift.calmsprout.com`. This is a Square-hosted CalmSprout gift-card /
-support path, not product checkout. The generated `support.html` page links to
-that destination while keeping the boundary explicit. Generated offer pages use
-the same support path and state that product checkout is not connected. The
-generated packs remain public downloads until a real store checkout is connected.
+support path, not product checkout. The generated `support.html` and
+`pay-what-you-can.html` pages link to that destination while keeping the
+boundary explicit. Generated offer pages use the same support path and state
+that product checkout is not connected. The generated packs remain public
+downloads until a real store checkout is connected.
 
 Use `config/config.local.json` only for private local overrides. Do not put
 secrets in this repo.

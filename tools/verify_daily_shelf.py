@@ -96,6 +96,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "starter-bundle.html",
             "starter-archive.zip",
             "support.html",
+            "pay-what-you-can.html",
             "store-import.html",
             "terms.html",
             "Download ZIP",
@@ -138,6 +139,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "Topics", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Offers", "Support", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "preview_url", "price_hint", "topic_urls", manifest["title"]])
     require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Monetization destination", "Product checkout is not connected"])
@@ -229,6 +231,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "daily-autodigital-shelf-starter/privacy.html",
             "daily-autodigital-shelf-starter/refund-policy.html",
             "daily-autodigital-shelf-starter/support.html",
+            "daily-autodigital-shelf-starter/pay-what-you-can.html",
             "daily-autodigital-shelf-starter/offers/index.html",
             "daily-autodigital-shelf-starter/offers/offers.json",
             f"daily-autodigital-shelf-starter/{str(today_offer.get('path')).strip('/')}",
@@ -242,7 +245,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if name not in names:
                 fail(f"Starter bundle missing {name}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
 
@@ -270,6 +273,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             fail("Connected monetization destination is missing a public URL")
         require_contains(DOCS / "index.html", [destination_url])
         require_contains(DOCS / "support.html", [destination_url])
+        require_contains(DOCS / "pay-what-you-can.html", [destination_url])
         require_contains(offer_page, [destination_url])
         require_contains(DOCS / "llms.txt", [destination_url])
         require_contains(DOCS / "llms-full.txt", [destination_url])
@@ -302,6 +306,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json policy_page_count is {status.get('policy_page_count')}, expected at least 4")
     if not status.get("support_page_ready") or status.get("support_page") != "support.html":
         fail("status.json missing support_page_ready/support.html")
+    if not status.get("pay_what_you_can_ready") or status.get("pay_what_you_can_page") != "pay-what-you-can.html":
+        fail("status.json missing pay_what_you_can_ready/pay-what-you-can.html")
+    if int(status.get("support_tier_count") or 0) < 3:
+        fail(f"status.json support_tier_count is {status.get('support_tier_count')}, expected at least 3")
     if not status.get("offer_pages_ready"):
         fail("status.json reports offer_pages_ready=false")
     if int(status.get("offer_page_count") or 0) < 3:
@@ -334,7 +342,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "store_import_zip_bytes": import_zip_path.stat().st_size,
         "topic_page_count": int(status.get("topic_page_count") or 0),
         "policy_page_count": int(status.get("policy_page_count") or 0),
-        "files_checked": 36,
+        "files_checked": 37,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),

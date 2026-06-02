@@ -7,6 +7,23 @@
   "monetization": {
     "enabled": true,
     "support_url": "https://gift.calmsprout.com",
+    "support_tiers": [
+      {
+        "label": "Small thank-you",
+        "amount": "$3",
+        "description": "A light support nudge for one useful worksheet."
+      },
+      {
+        "label": "Bundle supporter",
+        "amount": "$9",
+        "description": "A fair support level for the starter archive."
+      },
+      {
+        "label": "Keep it running",
+        "amount": "$21",
+        "description": "Helps keep daily publishing, hosting, and maintenance alive."
+      }
+    ],
     "affiliate_disclosure": "Support links route to a Square-hosted CalmSprout gift-card/support page. Product checkout is not connected yet; pack downloads remain public until a store is connected."
   }
 }

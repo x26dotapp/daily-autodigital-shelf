@@ -901,6 +901,7 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
         "support.html",
+        "pay-what-you-can.html",
         "store-import.html",
         "license.html",
         "privacy.html",
@@ -1890,6 +1891,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
       <nav class="topnav" aria-label="Offers navigation">
         <a href="../">Home</a>
         <a href="../support.html">Support</a>
+        <a href="../pay-what-you-can.html">Pay what you can</a>
         <a href="../starter-bundle.html">Starter bundle</a>
         <a href="../archive.html">Archive</a>
         <a href="../terms.html">Policies</a>
@@ -1991,6 +1993,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
         <a href="../">Home</a>
         <a href="./">Offers</a>
         <a href="../support.html">Support</a>
+        <a href="../pay-what-you-can.html">Pay what you can</a>
         <a href="../topics/{esc(record["slug"])}.html">Topic</a>
         <a href="../starter-bundle.html">Starter bundle</a>
       </nav>
@@ -2176,6 +2179,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./topics/">Topics</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
+        <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./terms.html">Policies</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
@@ -2196,6 +2200,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
             <p>{len(manifests)} generated packs from {esc(oldest_date)} through {esc(latest_date)}, including printable worksheets, checklists, cover SVGs, manifests, catalog files, and seller-copy files.</p>
             <div class="actions">
               <a class="button primary" href="./{esc(bundle_rel_path)}">Download ZIP</a>
+              <a class="button" href="./pay-what-you-can.html">Support the bundle</a>
               <a class="button" href="./catalog.csv">Open catalog CSV</a>
             </div>
           </div>
@@ -2345,6 +2350,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
+        <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
         <a href="#ledger">Automation ledger</a>
@@ -2359,6 +2365,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
           <p>This lane creates public, printable digital packs on a schedule. It keeps the money layer explicit, so there are no fake earnings claims and no hidden live-fund behavior.</p>
           <div class="actions">
             <a class="button primary" href="./{esc(today_path)}">Open today's pack</a>
+            <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
             <a class="button" href="./{esc(bundle_page_path)}">Open starter bundle</a>
             <a class="button" href="./store-import.html">Open import kit</a>
             <a class="button" href="#setup">View setup status</a>
@@ -2426,6 +2433,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <div class="actions">
               <a class="button primary" href="./{esc(bundle_zip_path)}">Download ZIP</a>
               <a class="button" href="./{esc(bundle_page_path)}">Bundle page</a>
+              <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
               <a class="button" href="./offers/">Offer pages</a>
               <a class="button" href="./support.html">Support page</a>
               {destination_cta}
@@ -2826,6 +2834,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./topics/">Topics</a>
         <a href="./offers/">Offers</a>
         <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
       </nav>
@@ -2838,6 +2847,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
           <p>The shelf publishes plain digital packs automatically. Downloads stay public while the support path can receive voluntary support through the connected external page.</p>
           <div class="actions">
             {external_cta}
+            <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
             <a class="button" href="./starter-bundle.html">Open starter bundle</a>
             <a class="button" href="./bundles/starter-archive.zip">Download starter bundle</a>
             <a class="button" href="{esc(latest_pack_url)}">Open latest pack</a>
@@ -2892,12 +2902,225 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
+def support_tiers(config: dict[str, Any]) -> list[dict[str, str]]:
+    raw_tiers = config["monetization"].get("support_tiers") or []
+    tiers: list[dict[str, str]] = []
+    for raw in raw_tiers:
+        if not isinstance(raw, dict):
+            continue
+        label = str(raw.get("label") or "").strip()
+        amount = str(raw.get("amount") or "").strip()
+        description = str(raw.get("description") or "").strip()
+        if not label or not amount:
+            continue
+        tiers.append(
+            {
+                "label": label,
+                "amount": amount,
+                "description": description or "Voluntary support for the generated shelf.",
+            }
+        )
+    if tiers:
+        return tiers
+    return [
+        {
+            "label": "Small thank-you",
+            "amount": "$3",
+            "description": "A light support nudge for one useful worksheet.",
+        },
+        {
+            "label": "Bundle supporter",
+            "amount": "$9",
+            "description": "A fair support level for the starter archive.",
+        },
+        {
+            "label": "Keep it running",
+            "amount": "$21",
+            "description": "Helps keep daily publishing, hosting, and maintenance alive.",
+        },
+    ]
+
+
+def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    monetization = config["monetization"]
+    destination_url = str(support.get("destination_url") or "").strip()
+    destination_type = str(support.get("destination_type") or "none")
+    connected = bool(destination_url)
+    page_rel_path = "pay-what-you-can.html"
+    page_url = pack_url(config, page_rel_path)
+    home_url = pack_url(config, "")
+    bundle_path = "bundles/starter-archive.zip"
+    bundle_url = pack_url(config, bundle_path)
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
+    cta_label = "Open Square support page" if destination_type == "support" else "Open product checkout"
+    primary_cta = (
+        f"""<a class="button primary" href="{esc(destination_url)}">{esc(cta_label)}</a>"""
+        if connected
+        else """<a class="button primary" href="./#setup">Destination not connected</a>"""
+    )
+    tiers = support_tiers(config)
+    tier_cards = "\n".join(
+        f"""<article class="tier-card">
+          <span class="tier-amount">{esc(tier["amount"])}</span>
+          <h3>{esc(tier["label"])}</h3>
+          <p>{esc(tier["description"])}</p>
+          {primary_cta if index == 1 else f'<a class="button" href="{esc(destination_url or "./#setup")}">Choose this level</a>'}
+        </article>"""
+        for index, tier in enumerate(tiers)
+    )
+    pack_rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="./{esc(pack_download_path(item))}">Pack ZIP</a>
+            <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+          </div>
+        </article>"""
+        for item in manifests[:5]
+    )
+    if not pack_rows:
+        pack_rows = "<p>No packs generated yet.</p>"
+    destination_note = (
+        f"Support is handled by the external destination at {destination_url}."
+        if connected
+        else "No external support or store destination is connected yet."
+    )
+    structured_data: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Pay What You Can Bundle",
+        "description": "A voluntary support page for the Daily Autodigital Shelf starter archive.",
+        "url": page_url,
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": config["site"]["name"],
+            "url": home_url,
+        },
+        "about": {
+            "@type": "CreativeWork",
+            "name": "Daily Autodigital Shelf Starter Archive",
+            "encoding": {
+                "@type": "MediaObject",
+                "contentUrl": bundle_url,
+                "encodingFormat": "application/zip",
+            },
+        },
+    }
+    if connected:
+        structured_data["potentialAction"] = {
+            "@type": "DonateAction" if destination_type == "support" else "BuyAction",
+            "target": destination_url,
+            "name": cta_label,
+        }
+
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pay What You Can Bundle | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Download the generated starter archive and support the Daily Autodigital Shelf through the connected external support path.">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Pay What You Can Bundle", "Download the starter archive and optionally support the automated public shelf.", page_url, image_url, "Daily Autodigital Shelf pay what you can page")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Pay what you can navigation">
+        <a href="./">Home</a>
+        <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./offers/">Offers</a>
+        <a href="./support.html">Support</a>
+        <a href="./terms.html">Policies</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Pay what you can</p>
+          <h1>Download the starter archive. Support it if it helps.</h1>
+          <p>The full starter ZIP stays public so delivery does not depend on manual handling. The connected support path can receive voluntary support automatically through the external provider.</p>
+          <div class="actions">
+            {primary_cta}
+            <a class="button" href="./{esc(bundle_path)}">Download starter ZIP</a>
+            <a class="button" href="./starter-bundle.html">Inspect bundle</a>
+          </div>
+          <p class="fineprint">{esc(destination_note)} This is not product checkout unless store_connected is true in status.json.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Generated value</p>
+              <h2>{len(manifests)} packs</h2>
+            </div>
+            <span class="status">{esc(destination_type)}</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>What visitors get</h3>
+              <p>A ZIP containing worksheets, checklists, cover SVGs, listing copy, catalog files, and policy pages. Support is voluntary while downloads remain public.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Suggested support</p>
+            <h2>Simple levels</h2>
+          </div>
+          <p>Each button routes to the same connected external support destination. Amount choice is handled there, not by this static site.</p>
+        </div>
+        <div class="tier-grid">
+          {tier_cards}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Preview files</p>
+            <h2>Recent packs inside the bundle</h2>
+          </div>
+          <p>Visitors can inspect the work before supporting it. This keeps the funnel clear, low-pressure, and fully unattended.</p>
+        </div>
+        <div class="ledger">
+          {pack_rows}
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / page_rel_path).write_text(content, encoding="utf-8")
+    return {
+        "page_path": page_rel_path,
+        "page_url": page_url,
+        "connected": connected,
+        "tier_count": len(tiers),
+    }
+
+
+def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], pay_page: dict[str, Any]) -> dict[str, Any]:
     manifests = read_manifests()
     site_name = config["site"]["name"]
     base_url = pack_url(config, "")
     support_path = str(support.get("page_path", "support.html"))
     support_url = pack_url(config, support_path)
+    pay_path = str(pay_page.get("page_path", "pay-what-you-can.html"))
+    pay_url = pack_url(config, pay_path)
     destination_type = str(support.get("destination_type", "none"))
     destination_url = str(support.get("destination_url", ""))
     latest = manifests[0] if manifests else None
@@ -2928,6 +3151,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any]) -
             "",
             f"- Home: {base_url}",
             f"- Support page: {support_url}",
+            f"- Pay what you can bundle: {pay_url}",
             f"- Offers: {pack_url(config, 'offers/')}",
             f"- Archive: {pack_url(config, 'archive.html')}",
             f"- Starter bundle: {pack_url(config, 'starter-bundle.html')}",
@@ -2967,6 +3191,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any]) -
             "",
             monetization_line,
             "- Current public support page: " + support_url,
+            "- Pay what you can bundle page: " + pay_url,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Revenue is not guaranteed or claimed by the site.",
             "",
@@ -3004,6 +3229,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, ""),
         pack_url(config, "archive.html"),
         pack_url(config, "support.html"),
+        pack_url(config, "pay-what-you-can.html"),
         pack_url(config, "offers/"),
         pack_url(config, "offers/offers.json"),
         pack_url(config, "topics/"),
@@ -3102,6 +3328,7 @@ def write_status(
     topics: dict[str, Any],
     policies: dict[str, Any],
     support: dict[str, Any],
+    pay_page: dict[str, Any],
     offers: dict[str, Any],
     ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
@@ -3155,6 +3382,9 @@ def write_status(
         "policy_pages": policies.get("paths", []),
         "support_page_ready": bool(support.get("page_path")),
         "support_page": support.get("page_path", "support.html"),
+        "pay_what_you_can_ready": bool(pay_page.get("page_path")),
+        "pay_what_you_can_page": pay_page.get("page_path", "pay-what-you-can.html"),
+        "support_tier_count": int(pay_page.get("tier_count", 0)),
         "offer_pages_ready": bool(offers.get("ready")),
         "offer_page_count": int(offers.get("count", 0)),
         "offers_index": offers.get("index_path", "offers/index.html"),
@@ -3221,8 +3451,9 @@ def generate(day: dt.date) -> dict[str, Any]:
     topics = render_topic_pages(config)
     policies = render_policy_pages(config)
     support = render_support_page(config)
+    pay_page = render_pay_what_you_can_page(config, support)
     offers = render_offer_pages(config, support)
-    ai_discovery = render_ai_discovery_files(config, support)
+    ai_discovery = render_ai_discovery_files(config, support, pay_page)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
     render_index(pack, config, bundle)
@@ -3230,7 +3461,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, support, offers, ai_discovery, discovery)
+    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, support, pay_page, offers, ai_discovery, discovery)
     append_ledger(pack)
     return manifest
 

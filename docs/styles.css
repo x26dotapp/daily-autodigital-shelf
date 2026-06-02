@@ -282,7 +282,14 @@ section {
   gap: 16px;
 }
 
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .pack-card,
+.tier-card,
 .ledger-row,
 .setup-list,
 .pack-body,
@@ -297,9 +304,26 @@ section {
   padding: 18px;
 }
 
-.pack-card h3 {
+.tier-card {
+  padding: 22px;
+}
+
+.pack-card h3,
+.tier-card h3 {
   margin: 8px 0 0;
   font-size: 1.25rem;
+}
+
+.tier-card p {
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.tier-amount {
+  color: var(--teal);
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .pack-date {
@@ -491,6 +515,7 @@ section {
 
   .system-note,
   .pack-grid,
+  .tier-grid,
   .artifact,
   .ledger-row,
   .bundle-panel {
