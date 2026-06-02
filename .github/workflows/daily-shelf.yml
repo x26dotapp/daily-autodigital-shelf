@@ -57,3 +57,7 @@ jobs:
       - name: Submit changed URLs to IndexNow
         if: steps.publish.outputs.changed == 'true'
         run: python tools/submit_indexnow.py --wait-for-key-seconds 120
+
+      - name: Submit changed CalmSprout URLs to IndexNow
+        if: steps.publish.outputs.changed == 'true'
+        run: python tools/submit_calmsprout_indexnow.py --wait-for-key-seconds 120

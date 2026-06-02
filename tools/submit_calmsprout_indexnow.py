@@ -1,0 +1,248 @@
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DOCS = ROOT / "docs"
+STATE = ROOT / "state"
+INDEXNOW_STATE = STATE / "calmsprout-indexnow-state.json"
+
+BASE_URL = "https://www.calmsprout.com"
+HOST = urllib.parse.urlparse(BASE_URL).netloc
+INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow"
+INDEXNOW_KEY = "a4f604db6d2046939ff6c7e3d29d341e"
+KEY_LOCATION = f"{BASE_URL}/{INDEXNOW_KEY}.txt"
+USER_AGENT = "daily-autodigital-shelf-calmsprout-indexnow/1.0"
+
+
+DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
+    ("/daily-shelf/status", "status.json"),
+    ("/daily-shelf/status.json", "status.json"),
+    ("/daily-shelf/catalog", "catalog.json"),
+    ("/daily-shelf/catalog.json", "catalog.json"),
+    ("/daily-shelf/catalog.csv", "catalog.csv"),
+    ("/daily-shelf/store-listings.json", "imports/store-listings.json"),
+    ("/daily-shelf/store-listings.csv", "imports/store-listings.csv"),
+    ("/daily-shelf/imports/store-listings.json", "imports/store-listings.json"),
+    ("/daily-shelf/imports/store-listings.csv", "imports/store-listings.csv"),
+    ("/daily-shelf/feed.json", "feed.json"),
+    ("/daily-shelf/feed.xml", "feed.xml"),
+    ("/daily-shelf/atom.xml", "atom.xml"),
+    ("/daily-shelf/starter.zip", "bundles/starter-archive.zip"),
+    ("/daily-shelf/bundles/starter-archive.zip", "bundles/starter-archive.zip"),
+]
+
+STATIC_ROUTE_SOURCES: list[tuple[str, str]] = [
+    ("/daily-shelf", "status.json"),
+    ("/daily-shelf/today", "status.json"),
+    ("/daily-shelf/offers", "offers/index.html"),
+    ("/daily-shelf/pay", "pay-what-you-can.html"),
+    ("/daily-shelf/pay-what-you-can", "pay-what-you-can.html"),
+    ("/daily-shelf/bundle", "bundles/starter-archive.zip"),
+    ("/daily-shelf/support", "support.html"),
+    ("/llms.txt", "llms.txt"),
+    ("/llms-full.txt", "llms-full.txt"),
+    ("/daily-shelf/llms.txt", "llms.txt"),
+    ("/sitemap.xml", "sitemap.xml"),
+]
+
+
+def fail(message: str) -> None:
+    raise RuntimeError(message)
+
+
+def read_json(path: Path, fallback: dict[str, Any] | None = None) -> dict[str, Any]:
+    if not path.exists():
+        if fallback is not None:
+            return fallback
+        fail(f"Missing JSON file: {path}")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def route_url(path: str) -> str:
+    return f"{BASE_URL}/{path.lstrip('/')}"
+
+
+def file_signature(path: Path) -> str:
+    if not path.exists():
+        return "missing"
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def add_candidate(candidates: list[dict[str, str]], route_path: str, source_rel_path: str) -> None:
+    source_path = DOCS / source_rel_path
+    candidates.append(
+        {
+            "url": route_url(route_path),
+            "path": str(source_path),
+            "signature": file_signature(source_path),
+        }
+    )
+
+
+def collect_candidates(include_static: bool) -> list[dict[str, str]]:
+    # Validate core output before we compute signatures. This keeps a broken
+    # generation run from updating the branded submit state.
+    status = read_json(DOCS / "status.json")
+    if not status.get("indexnow_enabled"):
+        fail("Daily Shelf IndexNow output is not enabled")
+
+    candidates: list[dict[str, str]] = []
+    for route_path, source_rel_path in DYNAMIC_ROUTE_SOURCES:
+        add_candidate(candidates, route_path, source_rel_path)
+    if include_static:
+        for route_path, source_rel_path in STATIC_ROUTE_SOURCES:
+            add_candidate(candidates, route_path, source_rel_path)
+
+    deduped: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        if candidate["url"] not in seen:
+            deduped.append(candidate)
+            seen.add(candidate["url"])
+    return deduped
+
+
+def load_state() -> dict[str, Any]:
+    return read_json(INDEXNOW_STATE, {"submitted": {}})
+
+
+def save_state(state: dict[str, Any]) -> None:
+    STATE.mkdir(parents=True, exist_ok=True)
+    INDEXNOW_STATE.write_text(json.dumps(state, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def changed_candidates(candidates: list[dict[str, str]], state: dict[str, Any], force: bool) -> list[dict[str, str]]:
+    if force:
+        return candidates
+    submitted = state.get("submitted", {})
+    changed = []
+    for candidate in candidates:
+        previous = submitted.get(candidate["url"], {})
+        if previous.get("signature") != candidate["signature"]:
+            changed.append(candidate)
+    return changed
+
+
+def wait_for_key(seconds: int) -> dict[str, Any]:
+    deadline = time.monotonic() + max(0, seconds)
+    last_error = ""
+    while True:
+        try:
+            request = urllib.request.Request(KEY_LOCATION, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(request, timeout=15) as response:
+                body = response.read().decode("utf-8", errors="replace").strip()
+                if response.status == 200 and body == INDEXNOW_KEY:
+                    return {"status_code": response.status, "key_location": KEY_LOCATION}
+                last_error = f"status={response.status} body={body[:80]!r}"
+        except OSError as exc:
+            last_error = str(exc)
+
+        if time.monotonic() >= deadline:
+            fail(f"IndexNow key file not verified at {KEY_LOCATION}: {last_error}")
+        time.sleep(5)
+
+
+def submit_indexnow(urls: list[str]) -> dict[str, Any]:
+    payload = {
+        "host": HOST,
+        "key": INDEXNOW_KEY,
+        "keyLocation": KEY_LOCATION,
+        "urlList": urls,
+    }
+    request = urllib.request.Request(
+        INDEXNOW_ENDPOINT,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json; charset=utf-8", "User-Agent": USER_AGENT},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            body = response.read().decode("utf-8", errors="replace")
+            status_code = response.status
+    except urllib.error.HTTPError as exc:
+        status_code = exc.code
+        body = exc.read().decode("utf-8", errors="replace")
+
+    if status_code not in {200, 202}:
+        fail(f"IndexNow returned HTTP {status_code}: {body[:400]}")
+    return {"status_code": status_code, "body": body[:400]}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Submit changed CalmSprout Daily Shelf URLs to IndexNow.")
+    parser.add_argument("--all", action="store_true", help="Include static bridge/discovery routes in addition to proxied data routes.")
+    parser.add_argument("--force", action="store_true", help="Submit selected URLs even if local signatures did not change.")
+    parser.add_argument("--dry-run", action="store_true", help="Print intended submission without calling IndexNow.")
+    parser.add_argument("--max-urls", type=int, default=100, help="Maximum URLs to submit in one request.")
+    parser.add_argument("--wait-for-key-seconds", type=int, default=0, help="Wait for the public CalmSprout IndexNow key file.")
+    args = parser.parse_args()
+
+    candidates = collect_candidates(args.all)
+    state = load_state()
+    selected = changed_candidates(candidates, state, args.force)[: args.max_urls]
+    urls = [candidate["url"] for candidate in selected]
+
+    result: dict[str, Any] = {
+        "status": "ok",
+        "dry_run": args.dry_run,
+        "endpoint": INDEXNOW_ENDPOINT,
+        "host": HOST,
+        "key_location": KEY_LOCATION,
+        "candidate_count": len(candidates),
+        "submit_count": len(urls),
+        "urls": urls,
+    }
+    if not urls:
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.dry_run:
+        print(json.dumps(result, indent=2))
+        return 0
+
+    key_check = wait_for_key(args.wait_for_key_seconds)
+    submission = submit_indexnow(urls)
+    submitted_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
+    state.setdefault("submitted", {})
+    for candidate in selected:
+        state["submitted"][candidate["url"]] = {
+            "signature": candidate["signature"],
+            "submitted_at": submitted_at,
+        }
+    state["last_submission"] = {
+        "submitted_at": submitted_at,
+        "endpoint": INDEXNOW_ENDPOINT,
+        "host": HOST,
+        "count": len(urls),
+        "status_code": submission["status_code"],
+    }
+    save_state(state)
+
+    result["key_check"] = key_check
+    result["submission"] = submission
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except RuntimeError as exc:
+        print(json.dumps({"status": "failed", "error": str(exc)}, indent=2), file=sys.stderr)
+        raise SystemExit(1)

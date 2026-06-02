@@ -20,10 +20,21 @@ foreach ($needle in @(
     'tools/generate_daily_shelf.py --date',
     'tools/verify_daily_shelf.py --date',
     'tools/submit_indexnow.py',
+    'tools/submit_calmsprout_indexnow.py',
     'git diff --cached --quiet'
 )) {
     if (-not $fallbackWorkflowText.Contains($needle)) {
         throw "GitHub fallback workflow missing expected text: $needle"
+    }
+}
+
+$runDailyText = Get-Content -LiteralPath (Join-Path $root 'run-daily.ps1') -Raw
+foreach ($needle in @(
+    'tools\submit_calmsprout_indexnow.py',
+    'CalmSprout IndexNow submission complete'
+)) {
+    if (-not $runDailyText.Contains($needle)) {
+        throw "Daily run wrapper missing expected text: $needle"
     }
 }
 

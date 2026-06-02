@@ -12,6 +12,7 @@ connected to a store, affiliate link, support link, or ad setup later.
 - `tools/generate_daily_shelf.py` creates today's pack under `docs/packs/`.
 - `tools/verify_daily_shelf.py` checks that the generated site and pack are complete.
 - `tools/submit_indexnow.py` submits changed public URLs to IndexNow after a successful push.
+- `tools/submit_calmsprout_indexnow.py` submits changed CalmSprout branded shelf data routes to IndexNow after a successful push.
 - `run-daily.ps1` runs the generator, commits site changes, and pushes them.
 - `install-scheduled-task.ps1` installs a daily Windows Scheduled Task.
 - `watchdog.ps1` verifies the daily task, live site, and generated artifacts, then reruns the safe daily wrapper only when verification fails.
@@ -54,6 +55,10 @@ IndexNow submission state is kept locally in `state/indexnow-state.json` and is
 ignored by Git. The key file itself is public by design because the protocol
 uses a public text file to prove site control.
 
+CalmSprout branded route submission state is kept locally in
+`state/calmsprout-indexnow-state.json` and is ignored by Git. The CalmSprout
+key file is also public by IndexNow design.
+
 ## Branded Entry Bridge
 
 The CalmSprout Worker at `C:\scripts\CalmSprout` also exposes a branded bridge
@@ -62,11 +67,17 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf`
 - `https://www.calmsprout.com/daily-shelf/offers`
 - `https://www.calmsprout.com/daily-shelf/support`
+- `https://www.calmsprout.com/daily-shelf/status`
+- `https://www.calmsprout.com/daily-shelf/catalog.json`
+- `https://www.calmsprout.com/daily-shelf/feed.xml`
+- `https://www.calmsprout.com/daily-shelf/starter.zip`
 - `https://www.calmsprout.com/sitemap.xml`
 - `https://www.calmsprout.com/a4f604db6d2046939ff6c7e3d29d341e.txt`
 
 This improves discovery and support conversion through an existing public
 domain. It does not make CalmSprout product checkout and does not prove revenue.
+The daily run and GitHub fallback submit changed CalmSprout data/feed/archive
+routes to IndexNow after a successful shelf publish.
 
 ## Current Guardrail
 
@@ -146,6 +157,8 @@ The workflow `.github/workflows/daily-shelf.yml` runs daily from GitHub Actions
 after the local PC task and watchdog. It computes the shelf date in
 `America/New_York`, runs the generator and verifier, commits only when files
 changed, pushes to `main`, and submits changed URLs to IndexNow.
+It also submits changed CalmSprout branded data/feed/archive routes to IndexNow
+so the first-party bridge is refreshed without a manual Worker deploy.
 
 This is a reliability fallback, not a separate monetization layer.
 

@@ -252,6 +252,19 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
+    require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
+    require_contains(
+        ROOT / "run-daily.ps1",
+        ["tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
+    )
+    require_contains(
+        ROOT / ".github" / "workflows" / "daily-shelf.yml",
+        ["Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
+    )
+    require_contains(
+        ROOT / ".gitignore",
+        ["state/calmsprout-indexnow-state.json"],
+    )
 
     catalog = read_json(DOCS / "catalog.json")
     catalog_item = next((item for item in catalog.get("items", []) if item.get("id") == manifest["id"]), None)
@@ -366,7 +379,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "store_import_zip_bytes": import_zip_path.stat().st_size,
         "topic_page_count": int(status.get("topic_page_count") or 0),
         "policy_page_count": int(status.get("policy_page_count") or 0),
-        "files_checked": 37,
+        "files_checked": 40,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
