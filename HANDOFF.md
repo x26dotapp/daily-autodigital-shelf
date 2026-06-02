@@ -15,20 +15,20 @@ Verified 2026-06-02:
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
-- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 297,097 bytes and includes policy pages plus RSS/Atom feed files
-- Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 160,455 bytes and rows include topic fields plus policy pages
+- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 299,082 bytes and includes policy pages plus RSS/Atom feed files
+- Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 161,448 bytes and rows include topic fields plus policy pages
 - Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
 - Policy surfaces: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` live; they are store-readiness pages and do not activate checkout or payout
 - Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
 - Catalog/discovery surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `feed.xml`, `atom.xml`, `sitemap.xml`, `robots.txt`
 - Feed proof: live `feed.xml` returned HTTP 200 with 10,552 bytes; live `atom.xml` returned HTTP 200 with 8,706 bytes; both contain `One-Page SOP Builder`
-- Discovery: IndexNow key file live; latest direct `tools/submit_indexnow.py --all` submitted 6 feed/discovery URLs and received HTTP 200; follow-up dry run queued 0 URLs
+- Discovery: IndexNow key file live; latest direct `tools/submit_indexnow.py --all` submitted 26 support-connected URLs and received HTTP 200; follow-up dry run queued 0 URLs
 - GitHub fallback publisher: `.github/workflows/daily-shelf.yml` is active. It runs daily after the local PC task/watchdog, can be run manually, generates/verifies, commits only on changed output, pushes to `main`, and submits IndexNow when it commits.
-- Fallback proof: manual run `26803952952` completed successfully on commit `cd2dd12` and logged `No generated changes to publish`
+- Fallback proof: manual run `26804835124` completed successfully on commit `2159455` and logged `No generated changes to publish`
 - Determinism: generator normalizes text bytes inside ZIPs, fixes ZIP creator metadata, forces LF CSV output, and tracks `.gitattributes` so Windows and GitHub runners do not churn same-day artifacts
-- Latest functional infrastructure commit: `cd2dd12` (`Add RSS and Atom feeds`) pushed to `main`; GitHub Pages deployment `26803871909` succeeded
+- Latest functional infrastructure commit: `2159455` (`Connect support destination`) pushed to `main`; GitHub Pages deployment `26804778546` succeeded
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
-- Monetization: not connected; public site says `Status: Not connected`
+- Monetization: public support destination connected; public site says `Status: Connected`, shows `Support this shelf`, and links to `https://gift.calmsprout.com`, which resolves to the Square-hosted CalmSprout gift/support page. Product checkout is not connected, `store_connected` is false, and daily revenue is not proven.
 
 ## Where To Start
 
@@ -58,6 +58,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\feed.json`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\feed.xml`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\atom.xml`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\config\config.public.json`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\generate_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\verify_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\submit_indexnow.py`

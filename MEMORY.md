@@ -24,7 +24,7 @@
 - The public site root is `docs/` for GitHub Pages.
 - The generator is deterministic and uses only local Python standard library code. It does not call paid APIs.
 - The lane intentionally does not trade, send outreach, scrape copyrighted content, create payment accounts, touch bank/wallet data, or claim guaranteed revenue.
-- Monetization is not connected by default. `config/config.local.json` can add a real store/support/affiliate destination later without committing secrets.
+- Public support destination is connected through `config/config.public.json`: `https://gift.calmsprout.com` (Square-hosted CalmSprout gift-card/support page). This is not product checkout; `store_connected` remains false and pack downloads remain public until a store checkout exists. `config/config.local.json` stays reserved for private local overrides and is not present/committed.
 - Verified 2026-06-02: GitHub Pages is built at `https://x26dotapp.github.io/daily-autodigital-shelf/`.
 - Verified 2026-06-02: Scheduled task `HUMANi Daily Autodigital Shelf` runs daily at 06:10 local time, last manual Task Scheduler run returned `0`, and next run was `2026-06-02 06:10`.
 - Verified 2026-06-02: Scheduled task `HUMANi Daily Autodigital Shelf Watchdog` runs daily at 07:15 local time, last Task Scheduler run returned `0`, and writes local health status to `state/watchdog-status.json`.
@@ -32,9 +32,9 @@
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, the daily task, and the watchdog task.
 - Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
 - Added 2026-06-02: Expanded the generator to 29 pack templates and seeded a 21-pack starter archive from `2026-05-13` through `2026-06-02`.
-- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 297,097 bytes.
+- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 299,082 bytes.
 - Added 2026-06-02: Generated shelf writes 21 individual product ZIPs under `docs/downloads/`; every seeded pack page now links its own `Download pack ZIP` action and catalog rows include `download_url`.
-- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows, topic metadata fields, policy pages, and the ZIP is 160,455 bytes.
+- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows, topic metadata fields, policy pages, and the ZIP is 161,448 bytes.
 - Added 2026-06-02: Generated public pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for pack pages, archive, starter bundle, and import kit.
 - Added 2026-06-02: IndexNow discovery automation is enabled. Public key file `docs/b0d7a0387b4f41cc886dc47328c20bcb.txt` is generated; latest social-metadata submission sent 25 changed URLs and received HTTP 200 after Pages served the key.
 - Added 2026-06-02: Generated shelf writes topic surfaces under `docs/topics/`: topic index, 5 topic pages, and `topics/topics.json`. Product pages link related topics; catalog/import rows include `topic_urls`; sitemap and IndexNow include topic URLs. Commit `d631af4` pushed and Pages deployed successfully.
@@ -59,6 +59,9 @@
 - Verified 2026-06-02: GitHub fallback publisher run `26803952952` succeeded
   on `cd2dd12` and logged `No generated changes to publish`.
 - Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
+- Verified 2026-06-02: Commit `2159455` (`Connect support destination`) pushed to `main`; GitHub Pages run `26804778546` deployed it. Live homepage and backfilled pack pages show `Support this shelf`, link to `https://gift.calmsprout.com`, and no longer show disconnected store copy.
+- Verified 2026-06-02: Live `status.json` reports `monetization_enabled: true`, `monetization_destination_type: support`, `monetization_destination_url: https://gift.calmsprout.com`, `support_connected: true`, and `store_connected: false`. `https://gift.calmsprout.com` resolves to the Square-hosted gift/support page at `https://app.squareup.com/gift/MLZ021BP45QKH/order`.
+- Verified 2026-06-02: IndexNow accepted 26 support-connected URLs with HTTP 200; follow-up dry run showed `submit_count: 0`. GitHub fallback publisher run `26804835124` succeeded on `2159455`, verified `support_connected: true`, and logged `No generated changes to publish`.
 
 ## Operator Rule
 
