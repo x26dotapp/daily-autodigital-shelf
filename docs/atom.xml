@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Daily Autodigital Shelf</title>
+  <id>https://x26dotapp.github.io/daily-autodigital-shelf/</id>
+  <link href="https://x26dotapp.github.io/daily-autodigital-shelf/"/>
+  <link href="https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml" rel="self" type="application/atom+xml"/>
+  <updated>2026-06-02T00:00:00Z</updated>
+  <subtitle>A quiet system that makes a new sellable pack every day.</subtitle>
+  <entry>
+    <title>One-Page SOP Builder</title>
+    <id>daily-autodigital-shelf:2026-06-02-one-page-sop</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/"/>
+    <updated>2026-06-02T00:00:00Z</updated>
+    <summary>A worksheet for documenting one repeatable task so someone else can follow it.</summary>
+  </entry>
+  <entry>
+    <title>Listing Photo Checklist</title>
+    <id>daily-autodigital-shelf:2026-06-01-listing-photo-checklist</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/"/>
+    <updated>2026-06-01T00:00:00Z</updated>
+    <summary>A practical shot list for creating clearer marketplace, rental, or product listing photos.</summary>
+  </entry>
+  <entry>
+    <title>Client Intake Lite</title>
+    <id>daily-autodigital-shelf:2026-05-31-client-intake-lite</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/"/>
+    <updated>2026-05-31T00:00:00Z</updated>
+    <summary>A small intake sheet for turning a vague request into scope, timeline, budget, and next action.</summary>
+  </entry>
+  <entry>
+    <title>Appointment Prep Card</title>
+    <id>daily-autodigital-shelf:2026-05-30-appointment-prep</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/"/>
+    <updated>2026-05-30T00:00:00Z</updated>
+    <summary>A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.</summary>
+  </entry>
+  <entry>
+    <title>Downloads Folder Reset</title>
+    <id>daily-autodigital-shelf:2026-05-29-download-folder-reset</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/"/>
+    <updated>2026-05-29T00:00:00Z</updated>
+    <summary>A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.</summary>
+  </entry>
+  <entry>
+    <title>Invoice Follow-Up Mini Kit</title>
+    <id>daily-autodigital-shelf:2026-05-28-invoice-followup</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/"/>
+    <updated>2026-05-28T00:00:00Z</updated>
+    <summary>A calm worksheet for tracking unpaid invoices and writing one clear follow-up.</summary>
+  </entry>
+  <entry>
+    <title>Simple Content Calendar</title>
+    <id>daily-autodigital-shelf:2026-05-27-simple-content-calendar</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/"/>
+    <updated>2026-05-27T00:00:00Z</updated>
+    <summary>A low-pressure one-week content planner for small brands, creators, and solo operators.</summary>
+  </entry>
+  <entry>
+    <title>Subscription Audit Sheet</title>
+    <id>daily-autodigital-shelf:2026-05-26-subscription-audit</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/"/>
+    <updated>2026-05-26T00:00:00Z</updated>
+    <summary>A quick worksheet for finding recurring charges, renewal dates, and pause candidates.</summary>
+  </entry>
+  <entry>
+    <title>Honest Follow-Up Draft Kit</title>
+    <id>daily-autodigital-shelf:2026-05-25-offer-followup</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/"/>
+    <updated>2026-05-25T00:00:00Z</updated>
+    <summary>A non-spam template sheet for following up with one real person or lead.</summary>
+  </entry>
+  <entry>
+    <title>Digital Declutter Sprint</title>
+    <id>daily-autodigital-shelf:2026-05-24-digital-declutter</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/"/>
+    <updated>2026-05-24T00:00:00Z</updated>
+    <summary>A focused cleanup sheet for one folder, inbox, download pile, or project archive.</summary>
+  </entry>
+  <entry>
+    <title>Micro Budget Reset</title>
+    <id>daily-autodigital-shelf:2026-05-23-micro-budget</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/"/>
+    <updated>2026-05-23T00:00:00Z</updated>
+    <summary>A one-page reset for seeing near-term bills, small leaks, and the next cash decision.</summary>
+  </entry>
+  <entry>
+    <title>Tiny Home Inventory Pack</title>
+    <id>daily-autodigital-shelf:2026-05-22-home-inventory</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/"/>
+    <updated>2026-05-22T00:00:00Z</updated>
+    <summary>A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.</summary>
+  </entry>
+  <entry>
+    <title>Low-Energy Week Planner</title>
+    <id>daily-autodigital-shelf:2026-05-21-low-energy-week</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/"/>
+    <updated>2026-05-21T00:00:00Z</updated>
+    <summary>A gentle planning sheet for weeks where consistency matters more than intensity.</summary>
+  </entry>
+  <entry>
+    <title>Receipt Runner Ledger Pack</title>
+    <id>daily-autodigital-shelf:2026-05-20-receipt-runner</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/"/>
+    <updated>2026-05-20T00:00:00Z</updated>
+    <summary>A simple ledger and daily receipt habit for tiny projects that need proof of movement.</summary>
+  </entry>
+  <entry>
+    <title>Calm Launch One-Page Kit</title>
+    <id>daily-autodigital-shelf:2026-05-19-calm-launch</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/"/>
+    <updated>2026-05-19T00:00:00Z</updated>
+    <summary>A printable page for turning one messy idea into one offer, one audience, and one next action.</summary>
+  </entry>
+  <entry>
+    <title>Landing Page Copy Blocks</title>
+    <id>daily-autodigital-shelf:2026-05-18-landing-page-copy</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/"/>
+    <updated>2026-05-18T00:00:00Z</updated>
+    <summary>A fill-in worksheet for headline, promise, proof, offer, and next action copy.</summary>
+  </entry>
+  <entry>
+    <title>Renewal Reminder Sheet</title>
+    <id>daily-autodigital-shelf:2026-05-17-renewal-reminder</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/"/>
+    <updated>2026-05-17T00:00:00Z</updated>
+    <summary>A small tracker for domain, software, insurance, lease, and service renewal dates.</summary>
+  </entry>
+  <entry>
+    <title>Link-in-Bio Audit</title>
+    <id>daily-autodigital-shelf:2026-05-16-link-in-bio-audit</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/"/>
+    <updated>2026-05-16T00:00:00Z</updated>
+    <summary>A simple audit sheet for checking whether a public profile points visitors to one useful action.</summary>
+  </entry>
+  <entry>
+    <title>Focus Menu Builder</title>
+    <id>daily-autodigital-shelf:2026-05-15-focus-menu</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/"/>
+    <updated>2026-05-15T00:00:00Z</updated>
+    <summary>A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.</summary>
+  </entry>
+  <entry>
+    <title>Store Import Prep Sheet</title>
+    <id>daily-autodigital-shelf:2026-05-14-store-import-prep</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/"/>
+    <updated>2026-05-14T00:00:00Z</updated>
+    <summary>A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.</summary>
+  </entry>
+  <entry>
+    <title>Two-Hour Workblock Planner</title>
+    <id>daily-autodigital-shelf:2026-05-13-two-hour-workblock</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/"/>
+    <updated>2026-05-13T00:00:00Z</updated>
+    <summary>A compact planning sheet for choosing one outcome, one timer, and one shutdown note.</summary>
+  </entry>
+</feed>

@@ -42,7 +42,7 @@ The site also publishes:
   `imports/store-upload-kit.zip` for generic marketplace import workflows, including policy pages
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
-- `feed.json`, `sitemap.xml`, and `robots.txt` for discoverability
+- `feed.json`, `feed.xml`, `atom.xml`, `sitemap.xml`, and `robots.txt` for discoverability
 - an IndexNow key file so changed URLs can be submitted to participating search engines
 
 IndexNow submission state is kept locally in `state/indexnow-state.json` and is

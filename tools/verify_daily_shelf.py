@@ -78,6 +78,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "og:image",
             "twitter:card",
             "feed.json",
+            "feed.xml",
+            "atom.xml",
             "sitemap.xml",
             "seller-copy.md",
             "Writes store-ready listing copy",
@@ -120,6 +122,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if not any(name.endswith(suffix) for name in names):
                 fail(f"Pack ZIP missing {suffix}")
     require_file(DOCS / "feed.json", 100)
+    require_contains(DOCS / "feed.xml", ["<rss version=\"2.0\">", "<channel>", manifest["title"], "application/rss+xml"])
+    require_contains(DOCS / "atom.xml", ["<feed xmlns=\"http://www.w3.org/2005/Atom\">", "<entry>", manifest["title"], "application/atom+xml"])
     require_file(DOCS / "catalog.json", 100)
     require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", "topic_urls", manifest["title"]])
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Policies", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
@@ -187,7 +191,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if name not in names:
                 fail(f"Starter bundle missing {name}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
 
@@ -215,6 +219,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json pack_download_count is {status.get('pack_download_count')}, expected at least {min_pack_count}")
     if status.get("today_download") != manifest.get("download"):
         fail(f"status.json today_download is {status.get('today_download')}, expected {manifest.get('download')}")
+    if status.get("feed_json") != "feed.json" or status.get("feed_xml") != "feed.xml" or status.get("atom_xml") != "atom.xml":
+        fail("status.json missing feed_json/feed_xml/atom_xml paths")
+    if int(status.get("feed_item_count") or 0) < min_pack_count:
+        fail(f"status.json feed_item_count is {status.get('feed_item_count')}, expected at least {min_pack_count}")
     if not status.get("store_import_ready"):
         fail("status.json reports store_import_ready=false")
     if int(status.get("store_import_count") or 0) < min_pack_count:
@@ -251,7 +259,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "store_import_zip_bytes": import_zip_path.stat().st_size,
         "topic_page_count": int(status.get("topic_page_count") or 0),
         "policy_page_count": int(status.get("policy_page_count") or 0),
-        "files_checked": 28,
+        "files_checked": 30,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),

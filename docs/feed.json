@@ -2,6 +2,8 @@
   "title": "Daily Autodigital Shelf",
   "home_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/",
   "feed_url": "https://x26dotapp.github.io/daily-autodigital-shelf/feed.json",
+  "rss_url": "https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml",
+  "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
       "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
@@ -142,6 +144,13 @@
       "title": "Store Import Prep Sheet",
       "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
       "date_published": "2026-05-14"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-13-two-hour-workblock",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/",
+      "title": "Two-Hour Workblock Planner",
+      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+      "date_published": "2026-05-13"
     }
   ]
 }

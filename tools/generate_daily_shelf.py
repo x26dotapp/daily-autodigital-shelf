@@ -907,6 +907,8 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
         "imports/store-listings.json",
         "imports/store-upload-kit.zip",
         "feed.json",
+        "feed.xml",
+        "atom.xml",
     ]
     for item in manifests:
         pack_path = str(item["path"]).rstrip("/")
@@ -2011,6 +2013,8 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
   <meta name="description" content="{esc(config["site"]["tagline"])}">
   <link rel="canonical" href="{esc(home_url)}">
   <link rel="alternate" type="application/feed+json" title="{esc(config["site"]["name"])} feed" href="./feed.json">
+  <link rel="alternate" type="application/rss+xml" title="{esc(config["site"]["name"])} RSS" href="./feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="{esc(config["site"]["name"])} Atom" href="./atom.xml">
   <link rel="sitemap" type="application/xml" href="./sitemap.xml">
 {social_meta(config["site"]["name"], config["site"]["tagline"], home_url, today_cover_url, f"{today_pack['title']} cover")}
   <script type="application/ld+json">{json_for_script(structured_data)}</script>
@@ -2184,12 +2188,30 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
     (DOCS / "index.html").write_text(content, encoding="utf-8")
 
 
-def render_feed(config: dict[str, Any]) -> None:
-    manifests = read_manifests()[:20]
+def feed_timestamp(date_value: str) -> str:
+    return f"{dt.date.fromisoformat(date_value).isoformat()}T00:00:00Z"
+
+
+def rss_timestamp(date_value: str) -> str:
+    day = dt.date.fromisoformat(date_value)
+    stamp = dt.datetime(day.year, day.month, day.day, tzinfo=dt.UTC)
+    return stamp.strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+
+def render_feed(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()[:50]
+    site_name = config["site"]["name"]
+    site_url = pack_url(config, "")
+    feed_json_url = pack_url(config, "feed.json")
+    feed_xml_url = pack_url(config, "feed.xml")
+    atom_url = pack_url(config, "atom.xml")
+    updated = feed_timestamp(manifests[0]["date"]) if manifests else "2026-01-01T00:00:00Z"
     feed = {
-        "title": config["site"]["name"],
-        "home_page_url": config["site"].get("base_url", ""),
-        "feed_url": pack_url(config, "feed.json"),
+        "title": site_name,
+        "home_page_url": site_url,
+        "feed_url": feed_json_url,
+        "rss_url": feed_xml_url,
+        "atom_url": atom_url,
         "items": [
             {
                 "id": item["id"],
@@ -2202,6 +2224,60 @@ def render_feed(config: dict[str, Any]) -> None:
         ],
     }
     (DOCS / "feed.json").write_text(json.dumps(feed, indent=2), encoding="utf-8")
+
+    rss_items = "\n".join(
+        f"""    <item>
+      <title>{esc(item["title"])}</title>
+      <link>{esc(pack_url(config, item["path"]))}</link>
+      <guid isPermaLink="true">{esc(pack_url(config, item["path"]))}</guid>
+      <description>{esc(item["summary"])}</description>
+      <pubDate>{rss_timestamp(item["date"])}</pubDate>
+    </item>"""
+        for item in manifests
+    )
+    rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{esc(site_name)}</title>
+    <link>{esc(site_url)}</link>
+    <description>{esc(config["site"]["tagline"])}</description>
+    <lastBuildDate>{rss_timestamp(manifests[0]["date"]) if manifests else "Thu, 01 Jan 2026 00:00:00 +0000"}</lastBuildDate>
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="{esc(feed_xml_url)}" rel="self" type="application/rss+xml"/>
+{rss_items}
+  </channel>
+</rss>
+"""
+    (DOCS / "feed.xml").write_text(rss, encoding="utf-8")
+
+    atom_entries = "\n".join(
+        f"""  <entry>
+    <title>{esc(item["title"])}</title>
+    <id>{esc(item["id"])}</id>
+    <link href="{esc(pack_url(config, item["path"]))}"/>
+    <updated>{feed_timestamp(item["date"])}</updated>
+    <summary>{esc(item["summary"])}</summary>
+  </entry>"""
+        for item in manifests
+    )
+    atom = f"""<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{esc(site_name)}</title>
+  <id>{esc(site_url)}</id>
+  <link href="{esc(site_url)}"/>
+  <link href="{esc(atom_url)}" rel="self" type="application/atom+xml"/>
+  <updated>{updated}</updated>
+  <subtitle>{esc(config["site"]["tagline"])}</subtitle>
+{atom_entries}
+</feed>
+"""
+    (DOCS / "atom.xml").write_text(atom, encoding="utf-8")
+
+    return {
+        "json_path": "feed.json",
+        "rss_path": "feed.xml",
+        "atom_path": "atom.xml",
+        "item_count": len(manifests),
+    }
 
 
 def render_catalog(config: dict[str, Any]) -> None:
@@ -2360,6 +2436,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "imports/store-listings.csv"),
         pack_url(config, "imports/store-listings.json"),
         pack_url(config, "feed.json"),
+        pack_url(config, "feed.xml"),
+        pack_url(config, "atom.xml"),
     ]
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
@@ -2434,6 +2512,7 @@ def write_status(
     config: dict[str, Any],
     bundle: dict[str, Any],
     downloads: dict[str, Any],
+    feeds: dict[str, Any],
     import_kit: dict[str, Any],
     topics: dict[str, Any],
     policies: dict[str, Any],
@@ -2455,6 +2534,10 @@ def write_status(
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
         "today_download": f"downloads/{pack['pack_slug']}.zip",
+        "feed_json": feeds.get("json_path", "feed.json"),
+        "feed_xml": feeds.get("rss_path", "feed.xml"),
+        "atom_xml": feeds.get("atom_path", "atom.xml"),
+        "feed_item_count": int(feeds.get("item_count", 0)),
         "bundle_ready": bool(bundle.get("pack_count")),
         "bundle_path": bundle.get("zip_path", "bundles/starter-archive.zip"),
         "bundle_page": bundle.get("page_path", "starter-bundle.html"),
@@ -2527,7 +2610,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     downloads = render_pack_downloads()
-    render_feed(config)
+    feeds = render_feed(config)
     render_catalog(config)
     render_archive(config)
     topics = render_topic_pages(config)
@@ -2539,7 +2622,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, import_kit, topics, policies, discovery)
+    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, discovery)
     append_ledger(pack)
     return manifest
 

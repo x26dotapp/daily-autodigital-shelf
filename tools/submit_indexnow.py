@@ -102,6 +102,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "imports/store-listings.json",
         "imports/store-listings.csv",
         "feed.json",
+        "feed.xml",
+        "atom.xml",
         "sitemap.xml",
     ]:
         add_candidate(candidates, config, rel_path)
