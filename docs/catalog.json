@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "daily-autodigital-shelf:2026-06-02-micro-budget",
+      "date": "2026-06-02",
+      "title": "Micro Budget Reset",
+      "description": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+      "buyer": "Solo households and freelancers who need a short money picture without a complex finance app.",
+      "price_hint": "$3 to $9 digital pack",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-micro-budget/",
+      "worksheet_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-micro-budget/printable.html",
+      "checklist_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-micro-budget/checklist.html",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-micro-budget/cover.svg",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-micro-budget/seller-copy.md",
+      "tags": "printable planner,digital download,worksheet,low maintenance",
+      "monetization_enabled": false
+    }
+  ]
+}

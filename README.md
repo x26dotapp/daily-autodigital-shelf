@@ -25,6 +25,13 @@ Each generated pack includes:
 - manifest JSON
 - `seller-copy.md` for store listing copy
 
+The site also publishes:
+
+- `archive.html` for all generated packs
+- `catalog.json` for programmatic product import
+- `catalog.csv` for spreadsheet/store import workflows
+- `feed.json`, `sitemap.xml`, and `robots.txt` for discoverability
+
 ## Current Guardrail
 
 No payout or monetization account is configured by default. Edit

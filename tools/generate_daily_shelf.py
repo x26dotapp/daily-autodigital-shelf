@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import datetime as dt
 import html
 import json
@@ -508,6 +509,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
       </a>
       <nav class="topnav" aria-label="Primary">
         <a href="#today">Today's pack</a>
+        <a href="./archive.html">Archive</a>
         <a href="#ledger">Automation ledger</a>
         <a href="#setup">Monetization setup</a>
       </nav>
@@ -561,7 +563,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists.</p>
+          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -652,8 +654,119 @@ def render_feed(config: dict[str, Any]) -> None:
     (DOCS / "feed.json").write_text(json.dumps(feed, indent=2), encoding="utf-8")
 
 
+def render_catalog(config: dict[str, Any]) -> None:
+    manifests = read_manifests()
+    catalog_items = []
+    for item in manifests:
+        catalog_items.append(
+            {
+                "id": item["id"],
+                "date": item["date"],
+                "title": item["title"],
+                "description": item["summary"],
+                "buyer": item.get("buyer", ""),
+                "price_hint": config["generation"].get("default_price_hint", "$3 to $9 digital pack"),
+                "url": pack_url(config, item["path"]),
+                "worksheet_url": pack_url(config, item["worksheet"]),
+                "checklist_url": pack_url(config, item["checklist"]),
+                "cover_url": pack_url(config, item["cover"]),
+                "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "tags": "printable planner,digital download,worksheet,low maintenance",
+                "monetization_enabled": bool(config["monetization"].get("enabled")),
+            }
+        )
+
+    (DOCS / "catalog.json").write_text(
+        json.dumps({"items": catalog_items}, indent=2),
+        encoding="utf-8",
+    )
+
+    csv_path = DOCS / "catalog.csv"
+    fieldnames = [
+        "id",
+        "date",
+        "title",
+        "description",
+        "buyer",
+        "price_hint",
+        "url",
+        "worksheet_url",
+        "checklist_url",
+        "cover_url",
+        "seller_copy_url",
+        "tags",
+        "monetization_enabled",
+    ]
+    with csv_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(catalog_items)
+
+
+def render_archive(config: dict[str, Any]) -> None:
+    manifests = read_manifests()
+    rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Seller copy</a>
+        </article>"""
+        for item in manifests
+    )
+    if not rows:
+        rows = "<p>No packs generated yet.</p>"
+
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pack Archive | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Archive of generated Daily Autodigital Shelf packs.">
+  <link rel="canonical" href="{esc(pack_url(config, "archive.html"))}">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Archive navigation">
+        <a href="./">Home</a>
+        <a href="./catalog.json">Catalog JSON</a>
+        <a href="./catalog.csv">Catalog CSV</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Pack archive</p>
+            <h2>Generated digital packs</h2>
+          </div>
+          <p>Each row has a public pack page and store-ready listing copy. Payment links remain off until a real store or support destination is connected.</p>
+        </div>
+        <div class="ledger">
+          {rows}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / "archive.html").write_text(content, encoding="utf-8")
+
+
 def render_sitemap(config: dict[str, Any]) -> None:
-    urls = [pack_url(config, "")]
+    urls = [
+        pack_url(config, ""),
+        pack_url(config, "archive.html"),
+        pack_url(config, "catalog.json"),
+        pack_url(config, "feed.json"),
+    ]
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
     rows = "\n".join(f"  <url><loc>{esc(url)}</loc></url>" for url in urls if url)
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -764,6 +877,8 @@ def generate(day: dt.date) -> dict[str, Any]:
 
     render_index(pack, config)
     render_feed(config)
+    render_catalog(config)
+    render_archive(config)
     render_sitemap(config)
     render_robots(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")

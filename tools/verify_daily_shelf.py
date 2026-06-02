@@ -74,6 +74,9 @@ def verify_local(day: str) -> dict[str, Any]:
             "sitemap.xml",
             "seller-copy.md",
             "Writes store-ready listing copy",
+            "archive.html",
+            "catalog.csv",
+            "catalog.json",
         ],
     )
     require_contains(pack_dir / "index.html", [manifest["title"], "Store link not connected"])
@@ -82,9 +85,16 @@ def verify_local(day: str) -> dict[str, Any]:
     require_file(pack_dir / "cover.svg", 800)
     require_contains(pack_dir / "seller-copy.md", ["Store-Ready Listing Copy", "Price Hint", "Safety Note"])
     require_file(DOCS / "feed.json", 100)
+    require_file(DOCS / "catalog.json", 100)
+    require_contains(DOCS / "catalog.csv", ["seller_copy_url", manifest["title"]])
+    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Catalog CSV"])
     require_file(DOCS / "sitemap.xml", 100)
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
+
+    catalog = read_json(DOCS / "catalog.json")
+    if not any(item.get("id") == manifest["id"] for item in catalog.get("items", [])):
+        fail(f"catalog.json does not contain manifest id: {manifest['id']}")
 
     ledger_path = STATE / "ledger.jsonl"
     require_file(ledger_path, 20)
