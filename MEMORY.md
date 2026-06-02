@@ -110,6 +110,27 @@
 - Verified 2026-06-02: CalmSprout commit `f7e38dd` (`Render Daily Shelf support funnel`) replaces the `/daily-shelf/support` redirect with a first-party support funnel page while keeping `/daily-shelf/support/go` as the measured external Square redirect. Cloudflare Worker version `ac785aa2-c6d1-4d54-9e27-6180e7476c6d` is live. Live HTTP QA verified `/daily-shelf/support` returns HTTP 200 HTML without redirect, includes `CalmSprout shelf support`, suggested `$3`/`$9`/`$21` tiers, the newest pack `One-Page SOP Builder`, `/daily-shelf/support/go`, product/collection browse links, `DonateAction` JSON-LD, and the `Product checkout is not connected` / not-revenue-proof boundary. Browser QA verified page identity, nonblank rendered content, no framework overlay, no console warnings/errors, and safe internal navigation from the support page to `/daily-shelf/offers`. `verify-system.ps1` passed with `pack_count: 29`, `bundle_bytes: 518112`, `store_import_zip_bytes: 286183`, `support_connected: true`, and `store_connected: false`. IndexNow accepted 205 forced CalmSprout URLs with HTTP 200; follow-up dry runs returned `submit_count: 0` for both hosts. No support redirect was triggered; live metrics remain `total_support_intent_clicks: 4`. This is conversion/discovery infrastructure, not payment or daily revenue proof.
 - Added 2026-06-02: Daily Shelf commit `36869dc` (`Add Daily Shelf use case pages`) generates `docs/use-cases/` with 5 buyer-intent collection pages and `use-cases/use-cases.json`. The generator adds use-case URLs to `status.json`, `sitemap.xml`, `llms-full.txt`, starter bundle contents, collection bundle contents, and both IndexNow submitters. GitHub Pages run `26822426886` succeeded. CalmSprout commit `f1916d5` (`Proxy Daily Shelf use case pages`) deployed as Worker version `a8ff54c7-723c-4a11-9ff6-aea6fca90e33`, proxies `/daily-shelf/use-cases/`, `/daily-shelf/use-cases/<slug>.html`, `/daily-shelf/use-cases/use-cases.json`, and includes use-case URLs in `https://www.calmsprout.com/sitemap.xml`. Live HTTP QA verified GitHub Pages and CalmSprout use-case JSON/page routes return HTTP 200; browser QA verified styled, nonblank GitHub and branded use-case index/detail pages with no console warnings/errors. `verify-system.ps1` passed with `files_checked: 49`, `use_case_page_count: 5`, `bundle_bytes: 543481`, `support_connected: true`, and `store_connected: false`. IndexNow accepted 21 GitHub Pages URLs and 43 CalmSprout URLs with HTTP 200; follow-up dry runs returned `submit_count: 0` for both hosts. No support redirect was triggered; live metrics remain `total_support_intent_clicks: 4`. This is discovery/conversion infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 evergreen template pages: Daily Shelf commit `7b91c1f` (`Add
+  evergreen template pages`) generates `docs/templates/` with 29 stable
+  non-dated template landing pages and `templates/templates.json`. The generator
+  wires template URLs into `status.json`, `sitemap.xml`, starter and collection
+  bundles, `llms.txt`/`llms-full.txt`, and both IndexNow submitters. GitHub
+  Pages run `26823553947` succeeded. CalmSprout commit `d8e1350` (`Proxy Daily
+  Shelf template pages`) deployed as Worker version
+  `cfb8cff2-62ee-4843-ab4d-a0ce7d1c3bf1`, proxies `/daily-shelf/templates/`,
+  `/daily-shelf/templates/<slug>.html`, `/daily-shelf/templates.json`, and
+  `/daily-shelf/templates/templates.json`, and includes template URLs in
+  `https://www.calmsprout.com/sitemap.xml`. Live HTTP QA verified GitHub Pages
+  and CalmSprout template JSON/page routes return HTTP 200; browser QA verified
+  styled, nonblank GitHub and branded template index/detail pages with no
+  console warnings/errors. `verify-system.ps1` passed with `files_checked: 52`,
+  `template_page_count: 29`, `bundle_bytes: 625876`, `support_connected: true`,
+  and `store_connected: false`. IndexNow accepted 45 GitHub Pages URLs and 67
+  CalmSprout URLs with HTTP 200; follow-up dry runs returned `submit_count: 0`
+  for both hosts. No support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is discovery/conversion
+  infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
