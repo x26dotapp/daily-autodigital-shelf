@@ -184,6 +184,8 @@ def template_routes() -> list[tuple[str, str]]:
             path = str(template.get("path") or "").strip("/")
             if slug and path.startswith("templates/") and path.endswith(".html"):
                 routes.append((f"/daily-shelf/templates/{slug}.html", path))
+                routes.append((f"/daily-shelf/templates/{slug}/support", "templates/templates.json"))
+                routes.append((f"/daily-shelf/templates/{slug}/support/go", "templates/templates.json"))
     return routes
 
 

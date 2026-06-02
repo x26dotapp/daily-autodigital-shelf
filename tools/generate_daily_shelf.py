@@ -670,6 +670,20 @@ def branded_collection_support_url(config: dict[str, Any], slug: str) -> str:
     return branded_url(config, f"offers/{clean_slug}/support/go")
 
 
+def branded_template_support_urls(config: dict[str, Any], slug: str) -> dict[str, str]:
+    clean_slug = slug.strip().lower()
+    if not clean_slug or not all(char in "abcdefghijklmnopqrstuvwxyz0123456789-" for char in clean_slug):
+        return {
+            "template_support_page_url": "",
+            "template_support_intent_url": "",
+        }
+    support_path = f"templates/{clean_slug}/support"
+    return {
+        "template_support_page_url": branded_url(config, support_path),
+        "template_support_intent_url": branded_url(config, f"{support_path}/go"),
+    }
+
+
 def pack_faq_items(pack: dict[str, Any]) -> list[dict[str, str]]:
     return [
         {
@@ -1189,6 +1203,7 @@ def template_records(config: dict[str, Any]) -> list[dict[str, Any]]:
         seen.add(slug)
         path = f"templates/{slug}.html"
         branded_urls = branded_product_urls(config, item)
+        template_support_urls = branded_template_support_urls(config, slug)
         topics = topic_records_for_item(item, config)
         records.append(
             {
@@ -1212,8 +1227,10 @@ def template_records(config: dict[str, Any]) -> list[dict[str, Any]]:
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
                 "cover_path": item.get("cover", ""),
                 "cover_url": pack_url(config, item.get("cover", "")),
-                "support_page_url": branded_urls.get("branded_support_url") or pack_url(config, "support.html"),
-                "support_intent_url": branded_urls.get("branded_support_intent_url") or str(config["monetization"].get("support_url") or ""),
+                "support_page_url": template_support_urls["template_support_page_url"] or branded_urls.get("branded_support_url") or pack_url(config, "support.html"),
+                "support_intent_url": template_support_urls["template_support_intent_url"] or branded_urls.get("branded_support_intent_url") or str(config["monetization"].get("support_url") or ""),
+                "dated_product_support_page_url": branded_urls.get("branded_support_url", ""),
+                "dated_product_support_intent_url": branded_urls.get("branded_support_intent_url", ""),
                 "starter_bundle_path": "bundles/starter-archive.zip",
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "topic_slugs": [topic["slug"] for topic in topics],
@@ -3045,6 +3062,8 @@ def render_template_pages(config: dict[str, Any]) -> dict[str, Any]:
         "json_path": "templates/templates.json",
         "paths": [record["path"] for record in records],
         "branded_urls": [record["branded_url"] for record in records if record.get("branded_url")],
+        "support_page_urls": [record["support_page_url"] for record in records if record.get("support_page_url")],
+        "support_intent_urls": [record["support_intent_url"] for record in records if record.get("support_intent_url")],
     }
 
 
@@ -5139,6 +5158,9 @@ def write_status(
         "templates_json": templates.get("json_path", "templates/templates.json"),
         "template_pages": templates.get("paths", []),
         "template_branded_urls": templates.get("branded_urls", []),
+        "template_support_page_urls": templates.get("support_page_urls", []),
+        "template_support_intent_urls": templates.get("support_intent_urls", []),
+        "template_support_intent_count": len(templates.get("support_intent_urls", [])),
         "policy_pages_ready": bool(policies.get("count")),
         "policy_page_count": int(policies.get("count", 0)),
         "policy_pages": policies.get("paths", []),

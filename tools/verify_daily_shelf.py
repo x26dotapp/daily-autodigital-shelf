@@ -85,6 +85,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     branded_product_url = f"https://www.calmsprout.com/daily-shelf/products/{pack_slug}"
     branded_support_url = f"{branded_product_url}/support"
     branded_support_intent_url = f"{branded_support_url}/go"
+    template_support_url = f"https://www.calmsprout.com/daily-shelf/templates/{template_slug}/support"
+    template_support_intent_url = f"{template_support_url}/go"
     for key in ["path", "worksheet", "checklist", "cover", "seller_copy"]:
         if not manifest.get(key):
             fail(f"manifest missing {key}")
@@ -296,10 +298,18 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     if not today_template:
         fail(f"templates.json does not assign current manifest id: {manifest['id']}")
     today_template_path = str(today_template.get("path", today_template_path)).strip("/")
-    if today_template.get("support_intent_url") != branded_support_intent_url:
-        fail("templates.json current template missing product support-intent URL")
+    if today_template.get("support_page_url") != template_support_url:
+        fail("templates.json current template missing template support page URL")
+    if today_template.get("support_intent_url") != template_support_intent_url:
+        fail("templates.json current template missing template support-intent URL")
     if today_template_path not in status.get("template_pages", []):
         fail("status.json missing current template page path")
+    if template_support_url not in status.get("template_support_page_urls", []):
+        fail("status.json missing current template support page URL")
+    if template_support_intent_url not in status.get("template_support_intent_urls", []):
+        fail("status.json missing current template support-intent URL")
+    if int(status.get("template_support_intent_count", 0)) < expected_template_count:
+        fail("status.json template_support_intent_count is too low")
     require_contains(
         DOCS / today_template_path,
         [
@@ -308,7 +318,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "Download page",
             "Download ZIP",
             "Support this template",
-            branded_support_intent_url,
+            template_support_url,
+            template_support_intent_url,
             "Product checkout is not connected",
             "CreativeWork",
             "Product",
@@ -466,7 +477,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/templates.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
