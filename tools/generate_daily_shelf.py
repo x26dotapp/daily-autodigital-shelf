@@ -558,6 +558,17 @@ def render_sitemap(config: dict[str, Any]) -> None:
 
 def append_ledger(pack: dict[str, Any]) -> None:
     STATE.mkdir(parents=True, exist_ok=True)
+    if LEDGER.exists():
+        for line in LEDGER.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if row.get("date") == pack["date"] and row.get("pack_slug") == pack["pack_slug"]:
+                return
+
     row = {
         "generated_at": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat(),
         "date": pack["date"],
@@ -570,8 +581,18 @@ def append_ledger(pack: dict[str, Any]) -> None:
 
 
 def write_status(pack: dict[str, Any], config: dict[str, Any]) -> None:
+    status_path = DOCS / "status.json"
+    generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
+    if status_path.exists():
+        try:
+            existing = json.loads(status_path.read_text(encoding="utf-8"))
+            if existing.get("today") == pack["date"] and existing.get("today_pack") == pack["title"]:
+                generated_at = existing.get("generated_at") or generated_at
+        except json.JSONDecodeError:
+            pass
+
     status = {
-        "generated_at": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat(),
+        "generated_at": generated_at,
         "today": pack["date"],
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
@@ -586,7 +607,7 @@ def write_status(pack: dict[str, Any], config: dict[str, Any]) -> None:
             "No secret values written",
         ],
     }
-    (DOCS / "status.json").write_text(json.dumps(status, indent=2), encoding="utf-8")
+    status_path.write_text(json.dumps(status, indent=2), encoding="utf-8")
 
 
 def generate(day: dt.date) -> dict[str, Any]:
