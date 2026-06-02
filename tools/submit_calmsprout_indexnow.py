@@ -41,6 +41,8 @@ DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
     ("/daily-shelf/catalog", "catalog.json"),
     ("/daily-shelf/catalog.json", "catalog.json"),
     ("/daily-shelf/catalog.csv", "catalog.csv"),
+    ("/daily-shelf/offers.json", "offers/offers.json"),
+    ("/daily-shelf/offers/offers.json", "offers/offers.json"),
     ("/daily-shelf/product-feed.json", "product-feed.json"),
     ("/daily-shelf/product-feed.xml", "product-feed.xml"),
     ("/daily-shelf/product-feed.csv", "product-feed.csv"),
@@ -138,13 +140,15 @@ def catalog_product_routes() -> list[tuple[str, str]]:
     return routes
 
 
-def offer_support_routes() -> list[tuple[str, str]]:
+def offer_routes() -> list[tuple[str, str]]:
     offers = read_json(DOCS / "offers" / "offers.json", fallback={"offers": []})
     routes: list[tuple[str, str]] = []
     for offer in offers.get("offers", []):
         if isinstance(offer, dict):
             slug = clean_pack_slug(str(offer.get("slug") or ""))
             if slug:
+                routes.append((f"/daily-shelf/offers/{slug}", "offers/offers.json"))
+                routes.append((f"/daily-shelf/offers/{slug}.html", "offers/offers.json"))
                 routes.append((f"/daily-shelf/offers/{slug}/support/go", "offers/offers.json"))
     return routes
 
@@ -182,7 +186,7 @@ def collect_candidates(include_static: bool) -> list[dict[str, str]]:
         add_candidate(candidates, route_path, source_rel_path)
     for route_path, source_rel_path in catalog_product_routes():
         add_candidate(candidates, route_path, source_rel_path)
-    for route_path, source_rel_path in offer_support_routes():
+    for route_path, source_rel_path in offer_routes():
         add_candidate(candidates, route_path, source_rel_path)
     if include_static:
         for route_path, source_rel_path in STATIC_ROUTE_SOURCES:

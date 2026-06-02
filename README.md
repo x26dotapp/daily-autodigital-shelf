@@ -75,7 +75,9 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf/products`
 - `https://www.calmsprout.com/daily-shelf/products/<pack-slug>`
 - `https://www.calmsprout.com/daily-shelf/products/<pack-slug>/support`
+- `https://www.calmsprout.com/daily-shelf/offers/<topic-slug>`
 - `https://www.calmsprout.com/daily-shelf/offers/<topic-slug>/support/go`
+- `https://www.calmsprout.com/daily-shelf/offers.json`
 - `https://www.calmsprout.com/daily-shelf/product-sitemap.xml`
 - `https://www.calmsprout.com/daily-shelf/catalog.json`
 - `https://www.calmsprout.com/daily-shelf/product-feed.json`
