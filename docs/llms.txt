@@ -12,6 +12,9 @@
 - Starter bundle: https://x26dotapp.github.io/daily-autodigital-shelf/starter-bundle.html
 - Store import kit: https://x26dotapp.github.io/daily-autodigital-shelf/store-import.html
 - Catalog JSON: https://x26dotapp.github.io/daily-autodigital-shelf/catalog.json
+- Product Feed JSON: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json
+- Product Feed XML: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.xml
+- Product Feed CSV: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.csv
 - RSS: https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml
 - Atom: https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml
 

@@ -1756,7 +1756,16 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
     with zipfile.ZipFile(DOCS / zip_rel_path, "w") as bundle:
         write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
         policy_paths = [record["path"] for record in policy_records(config)]
-        for rel_path in [csv_rel_path, json_rel_path, "catalog.csv", "catalog.json", *policy_paths]:
+        for rel_path in [
+            csv_rel_path,
+            json_rel_path,
+            "catalog.csv",
+            "catalog.json",
+            "product-feed.json",
+            "product-feed.xml",
+            "product-feed.csv",
+            *policy_paths,
+        ]:
             source = DOCS / rel_path
             if source.exists():
                 write_zip_entry(bundle, f"{zip_root}/{rel_path}", read_zip_source_bytes(source))
@@ -2709,7 +2718,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./offers/">Offers</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./offers/">Offers</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a> · <a href="./product-feed.json">Product feed</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -2982,6 +2991,175 @@ def render_catalog(config: dict[str, Any]) -> None:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(catalog_items)
+
+
+def render_product_feed(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    monetization = config["monetization"]
+    store_connected = bool(str(monetization.get("store_url") or ""))
+    support_connected = bool(str(monetization.get("support_url") or ""))
+    checkout_boundary = (
+        "Product checkout is connected through the configured external store."
+        if store_connected
+        else "Product checkout is not connected. Downloads remain public and support is voluntary."
+    )
+    generated_from = manifests[0]["date"] if manifests else "2026-01-01"
+    rows: list[dict[str, Any]] = []
+    for item in manifests:
+        branded_urls = branded_product_urls(config, item)
+        rows.append(
+            {
+                "id": item["id"],
+                "date": item["date"],
+                "title": item["title"],
+                "description": item["summary"],
+                "buyer": item.get("buyer", ""),
+                "url": pack_url(config, item["path"]),
+                "download_page_url": pack_url(config, pack_download_page_path(item)),
+                "download_url": pack_url(config, pack_download_path(item)),
+                "cover_url": pack_url(config, item["cover"]),
+                "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "support_page_url": pack_url(config, "support.html"),
+                "pay_what_you_can_url": pack_url(config, "pay-what-you-can.html"),
+                **branded_urls,
+                "price_hint": config["generation"].get("default_price_hint", "$3 to $9 digital pack"),
+                "currency": "USD",
+                "store_connected": store_connected,
+                "support_connected": support_connected,
+                "is_accessible_for_free": True,
+                "fulfillment": "public digital download",
+                "checkout_boundary": checkout_boundary,
+                "tags": listing_keywords(item),
+            }
+        )
+
+    json_rel_path = "product-feed.json"
+    xml_rel_path = "product-feed.xml"
+    csv_rel_path = "product-feed.csv"
+    feed_url = pack_url(config, json_rel_path)
+    feed = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": f"{config['site']['name']} Product Feed",
+        "url": feed_url,
+        "dateModified": generated_from,
+        "numberOfItems": len(rows),
+        "checkoutBoundary": checkout_boundary,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": ["CreativeWork", "Product"],
+                    "identifier": row["id"],
+                    "name": row["title"],
+                    "description": row["description"],
+                    "url": row["url"],
+                    "image": row["cover_url"],
+                    "isAccessibleForFree": True,
+                    "offers": {
+                        "@type": "Offer",
+                        "url": row["download_page_url"],
+                        "price": "0.00",
+                        "priceCurrency": row["currency"],
+                        "availability": "https://schema.org/InStock",
+                        "description": checkout_boundary,
+                    },
+                    "potentialAction": {
+                        "@type": "DonateAction",
+                        "target": row["branded_support_intent_url"],
+                        "name": "Support this pack",
+                    },
+                    "downloadUrl": row["download_url"],
+                    "sameAs": [
+                        row["download_page_url"],
+                        row["branded_product_url"],
+                        row["branded_support_url"],
+                    ],
+                },
+            }
+            for index, row in enumerate(rows)
+        ],
+        "items": rows,
+    }
+    (DOCS / json_rel_path).write_text(json.dumps(feed, indent=2), encoding="utf-8")
+
+    xml_rows = "\n".join(
+        f"""  <product>
+    <id>{esc(row["id"])}</id>
+    <date>{esc(row["date"])}</date>
+    <title>{esc(row["title"])}</title>
+    <description>{esc(row["description"])}</description>
+    <buyer>{esc(row["buyer"])}</buyer>
+    <url>{esc(row["url"])}</url>
+    <downloadPageUrl>{esc(row["download_page_url"])}</downloadPageUrl>
+    <downloadUrl>{esc(row["download_url"])}</downloadUrl>
+    <coverUrl>{esc(row["cover_url"])}</coverUrl>
+    <sellerCopyUrl>{esc(row["seller_copy_url"])}</sellerCopyUrl>
+    <supportPageUrl>{esc(row["support_page_url"])}</supportPageUrl>
+    <brandedProductUrl>{esc(row["branded_product_url"])}</brandedProductUrl>
+    <brandedSupportUrl>{esc(row["branded_support_url"])}</brandedSupportUrl>
+    <brandedSupportIntentUrl>{esc(row["branded_support_intent_url"])}</brandedSupportIntentUrl>
+    <priceHint>{esc(row["price_hint"])}</priceHint>
+    <currency>{esc(row["currency"])}</currency>
+    <storeConnected>{str(row["store_connected"]).lower()}</storeConnected>
+    <supportConnected>{str(row["support_connected"]).lower()}</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>{esc(row["fulfillment"])}</fulfillment>
+    <checkoutBoundary>{esc(row["checkout_boundary"])}</checkoutBoundary>
+    <tags>{esc(row["tags"])}</tags>
+  </product>"""
+        for row in rows
+    )
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<productFeed>
+  <name>{esc(config["site"]["name"])} Product Feed</name>
+  <url>{esc(feed_url)}</url>
+  <dateModified>{esc(generated_from)}</dateModified>
+  <numberOfItems>{len(rows)}</numberOfItems>
+  <checkoutBoundary>{esc(checkout_boundary)}</checkoutBoundary>
+{xml_rows}
+</productFeed>
+"""
+    (DOCS / xml_rel_path).write_text(xml, encoding="utf-8")
+
+    fieldnames = [
+        "id",
+        "date",
+        "title",
+        "description",
+        "buyer",
+        "url",
+        "download_page_url",
+        "download_url",
+        "cover_url",
+        "seller_copy_url",
+        "support_page_url",
+        "pay_what_you_can_url",
+        "branded_product_url",
+        "branded_support_url",
+        "branded_support_intent_url",
+        "price_hint",
+        "currency",
+        "store_connected",
+        "support_connected",
+        "is_accessible_for_free",
+        "fulfillment",
+        "checkout_boundary",
+        "tags",
+    ]
+    with (DOCS / csv_rel_path).open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+    return {
+        "ready": True,
+        "json_path": json_rel_path,
+        "xml_path": xml_rel_path,
+        "csv_path": csv_rel_path,
+        "count": len(rows),
+    }
 
 
 def render_archive(config: dict[str, Any]) -> None:
@@ -3492,6 +3670,9 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Starter bundle: {pack_url(config, 'starter-bundle.html')}",
             f"- Store import kit: {pack_url(config, 'store-import.html')}",
             f"- Catalog JSON: {pack_url(config, 'catalog.json')}",
+            f"- Product Feed JSON: {pack_url(config, 'product-feed.json')}",
+            f"- Product Feed XML: {pack_url(config, 'product-feed.xml')}",
+            f"- Product Feed CSV: {pack_url(config, 'product-feed.csv')}",
             f"- RSS: {pack_url(config, 'feed.xml')}",
             f"- Atom: {pack_url(config, 'atom.xml')}",
             "",
@@ -3541,6 +3722,9 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Status: {pack_url(config, 'status.json')}",
             f"- Catalog JSON: {pack_url(config, 'catalog.json')}",
             f"- Catalog CSV: {pack_url(config, 'catalog.csv')}",
+            f"- Product Feed JSON: {pack_url(config, 'product-feed.json')}",
+            f"- Product Feed XML: {pack_url(config, 'product-feed.xml')}",
+            f"- Product Feed CSV: {pack_url(config, 'product-feed.csv')}",
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
             f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Store listings JSON: {pack_url(config, 'imports/store-listings.json')}",
@@ -3577,6 +3761,9 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "refund-policy.html"),
         pack_url(config, "terms.html"),
         pack_url(config, "catalog.json"),
+        pack_url(config, "product-feed.json"),
+        pack_url(config, "product-feed.xml"),
+        pack_url(config, "product-feed.csv"),
         pack_url(config, "topics/topics.json"),
         pack_url(config, "imports/store-listings.csv"),
         pack_url(config, "imports/store-listings.json"),
@@ -3662,6 +3849,7 @@ def write_status(
     bundle: dict[str, Any],
     downloads: dict[str, Any],
     feeds: dict[str, Any],
+    product_feed: dict[str, Any],
     import_kit: dict[str, Any],
     topics: dict[str, Any],
     policies: dict[str, Any],
@@ -3701,6 +3889,11 @@ def write_status(
         "feed_xml": feeds.get("rss_path", "feed.xml"),
         "atom_xml": feeds.get("atom_path", "atom.xml"),
         "feed_item_count": int(feeds.get("item_count", 0)),
+        "product_feed_ready": bool(product_feed.get("ready")),
+        "product_feed_json": product_feed.get("json_path", "product-feed.json"),
+        "product_feed_xml": product_feed.get("xml_path", "product-feed.xml"),
+        "product_feed_csv": product_feed.get("csv_path", "product-feed.csv"),
+        "product_feed_count": int(product_feed.get("count", 0)),
         "bundle_ready": bool(bundle.get("pack_count")),
         "bundle_path": bundle.get("zip_path", "bundles/starter-archive.zip"),
         "bundle_page": bundle.get("page_path", "starter-bundle.html"),
@@ -3794,6 +3987,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     downloads = render_pack_downloads(config)
     feeds = render_feed(config)
     render_catalog(config)
+    product_feed = render_product_feed(config)
     render_archive(config)
     topics = render_topic_pages(config)
     policies = render_policy_pages(config)
@@ -3808,7 +4002,22 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, support, pay_page, offers, ai_discovery, discovery)
+    write_status(
+        pack,
+        config,
+        bundle,
+        downloads,
+        feeds,
+        product_feed,
+        import_kit,
+        topics,
+        policies,
+        support,
+        pay_page,
+        offers,
+        ai_discovery,
+        discovery,
+    )
     append_ledger(pack)
     return manifest
 

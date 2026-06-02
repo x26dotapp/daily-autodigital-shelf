@@ -47,6 +47,7 @@ The site also publishes:
   `imports/store-upload-kit.zip` for generic marketplace import workflows, including policy pages
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
+- `product-feed.json`, `product-feed.xml`, and `product-feed.csv` for machine-readable public product/download/support metadata
 - `feed.json`, `feed.xml`, `atom.xml`, `llms.txt`, `llms-full.txt`,
   `sitemap.xml`, and `robots.txt` for search/AI discoverability
 - an IndexNow key file so changed URLs can be submitted to participating search engines
@@ -74,6 +75,9 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf/products/<pack-slug>/support`
 - `https://www.calmsprout.com/daily-shelf/product-sitemap.xml`
 - `https://www.calmsprout.com/daily-shelf/catalog.json`
+- `https://www.calmsprout.com/daily-shelf/product-feed.json`
+- `https://www.calmsprout.com/daily-shelf/product-feed.xml`
+- `https://www.calmsprout.com/daily-shelf/product-feed.csv`
 - `https://www.calmsprout.com/daily-shelf/feed.xml`
 - `https://www.calmsprout.com/daily-shelf/starter.zip`
 - `https://www.calmsprout.com/sitemap.xml`
