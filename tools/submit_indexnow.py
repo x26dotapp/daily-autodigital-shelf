@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
+CONFIG_PUBLIC = ROOT / "config" / "config.public.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
 INDEXNOW_STATE = STATE / "indexnow-state.json"
 
@@ -43,6 +44,8 @@ def deep_update(base: dict[str, Any], override: dict[str, Any]) -> None:
 
 def load_config() -> dict[str, Any]:
     config = read_json(CONFIG_EXAMPLE)
+    if CONFIG_PUBLIC.exists():
+        deep_update(config, read_json(CONFIG_PUBLIC))
     if CONFIG_LOCAL.exists():
         deep_update(config, read_json(CONFIG_LOCAL))
     return config
@@ -89,6 +92,7 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     for rel_path in [
         "index.html",
         "archive.html",
+        "support.html",
         "starter-bundle.html",
         "store-import.html",
         "license.html",
@@ -104,6 +108,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "feed.json",
         "feed.xml",
         "atom.xml",
+        "llms.txt",
+        "llms-full.txt",
         "sitemap.xml",
     ]:
         add_candidate(candidates, config, rel_path)

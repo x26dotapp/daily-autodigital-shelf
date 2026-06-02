@@ -746,6 +746,7 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
         <a href="./printable.html">Worksheet</a>
         <a href="./checklist.html">Checklist</a>
         <a href="./cover.svg">Cover SVG</a>
+        <a href="../../support.html">Support</a>
       </div>
     </nav>
     <article class="pack-body">
@@ -898,11 +899,14 @@ def read_manifests() -> list[dict[str, Any]]:
 def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
+        "support.html",
         "store-import.html",
         "license.html",
         "privacy.html",
         "refund-policy.html",
         "terms.html",
+        "llms.txt",
+        "llms-full.txt",
         "topics/index.html",
         "topics/topics.json",
         "catalog.csv",
@@ -1520,6 +1524,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
         <a href="./starter-bundle.html">Starter bundle</a>
       </nav>
@@ -1893,6 +1898,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
@@ -2042,6 +2048,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
   <link rel="alternate" type="application/feed+json" title="{esc(config["site"]["name"])} feed" href="./feed.json">
   <link rel="alternate" type="application/rss+xml" title="{esc(config["site"]["name"])} RSS" href="./feed.xml">
   <link rel="alternate" type="application/atom+xml" title="{esc(config["site"]["name"])} Atom" href="./atom.xml">
+  <link rel="alternate" type="text/plain" title="{esc(config["site"]["name"])} AI summary" href="./llms.txt">
   <link rel="sitemap" type="application/xml" href="./sitemap.xml">
 {social_meta(config["site"]["name"], config["site"]["tagline"], home_url, today_cover_url, f"{today_pack['title']} cover")}
   <script type="application/ld+json">{json_for_script(structured_data)}</script>
@@ -2059,6 +2066,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
+        <a href="./support.html">Support</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
         <a href="#ledger">Automation ledger</a>
@@ -2117,7 +2125,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -2140,6 +2148,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <div class="actions">
               <a class="button primary" href="./{esc(bundle_zip_path)}">Download ZIP</a>
               <a class="button" href="./{esc(bundle_page_path)}">Bundle page</a>
+              <a class="button" href="./support.html">Support page</a>
               {destination_cta}
             </div>
           </div>
@@ -2421,6 +2430,7 @@ def render_archive(config: dict[str, Any]) -> None:
         <a href="./">Home</a>
         <a href="./topics/">Topics</a>
         <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./support.html">Support</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
         <a href="./catalog.json">Catalog JSON</a>
@@ -2448,10 +2458,269 @@ def render_archive(config: dict[str, Any]) -> None:
     (DOCS / "archive.html").write_text(content, encoding="utf-8")
 
 
+def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "").strip()
+    support_url = str(monetization.get("support_url") or "").strip()
+    destination_url = store_url or support_url
+    destination_type = "store" if store_url else ("support" if support_url else "none")
+    connected = bool(destination_url)
+    page_rel_path = "support.html"
+    page_url = pack_url(config, page_rel_path)
+    home_url = pack_url(config, "")
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
+    latest_pack = manifests[0] if manifests else None
+    latest_pack_url = pack_url(config, latest_pack["path"]) if latest_pack else home_url
+    external_cta_label = "Open product checkout" if store_url else "Open Square support page"
+    external_cta = (
+        f"""<a class="button primary" href="{esc(destination_url)}">{esc(external_cta_label)}</a>"""
+        if connected
+        else """<a class="button primary" href="./#setup">Destination not connected</a>"""
+    )
+    destination_note = (
+        f"Current public destination: {destination_url}. This is product checkout."
+        if store_url
+        else (
+            f"Current public destination: {destination_url}. This is a Square-hosted CalmSprout gift-card/support path, not product checkout."
+            if support_url
+            else "No public support, store, or affiliate destination is connected yet."
+        )
+    )
+    action_type = "BuyAction" if store_url else "DonateAction"
+    structured_data: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Support Daily Autodigital Shelf",
+        "description": "Support page for a public automated digital-pack shelf.",
+        "url": page_url,
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": config["site"]["name"],
+            "url": home_url,
+        },
+    }
+    if connected:
+        structured_data["potentialAction"] = {
+            "@type": action_type,
+            "target": destination_url,
+            "name": external_cta_label,
+        }
+
+    pack_rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="./{esc(pack_download_path(item))}">Download ZIP</a>
+            <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+          </div>
+        </article>"""
+        for item in manifests[:7]
+    )
+    if not pack_rows:
+        pack_rows = "<p>No packs generated yet.</p>"
+
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Support the Daily Autodigital Shelf and download public generated digital packs.">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Support Daily Autodigital Shelf", "Support the automated public digital-pack shelf.", page_url, image_url, "Daily Autodigital Shelf support page")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Support navigation">
+        <a href="./">Home</a>
+        <a href="./archive.html">Archive</a>
+        <a href="./topics/">Topics</a>
+        <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./store-import.html">Import kit</a>
+        <a href="./terms.html">Policies</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Support this shelf</p>
+          <h1>Keep the daily pack shelf running.</h1>
+          <p>The shelf publishes plain digital packs automatically. Downloads stay public while the support path can receive voluntary support through the connected external page.</p>
+          <div class="actions">
+            {external_cta}
+            <a class="button" href="./starter-bundle.html">Open starter bundle</a>
+            <a class="button" href="./bundles/starter-archive.zip">Download starter bundle</a>
+            <a class="button" href="{esc(latest_pack_url)}">Open latest pack</a>
+          </div>
+          <p class="fineprint">{esc(destination_note)}</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Revenue boundary</p>
+              <h2>{esc("Connected" if connected else "Not connected")}</h2>
+            </div>
+            <span class="status">{esc(destination_type)}</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>What support does</h3>
+              <p>Support helps keep the automated pack shelf online. It does not create a private order queue, gated download, guaranteed delivery promise, or hidden live-money automation.</p>
+              <p class="fineprint">This is not product checkout unless store_connected is true in status.json.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Public downloads</p>
+            <h2>Latest packs</h2>
+          </div>
+          <p>These files are available without a checkout gate. The support link is voluntary and handled by the external provider.</p>
+        </div>
+        <div class="ledger">
+          {pack_rows}
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / page_rel_path).write_text(content, encoding="utf-8")
+    return {
+        "page_path": page_rel_path,
+        "page_url": page_url,
+        "destination_type": destination_type,
+        "destination_url": destination_url,
+        "connected": connected,
+    }
+
+
+def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    site_name = config["site"]["name"]
+    base_url = pack_url(config, "")
+    support_path = str(support.get("page_path", "support.html"))
+    support_url = pack_url(config, support_path)
+    destination_type = str(support.get("destination_type", "none"))
+    destination_url = str(support.get("destination_url", ""))
+    latest = manifests[0] if manifests else None
+    latest_line = (
+        f"- Latest pack: [{latest['title']}]({pack_url(config, latest['path'])}) - {latest['summary']}"
+        if latest
+        else "- Latest pack: none generated yet"
+    )
+    pack_lines = "\n".join(
+        f"- [{item['title']}]({pack_url(config, item['path'])}) - {item['summary']} Download: {pack_url(config, pack_download_path(item))}"
+        for item in manifests
+    )
+    if not pack_lines:
+        pack_lines = "- No generated packs yet."
+
+    monetization_line = (
+        f"- Monetization destination: {destination_type} at {destination_url}"
+        if destination_url
+        else "- Monetization destination: none connected"
+    )
+    llms_txt = "\n".join(
+        [
+            f"# {site_name}",
+            "",
+            "> Automated public shelf of printable digital packs, worksheets, checklists, seller-copy files, and bundle/import artifacts.",
+            "",
+            "## Primary URLs",
+            "",
+            f"- Home: {base_url}",
+            f"- Support page: {support_url}",
+            f"- Archive: {pack_url(config, 'archive.html')}",
+            f"- Starter bundle: {pack_url(config, 'starter-bundle.html')}",
+            f"- Store import kit: {pack_url(config, 'store-import.html')}",
+            f"- Catalog JSON: {pack_url(config, 'catalog.json')}",
+            f"- RSS: {pack_url(config, 'feed.xml')}",
+            f"- Atom: {pack_url(config, 'atom.xml')}",
+            "",
+            "## Current State",
+            "",
+            latest_line,
+            monetization_line,
+            "- Product checkout is not connected unless `store_connected` is true in status.json.",
+            "- Support is voluntary and downloads remain public unless a real store checkout is connected.",
+            "",
+            "## Guardrails",
+            "",
+            "- No guaranteed-income claims.",
+            "- No live trading.",
+            "- No outbound spam.",
+            "- No hidden payment credentials.",
+            "- No medical, legal, investment, or tax advice.",
+            "",
+        ]
+    )
+    llms_full = "\n".join(
+        [
+            f"# {site_name} Full Context",
+            "",
+            "## Description",
+            "",
+            config["site"]["tagline"],
+            "",
+            "The shelf is generated by deterministic local Python automation and published as static files. It creates reusable printable worksheet packs, catalog metadata, policy pages, feeds, and ZIP archives.",
+            "",
+            "## Monetization Boundary",
+            "",
+            monetization_line,
+            "- Current public support page: " + support_url,
+            "- Product checkout is not connected unless `store_connected` is true in status.json.",
+            "- Revenue is not guaranteed or claimed by the site.",
+            "",
+            "## Generated Packs",
+            "",
+            pack_lines,
+            "",
+            "## Machine-Readable Files",
+            "",
+            f"- Status: {pack_url(config, 'status.json')}",
+            f"- Catalog JSON: {pack_url(config, 'catalog.json')}",
+            f"- Catalog CSV: {pack_url(config, 'catalog.csv')}",
+            f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
+            f"- Store listings JSON: {pack_url(config, 'imports/store-listings.json')}",
+            f"- Store listings CSV: {pack_url(config, 'imports/store-listings.csv')}",
+            f"- JSON Feed: {pack_url(config, 'feed.json')}",
+            f"- RSS: {pack_url(config, 'feed.xml')}",
+            f"- Atom: {pack_url(config, 'atom.xml')}",
+            f"- Sitemap: {pack_url(config, 'sitemap.xml')}",
+            "",
+        ]
+    )
+    (DOCS / "llms.txt").write_text(llms_txt, encoding="utf-8")
+    (DOCS / "llms-full.txt").write_text(llms_full, encoding="utf-8")
+    return {
+        "ready": True,
+        "llms_txt": "llms.txt",
+        "llms_full_txt": "llms-full.txt",
+    }
+
+
 def render_sitemap(config: dict[str, Any]) -> None:
     urls = [
         pack_url(config, ""),
         pack_url(config, "archive.html"),
+        pack_url(config, "support.html"),
         pack_url(config, "topics/"),
         pack_url(config, "starter-bundle.html"),
         pack_url(config, "store-import.html"),
@@ -2466,6 +2735,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "feed.json"),
         pack_url(config, "feed.xml"),
         pack_url(config, "atom.xml"),
+        pack_url(config, "llms.txt"),
+        pack_url(config, "llms-full.txt"),
     ]
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
@@ -2544,6 +2815,8 @@ def write_status(
     import_kit: dict[str, Any],
     topics: dict[str, Any],
     policies: dict[str, Any],
+    support: dict[str, Any],
+    ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
     status_path = DOCS / "status.json"
@@ -2593,6 +2866,11 @@ def write_status(
         "policy_pages_ready": bool(policies.get("count")),
         "policy_page_count": int(policies.get("count", 0)),
         "policy_pages": policies.get("paths", []),
+        "support_page_ready": bool(support.get("page_path")),
+        "support_page": support.get("page_path", "support.html"),
+        "ai_discovery_ready": bool(ai_discovery.get("ready")),
+        "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),
+        "llms_full_txt": ai_discovery.get("llms_full_txt", "llms-full.txt"),
         "indexnow_enabled": bool(discovery.get("enabled")),
         "indexnow_key_file": discovery.get("key_file", ""),
         "indexnow_key_location": discovery.get("key_location", ""),
@@ -2650,6 +2928,8 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_archive(config)
     topics = render_topic_pages(config)
     policies = render_policy_pages(config)
+    support = render_support_page(config)
+    ai_discovery = render_ai_discovery_files(config, support)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
     render_index(pack, config, bundle)
@@ -2657,7 +2937,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, discovery)
+    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, support, ai_discovery, discovery)
     append_ledger(pack)
     return manifest
 

@@ -1,0 +1,29 @@
+# Daily Autodigital Shelf
+
+> Automated public shelf of printable digital packs, worksheets, checklists, seller-copy files, and bundle/import artifacts.
+
+## Primary URLs
+
+- Home: https://x26dotapp.github.io/daily-autodigital-shelf/
+- Support page: https://x26dotapp.github.io/daily-autodigital-shelf/support.html
+- Archive: https://x26dotapp.github.io/daily-autodigital-shelf/archive.html
+- Starter bundle: https://x26dotapp.github.io/daily-autodigital-shelf/starter-bundle.html
+- Store import kit: https://x26dotapp.github.io/daily-autodigital-shelf/store-import.html
+- Catalog JSON: https://x26dotapp.github.io/daily-autodigital-shelf/catalog.json
+- RSS: https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml
+- Atom: https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml
+
+## Current State
+
+- Latest pack: [One-Page SOP Builder](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/) - A worksheet for documenting one repeatable task so someone else can follow it.
+- Monetization destination: support at https://gift.calmsprout.com
+- Product checkout is not connected unless `store_connected` is true in status.json.
+- Support is voluntary and downloads remain public unless a real store checkout is connected.
+
+## Guardrails
+
+- No guaranteed-income claims.
+- No live trading.
+- No outbound spam.
+- No hidden payment credentials.
+- No medical, legal, investment, or tax advice.
