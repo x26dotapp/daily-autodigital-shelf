@@ -483,6 +483,27 @@
   This is autonomous conversion optimization, not payment or daily revenue
   proof.
 
+- 2026-06-02 branded support-signal targets: Daily Shelf commit `3f6cf66`
+  (`Prefer branded support signal targets`) makes `support-signal.html`,
+  `support-signal.json`, homepage, support page, and `status.json` prefer a
+  first-party CalmSprout `promotion_url` for the current promoted item. The
+  active promoted target remains `Small Business Ops collection`, but the
+  visible `Open promoted item` CTA now points to
+  `https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html`
+  instead of the GitHub Pages bundle URL, keeping visitors on the branded route
+  where support attribution and download-interest tracking are live. GitHub
+  Pages run `26837520499` succeeded; `verify-system.ps1` passed with
+  `pack_count: 29`, `files_checked: 68`, `bundle_bytes: 924241`,
+  `download_bytes: 7350`, `store_import_zip_bytes: 475634`,
+  `support_signal_total_intent_clicks: 4`,
+  `support_signal_total_download_interest: 0`,
+  `support_signal_promoted_score: 5`, `support_connected: true`, and
+  `store_connected: false`. Live read-only checks and rendered browser QA
+  verified the branded CTA with no console warnings/errors and no horizontal
+  overflow. IndexNow accepted 273 GitHub Pages URLs and 419 CalmSprout URLs.
+  No support redirect or download route was triggered. This is conversion-path
+  tightening, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
