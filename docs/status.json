@@ -26,7 +26,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 29,
-  "bundle_bytes": 882541,
+  "bundle_bytes": 882620,
   "pack_download_count": 29,
   "pack_download_page_count": 29,
   "pack_download_bytes": 205706,
@@ -315,7 +315,7 @@
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip"
   ],
-  "collection_bundle_bytes": 1577952,
+  "collection_bundle_bytes": 1578347,
   "collection_support_intent_urls": [
     "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
     "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",

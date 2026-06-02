@@ -103,10 +103,12 @@ data/feed/archive routes to IndexNow after a successful shelf publish.
 A public support destination is configured in `config/config.public.json`:
 `https://gift.calmsprout.com`. This is a Square-hosted CalmSprout gift-card /
 support path, not product checkout. The generated `support.html` and
-`pay-what-you-can.html` pages link to that destination while keeping the
-boundary explicit. Generated offer pages use the same support path and state
-that product checkout is not connected. The generated packs remain public
-downloads until a real store checkout is connected.
+`pay-what-you-can.html` pages route clicks through the measured
+`https://www.calmsprout.com/daily-shelf/support/go` support-intent redirect
+before the external Square page while keeping the boundary explicit. Generated
+offer pages use measured support paths and state that product checkout is not
+connected. The generated packs remain public downloads until a real store
+checkout is connected.
 
 Use `config/config.local.json` only for private local overrides. Do not put
 secrets in this repo.

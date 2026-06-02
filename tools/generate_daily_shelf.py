@@ -4883,6 +4883,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
     store_url = str(monetization.get("store_url") or "").strip()
     support_url = str(monetization.get("support_url") or "").strip()
     destination_url = store_url or support_url
+    action_url = store_url or (branded_url(config, "support/go") or support_url)
     destination_type = "store" if store_url else ("support" if support_url else "none")
     connected = bool(destination_url)
     page_rel_path = "support.html"
@@ -4893,7 +4894,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
     latest_pack_url = pack_url(config, latest_pack["path"]) if latest_pack else home_url
     external_cta_label = "Open product checkout" if store_url else "Open Square support page"
     external_cta = (
-        f"""<a class="button primary" href="{esc(destination_url)}">{esc(external_cta_label)}</a>"""
+        f"""<a class="button primary" href="{esc(action_url)}">{esc(external_cta_label)}</a>"""
         if connected
         else """<a class="button primary" href="./#setup">Destination not connected</a>"""
     )
@@ -4901,7 +4902,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         f"Current public destination: {destination_url}. This is product checkout."
         if store_url
         else (
-            f"Current public destination: {destination_url}. This is a Square-hosted CalmSprout gift-card/support path, not product checkout."
+            f"Current public destination: {destination_url}. Support clicks route through {action_url} for attribution before the Square-hosted CalmSprout gift-card/support path. This is not product checkout."
             if support_url
             else "No public support, store, or affiliate destination is connected yet."
         )
@@ -4922,7 +4923,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
     if connected:
         structured_data["potentialAction"] = {
             "@type": action_type,
-            "target": destination_url,
+            "target": action_url,
             "name": external_cta_label,
         }
 
@@ -5033,6 +5034,8 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         "page_url": page_url,
         "destination_type": destination_type,
         "destination_url": destination_url,
+        "action_url": action_url if connected else "",
+        "support_intent_url": action_url if support_url and not store_url else "",
         "connected": connected,
     }
 
@@ -5080,6 +5083,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
     manifests = read_manifests()
     monetization = config["monetization"]
     destination_url = str(support.get("destination_url") or "").strip()
+    action_url = str(support.get("action_url") or support.get("support_intent_url") or destination_url).strip()
     destination_type = str(support.get("destination_type") or "none")
     connected = bool(destination_url)
     page_rel_path = "pay-what-you-can.html"
@@ -5090,7 +5094,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
     image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
     cta_label = "Open Square support page" if destination_type == "support" else "Open product checkout"
     primary_cta = (
-        f"""<a class="button primary" href="{esc(destination_url)}">{esc(cta_label)}</a>"""
+        f"""<a class="button primary" href="{esc(action_url)}">{esc(cta_label)}</a>"""
         if connected
         else """<a class="button primary" href="./#setup">Destination not connected</a>"""
     )
@@ -5100,7 +5104,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
           <span class="tier-amount">{esc(tier["amount"])}</span>
           <h3>{esc(tier["label"])}</h3>
           <p>{esc(tier["description"])}</p>
-          {primary_cta if index == 1 else f'<a class="button" href="{esc(destination_url or "./#setup")}">Choose this level</a>'}
+          {primary_cta if index == 1 else f'<a class="button" href="{esc(action_url or "./#setup")}">Choose this level</a>'}
         </article>"""
         for index, tier in enumerate(tiers)
     )
@@ -5118,7 +5122,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
     if not pack_rows:
         pack_rows = "<p>No packs generated yet.</p>"
     destination_note = (
-        f"Support is handled by the external destination at {destination_url}."
+        f"Support is handled by the external destination at {destination_url}. Clicks route through {action_url} for attribution before the external page."
         if connected
         else "No external support or store destination is connected yet."
     )
@@ -5146,7 +5150,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
     if connected:
         structured_data["potentialAction"] = {
             "@type": "DonateAction" if destination_type == "support" else "BuyAction",
-            "target": destination_url,
+            "target": action_url,
             "name": cta_label,
         }
 
@@ -5246,6 +5250,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
         "page_path": page_rel_path,
         "page_url": page_url,
         "connected": connected,
+        "action_url": action_url if connected else "",
         "tier_count": len(tiers),
     }
 

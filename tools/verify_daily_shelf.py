@@ -86,6 +86,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     branded_product_url = f"https://www.calmsprout.com/daily-shelf/products/{pack_slug}"
     branded_support_url = f"{branded_product_url}/support"
     branded_support_intent_url = f"{branded_support_url}/go"
+    general_support_intent_url = "https://www.calmsprout.com/daily-shelf/support/go"
     template_support_url = f"https://www.calmsprout.com/daily-shelf/templates/{template_slug}/support"
     template_support_intent_url = f"{template_support_url}/go"
     for key in ["path", "worksheet", "checklist", "cover", "seller_copy"]:
@@ -214,8 +215,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Use cases", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download page", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "archive.html", ["Templates", "template pages"])
     require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Download page", "Topics", "Use cases", "Templates", "Guides", "Commercial use", "Sponsor", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "Commercial use", "Sponsor", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
-    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "Commercial use", "Sponsor", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "Commercial use", "Sponsor", general_support_intent_url, "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "Commercial use", "Sponsor", general_support_intent_url, "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "pricing.html", ["Pricing", "Clear support levels", "Value ladder", "https://www.calmsprout.com/daily-shelf/pricing/support/go", "Product checkout is not connected", "OfferCatalog", "FAQPage", "DonateAction", "og:image", "twitter:card"])
     require_contains(DOCS / "commercial-use.html", ["Commercial use", "Use the templates internally", "Read license", "Browse templates", "Browse guides", "https://www.calmsprout.com/daily-shelf/commercial-use/support/go", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
     require_contains(DOCS / "sponsor.html", ["Sponsor", "Support ladder", "Sponsor kit JSON", "sponsor-kit.json", "https://www.calmsprout.com/daily-shelf/sponsor/support/go", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
