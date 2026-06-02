@@ -29,6 +29,7 @@
 - Verified 2026-06-02: Scheduled task `HUMANi Daily Autodigital Shelf` runs daily at 06:10 local time, last manual Task Scheduler run returned `0`, and next run was `2026-06-02 06:10`.
 - Verified 2026-06-02: Today's pack is `Micro Budget Reset` under `docs/packs/2026-06-02-micro-budget/`, including landing page, worksheet, checklist, cover SVG, manifest, and `seller-copy.md`.
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, and the scheduled task.
+- Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
 
 ## Operator Rule
 
