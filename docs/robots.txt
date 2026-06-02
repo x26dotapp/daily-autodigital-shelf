@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://x26dotapp.github.io/daily-autodigital-shelf/sitemap.xml
+# Site: https://x26dotapp.github.io/daily-autodigital-shelf/

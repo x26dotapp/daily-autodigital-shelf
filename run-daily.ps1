@@ -4,6 +4,7 @@ $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $logDir = Join-Path $root 'logs'
 $logPath = Join-Path $logDir 'daily-run.log'
 $scriptPath = Join-Path $root 'tools\generate_daily_shelf.py'
+$verifyPath = Join-Path $root 'tools\verify_daily_shelf.py'
 
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 
@@ -41,8 +42,13 @@ if ($LASTEXITCODE -ne 0) {
     throw "Generator failed with exit code $LASTEXITCODE"
 }
 
+& $python $verifyPath
+if ($LASTEXITCODE -ne 0) {
+    throw "Verifier failed with exit code $LASTEXITCODE"
+}
+
 if (Test-Path -LiteralPath (Join-Path $root '.git')) {
-    git add docs state README.md config/config.example.json tools run-daily.ps1 install-scheduled-task.ps1 .gitignore | Out-Null
+    git add docs state README.md config/config.example.json tools run-daily.ps1 install-scheduled-task.ps1 verify-system.ps1 .gitignore | Out-Null
     $status = git status --porcelain
     if ($status) {
         $stamp = Get-Date -Format 'yyyy-MM-dd'

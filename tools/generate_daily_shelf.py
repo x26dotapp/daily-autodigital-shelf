@@ -158,6 +158,10 @@ def esc(value: Any) -> str:
     return html.escape(str(value), quote=True)
 
 
+def json_for_script(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False).replace("</", "<\\/")
+
+
 def slugify(value: str) -> str:
     cleaned = re.sub(r"[^a-zA-Z0-9]+", "-", value.strip().lower())
     return cleaned.strip("-") or "pack"
@@ -239,6 +243,21 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
         buy_label = "Support this shelf"
         buy_href = support_url
 
+    pack_path = f"packs/{pack['pack_slug']}/"
+    canonical_url = pack_url(config, pack_path)
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": pack["title"],
+        "description": pack["summary"],
+        "datePublished": pack["date"],
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": config["site"]["name"],
+            "url": pack_url(config, ""),
+        },
+        "url": canonical_url,
+    }
     worksheet_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["worksheets"])
     checklist_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["checklist"])
     content = f"""<!doctype html>
@@ -248,6 +267,12 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(pack["title"])} | {esc(config["site"]["name"])}</title>
   <meta name="description" content="{esc(pack["summary"])}">
+  <link rel="canonical" href="{esc(canonical_url)}">
+  <meta property="og:title" content="{esc(pack["title"])}">
+  <meta property="og:description" content="{esc(pack["summary"])}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{esc(canonical_url)}">
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
@@ -342,6 +367,61 @@ def render_checklist(pack: dict[str, Any], out_path: Path) -> None:
     out_path.write_text(content, encoding="utf-8")
 
 
+def render_seller_copy(pack: dict[str, Any], config: dict[str, Any], out_path: Path) -> None:
+    tags = [
+        "printable planner",
+        "digital download",
+        slugify(pack["title"]).replace("-", " "),
+        "low maintenance",
+        "worksheet",
+    ]
+    worksheet_rows = "\n".join(f"- {item}" for item in pack["worksheets"])
+    checklist_rows = "\n".join(f"- {item}" for item in pack["checklist"])
+    content = f"""# Store-Ready Listing Copy
+
+## Listing Title
+
+{pack["title"]} - Printable Worksheet and Checklist Pack
+
+## Short Description
+
+{pack["summary"]}
+
+## Long Description
+
+This printable digital pack is built for {pack["buyer"].lower()} It includes a focused worksheet, a completion checklist, and a simple cover asset. Use it as a standalone low-cost digital download, a bonus for a larger bundle, or a lead magnet connected to a real store or support page.
+
+## Includes
+
+- Pack landing page
+- Printable worksheet page
+- Printable checklist page
+- Cover SVG
+- Manifest JSON
+
+## Worksheet Prompts
+
+{worksheet_rows}
+
+## Checklist
+
+{checklist_rows}
+
+## Price Hint
+
+{config["generation"].get("default_price_hint", "$3 to $9 digital pack")}
+
+## Tags
+
+{", ".join(tags)}
+
+## Safety Note
+
+This listing copy is generated as a starting point. It does not include a payment link, medical/legal/investment advice, fake testimonials, or guaranteed-income claims.
+"""
+    out_path.write_text(content, encoding="utf-8")
+
+
 def read_manifests() -> list[dict[str, Any]]:
     manifests = []
     for path in sorted((DOCS / "packs").glob("*/manifest.json"), reverse=True):
@@ -360,6 +440,25 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
     support_connected = bool(monetization.get("support_url"))
     setup_status = "Connected" if store_connected or support_connected else "Not connected"
     setup_class = "done" if store_connected or support_connected else ""
+    home_url = pack_url(config, "")
+    today_path = f"packs/{today_pack['pack_slug']}/"
+    today_url = pack_url(config, today_path)
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": config["site"]["name"],
+        "description": config["site"]["tagline"],
+        "url": home_url,
+        "hasPart": [
+            {
+                "@type": "CreativeWork",
+                "name": today_pack["title"],
+                "description": today_pack["summary"],
+                "url": today_url,
+                "datePublished": today_pack["date"],
+            }
+        ],
+    }
 
     cards = "\n".join(
         f"""<article class="pack-card">
@@ -382,7 +481,6 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
         for item in manifests[:5]
     )
 
-    today_path = f"packs/{today_pack['pack_slug']}/"
     support_or_store = monetization.get("store_url") or monetization.get("support_url") or "#setup"
     content = f"""<!doctype html>
 <html lang="en">
@@ -391,6 +489,14 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(config["site"]["name"])}</title>
   <meta name="description" content="{esc(config["site"]["tagline"])}">
+  <link rel="canonical" href="{esc(home_url)}">
+  <link rel="alternate" type="application/feed+json" title="{esc(config["site"]["name"])} feed" href="./feed.json">
+  <link rel="sitemap" type="application/xml" href="./sitemap.xml">
+  <meta property="og:title" content="{esc(config["site"]["name"])}">
+  <meta property="og:description" content="{esc(config["site"]["tagline"])}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{esc(home_url)}">
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -556,6 +662,20 @@ def render_sitemap(config: dict[str, Any]) -> None:
     (DOCS / "sitemap.xml").write_text(sitemap, encoding="utf-8")
 
 
+def render_robots(config: dict[str, Any]) -> None:
+    base = pack_url(config, "").rstrip("/")
+    sitemap_url = pack_url(config, "sitemap.xml")
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+    ]
+    if sitemap_url:
+        lines.append(f"Sitemap: {sitemap_url}")
+    if base:
+        lines.append(f"# Site: {base}/")
+    (DOCS / "robots.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def append_ledger(pack: dict[str, Any]) -> None:
     STATE.mkdir(parents=True, exist_ok=True)
     if LEDGER.exists():
@@ -630,17 +750,21 @@ def generate(day: dt.date) -> dict[str, Any]:
         "worksheet": f"{path}printable.html",
         "checklist": f"{path}checklist.html",
         "cover": f"{path}cover.svg",
+        "seller_copy": f"{path}seller-copy.md",
     }
 
     render_cover_svg(pack, pack_dir / "cover.svg")
     render_pack_page(pack, config, pack_dir / "index.html")
     render_printable(pack, pack_dir / "printable.html")
     render_checklist(pack, pack_dir / "checklist.html")
+    render_seller_copy(pack, config, pack_dir / "seller-copy.md")
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     render_index(pack, config)
     render_feed(config)
     render_sitemap(config)
+    render_robots(config)
+    (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     write_status(pack, config)
     append_ledger(pack)
     return manifest
