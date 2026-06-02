@@ -6,12 +6,14 @@ import datetime as dt
 import html
 import json
 import re
+import zipfile
 from pathlib import Path
 from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
+BUNDLES = DOCS / "bundles"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
@@ -851,7 +853,194 @@ def read_manifests() -> list[dict[str, Any]]:
     return manifests
 
 
-def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
+def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
+    rel_paths = [
+        "archive.html",
+        "catalog.csv",
+        "catalog.json",
+        "feed.json",
+    ]
+    for item in manifests:
+        pack_path = str(item["path"]).rstrip("/")
+        rel_paths.extend(
+            [
+                f"{pack_path}/index.html",
+                f"{pack_path}/printable.html",
+                f"{pack_path}/checklist.html",
+                f"{pack_path}/cover.svg",
+                f"{pack_path}/manifest.json",
+                f"{pack_path}/seller-copy.md",
+            ]
+        )
+
+    files: list[Path] = []
+    seen: set[str] = set()
+    for rel_path in rel_paths:
+        path = DOCS / rel_path
+        key = path.resolve().as_posix()
+        if path.exists() and key not in seen:
+            files.append(path)
+            seen.add(key)
+    return files
+
+
+def write_zip_entry(bundle: zipfile.ZipFile, arcname: str, data: bytes) -> None:
+    info = zipfile.ZipInfo(arcname)
+    info.date_time = (2026, 1, 1, 0, 0, 0)
+    info.compress_type = zipfile.ZIP_DEFLATED
+    info.external_attr = 0o644 << 16
+    bundle.writestr(info, data)
+
+
+def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    BUNDLES.mkdir(parents=True, exist_ok=True)
+
+    bundle_rel_path = "bundles/starter-archive.zip"
+    bundle_path = DOCS / bundle_rel_path
+    page_rel_path = "starter-bundle.html"
+    latest_date = manifests[0]["date"] if manifests else ""
+    oldest_date = manifests[-1]["date"] if manifests else ""
+    zip_root = "daily-autodigital-shelf-starter"
+    bundle_manifest = {
+        "id": "daily-autodigital-shelf:starter-archive",
+        "title": "Daily Autodigital Shelf Starter Archive",
+        "pack_count": len(manifests),
+        "oldest_date": oldest_date,
+        "latest_date": latest_date,
+        "zip_path": bundle_rel_path,
+        "page_path": page_rel_path,
+        "items": [
+            {
+                "id": item["id"],
+                "date": item["date"],
+                "title": item["title"],
+                "path": item["path"],
+                "worksheet": item["worksheet"],
+                "checklist": item["checklist"],
+                "cover": item["cover"],
+                "seller_copy": item.get("seller_copy", ""),
+            }
+            for item in manifests
+        ],
+    }
+    readme = "\n".join(
+        [
+            "Daily Autodigital Shelf Starter Archive",
+            "",
+            f"Pack count: {len(manifests)}",
+            f"Date range: {oldest_date} to {latest_date}",
+            "",
+            "This bundle contains generated printable worksheets, checklists, cover SVGs, manifests, and seller-copy files.",
+            "It is designed to be uploaded to a store or support platform as one digital-download product.",
+            "",
+            "Guardrails: no guaranteed-income claims, no payment credentials, no medical/legal/investment advice, and no hidden live-fund behavior.",
+            "",
+            "Suggested listing position: starter printable archive for low-maintenance planning and operations worksheets.",
+        ]
+    )
+
+    with zipfile.ZipFile(bundle_path, "w") as bundle:
+        write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
+        write_zip_entry(
+            bundle,
+            f"{zip_root}/STARTER-BUNDLE-MANIFEST.json",
+            json.dumps(bundle_manifest, indent=2).encode("utf-8"),
+        )
+        for source in bundle_file_paths(manifests):
+            rel = source.relative_to(DOCS).as_posix()
+            write_zip_entry(bundle, f"{zip_root}/{rel}", source.read_bytes())
+
+    bundle_bytes = bundle_path.stat().st_size
+    bundle_kb = max(1, round(bundle_bytes / 1024))
+    rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+        </article>"""
+        for item in manifests
+    )
+    if not rows:
+        rows = "<p>No packs generated yet.</p>"
+
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Starter Bundle | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Downloadable starter archive for Daily Autodigital Shelf generated packs.">
+  <link rel="canonical" href="{esc(pack_url(config, page_rel_path))}">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Bundle navigation">
+        <a href="./">Home</a>
+        <a href="./archive.html">Archive</a>
+        <a href="./catalog.csv">Catalog CSV</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Starter bundle</p>
+            <h2>One ZIP for the generated shelf</h2>
+          </div>
+          <p>The ZIP is generated by the same daily automation as the public pages, so it can be used as a single upload for a store, support platform, or manual product import.</p>
+        </div>
+        <div class="bundle-panel">
+          <div>
+            <p class="label">Bundle contents</p>
+            <h3>Daily Autodigital Shelf Starter Archive</h3>
+            <p>{len(manifests)} generated packs from {esc(oldest_date)} through {esc(latest_date)}, including printable worksheets, checklists, cover SVGs, manifests, catalog files, and seller-copy files.</p>
+            <div class="actions">
+              <a class="button primary" href="./{esc(bundle_rel_path)}">Download ZIP</a>
+              <a class="button" href="./catalog.csv">Open catalog CSV</a>
+            </div>
+          </div>
+          <div class="bundle-stat">
+            <span>{len(manifests)}</span>
+            <strong>packs</strong>
+            <small>{bundle_kb} KB ZIP</small>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Included packs</p>
+            <h2>Bundle inventory</h2>
+          </div>
+          <p>These entries mirror the public archive and are included in the downloadable ZIP.</p>
+        </div>
+        <div class="ledger">
+          {rows}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / page_rel_path).write_text(content, encoding="utf-8")
+
+    return {
+        **bundle_manifest,
+        "zip_url": pack_url(config, bundle_rel_path),
+        "page_url": pack_url(config, page_rel_path),
+        "bytes": bundle_bytes,
+    }
+
+
+def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dict[str, Any]) -> None:
     recent_count = int(config["generation"].get("recent_pack_count", 7))
     manifests = read_manifests()[:recent_count]
     monetization = config["monetization"]
@@ -901,6 +1090,11 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
     )
 
     support_or_store = monetization.get("store_url") or monetization.get("support_url") or "#setup"
+    bundle_zip_path = str(bundle.get("zip_path", "bundles/starter-archive.zip"))
+    bundle_page_path = str(bundle.get("page_path", "starter-bundle.html"))
+    bundle_pack_count = int(bundle.get("pack_count", 0))
+    bundle_bytes = int(bundle.get("bytes", 0))
+    bundle_kb = max(1, round(bundle_bytes / 1024)) if bundle_bytes else 0
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -928,6 +1122,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
       <nav class="topnav" aria-label="Primary">
         <a href="#today">Today's pack</a>
         <a href="./archive.html">Archive</a>
+        <a href="./{esc(bundle_page_path)}">Starter bundle</a>
         <a href="#ledger">Automation ledger</a>
         <a href="#setup">Monetization setup</a>
       </nav>
@@ -940,13 +1135,14 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
           <p>This lane creates public, printable digital packs on a schedule. It keeps the money layer explicit, so there are no fake earnings claims and no hidden live-fund behavior.</p>
           <div class="actions">
             <a class="button primary" href="./{esc(today_path)}">Open today's pack</a>
+            <a class="button" href="./{esc(bundle_page_path)}">Open starter bundle</a>
             <a class="button" href="#setup">View setup status</a>
           </div>
           <div class="system-note">
             <div class="signal">Generates one dated pack per run.</div>
             <div class="signal">Publishes static files only.</div>
             <div class="signal">Writes store-ready listing copy.</div>
-            <div class="signal">Payment links stay off until connected.</div>
+            <div class="signal">Bundles the shelf as one ZIP.</div>
           </div>
         </div>
 
@@ -981,10 +1177,36 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
+        </div>
+      </section>
+
+      <section id="bundle">
+        <div class="section-head">
+          <div>
+            <p class="label">Sellable bundle</p>
+            <h2>Single download product</h2>
+          </div>
+          <p>The daily generator also creates one ZIP containing the starter archive. This is the simplest file to upload when a real checkout, support, or affiliate path is connected.</p>
+        </div>
+        <div class="bundle-panel">
+          <div>
+            <p class="label">Starter archive</p>
+            <h3>{bundle_pack_count} generated packs bundled</h3>
+            <p>Worksheets, checklists, cover SVGs, manifests, listing copy, and catalog files are packaged together for a store-ready digital download.</p>
+            <div class="actions">
+              <a class="button primary" href="./{esc(bundle_zip_path)}">Download ZIP</a>
+              <a class="button" href="./{esc(bundle_page_path)}">Bundle page</a>
+            </div>
+          </div>
+          <div class="bundle-stat">
+            <span>{bundle_pack_count}</span>
+            <strong>packs</strong>
+            <small>{bundle_kb} KB ZIP</small>
+          </div>
         </div>
       </section>
 
@@ -1089,6 +1311,7 @@ def render_catalog(config: dict[str, Any]) -> None:
                 "checklist_url": pack_url(config, item["checklist"]),
                 "cover_url": pack_url(config, item["cover"]),
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "tags": "printable planner,digital download,worksheet,low maintenance",
                 "monetization_enabled": bool(config["monetization"].get("enabled")),
             }
@@ -1112,6 +1335,7 @@ def render_catalog(config: dict[str, Any]) -> None:
         "checklist_url",
         "cover_url",
         "seller_copy_url",
+        "starter_bundle_url",
         "tags",
         "monetization_enabled",
     ]
@@ -1153,6 +1377,7 @@ def render_archive(config: dict[str, Any]) -> None:
       </a>
       <nav class="topnav" aria-label="Archive navigation">
         <a href="./">Home</a>
+        <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./catalog.json">Catalog JSON</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
@@ -1164,7 +1389,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page and store-ready listing copy. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page and store-ready listing copy. The <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -1182,6 +1407,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
     urls = [
         pack_url(config, ""),
         pack_url(config, "archive.html"),
+        pack_url(config, "starter-bundle.html"),
         pack_url(config, "catalog.json"),
         pack_url(config, "feed.json"),
     ]
@@ -1233,7 +1459,7 @@ def append_ledger(pack: dict[str, Any]) -> None:
         handle.write(json.dumps(row, sort_keys=True) + "\n")
 
 
-def write_status(pack: dict[str, Any], config: dict[str, Any]) -> None:
+def write_status(pack: dict[str, Any], config: dict[str, Any], bundle: dict[str, Any]) -> None:
     status_path = DOCS / "status.json"
     generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
     if status_path.exists():
@@ -1249,6 +1475,11 @@ def write_status(pack: dict[str, Any], config: dict[str, Any]) -> None:
         "today": pack["date"],
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
+        "bundle_ready": bool(bundle.get("pack_count")),
+        "bundle_path": bundle.get("zip_path", "bundles/starter-archive.zip"),
+        "bundle_page": bundle.get("page_path", "starter-bundle.html"),
+        "bundle_pack_count": int(bundle.get("pack_count", 0)),
+        "bundle_bytes": int(bundle.get("bytes", 0)),
         "monetization_enabled": bool(config["monetization"].get("enabled")),
         "store_connected": bool(config["monetization"].get("store_url")),
         "support_connected": bool(config["monetization"].get("support_url")),
@@ -1293,14 +1524,15 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_seller_copy(pack, config, pack_dir / "seller-copy.md")
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
-    render_index(pack, config)
     render_feed(config)
     render_catalog(config)
     render_archive(config)
+    bundle = render_bundle(config)
+    render_index(pack, config, bundle)
     render_sitemap(config)
     render_robots(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config)
+    write_status(pack, config, bundle)
     append_ledger(pack)
     return manifest
 

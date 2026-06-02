@@ -5,6 +5,7 @@ import datetime as dt
 import json
 import sys
 import urllib.request
+import zipfile
 from pathlib import Path
 from typing import Any
 
@@ -79,6 +80,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "seller-copy.md",
             "Writes store-ready listing copy",
             "archive.html",
+            "starter-bundle.html",
+            "starter-archive.zip",
             "catalog.csv",
             "catalog.json",
         ],
@@ -90,9 +93,30 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(pack_dir / "seller-copy.md", ["Store-Ready Listing Copy", "Price Hint", "Safety Note"])
     require_file(DOCS / "feed.json", 100)
     require_file(DOCS / "catalog.json", 100)
-    require_contains(DOCS / "catalog.csv", ["seller_copy_url", manifest["title"]])
-    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Catalog CSV"])
+    require_contains(DOCS / "catalog.csv", ["seller_copy_url", "starter_bundle_url", manifest["title"]])
+    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Catalog CSV"])
+    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip"])
+    bundle_path = DOCS / "bundles" / "starter-archive.zip"
+    require_file(bundle_path, max(12000, min_pack_count * 900))
+    with zipfile.ZipFile(bundle_path) as bundle:
+        names = bundle.namelist()
+        if any(name.startswith("/") or ".." in Path(name).parts for name in names):
+            fail("Starter bundle contains unsafe archive paths")
+        manifest_names = [name for name in names if name.endswith("/manifest.json")]
+        if len(manifest_names) < min_pack_count:
+            fail(f"Starter bundle manifest count is {len(manifest_names)}, expected at least {min_pack_count}")
+        required_names = [
+            "daily-autodigital-shelf-starter/README.txt",
+            "daily-autodigital-shelf-starter/STARTER-BUNDLE-MANIFEST.json",
+            f"daily-autodigital-shelf-starter/{manifest['worksheet']}",
+            f"daily-autodigital-shelf-starter/{manifest['checklist']}",
+            f"daily-autodigital-shelf-starter/{manifest['seller_copy']}",
+        ]
+        for name in required_names:
+            if name not in names:
+                fail(f"Starter bundle missing {name}")
     require_file(DOCS / "sitemap.xml", 100)
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
 
@@ -112,13 +136,18 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
 
     if status.get("monetization_enabled") and not (status.get("store_connected") or status.get("support_connected")):
         fail("Monetization is enabled but no store/support destination is connected")
+    if not status.get("bundle_ready"):
+        fail("status.json reports bundle_ready=false")
+    if int(status.get("bundle_pack_count") or 0) < min_pack_count:
+        fail(f"status.json bundle_pack_count is {status.get('bundle_pack_count')}, expected at least {min_pack_count}")
 
     return {
         "today": day,
         "title": manifest["title"],
         "path": pack_path,
         "pack_count": pack_count,
-        "files_checked": 11,
+        "bundle_bytes": bundle_path.stat().st_size,
+        "files_checked": 15,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
         "support_connected": bool(status.get("support_connected")),
@@ -131,7 +160,7 @@ def verify_live(url: str) -> dict[str, Any]:
         body = response.read().decode("utf-8", errors="replace")
     if status_code != 200:
         fail(f"Live URL returned {status_code}: {url}")
-    for needle in ["Daily Autodigital Shelf", "Open today's pack", "Monetization setup"]:
+    for needle in ["Daily Autodigital Shelf", "Open today's pack", "Starter bundle", "Monetization setup"]:
         if needle not in body:
             fail(f"Live URL missing expected text: {needle}")
     return {"url": url, "status_code": status_code, "bytes": len(body)}

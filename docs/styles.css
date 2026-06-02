@@ -357,6 +357,53 @@ section {
   color: var(--green);
 }
 
+.bundle-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.bundle-panel h3 {
+  margin: 6px 0 10px;
+  font-size: 1.55rem;
+}
+
+.bundle-panel p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.bundle-stat {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  min-height: 150px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--amber-soft);
+  color: var(--ink);
+  text-align: center;
+}
+
+.bundle-stat span {
+  color: var(--teal);
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.bundle-stat small {
+  color: var(--muted);
+  font-weight: 800;
+}
+
 .site-footer {
   padding: 40px 0 60px;
   color: var(--muted);
@@ -416,7 +463,8 @@ section {
   .system-note,
   .pack-grid,
   .artifact,
-  .ledger-row {
+  .ledger-row,
+  .bundle-panel {
     grid-template-columns: 1fr;
   }
 }

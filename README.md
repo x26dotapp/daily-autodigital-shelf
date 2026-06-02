@@ -24,10 +24,12 @@ Each generated pack includes:
 - cover SVG
 - manifest JSON
 - `seller-copy.md` for store listing copy
+- inclusion in the generated starter bundle ZIP
 
 The site also publishes:
 
 - `archive.html` for all generated packs
+- `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
 - `feed.json`, `sitemap.xml`, and `robots.txt` for discoverability
@@ -65,6 +67,10 @@ python .\tools\generate_daily_shelf.py --date 2026-06-02 --backfill-days 21
 
 The command generates the archive in chronological order so the final homepage
 still points at the target date.
+
+The same generator also builds `docs/bundles/starter-archive.zip`, a single
+downloadable archive containing the generated pack pages, worksheets,
+checklists, covers, manifests, catalog files, and seller-copy files.
 
 ## Verify
 
