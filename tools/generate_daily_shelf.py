@@ -152,6 +152,424 @@ PACKS: list[dict[str, Any]] = [
             "No bulk send configured",
         ],
     },
+    {
+        "slug": "subscription-audit",
+        "title": "Subscription Audit Sheet",
+        "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+        "buyer": "Households and freelancers who need a clearer view of subscriptions without a finance app.",
+        "worksheets": [
+            "List every recurring charge you can find.",
+            "Mark the ones you used in the last 30 days.",
+            "Write the renewal date or billing day for each.",
+            "Choose one pause, cancel, or keep decision.",
+        ],
+        "checklist": [
+            "Recurring charges listed",
+            "Usage marked",
+            "Renewal dates captured",
+            "One decision made",
+            "No investment advice added",
+        ],
+    },
+    {
+        "slug": "simple-content-calendar",
+        "title": "Simple Content Calendar",
+        "summary": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+        "buyer": "People who need a content plan that does not become a second full-time job.",
+        "worksheets": [
+            "Pick one message worth repeating this week.",
+            "Write three post ideas from that message.",
+            "Choose the easiest publishing day.",
+            "Name one asset you can reuse instead of creating from scratch.",
+        ],
+        "checklist": [
+            "One weekly message chosen",
+            "Three post ideas written",
+            "Publishing day picked",
+            "Reusable asset named",
+            "No fake audience metrics added",
+        ],
+    },
+    {
+        "slug": "invoice-followup",
+        "title": "Invoice Follow-Up Mini Kit",
+        "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+        "buyer": "Freelancers and service providers who need a polite payment follow-up without pressure tricks.",
+        "worksheets": [
+            "Write the invoice number, date, and amount.",
+            "Record the last real contact about it.",
+            "Write one factual follow-up sentence.",
+            "Choose the next check-in date.",
+        ],
+        "checklist": [
+            "Invoice details captured",
+            "Last contact recorded",
+            "Follow-up is factual",
+            "No threats or fake urgency",
+            "Next check-in date chosen",
+        ],
+    },
+    {
+        "slug": "download-folder-reset",
+        "title": "Downloads Folder Reset",
+        "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+        "buyer": "People whose downloads folder has become a source of friction and lost files.",
+        "worksheets": [
+            "Sort the first 20 files into keep, archive, delete, or review.",
+            "Create one named destination folder.",
+            "Write what should never be saved here again.",
+            "Schedule the next short reset.",
+        ],
+        "checklist": [
+            "First 20 files handled",
+            "Destination folder made",
+            "Delete pile cleared",
+            "Review pile named",
+            "Next reset scheduled",
+        ],
+    },
+    {
+        "slug": "appointment-prep",
+        "title": "Appointment Prep Card",
+        "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
+        "buyer": "People who forget key questions or documents when appointments get stressful.",
+        "worksheets": [
+            "Write the appointment time, place, and contact.",
+            "List the top three questions.",
+            "Name the documents or photos to bring.",
+            "Write the follow-up action before leaving.",
+        ],
+        "checklist": [
+            "Time and place written",
+            "Questions listed",
+            "Documents gathered",
+            "Follow-up action captured",
+            "No medical/legal advice added",
+        ],
+    },
+    {
+        "slug": "client-intake-lite",
+        "title": "Client Intake Lite",
+        "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+        "buyer": "Service providers who need a repeatable first-call intake without a heavy CRM.",
+        "worksheets": [
+            "Write the requested outcome in the client's words.",
+            "Name what is in scope and out of scope.",
+            "Capture the deadline and budget signal.",
+            "Choose the next action and owner.",
+        ],
+        "checklist": [
+            "Outcome captured",
+            "Scope boundaries written",
+            "Deadline noted",
+            "Budget signal noted",
+            "Next owner chosen",
+        ],
+    },
+    {
+        "slug": "listing-photo-checklist",
+        "title": "Listing Photo Checklist",
+        "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+        "buyer": "People preparing simple listings who need better photos without hiring a photographer.",
+        "worksheets": [
+            "List the item, room, or product being photographed.",
+            "Take one wide shot, one detail shot, and one scale shot.",
+            "Write what defect or limitation must be shown honestly.",
+            "Choose the best cover image.",
+        ],
+        "checklist": [
+            "Wide shot taken",
+            "Detail shot taken",
+            "Scale shot taken",
+            "Limitations shown honestly",
+            "Cover image chosen",
+        ],
+    },
+    {
+        "slug": "one-page-sop",
+        "title": "One-Page SOP Builder",
+        "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
+        "buyer": "Small teams and solo operators who need process notes without a full operations manual.",
+        "worksheets": [
+            "Name the task and when it starts.",
+            "List the tools and files needed.",
+            "Write the steps in order.",
+            "Describe the done state and common mistake.",
+        ],
+        "checklist": [
+            "Task named",
+            "Inputs listed",
+            "Steps ordered",
+            "Done state defined",
+            "Common mistake noted",
+        ],
+    },
+    {
+        "slug": "weekly-reset",
+        "title": "Weekly Reset Board",
+        "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+        "buyer": "Busy households and solo workers who need one visible weekly reset page.",
+        "worksheets": [
+            "Write the three things that must not surprise you this week.",
+            "List bills, errands, messages, and cleanup tasks.",
+            "Choose one task to delegate, defer, or delete.",
+            "Write the week-end shutdown rule.",
+        ],
+        "checklist": [
+            "Surprises named",
+            "Loose ends listed",
+            "One task reduced",
+            "Shutdown rule written",
+            "No overpacked week",
+        ],
+    },
+    {
+        "slug": "micro-offer-pricing",
+        "title": "Micro Offer Pricing Sheet",
+        "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+        "buyer": "Creators and service providers turning a small repeatable outcome into an offer.",
+        "worksheets": [
+            "Write the exact outcome the buyer receives.",
+            "List three comparable offers or substitutes.",
+            "Choose a starter price and a revision rule.",
+            "Write what is included and not included.",
+        ],
+        "checklist": [
+            "Outcome written",
+            "Substitutes listed",
+            "Starter price chosen",
+            "Revision rule written",
+            "No guaranteed-income claim",
+        ],
+    },
+    {
+        "slug": "tiny-launch-checklist",
+        "title": "Tiny Launch Checklist",
+        "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+        "buyer": "People with useful work stuck in draft mode who need a small publish path.",
+        "worksheets": [
+            "Name the thing being launched.",
+            "Write the one sentence description.",
+            "Check the link, price/status, and contact path.",
+            "Write what to improve after launch.",
+        ],
+        "checklist": [
+            "Title set",
+            "Description written",
+            "Primary link tested",
+            "Status honest",
+            "Next improvement noted",
+        ],
+    },
+    {
+        "slug": "decision-parking-lot",
+        "title": "Decision Parking Lot",
+        "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+        "buyer": "People who get pulled away by unresolved choices and need a simple holding place.",
+        "worksheets": [
+            "Write the decision that keeps interrupting you.",
+            "Name what information is missing.",
+            "Set a review date.",
+            "Write the current task you are returning to.",
+        ],
+        "checklist": [
+            "Decision captured",
+            "Missing info named",
+            "Review date set",
+            "Current task named",
+            "Decision not solved prematurely",
+        ],
+    },
+    {
+        "slug": "email-triage",
+        "title": "Email Triage Sprint",
+        "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+        "buyer": "People who avoid inboxes because every message feels equally urgent.",
+        "worksheets": [
+            "Search for invoices, appointments, deadlines, and direct requests.",
+            "Pick five messages that need action.",
+            "Choose reply, schedule, archive, or defer for each.",
+            "Write the one reply you can send first.",
+        ],
+        "checklist": [
+            "Important searches run",
+            "Five messages selected",
+            "Action label chosen",
+            "First reply drafted",
+            "Bulk send avoided",
+        ],
+    },
+    {
+        "slug": "project-rescue-map",
+        "title": "Project Rescue Map",
+        "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+        "buyer": "Builders and operators who need to recover a project without starting over.",
+        "worksheets": [
+            "List what already exists and where it lives.",
+            "Name the blocker that stops useful progress.",
+            "Write the smallest rescue step.",
+            "Choose what not to touch today.",
+        ],
+        "checklist": [
+            "Existing assets listed",
+            "Blocker named",
+            "Rescue step chosen",
+            "Non-targets protected",
+            "Progress receipt written",
+        ],
+    },
+    {
+        "slug": "daily-proof-log",
+        "title": "Daily Proof Log",
+        "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+        "buyer": "Solo workers who need evidence of progress for themselves, clients, or future handoff.",
+        "worksheets": [
+            "Write the visible thing that changed.",
+            "Record the path, URL, screenshot, or file.",
+            "Write what still needs review.",
+            "Choose tomorrow's first proof target.",
+        ],
+        "checklist": [
+            "Change named",
+            "Proof path recorded",
+            "Review need written",
+            "Tomorrow target chosen",
+            "No vague progress claim",
+        ],
+    },
+    {
+        "slug": "simple-order-form",
+        "title": "Simple Order Form Draft",
+        "summary": "A draft sheet for designing a small order or request form before building it online.",
+        "buyer": "Small sellers and service providers who need a clear order form before platform setup.",
+        "worksheets": [
+            "Write what the buyer is requesting.",
+            "List the required fields only.",
+            "Name optional details that can wait.",
+            "Write the confirmation message.",
+        ],
+        "checklist": [
+            "Offer/request named",
+            "Required fields listed",
+            "Optional fields separated",
+            "Confirmation message written",
+            "No payment info collected here",
+        ],
+    },
+    {
+        "slug": "two-hour-workblock",
+        "title": "Two-Hour Workblock Planner",
+        "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+        "buyer": "People who need a bounded work session that does not expand into the whole day.",
+        "worksheets": [
+            "Write the single outcome for this block.",
+            "List the files or tools needed before starting.",
+            "Set the stop time.",
+            "Write the shutdown note when done.",
+        ],
+        "checklist": [
+            "One outcome chosen",
+            "Inputs ready",
+            "Stop time set",
+            "Shutdown note written",
+            "No second project added",
+        ],
+    },
+    {
+        "slug": "store-import-prep",
+        "title": "Store Import Prep Sheet",
+        "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+        "buyer": "Digital sellers preparing listings for Payhip, Gumroad, Etsy-style shops, or similar platforms.",
+        "worksheets": [
+            "Write the product title and short description.",
+            "List the downloadable files.",
+            "Choose tags and a starter price.",
+            "Write the refund/support note for the listing.",
+        ],
+        "checklist": [
+            "Title and description ready",
+            "Files listed",
+            "Tags chosen",
+            "Price hint chosen",
+            "Support note written",
+        ],
+    },
+    {
+        "slug": "focus-menu",
+        "title": "Focus Menu Builder",
+        "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+        "buyer": "People who need usable work choices that adapt to uneven energy.",
+        "worksheets": [
+            "List three low-energy tasks that still count.",
+            "List three medium-energy tasks.",
+            "List one high-energy task for better days.",
+            "Choose today's menu item.",
+        ],
+        "checklist": [
+            "Low-energy options written",
+            "Medium options written",
+            "High option written",
+            "Today's item chosen",
+            "Fallback still counts",
+        ],
+    },
+    {
+        "slug": "link-in-bio-audit",
+        "title": "Link-in-Bio Audit",
+        "summary": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
+        "buyer": "Creators and small sellers whose public links do not clearly route visitors.",
+        "worksheets": [
+            "Write the current top link and what it asks visitors to do.",
+            "Remove or park links that distract from the main action.",
+            "Write a clearer button label.",
+            "Choose the next public proof link.",
+        ],
+        "checklist": [
+            "Top action identified",
+            "Distracting links parked",
+            "Button label improved",
+            "Proof link chosen",
+            "No fake metrics added",
+        ],
+    },
+    {
+        "slug": "renewal-reminder",
+        "title": "Renewal Reminder Sheet",
+        "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+        "buyer": "People who need renewal dates visible before they become urgent surprises.",
+        "worksheets": [
+            "List the renewal name and date.",
+            "Write the cost if known.",
+            "Choose keep, compare, cancel, or review.",
+            "Set a reminder date before renewal.",
+        ],
+        "checklist": [
+            "Renewal named",
+            "Date recorded",
+            "Cost noted if known",
+            "Decision label chosen",
+            "Reminder date set",
+        ],
+    },
+    {
+        "slug": "landing-page-copy",
+        "title": "Landing Page Copy Blocks",
+        "summary": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
+        "buyer": "Small operators who need usable page copy before a designer or builder gets involved.",
+        "worksheets": [
+            "Write the buyer and problem in plain words.",
+            "Write the useful outcome without hype.",
+            "List real proof or leave it blank.",
+            "Write the next action button text.",
+        ],
+        "checklist": [
+            "Buyer named",
+            "Outcome written",
+            "Proof honest",
+            "Button text chosen",
+            "No fake testimonial added",
+        ],
+    },
 ]
 
 
@@ -890,9 +1308,36 @@ def generate(day: dt.date) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate the Daily Autodigital Shelf static site.")
     parser.add_argument("--date", help="Optional ISO date override, for example 2026-06-02.")
+    parser.add_argument(
+        "--backfill-days",
+        type=int,
+        default=0,
+        help="Generate a dated starter archive ending on --date/local today. Example: --backfill-days 21.",
+    )
     args = parser.parse_args()
 
-    manifest = generate(date_from_args(args.date))
+    target_day = date_from_args(args.date)
+    if args.backfill_days and args.backfill_days > 0:
+        start_day = target_day - dt.timedelta(days=args.backfill_days - 1)
+        manifests = []
+        for offset in range(args.backfill_days):
+            manifests.append(generate(start_day + dt.timedelta(days=offset)))
+        print(
+            json.dumps(
+                {
+                    "status": "ok",
+                    "mode": "backfill",
+                    "days": args.backfill_days,
+                    "start": start_day.isoformat(),
+                    "end": target_day.isoformat(),
+                    "packs": manifests,
+                },
+                indent=2,
+            )
+        )
+        return 0
+
+    manifest = generate(target_day)
     print(json.dumps({"status": "ok", "pack": manifest}, indent=2))
     return 0
 

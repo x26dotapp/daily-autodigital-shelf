@@ -53,6 +53,19 @@ cd C:\GitHub\x26dotapp\daily-autodigital-shelf
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\run-daily.ps1
 ```
 
+## Starter Archive Backfill
+
+Use this when the shelf needs more inventory immediately while preserving the
+daily dated format:
+
+```powershell
+cd C:\GitHub\x26dotapp\daily-autodigital-shelf
+python .\tools\generate_daily_shelf.py --date 2026-06-02 --backfill-days 21
+```
+
+The command generates the archive in chronological order so the final homepage
+still points at the target date.
+
 ## Verify
 
 ```powershell

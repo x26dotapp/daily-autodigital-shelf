@@ -1,0 +1,13 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
+  "date": "2026-06-02",
+  "date_label": "June 02, 2026",
+  "title": "One-Page SOP Builder",
+  "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
+  "buyer": "Small teams and solo operators who need process notes without a full operations manual.",
+  "path": "packs/2026-06-02-one-page-sop/",
+  "worksheet": "packs/2026-06-02-one-page-sop/printable.html",
+  "checklist": "packs/2026-06-02-one-page-sop/checklist.html",
+  "cover": "packs/2026-06-02-one-page-sop/cover.svg",
+  "seller_copy": "packs/2026-06-02-one-page-sop/seller-copy.md"
+}

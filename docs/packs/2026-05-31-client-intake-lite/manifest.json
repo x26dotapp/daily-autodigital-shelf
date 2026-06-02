@@ -1,0 +1,13 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-31-client-intake-lite",
+  "date": "2026-05-31",
+  "date_label": "May 31, 2026",
+  "title": "Client Intake Lite",
+  "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+  "buyer": "Service providers who need a repeatable first-call intake without a heavy CRM.",
+  "path": "packs/2026-05-31-client-intake-lite/",
+  "worksheet": "packs/2026-05-31-client-intake-lite/printable.html",
+  "checklist": "packs/2026-05-31-client-intake-lite/checklist.html",
+  "cover": "packs/2026-05-31-client-intake-lite/cover.svg",
+  "seller_copy": "packs/2026-05-31-client-intake-lite/seller-copy.md"
+}

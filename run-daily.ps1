@@ -42,7 +42,7 @@ if ($LASTEXITCODE -ne 0) {
     throw "Generator failed with exit code $LASTEXITCODE"
 }
 
-& $python $verifyPath
+& $python $verifyPath --min-pack-count 21
 if ($LASTEXITCODE -ne 0) {
     throw "Verifier failed with exit code $LASTEXITCODE"
 }

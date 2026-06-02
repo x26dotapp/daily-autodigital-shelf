@@ -30,6 +30,8 @@
 - Verified 2026-06-02: Today's pack is `Micro Budget Reset` under `docs/packs/2026-06-02-micro-budget/`, including landing page, worksheet, checklist, cover SVG, manifest, and `seller-copy.md`.
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, and the scheduled task.
 - Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
+- Added 2026-06-02: Expanded the generator to 29 pack templates and seeded a 21-pack starter archive from `2026-05-13` through `2026-06-02`.
+- Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
 
 ## Operator Rule
 

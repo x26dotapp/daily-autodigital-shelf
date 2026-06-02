@@ -1,0 +1,13 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-30-appointment-prep",
+  "date": "2026-05-30",
+  "date_label": "May 30, 2026",
+  "title": "Appointment Prep Card",
+  "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
+  "buyer": "People who forget key questions or documents when appointments get stressful.",
+  "path": "packs/2026-05-30-appointment-prep/",
+  "worksheet": "packs/2026-05-30-appointment-prep/printable.html",
+  "checklist": "packs/2026-05-30-appointment-prep/checklist.html",
+  "cover": "packs/2026-05-30-appointment-prep/cover.svg",
+  "seller_copy": "packs/2026-05-30-appointment-prep/seller-copy.md"
+}

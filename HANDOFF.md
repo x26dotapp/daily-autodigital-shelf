@@ -11,7 +11,8 @@ Verified 2026-06-02:
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Repo: `https://github.com/x26dotapp/daily-autodigital-shelf`
 - Task: `HUMANi Daily Autodigital Shelf`, daily at 06:10 local time, last manual run result `0`
-- Pack: `Micro Budget Reset`
+- Pack: `One-Page SOP Builder`
+- Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Catalog surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `sitemap.xml`, `robots.txt`
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: not connected; public site says `Status: Not connected`

@@ -1,0 +1,13 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-13-two-hour-workblock",
+  "date": "2026-05-13",
+  "date_label": "May 13, 2026",
+  "title": "Two-Hour Workblock Planner",
+  "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+  "buyer": "People who need a bounded work session that does not expand into the whole day.",
+  "path": "packs/2026-05-13-two-hour-workblock/",
+  "worksheet": "packs/2026-05-13-two-hour-workblock/printable.html",
+  "checklist": "packs/2026-05-13-two-hour-workblock/checklist.html",
+  "cover": "packs/2026-05-13-two-hour-workblock/cover.svg",
+  "seller_copy": "packs/2026-05-13-two-hour-workblock/seller-copy.md"
+}

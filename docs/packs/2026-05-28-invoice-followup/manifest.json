@@ -1,0 +1,13 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-28-invoice-followup",
+  "date": "2026-05-28",
+  "date_label": "May 28, 2026",
+  "title": "Invoice Follow-Up Mini Kit",
+  "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+  "buyer": "Freelancers and service providers who need a polite payment follow-up without pressure tricks.",
+  "path": "packs/2026-05-28-invoice-followup/",
+  "worksheet": "packs/2026-05-28-invoice-followup/printable.html",
+  "checklist": "packs/2026-05-28-invoice-followup/checklist.html",
+  "cover": "packs/2026-05-28-invoice-followup/cover.svg",
+  "seller_copy": "packs/2026-05-28-invoice-followup/seller-copy.md"
+}

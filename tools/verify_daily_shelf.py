@@ -48,7 +48,7 @@ def today_iso(value: str | None) -> str:
     return dt.datetime.now().astimezone().date().isoformat()
 
 
-def verify_local(day: str) -> dict[str, Any]:
+def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     status = read_json(DOCS / "status.json")
     if status.get("today") != day:
         fail(f"status.json today is {status.get('today')}, expected {day}")
@@ -56,6 +56,10 @@ def verify_local(day: str) -> dict[str, Any]:
     pack_path = status.get("today_path")
     if not pack_path:
         fail("status.json missing today_path")
+
+    pack_count = len([path for path in (DOCS / "packs").glob("*/manifest.json")])
+    if pack_count < min_pack_count:
+        fail(f"Pack count is {pack_count}, expected at least {min_pack_count}")
 
     pack_dir = DOCS / pack_path
     manifest = read_json(pack_dir / "manifest.json")
@@ -113,6 +117,7 @@ def verify_local(day: str) -> dict[str, Any]:
         "today": day,
         "title": manifest["title"],
         "path": pack_path,
+        "pack_count": pack_count,
         "files_checked": 11,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
@@ -136,9 +141,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Verify Daily Autodigital Shelf output.")
     parser.add_argument("--date", help="Expected ISO date. Defaults to local today.")
     parser.add_argument("--live-url", help="Optional live homepage URL to verify.")
+    parser.add_argument("--min-pack-count", type=int, default=1, help="Minimum generated pack manifests expected.")
     args = parser.parse_args()
 
-    result: dict[str, Any] = {"local": verify_local(today_iso(args.date))}
+    result: dict[str, Any] = {"local": verify_local(today_iso(args.date), args.min_pack_count)}
     if args.live_url:
         result["live"] = verify_live(args.live_url)
 
