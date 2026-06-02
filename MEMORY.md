@@ -155,6 +155,26 @@
   live metrics remain `total_support_intent_clicks: 4`. This is conversion
   attribution infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 CalmSprout first-party template hub: CalmSprout commit `c43a8a1`
+  (`Render Daily Shelf template hub`) replaces the proxied
+  `/daily-shelf/templates/` index with a first-party CalmSprout template hub
+  while preserving `/daily-shelf/templates/<template-slug>.html`,
+  `/daily-shelf/templates/<template-slug>/support`, and measured
+  `/daily-shelf/templates/<template-slug>/support/go` routes. Cloudflare Worker
+  version `f5d86dd0-e75f-4b48-9af1-dd5c84d264b3` is live. Live HTTP QA
+  verified `/daily-shelf/templates/` returns HTTP 200 with
+  `CalmSprout template hub`, the `one-page-sop` support/detail/download links,
+  `CollectionPage`/`ItemList` JSON-LD, and the `Product checkout is not
+  connected` / revenue-unverified boundary; `/daily-shelf/templates` redirects
+  to the trailing slash and the proxied template detail page remains HTTP 200.
+  Browser QA on a narrow viewport verified 29 rendered template cards, no
+  console warnings/errors, no horizontal overflow, and expected
+  support/detail/download links. Forced CalmSprout IndexNow submission accepted
+  303 URLs with HTTP 200 and follow-up dry run returned `submit_count: 0`. No
+  support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is discovery/conversion
+  infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
