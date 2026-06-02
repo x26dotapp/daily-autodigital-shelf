@@ -249,6 +249,33 @@
   `total_support_intent_clicks: 4`. This is attribution/conversion
   infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 pricing support surface: Daily Shelf commit `6255269` (`Add Daily
+  Shelf pricing support page`) generates `pricing.html`, adds pricing fields to
+  `status.json` and `sponsor-kit.json`, wires pricing into `sitemap.xml`,
+  starter/store-import bundles, LLM discovery, verifier coverage, and the
+  IndexNow submitters. Follow-up commits `9d71846` (`Index Daily Shelf pricing
+  page`) and `3c8c2a7` (`Index CalmSprout Daily Shelf sitemap alias`) keep the
+  GitHub pricing URL and branded `/daily-shelf/sitemap.xml` alias in unattended
+  indexing coverage. GitHub Pages runs `26829045827`, `26829362677`, and
+  `26829419355` succeeded. CalmSprout commit `f1cef1a` (`Proxy Daily Shelf
+  pricing page`) deployed as Worker version
+  `fbf34331-4e2b-477e-ac9e-172c12a710dd`, proxies `/daily-shelf/pricing` and
+  `/daily-shelf/pricing.html`, measures `/daily-shelf/pricing/support/go`, and
+  serves `/daily-shelf/sitemap.xml`. Live QA verified GitHub Pages
+  `pricing.html`, CalmSprout pricing aliases, root sitemap, Daily Shelf sitemap
+  alias, `llms.txt`, and `llms-full.txt` return HTTP 200 with pricing/support
+  URLs, `OfferCatalog`, `FAQPage`, `DonateAction`, and the
+  `Product checkout is not connected` boundary. Browser QA at 1280x720 and
+  390x844 found no console errors and no horizontal overflow. `verify-system.ps1`
+  passed with `files_checked: 58`, `bundle_bytes: 882541`,
+  `store_import_zip_bytes: 455745`, `support_connected: true`, and
+  `store_connected: false`. IndexNow accepted 12 GitHub Pages URLs, then the
+  new pricing URL, then 350 CalmSprout URLs, then the branded sitemap alias;
+  follow-up dry runs returned `submit_count: 0` for both hosts. No support
+  redirect was triggered; live metrics remain `total_support_intent_clicks: 4`.
+  This is buyer-intent support infrastructure, not payment or daily revenue
+  proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
