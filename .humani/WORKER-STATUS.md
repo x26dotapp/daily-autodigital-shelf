@@ -5,21 +5,21 @@
 - Operator: `DAI-AUT-01`
 - Project: `daily-autodigital-shelf`
 - State: idle
-- Last updated: `2026-06-02T08:23:25-04:00`
+- Last updated: `2026-06-02T08:29:36-04:00`
 - Active broker action: none
 
 ## Latest Verified Work
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest handoff update: first-party CalmSprout collection offer pages are live
+- Latest handoff update: 29-pack inventory backfill is locally verified
 - Latest functional commit: `93e5d7c` (`Track CalmSprout collection offer pages`)
 - Latest adjacent bridge commit: CalmSprout `4b64442` (`Render Daily Shelf collection offers`)
 - Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), `3001f49` (`Add Daily Shelf product support funnels`), `6b5e7bf` (`Add Daily Shelf support intent redirects`), `2821d51` (`Expose support intent in LLM discovery`), `392479e` (`Record support intent LLM deploy`), `187a1b6` (`Add product offer FAQ schema`), `874504d` (`Record product offer FAQ schema deploy`), `53b3183` (`Route shelf downloads through landing pages`), `1d44688` (`Proxy Daily Shelf stylesheet`), `8d70dc3` (`Proxy Daily Shelf product feeds`), `c8c0833` (`Proxy Daily Shelf support funnel feed`), `95534a5` (`Track Daily Shelf support metrics`), `616ebfa` (`Measure general support redirects`), `e1f192b` (`Measure collection support redirects`), and `4b64442` (`Render Daily Shelf collection offers`)
 - CalmSprout deploy: Cloudflare Worker version `99336f51-f942-43c8-9482-d6bc4e3f4f2b`
 - Pages deployment: `26819365767` for CalmSprout collection offer page tracking; prior collection support route deployment `26818824112` succeeded for `4d2ddf7`
 - Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
-- Verification: `verify-system.ps1` passed with `files_checked: 46`, `bundle_bytes: 389865`, current `download_bytes: 6875`, `store_import_zip_bytes: 211788`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
+- Verification: `verify-system.ps1` passed locally with `pack_count: 29`, `files_checked: 46`, `bundle_bytes: 517838`, current `download_bytes: 6875`, `store_import_zip_bytes: 286183`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
 - Discovery: IndexNow accepted 12 CalmSprout collection/feed URLs with HTTP 200 after adding first-party collection offer pages; GitHub Pages had `submit_count: 0`; follow-up CalmSprout dry run returned `submit_count: 0`
 - Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` are generated
 - Support metadata: catalog/import JSON and CSV expose `support_page_url`, `pay_what_you_can_url`, `monetization_destination_type`, `monetization_destination_url`, `store_connected`, and `support_connected`; current pack JSON-LD exposes `DonateAction` while only support mode is connected

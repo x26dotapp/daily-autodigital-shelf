@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-11-daily-proof-log",
+  "date": "2026-05-11",
+  "date_label": "May 11, 2026",
+  "title": "Daily Proof Log",
+  "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+  "buyer": "Solo workers who need evidence of progress for themselves, clients, or future handoff.",
+  "path": "packs/2026-05-11-daily-proof-log/",
+  "worksheet": "packs/2026-05-11-daily-proof-log/printable.html",
+  "checklist": "packs/2026-05-11-daily-proof-log/checklist.html",
+  "cover": "packs/2026-05-11-daily-proof-log/cover.svg",
+  "seller_copy": "packs/2026-05-11-daily-proof-log/seller-copy.md",
+  "download": "downloads/2026-05-11-daily-proof-log.zip"
+}

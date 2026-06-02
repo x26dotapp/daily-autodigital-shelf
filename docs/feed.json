@@ -151,6 +151,62 @@
       "title": "Two-Hour Workblock Planner",
       "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
       "date_published": "2026-05-13"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-12-simple-order-form",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
+      "title": "Simple Order Form Draft",
+      "summary": "A draft sheet for designing a small order or request form before building it online.",
+      "date_published": "2026-05-12"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-11-daily-proof-log",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+      "title": "Daily Proof Log",
+      "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+      "date_published": "2026-05-11"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-10-project-rescue-map",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
+      "title": "Project Rescue Map",
+      "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+      "date_published": "2026-05-10"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-09-email-triage",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
+      "title": "Email Triage Sprint",
+      "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+      "date_published": "2026-05-09"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-08-decision-parking-lot",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/",
+      "title": "Decision Parking Lot",
+      "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+      "date_published": "2026-05-08"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-07-tiny-launch-checklist",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
+      "title": "Tiny Launch Checklist",
+      "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+      "date_published": "2026-05-07"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-06-micro-offer-pricing",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
+      "title": "Micro Offer Pricing Sheet",
+      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+      "date_published": "2026-05-06"
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-05-weekly-reset",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+      "title": "Weekly Reset Board",
+      "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+      "date_published": "2026-05-05"
     }
   ]
 }

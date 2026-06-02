@@ -38,7 +38,7 @@ foreach ($needle in @(
     }
 }
 
-& $python $verify --min-pack-count 21 --live-url 'https://x26dotapp.github.io/daily-autodigital-shelf/'
+& $python $verify --min-pack-count 29 --live-url 'https://x26dotapp.github.io/daily-autodigital-shelf/'
 if ($LASTEXITCODE -ne 0) {
     throw "Daily shelf verifier failed with exit code $LASTEXITCODE"
 }

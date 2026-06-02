@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-09-email-triage",
+  "date": "2026-05-09",
+  "date_label": "May 09, 2026",
+  "title": "Email Triage Sprint",
+  "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+  "buyer": "People who avoid inboxes because every message feels equally urgent.",
+  "path": "packs/2026-05-09-email-triage/",
+  "worksheet": "packs/2026-05-09-email-triage/printable.html",
+  "checklist": "packs/2026-05-09-email-triage/checklist.html",
+  "cover": "packs/2026-05-09-email-triage/cover.svg",
+  "seller_copy": "packs/2026-05-09-email-triage/seller-copy.md",
+  "download": "downloads/2026-05-09-email-triage.zip"
+}

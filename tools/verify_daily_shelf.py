@@ -525,7 +525,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Verify Daily Autodigital Shelf output.")
     parser.add_argument("--date", help="Expected ISO date. Defaults to local today.")
     parser.add_argument("--live-url", help="Optional live homepage URL to verify.")
-    parser.add_argument("--min-pack-count", type=int, default=1, help="Minimum generated pack manifests expected.")
+    parser.add_argument("--min-pack-count", type=int, default=29, help="Minimum generated pack manifests expected.")
     args = parser.parse_args()
 
     result: dict[str, Any] = {"local": verify_local(today_iso(args.date), args.min_pack_count)}

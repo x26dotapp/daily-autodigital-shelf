@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-12-simple-order-form",
+  "date": "2026-05-12",
+  "date_label": "May 12, 2026",
+  "title": "Simple Order Form Draft",
+  "summary": "A draft sheet for designing a small order or request form before building it online.",
+  "buyer": "Small sellers and service providers who need a clear order form before platform setup.",
+  "path": "packs/2026-05-12-simple-order-form/",
+  "worksheet": "packs/2026-05-12-simple-order-form/printable.html",
+  "checklist": "packs/2026-05-12-simple-order-form/checklist.html",
+  "cover": "packs/2026-05-12-simple-order-form/cover.svg",
+  "seller_copy": "packs/2026-05-12-simple-order-form/seller-copy.md",
+  "download": "downloads/2026-05-12-simple-order-form.zip"
+}

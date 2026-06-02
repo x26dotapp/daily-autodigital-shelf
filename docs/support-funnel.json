@@ -4,7 +4,7 @@
   "name": "Daily Autodigital Shelf Support Funnel Feed",
   "url": "https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json",
   "dateModified": "2026-06-02",
-  "numberOfItems": 21,
+  "numberOfItems": 29,
   "supportConnected": true,
   "checkoutBoundary": "Product checkout is not connected. Downloads remain public and support is voluntary.",
   "itemListElement": [
@@ -700,6 +700,270 @@
           "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support"
         ]
       }
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-12-simple-order-form",
+        "name": "Simple Order Form Draft",
+        "description": "A draft sheet for designing a small order or request form before building it online.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-11-daily-proof-log",
+        "name": "Daily Proof Log",
+        "description": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-10-project-rescue-map",
+        "name": "Project Rescue Map",
+        "description": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-09-email-triage",
+        "name": "Email Triage Sprint",
+        "description": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-08-decision-parking-lot",
+        "name": "Decision Parking Lot",
+        "description": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-07-tiny-launch-checklist",
+        "name": "Tiny Launch Checklist",
+        "description": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-06-micro-offer-pricing",
+        "name": "Micro Offer Pricing Sheet",
+        "description": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-05-weekly-reset",
+        "name": "Weekly Reset Board",
+        "description": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support"
+        ]
+      }
     }
   ],
   "items": [
@@ -1222,6 +1486,206 @@
       "utm_medium": "daily_shelf",
       "utm_campaign": "product_support",
       "utm_content": "2026-05-13-two-hour-workblock",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-12-simple-order-form",
+      "date": "2026-05-12",
+      "title": "Simple Order Form Draft",
+      "description": "A draft sheet for designing a small order or request form before building it online.",
+      "buyer": "Small sellers and service providers who need a clear order form before platform setup.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-12-simple-order-form",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-11-daily-proof-log",
+      "date": "2026-05-11",
+      "title": "Daily Proof Log",
+      "description": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+      "buyer": "Solo workers who need evidence of progress for themselves, clients, or future handoff.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-11-daily-proof-log",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-10-project-rescue-map",
+      "date": "2026-05-10",
+      "title": "Project Rescue Map",
+      "description": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+      "buyer": "Builders and operators who need to recover a project without starting over.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-10-project-rescue-map",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-09-email-triage",
+      "date": "2026-05-09",
+      "title": "Email Triage Sprint",
+      "description": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+      "buyer": "People who avoid inboxes because every message feels equally urgent.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-09-email-triage",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-08-decision-parking-lot",
+      "date": "2026-05-08",
+      "title": "Decision Parking Lot",
+      "description": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+      "buyer": "People who get pulled away by unresolved choices and need a simple holding place.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-08-decision-parking-lot",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-07-tiny-launch-checklist",
+      "date": "2026-05-07",
+      "title": "Tiny Launch Checklist",
+      "description": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+      "buyer": "People with useful work stuck in draft mode who need a small publish path.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-07-tiny-launch-checklist",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-06-micro-offer-pricing",
+      "date": "2026-05-06",
+      "title": "Micro Offer Pricing Sheet",
+      "description": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+      "buyer": "Creators and service providers turning a small repeatable outcome into an offer.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-06-micro-offer-pricing",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-05-weekly-reset",
+      "date": "2026-05-05",
+      "title": "Weekly Reset Board",
+      "description": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+      "buyer": "Busy households and solo workers who need one visible weekly reset page.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-05-weekly-reset",
       "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
       "support_connected": true,
       "store_connected": false,

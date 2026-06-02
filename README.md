@@ -133,7 +133,7 @@ daily dated format:
 
 ```powershell
 cd C:\GitHub\x26dotapp\daily-autodigital-shelf
-python .\tools\generate_daily_shelf.py --date 2026-06-02 --backfill-days 21
+python .\tools\generate_daily_shelf.py --date 2026-06-02 --backfill-days 29
 ```
 
 The command generates the archive in chronological order so the final homepage

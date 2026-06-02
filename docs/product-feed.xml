@@ -3,7 +3,7 @@
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
   <dateModified>2026-06-02</dateModified>
-  <numberOfItems>21</numberOfItems>
+  <numberOfItems>29</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
   <product>
     <id>daily-autodigital-shelf:2026-06-02-one-page-sop</id>
@@ -508,5 +508,197 @@
     <fulfillment>public digital download</fulfillment>
     <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
     <tags>digital download,printable worksheet,planner,checklist,low maintenance,two,hour,workblock</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-12-simple-order-form</id>
+    <date>2026-05-12</date>
+    <title>Simple Order Form Draft</title>
+    <description>A draft sheet for designing a small order or request form before building it online.</description>
+    <buyer>Small sellers and service providers who need a clear order form before platform setup.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,simple,order,form,draft</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-11-daily-proof-log</id>
+    <date>2026-05-11</date>
+    <title>Daily Proof Log</title>
+    <description>A receipt-style log for recording visible proof of work without overexplaining the whole day.</description>
+    <buyer>Solo workers who need evidence of progress for themselves, clients, or future handoff.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,daily,proof,log</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-10-project-rescue-map</id>
+    <date>2026-05-10</date>
+    <title>Project Rescue Map</title>
+    <description>A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.</description>
+    <buyer>Builders and operators who need to recover a project without starting over.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,project,rescue,map</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-09-email-triage</id>
+    <date>2026-05-09</date>
+    <title>Email Triage Sprint</title>
+    <description>A 15-minute inbox worksheet for finding the few messages that actually need action.</description>
+    <buyer>People who avoid inboxes because every message feels equally urgent.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,email,triage,sprint</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-08-decision-parking-lot</id>
+    <date>2026-05-08</date>
+    <title>Decision Parking Lot</title>
+    <description>A worksheet for parking unresolved decisions so they stop interrupting the current task.</description>
+    <buyer>People who get pulled away by unresolved choices and need a simple holding place.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,decision,parking,lot</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-07-tiny-launch-checklist</id>
+    <date>2026-05-07</date>
+    <title>Tiny Launch Checklist</title>
+    <description>A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.</description>
+    <buyer>People with useful work stuck in draft mode who need a small publish path.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,tiny,launch</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-06-micro-offer-pricing</id>
+    <date>2026-05-06</date>
+    <title>Micro Offer Pricing Sheet</title>
+    <description>A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.</description>
+    <buyer>Creators and service providers turning a small repeatable outcome into an offer.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,micro,offer,pricing,sheet</tags>
+  </product>
+  <product>
+    <id>daily-autodigital-shelf:2026-05-05-weekly-reset</id>
+    <date>2026-05-05</date>
+    <title>Weekly Reset Board</title>
+    <description>A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.</description>
+    <buyer>Busy households and solo workers who need one visible weekly reset page.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,weekly,reset,board</tags>
   </product>
 </productFeed>

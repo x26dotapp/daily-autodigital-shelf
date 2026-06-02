@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-05-08-decision-parking-lot",
+  "date": "2026-05-08",
+  "date_label": "May 08, 2026",
+  "title": "Decision Parking Lot",
+  "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+  "buyer": "People who get pulled away by unresolved choices and need a simple holding place.",
+  "path": "packs/2026-05-08-decision-parking-lot/",
+  "worksheet": "packs/2026-05-08-decision-parking-lot/printable.html",
+  "checklist": "packs/2026-05-08-decision-parking-lot/checklist.html",
+  "cover": "packs/2026-05-08-decision-parking-lot/cover.svg",
+  "seller_copy": "packs/2026-05-08-decision-parking-lot/seller-copy.md",
+  "download": "downloads/2026-05-08-decision-parking-lot.zip"
+}
