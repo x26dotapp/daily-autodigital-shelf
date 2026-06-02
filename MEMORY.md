@@ -409,6 +409,27 @@
   This is conversion-path support infrastructure, not payment or daily revenue
   proof.
 
+- 2026-06-02 artifact support footers: Daily Shelf commit `0cbfd7a` (`Add
+  support footer to pack artifacts`) embeds a product-specific support footer in
+  every generated worksheet/checklist page, refreshes individual product ZIPs,
+  the starter archive, collection bundles, and the store upload kit, adds
+  current worksheet/checklist URLs plus branded artifact URLs to `status.json`,
+  adds worksheet/checklist URLs to `sitemap.xml`, and teaches both IndexNow
+  submitters plus `verify-system.ps1` about artifact routes. GitHub Pages run
+  `26834659387` succeeded. `verify-system.ps1` passed with `pack_count: 29`,
+  `files_checked: 63`, `bundle_bytes: 912363`, current `download_bytes: 7350`,
+  `store_import_zip_bytes: 469758`, `artifact_support_links_ready: true`,
+  `support_connected: true`, and `store_connected: false`. Live HTTP QA
+  verified GitHub Pages and CalmSprout current worksheet/checklist routes return
+  HTTP 200 and include `Support this pack`, the product-specific
+  `/daily-shelf/products/2026-06-02-one-page-sop/support/go`, and `Product
+  checkout is not connected`. Browser QA at 1280x720 and 390x844 found the
+  support footer visible, support href intact, no console warnings/errors, and
+  no horizontal overflow. IndexNow accepted 271 GitHub Pages URLs and 415
+  CalmSprout URLs. No support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is artifact-level conversion
+  infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
