@@ -39,6 +39,8 @@ The site also publishes:
 - `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
 - `support.html` as a dedicated support/conversion page for the connected public support path
+- `offers/index.html`, `offers/offers.json`, and topic-based offer pages that
+  group related packs into support-backed collection surfaces
 - `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
   `imports/store-upload-kit.zip` for generic marketplace import workflows, including policy pages
 - `catalog.json` for programmatic product import
@@ -56,8 +58,9 @@ uses a public text file to prove site control.
 A public support destination is configured in `config/config.public.json`:
 `https://gift.calmsprout.com`. This is a Square-hosted CalmSprout gift-card /
 support path, not product checkout. The generated `support.html` page links to
-that destination while keeping the boundary explicit. The generated packs
-remain public downloads until a real store checkout is connected.
+that destination while keeping the boundary explicit. Generated offer pages use
+the same support path and state that product checkout is not connected. The
+generated packs remain public downloads until a real store checkout is connected.
 
 Use `config/config.local.json` only for private local overrides. Do not put
 secrets in this repo.

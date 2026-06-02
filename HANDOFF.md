@@ -15,21 +15,23 @@ Verified 2026-06-02:
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
-- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 304,869 bytes and includes policy pages, support page, `llms.txt`, `llms-full.txt`, and RSS/Atom feed files
+- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 323,728 bytes and includes policy pages, support page, offer pages, `llms.txt`, `llms-full.txt`, and RSS/Atom feed files
 - Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 161,610 bytes and rows include topic fields plus policy pages
 - Support/discovery surfaces: `support.html`, `llms.txt`, and `llms-full.txt` live; the support page links to `https://gift.calmsprout.com` while stating that product checkout is not connected
+- Offer surfaces: `offers/index.html`, `offers/offers.json`, and 5 topic collection offer pages live; offer pages link the starter bundle, expose CollectionPage JSON-LD, route support CTAs to `https://gift.calmsprout.com`, and state that product checkout is not connected
 - Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
 - Policy surfaces: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` live; they are store-readiness pages and do not activate checkout or payout
 - Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
 - Catalog/discovery surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `feed.xml`, `atom.xml`, `llms.txt`, `llms-full.txt`, `sitemap.xml`, `robots.txt`
 - Feed proof: live `feed.xml` returned HTTP 200 with 10,552 bytes; live `atom.xml` returned HTTP 200 with 8,706 bytes; both contain `One-Page SOP Builder`
-- Discovery: IndexNow key file live; latest direct `tools/submit_indexnow.py --all` submitted 29 support/discovery URLs and received HTTP 200; follow-up dry run queued 0 URLs
+- Discovery: IndexNow key file live; latest direct `tools/submit_indexnow.py --all` submitted 21 offer/support/discovery URLs and received HTTP 200; follow-up dry run queued 0 URLs
 - GitHub fallback publisher: `.github/workflows/daily-shelf.yml` is active. It runs daily after the local PC task/watchdog, can be run manually, generates/verifies, commits only on changed output, pushes to `main`, and submits IndexNow when it commits.
-- Fallback proof: manual run `26805392972` completed successfully on commit `f90b8d9` and logged `No generated changes to publish`
+- Fallback proof: manual run `26805969926` completed successfully on commit `5d6eec6` and logged `No generated changes to publish`
 - Determinism: generator normalizes text bytes inside ZIPs, fixes ZIP creator metadata, forces LF CSV output, and tracks `.gitattributes` so Windows and GitHub runners do not churn same-day artifacts
-- Latest functional infrastructure commit: `f90b8d9` (`Add support discovery surfaces`) pushed to `main`; GitHub Pages deployment `26805338049` succeeded
+- Latest functional infrastructure commit: `5d6eec6` (`Add support-backed offer pages`) pushed to `main`; GitHub Pages deployment `26805912605` succeeded
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: public support destination connected; public site says `Status: Connected`, shows `Support this shelf`, and links to `https://gift.calmsprout.com`, which resolves to the Square-hosted CalmSprout gift/support page. Product checkout is not connected, `store_connected` is false, and daily revenue is not proven.
+- Latest verifier baseline: `files_checked: 36`, `bundle_bytes: 323728`, `pack_download_bytes: 126854`, `store_import_zip_bytes: 161610`, `support_connected: true`, `store_connected: false`
 
 ## Where To Start
 
@@ -60,6 +62,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\feed.xml`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\atom.xml`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\support.html`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\offers`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\llms.txt`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\llms-full.txt`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\config\config.public.json`

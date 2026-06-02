@@ -5,20 +5,21 @@
 - Operator: `DAI-AUT-01`
 - Project: `daily-autodigital-shelf`
 - State: idle
-- Last updated: `2026-06-02T03:34:00-04:00`
+- Last updated: `2026-06-02T03:48:00-04:00`
 - Active broker action: none
 
 ## Latest Verified Work
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest handoff commit: `2b4365d` (`Update daily shelf handoff state`)
-- Latest functional commit: `f90b8d9` (`Add support discovery surfaces`)
-- Pages deployment: `26805338049` for support page and AI discovery files
-- Fallback proof: run `26805392972` verified `files_checked: 33`, `support_connected: true`, and logged `No generated changes to publish`
-- Verification: `verify-system.ps1` passed with `files_checked: 33`, `bundle_bytes: 304869`, `store_import_zip_bytes: 161610`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
-- Discovery: IndexNow accepted 29 changed URLs; dry run shows `submit_count: 0`
+- Latest handoff update: offer-page handoff state recorded after commit `5d6eec6`
+- Latest functional commit: `5d6eec6` (`Add support-backed offer pages`)
+- Pages deployment: `26805912605` for support-backed offer pages
+- Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
+- Verification: `verify-system.ps1` passed with `files_checked: 36`, `bundle_bytes: 323728`, `store_import_zip_bytes: 161610`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
+- Discovery: IndexNow accepted 21 changed URLs; dry run shows `submit_count: 0`
 - Support/discovery surfaces: `support.html`, `llms.txt`, and `llms-full.txt` are live
+- Offer surfaces: `offers/index.html`, `offers/offers.json`, and 5 topic collection offer pages are live
 - Support destination: `https://gift.calmsprout.com` resolves to the Square-hosted CalmSprout gift/support page
 
 ## Boundaries
