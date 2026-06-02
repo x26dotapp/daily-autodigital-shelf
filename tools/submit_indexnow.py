@@ -88,6 +88,7 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     catalog = read_json(DOCS / "catalog.json", {"items": []})
     topics = read_json(DOCS / "topics" / "topics.json", {"topics": []})
     offers = read_json(DOCS / "offers" / "offers.json", {"offers": []})
+    use_cases = read_json(DOCS / "use-cases" / "use-cases.json", {"items": []})
     candidates: list[dict[str, str]] = []
 
     for rel_path in [
@@ -107,6 +108,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "terms.html",
         "topics/index.html",
         "topics/topics.json",
+        "use-cases/index.html",
+        "use-cases/use-cases.json",
         "catalog.json",
         "catalog.csv",
         "product-feed.json",
@@ -160,6 +163,11 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         collection_bundle_path = str(offer.get("collection_bundle_path", "")).strip("/")
         if collection_bundle_path:
             add_candidate(candidates, config, collection_bundle_path)
+
+    for use_case in use_cases.get("items", []):
+        path = str(use_case.get("path", "")).strip("/")
+        if path:
+            add_candidate(candidates, config, path)
 
     deduped: list[dict[str, str]] = []
     seen: set[str] = set()

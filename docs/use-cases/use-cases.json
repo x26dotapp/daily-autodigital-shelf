@@ -1,27 +1,73 @@
 {
-  "offers": [
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Daily Autodigital Shelf Use Cases",
+  "description": "Buyer-intent use-case pages for public printable digital pack collections.",
+  "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/",
+  "numberOfItems": 5,
+  "checkoutBoundary": "Product checkout is not connected. Downloads remain public and support is voluntary through the connected support path.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Small business SOP and client ops worksheets",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/small-business-ops.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Home admin reset printables",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/home-admin.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Low-energy planning systems",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/low-energy-systems.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Digital product launch prep worksheets",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/digital-product-prep.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Cleanup and reset sprint worksheets",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/cleanup-and-reset.html"
+    }
+  ],
+  "items": [
     {
       "slug": "small-business-ops",
-      "label": "Small Business Ops",
-      "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
-      "path": "offers/small-business-ops.html",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/small-business-ops.html",
-      "count": 15,
-      "support_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "external_support_destination": "https://gift.calmsprout.com",
-      "destination_type": "support",
-      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
-      "collection_bundle_path": "bundles/small-business-ops-collection.zip",
-      "collection_bundle_bytes": 235678,
-      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slug": "small-business-ops",
+      "label": "Small business SOP and client ops worksheets",
+      "short_label": "Client and SOP ops",
+      "description": "A buyer-intent page for tiny service shops that need client intake, SOP, follow-up, listing, and admin worksheets without a full operations buildout.",
+      "intent": "small business SOP templates, client admin worksheets, and simple operating routines",
+      "path": "use-cases/small-business-ops.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/small-business-ops.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/use-cases/small-business-ops.html",
       "topic_url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+      "offer_url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/small-business-ops.html",
+      "collection_bundle_path": "bundles/small-business-ops-collection.zip",
+      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
+      "count": 15,
+      "outcomes": [
+        "Name the next client or service workflow that needs a written path.",
+        "Pick a public worksheet pack that can be downloaded immediately.",
+        "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
+      ],
       "items": [
         {
           "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
           "title": "One-Page SOP Builder",
           "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.zip"
         },
         {
@@ -29,6 +75,7 @@
           "title": "Listing Photo Checklist",
           "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.zip"
         },
         {
@@ -36,6 +83,7 @@
           "title": "Client Intake Lite",
           "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.zip"
         },
         {
@@ -43,6 +91,7 @@
           "title": "Appointment Prep Card",
           "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.zip"
         },
         {
@@ -50,6 +99,7 @@
           "title": "Invoice Follow-Up Mini Kit",
           "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.zip"
         },
         {
@@ -57,6 +107,7 @@
           "title": "Simple Content Calendar",
           "summary": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.zip"
         },
         {
@@ -64,6 +115,7 @@
           "title": "Honest Follow-Up Draft Kit",
           "summary": "A non-spam template sheet for following up with one real person or lead.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.zip"
         },
         {
@@ -71,6 +123,7 @@
           "title": "Calm Launch One-Page Kit",
           "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.zip"
         },
         {
@@ -78,6 +131,7 @@
           "title": "Landing Page Copy Blocks",
           "summary": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.zip"
         },
         {
@@ -85,6 +139,7 @@
           "title": "Renewal Reminder Sheet",
           "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.zip"
         },
         {
@@ -92,6 +147,7 @@
           "title": "Store Import Prep Sheet",
           "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.zip"
         },
         {
@@ -99,6 +155,7 @@
           "title": "Simple Order Form Draft",
           "summary": "A draft sheet for designing a small order or request form before building it online.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.zip"
         },
         {
@@ -106,6 +163,7 @@
           "title": "Daily Proof Log",
           "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip"
         },
         {
@@ -113,6 +171,7 @@
           "title": "Tiny Launch Checklist",
           "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.zip"
         },
         {
@@ -120,32 +179,40 @@
           "title": "Micro Offer Pricing Sheet",
           "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.zip"
         }
       ]
     },
     {
       "slug": "home-admin",
-      "label": "Home Admin",
-      "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
-      "path": "offers/home-admin.html",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/home-admin.html",
-      "count": 11,
-      "support_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "external_support_destination": "https://gift.calmsprout.com",
-      "destination_type": "support",
-      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
-      "collection_bundle_path": "bundles/home-admin-collection.zip",
-      "collection_bundle_bytes": 178729,
-      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slug": "home-admin",
+      "label": "Home admin reset printables",
+      "short_label": "Home admin reset",
+      "description": "A buyer-intent page for households and freelancers who need paperwork, renewals, subscription, inventory, and appointment sheets that stay simple.",
+      "intent": "home admin printables, renewal trackers, budget reset sheets, and household paperwork templates",
+      "path": "use-cases/home-admin.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/home-admin.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/use-cases/home-admin.html",
       "topic_url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+      "offer_url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/home-admin.html",
+      "collection_bundle_path": "bundles/home-admin-collection.zip",
+      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
+      "count": 11,
+      "outcomes": [
+        "Choose one household admin area that needs a visible page.",
+        "Download the related pack instead of building a full spreadsheet system.",
+        "Use the collection bundle as a small home-admin starter folder."
+      ],
       "items": [
         {
           "id": "daily-autodigital-shelf:2026-05-31-client-intake-lite",
           "title": "Client Intake Lite",
           "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.zip"
         },
         {
@@ -153,6 +220,7 @@
           "title": "Appointment Prep Card",
           "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.zip"
         },
         {
@@ -160,6 +228,7 @@
           "title": "Downloads Folder Reset",
           "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.zip"
         },
         {
@@ -167,6 +236,7 @@
           "title": "Subscription Audit Sheet",
           "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.zip"
         },
         {
@@ -174,6 +244,7 @@
           "title": "Digital Declutter Sprint",
           "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.zip"
         },
         {
@@ -181,6 +252,7 @@
           "title": "Micro Budget Reset",
           "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.zip"
         },
         {
@@ -188,6 +260,7 @@
           "title": "Tiny Home Inventory Pack",
           "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.zip"
         },
         {
@@ -195,6 +268,7 @@
           "title": "Receipt Runner Ledger Pack",
           "summary": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.zip"
         },
         {
@@ -202,6 +276,7 @@
           "title": "Renewal Reminder Sheet",
           "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.zip"
         },
         {
@@ -209,6 +284,7 @@
           "title": "Daily Proof Log",
           "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip"
         },
         {
@@ -216,32 +292,40 @@
           "title": "Weekly Reset Board",
           "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.zip"
         }
       ]
     },
     {
       "slug": "low-energy-systems",
-      "label": "Low-Energy Systems",
-      "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
-      "path": "offers/low-energy-systems.html",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/low-energy-systems.html",
-      "count": 7,
-      "support_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
-      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
-      "external_support_destination": "https://gift.calmsprout.com",
-      "destination_type": "support",
-      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
-      "collection_bundle_path": "bundles/low-energy-systems-collection.zip",
-      "collection_bundle_bytes": 126366,
-      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slug": "low-energy-systems",
+      "label": "Low-energy planning systems",
+      "short_label": "Low-energy planning",
+      "description": "A buyer-intent page for disabled, neurodivergent, or overloaded workers who need gentle planning packs with fallback versions and shutdown notes.",
+      "intent": "low energy planner, neurodivergent task planning sheets, and gentle printable systems",
+      "path": "use-cases/low-energy-systems.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/low-energy-systems.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/use-cases/low-energy-systems.html",
       "topic_url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+      "offer_url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/low-energy-systems.html",
+      "collection_bundle_path": "bundles/low-energy-systems-collection.zip",
+      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
+      "count": 7,
+      "outcomes": [
+        "Pick one anchor task instead of an overbuilt plan.",
+        "Use a worksheet with a fallback version that still counts.",
+        "Keep the bundle available for uneven-energy weeks."
+      ],
       "items": [
         {
           "id": "daily-autodigital-shelf:2026-05-28-invoice-followup",
           "title": "Invoice Follow-Up Mini Kit",
           "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.zip"
         },
         {
@@ -249,6 +333,7 @@
           "title": "Simple Content Calendar",
           "summary": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.zip"
         },
         {
@@ -256,6 +341,7 @@
           "title": "Digital Declutter Sprint",
           "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.zip"
         },
         {
@@ -263,6 +349,7 @@
           "title": "Low-Energy Week Planner",
           "summary": "A gentle planning sheet for weeks where consistency matters more than intensity.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.zip"
         },
         {
@@ -270,6 +357,7 @@
           "title": "Calm Launch One-Page Kit",
           "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.zip"
         },
         {
@@ -277,6 +365,7 @@
           "title": "Focus Menu Builder",
           "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.zip"
         },
         {
@@ -284,32 +373,40 @@
           "title": "Two-Hour Workblock Planner",
           "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.zip"
         }
       ]
     },
     {
       "slug": "digital-product-prep",
-      "label": "Digital Product Prep",
-      "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
-      "path": "offers/digital-product-prep.html",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/digital-product-prep.html",
-      "count": 29,
-      "support_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "external_support_destination": "https://gift.calmsprout.com",
-      "destination_type": "support",
-      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
-      "collection_bundle_path": "bundles/digital-product-prep-collection.zip",
-      "collection_bundle_bytes": 427782,
-      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slug": "digital-product-prep",
+      "label": "Digital product launch prep worksheets",
+      "short_label": "Product launch prep",
+      "description": "A buyer-intent page for creators and small operators preparing listing copy, launch assets, import metadata, and product pages.",
+      "intent": "digital product launch checklist, listing copy templates, and store import prep worksheets",
+      "path": "use-cases/digital-product-prep.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/digital-product-prep.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/use-cases/digital-product-prep.html",
       "topic_url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+      "offer_url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/digital-product-prep.html",
+      "collection_bundle_path": "bundles/digital-product-prep-collection.zip",
+      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
+      "count": 29,
+      "outcomes": [
+        "Choose the product-prep worksheet that matches the next launch bottleneck.",
+        "Inspect seller-copy files before putting anything into a store.",
+        "Download the collection bundle for product listing preparation."
+      ],
       "items": [
         {
           "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
           "title": "One-Page SOP Builder",
           "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.zip"
         },
         {
@@ -317,6 +414,7 @@
           "title": "Listing Photo Checklist",
           "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.zip"
         },
         {
@@ -324,6 +422,7 @@
           "title": "Client Intake Lite",
           "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.zip"
         },
         {
@@ -331,6 +430,7 @@
           "title": "Appointment Prep Card",
           "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.zip"
         },
         {
@@ -338,6 +438,7 @@
           "title": "Downloads Folder Reset",
           "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.zip"
         },
         {
@@ -345,6 +446,7 @@
           "title": "Invoice Follow-Up Mini Kit",
           "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.zip"
         },
         {
@@ -352,6 +454,7 @@
           "title": "Simple Content Calendar",
           "summary": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.zip"
         },
         {
@@ -359,6 +462,7 @@
           "title": "Subscription Audit Sheet",
           "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.zip"
         },
         {
@@ -366,6 +470,7 @@
           "title": "Honest Follow-Up Draft Kit",
           "summary": "A non-spam template sheet for following up with one real person or lead.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.zip"
         },
         {
@@ -373,6 +478,7 @@
           "title": "Digital Declutter Sprint",
           "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.zip"
         },
         {
@@ -380,6 +486,7 @@
           "title": "Micro Budget Reset",
           "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.zip"
         },
         {
@@ -387,6 +494,7 @@
           "title": "Tiny Home Inventory Pack",
           "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.zip"
         },
         {
@@ -394,6 +502,7 @@
           "title": "Low-Energy Week Planner",
           "summary": "A gentle planning sheet for weeks where consistency matters more than intensity.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.zip"
         },
         {
@@ -401,6 +510,7 @@
           "title": "Receipt Runner Ledger Pack",
           "summary": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.zip"
         },
         {
@@ -408,6 +518,7 @@
           "title": "Calm Launch One-Page Kit",
           "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.zip"
         },
         {
@@ -415,6 +526,7 @@
           "title": "Landing Page Copy Blocks",
           "summary": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.zip"
         },
         {
@@ -422,6 +534,7 @@
           "title": "Renewal Reminder Sheet",
           "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.zip"
         },
         {
@@ -429,6 +542,7 @@
           "title": "Link-in-Bio Audit",
           "summary": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.zip"
         },
         {
@@ -436,6 +550,7 @@
           "title": "Focus Menu Builder",
           "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.zip"
         },
         {
@@ -443,6 +558,7 @@
           "title": "Store Import Prep Sheet",
           "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.zip"
         },
         {
@@ -450,6 +566,7 @@
           "title": "Two-Hour Workblock Planner",
           "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.zip"
         },
         {
@@ -457,6 +574,7 @@
           "title": "Simple Order Form Draft",
           "summary": "A draft sheet for designing a small order or request form before building it online.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.zip"
         },
         {
@@ -464,6 +582,7 @@
           "title": "Daily Proof Log",
           "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip"
         },
         {
@@ -471,6 +590,7 @@
           "title": "Project Rescue Map",
           "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.zip"
         },
         {
@@ -478,6 +598,7 @@
           "title": "Email Triage Sprint",
           "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.zip"
         },
         {
@@ -485,6 +606,7 @@
           "title": "Decision Parking Lot",
           "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.zip"
         },
         {
@@ -492,6 +614,7 @@
           "title": "Tiny Launch Checklist",
           "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.zip"
         },
         {
@@ -499,6 +622,7 @@
           "title": "Micro Offer Pricing Sheet",
           "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.zip"
         },
         {
@@ -506,32 +630,40 @@
           "title": "Weekly Reset Board",
           "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.zip"
         }
       ]
     },
     {
       "slug": "cleanup-and-reset",
-      "label": "Cleanup And Reset",
-      "description": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "path": "offers/cleanup-and-reset.html",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/cleanup-and-reset.html",
-      "count": 8,
-      "support_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "external_support_destination": "https://gift.calmsprout.com",
-      "destination_type": "support",
-      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
-      "collection_bundle_path": "bundles/cleanup-and-reset-collection.zip",
-      "collection_bundle_bytes": 139361,
-      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slug": "cleanup-and-reset",
+      "label": "Cleanup and reset sprint worksheets",
+      "short_label": "Cleanup reset",
+      "description": "A buyer-intent page for people who need short reset worksheets for files, folders, receipts, stalled projects, and digital clutter.",
+      "intent": "digital declutter worksheets, reset sprint printables, and project cleanup checklists",
+      "path": "use-cases/cleanup-and-reset.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/cleanup-and-reset.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/use-cases/cleanup-and-reset.html",
       "topic_url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html",
+      "offer_url": "https://x26dotapp.github.io/daily-autodigital-shelf/offers/cleanup-and-reset.html",
+      "collection_bundle_path": "bundles/cleanup-and-reset-collection.zip",
+      "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
+      "count": 8,
+      "outcomes": [
+        "Choose one cleanup surface that can be finished without a marathon.",
+        "Use a public worksheet to make the next visible decision.",
+        "Keep the collection bundle ready for repeated reset sessions."
+      ],
       "items": [
         {
           "id": "daily-autodigital-shelf:2026-05-29-download-folder-reset",
           "title": "Downloads Folder Reset",
           "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.zip"
         },
         {
@@ -539,6 +671,7 @@
           "title": "Digital Declutter Sprint",
           "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.zip"
         },
         {
@@ -546,6 +679,7 @@
           "title": "Micro Budget Reset",
           "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.zip"
         },
         {
@@ -553,6 +687,7 @@
           "title": "Receipt Runner Ledger Pack",
           "summary": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.zip"
         },
         {
@@ -560,6 +695,7 @@
           "title": "Daily Proof Log",
           "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip"
         },
         {
@@ -567,6 +703,7 @@
           "title": "Project Rescue Map",
           "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.zip"
         },
         {
@@ -574,6 +711,7 @@
           "title": "Email Triage Sprint",
           "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.zip"
         },
         {
@@ -581,6 +719,7 @@
           "title": "Weekly Reset Board",
           "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
           "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
           "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.zip"
         }
       ]

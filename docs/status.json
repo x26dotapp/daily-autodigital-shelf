@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T12:43:09+00:00",
+  "generated_at": "2026-06-02T13:18:38+00:00",
   "today": "2026-06-02",
   "today_pack": "One-Page SOP Builder",
   "today_path": "packs/2026-06-02-one-page-sop/",
@@ -26,7 +26,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 29,
-  "bundle_bytes": 518112,
+  "bundle_bytes": 543481,
   "pack_download_count": 29,
   "pack_download_page_count": 29,
   "pack_download_bytes": 205706,
@@ -42,6 +42,24 @@
   "topic_item_count": 70,
   "topics_index": "topics/index.html",
   "topics_json": "topics/topics.json",
+  "use_case_pages_ready": true,
+  "use_case_page_count": 5,
+  "use_cases_index": "use-cases/index.html",
+  "use_cases_json": "use-cases/use-cases.json",
+  "use_case_pages": [
+    "use-cases/small-business-ops.html",
+    "use-cases/home-admin.html",
+    "use-cases/low-energy-systems.html",
+    "use-cases/digital-product-prep.html",
+    "use-cases/cleanup-and-reset.html"
+  ],
+  "use_case_branded_urls": [
+    "https://www.calmsprout.com/daily-shelf/use-cases/small-business-ops.html",
+    "https://www.calmsprout.com/daily-shelf/use-cases/home-admin.html",
+    "https://www.calmsprout.com/daily-shelf/use-cases/low-energy-systems.html",
+    "https://www.calmsprout.com/daily-shelf/use-cases/digital-product-prep.html",
+    "https://www.calmsprout.com/daily-shelf/use-cases/cleanup-and-reset.html"
+  ],
   "policy_pages_ready": true,
   "policy_page_count": 4,
   "policy_pages": [
@@ -84,7 +102,7 @@
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip"
   ],
-  "collection_bundle_bytes": 1064282,
+  "collection_bundle_bytes": 1107916,
   "collection_support_intent_urls": [
     "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
     "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
