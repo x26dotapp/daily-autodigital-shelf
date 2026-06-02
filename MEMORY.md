@@ -537,6 +537,29 @@
   `product_checkout_ready: false`, and `store_connected: false`. This is
   stronger unattended evidence, not payment or daily revenue proof.
 
+- 2026-06-02 revenue-proof monitor: Daily Shelf commit `91b9169` (`Add
+  revenue proof monitor`) adds `tools/sync_revenue_proofs.py`, writes
+  `state/revenue-proof-snapshot.json`, publishes `revenue-proof.html` and
+  `revenue-proof.json`, wires the sync into `run-daily.ps1` and the GitHub
+  fallback workflow, and keeps raw payment export files ignored under
+  `state/revenue-proofs/inbox`. The public proof surface publishes sanitized
+  totals plus hashed receipt IDs only. GitHub Pages run `26840240690`
+  succeeded. CalmSprout commits `61add7b` (`Proxy Daily Shelf revenue proof`)
+  and `ee8e356` (`Record revenue proof deploy`) deployed Worker version
+  `66751d6b-3da7-42df-87cb-7707a8b092a3`, exposing
+  `/daily-shelf/revenue-proof`, `/daily-shelf/revenue-proof.html`, and
+  `/daily-shelf/revenue-proof.json`. `verify-system.ps1` passed with
+  `files_checked: 74`, `revenue_proof_ready: true`,
+  `revenue_proof_accepted_receipt_count: 0`,
+  `revenue_proof_today_revenue_cents: 0`,
+  `actual_daily_revenue_proven: false`, `product_checkout_ready: false`, and
+  `store_connected: false`. Live GitHub Pages and CalmSprout checks confirmed
+  zero accepted receipts, zero today revenue cents, no proven daily revenue,
+  and no product checkout. IndexNow accepted 9 GitHub Pages URLs and 12
+  CalmSprout URLs. Support/download metrics remain `total_support_intent_clicks:
+  4` and `total_download_interest: 0`. This is revenue-proof guardrail
+  automation, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
