@@ -5248,7 +5248,9 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
     manifests = read_manifests()
     monetization = config["monetization"]
     support_url = str(monetization.get("support_url") or "").strip()
-    support_intent_url = branded_url(config, "support/go") or support_url
+    general_support_intent_url = branded_url(config, "support/go") or support_url
+    sponsor_support_intent_url = branded_url(config, "sponsor/support/go") or general_support_intent_url
+    commercial_support_intent_url = branded_url(config, "commercial-use/support/go") or general_support_intent_url
     sponsor_page_path = "sponsor.html"
     commercial_page_path = "commercial-use.html"
     kit_path = "sponsor-kit.json"
@@ -5274,20 +5276,21 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
         if support_url
         else "No external store, support, or affiliate destination is connected yet."
     )
-    support_cta = (
-        f"""<a class="button primary" href="{esc(support_intent_url)}">Open support page</a>"""
-        if support_intent_url
-        else """<a class="button primary" href="./support.html">Open support page</a>"""
-    )
-    tier_cards = "\n".join(
-        f"""<article class="tier-card">
+    def support_cta(intent_url: str, label: str = "Open support page") -> str:
+        if intent_url:
+            return f"""<a class="button primary" href="{esc(intent_url)}">{esc(label)}</a>"""
+        return """<a class="button primary" href="./support.html">Open support page</a>"""
+
+    def tier_cards_for(intent_url: str) -> str:
+        return "\n".join(
+            f"""<article class="tier-card">
           <span class="tier-amount">{esc(tier.get("amount", ""))}</span>
           <h3>{esc(tier.get("label", "Support level"))}</h3>
           <p>{esc(tier.get("description", ""))}</p>
-          {support_cta}
+          {support_cta(intent_url)}
         </article>"""
-        for tier in sponsor_tiers
-    )
+            for tier in sponsor_tiers
+        )
     recent_rows = "\n".join(
         f"""<article class="ledger-row">
           <strong>{esc(item["date_label"])}</strong>
@@ -5318,7 +5321,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
                 },
                 "potentialAction": {
                     "@type": "DonateAction",
-                    "target": support_intent_url,
+                    "target": sponsor_support_intent_url,
                     "name": "Support the shelf",
                 },
             },
@@ -5360,7 +5363,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
                 },
                 "potentialAction": {
                     "@type": "DonateAction",
-                    "target": support_intent_url,
+                    "target": commercial_support_intent_url,
                     "name": "Support commercial use",
                 },
             },
@@ -5396,7 +5399,10 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
         "branded_url": branded_url(config, "sponsor"),
         "commercial_use_url": commercial_url,
         "branded_commercial_use_url": branded_url(config, "commercial-use"),
-        "support_intent_url": support_intent_url,
+        "support_intent_url": sponsor_support_intent_url,
+        "sponsor_support_intent_url": sponsor_support_intent_url,
+        "commercial_support_intent_url": commercial_support_intent_url,
+        "general_support_intent_url": general_support_intent_url,
         "checkout_boundary": checkout_boundary,
         "support_connected": bool(support_url),
         "store_connected": bool(monetization.get("store_url")),
@@ -5407,7 +5413,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
                 "position": index + 1,
                 "name": tier.get("label", "Support level"),
                 "description": tier.get("description", ""),
-                "url": support_intent_url,
+                "url": sponsor_support_intent_url,
             }
             for index, tier in enumerate(sponsor_tiers)
         ],
@@ -5451,7 +5457,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
           <h1>Sponsor the unattended public worksheet shelf.</h1>
           <p>Daily Autodigital Shelf publishes reusable worksheets, templates, guide pages, feeds, and bundles without manual delivery. Sponsorship is voluntary support through the connected external path.</p>
           <div class="actions">
-            {support_cta}
+            {support_cta(sponsor_support_intent_url)}
             <a class="button" href="./commercial-use.html">Commercial use terms</a>
             <a class="button" href="./sponsor-kit.json">Sponsor kit JSON</a>
             <a class="button" href="./bundles/starter-archive.zip">Download starter ZIP</a>
@@ -5483,7 +5489,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
           <p>All buttons route to the connected support path. Amount selection happens externally, not on this static page.</p>
         </div>
         <div class="tier-grid">
-          {tier_cards}
+          {tier_cards_for(sponsor_support_intent_url)}
         </div>
       </section>
       <section>
@@ -5545,7 +5551,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
           <h1>Use the templates internally. Support the shelf if they help.</h1>
           <p>The public license allows personal and internal business use. The files should not be resold, redistributed, uploaded as-is, or claimed as original work.</p>
           <div class="actions">
-            {support_cta}
+            {support_cta(commercial_support_intent_url)}
             <a class="button" href="./license.html">Read license</a>
             <a class="button" href="./templates/">Browse templates</a>
             <a class="button" href="./guides/">Browse guides</a>
@@ -5577,7 +5583,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
           <p>These suggested levels keep support unattended and low-friction while making the buyer-intent path explicit.</p>
         </div>
         <div class="tier-grid">
-          {tier_cards}
+          {tier_cards_for(commercial_support_intent_url)}
         </div>
       </section>
       <section>
@@ -5614,7 +5620,10 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
         "kit_path": kit_path,
         "kit_url": pack_url(config, kit_path),
         "kit_branded_url": branded_url(config, "sponsor-kit.json"),
-        "support_intent_url": support_intent_url,
+        "support_intent_url": sponsor_support_intent_url,
+        "sponsor_support_intent_url": sponsor_support_intent_url,
+        "commercial_support_intent_url": commercial_support_intent_url,
+        "general_support_intent_url": general_support_intent_url,
         "tier_count": len(sponsor_tiers),
     }
 
@@ -6010,7 +6019,9 @@ def write_status(
         "sponsor_kit_json": sponsor_pages.get("kit_path", "sponsor-kit.json"),
         "sponsor_kit_url": sponsor_pages.get("kit_url", pack_url(config, "sponsor-kit.json")),
         "sponsor_kit_branded_url": sponsor_pages.get("kit_branded_url", branded_url(config, "sponsor-kit.json")),
-        "sponsor_support_intent_url": sponsor_pages.get("support_intent_url", branded_url(config, "support/go") or support_url),
+        "sponsor_support_intent_url": sponsor_pages.get("sponsor_support_intent_url", sponsor_pages.get("support_intent_url", branded_url(config, "support/go") or support_url)),
+        "commercial_support_intent_url": sponsor_pages.get("commercial_support_intent_url", branded_url(config, "commercial-use/support/go") or support_url),
+        "general_support_intent_url": sponsor_pages.get("general_support_intent_url", branded_url(config, "support/go") or support_url),
         "sponsor_tier_count": int(sponsor_pages.get("tier_count", 0)),
         "offer_pages_ready": bool(offers.get("ready")),
         "offer_page_count": int(offers.get("count", 0)),

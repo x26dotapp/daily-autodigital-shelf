@@ -7,7 +7,10 @@
   "branded_url": "https://www.calmsprout.com/daily-shelf/sponsor",
   "commercial_use_url": "https://x26dotapp.github.io/daily-autodigital-shelf/commercial-use.html",
   "branded_commercial_use_url": "https://www.calmsprout.com/daily-shelf/commercial-use",
-  "support_intent_url": "https://www.calmsprout.com/daily-shelf/support/go",
+  "support_intent_url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go",
+  "sponsor_support_intent_url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go",
+  "commercial_support_intent_url": "https://www.calmsprout.com/daily-shelf/commercial-use/support/go",
+  "general_support_intent_url": "https://www.calmsprout.com/daily-shelf/support/go",
   "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary through the connected support path.",
   "support_connected": true,
   "store_connected": false,
@@ -18,35 +21,35 @@
       "position": 1,
       "name": "Small thank-you",
       "description": "A light support nudge for one useful worksheet.",
-      "url": "https://www.calmsprout.com/daily-shelf/support/go"
+      "url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Bundle supporter",
       "description": "A fair support level for the starter archive.",
-      "url": "https://www.calmsprout.com/daily-shelf/support/go"
+      "url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Keep it running",
       "description": "Helps keep daily publishing, hosting, and maintenance alive.",
-      "url": "https://www.calmsprout.com/daily-shelf/support/go"
+      "url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go"
     },
     {
       "@type": "ListItem",
       "position": 4,
       "name": "Commercial-use supporter",
       "description": "A practical support level for a small team using the worksheets internally.",
-      "url": "https://www.calmsprout.com/daily-shelf/support/go"
+      "url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go"
     },
     {
       "@type": "ListItem",
       "position": 5,
       "name": "Shelf sponsor",
       "description": "A stronger contribution for keeping the unattended public shelf online.",
-      "url": "https://www.calmsprout.com/daily-shelf/support/go"
+      "url": "https://www.calmsprout.com/daily-shelf/sponsor/support/go"
     }
   ],
   "items": [

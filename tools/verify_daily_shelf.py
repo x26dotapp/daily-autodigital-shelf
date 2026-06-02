@@ -215,14 +215,16 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Download page", "Topics", "Use cases", "Templates", "Guides", "Commercial use", "Sponsor", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "Commercial use", "Sponsor", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "Commercial use", "Sponsor", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
-    require_contains(DOCS / "commercial-use.html", ["Commercial use", "Use the templates internally", "Read license", "Browse templates", "Browse guides", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
-    require_contains(DOCS / "sponsor.html", ["Sponsor", "Support ladder", "Sponsor kit JSON", "sponsor-kit.json", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
+    require_contains(DOCS / "commercial-use.html", ["Commercial use", "Use the templates internally", "Read license", "Browse templates", "Browse guides", "https://www.calmsprout.com/daily-shelf/commercial-use/support/go", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
+    require_contains(DOCS / "sponsor.html", ["Sponsor", "Support ladder", "Sponsor kit JSON", "sponsor-kit.json", "https://www.calmsprout.com/daily-shelf/sponsor/support/go", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
     sponsor_kit = read_json(DOCS / "sponsor-kit.json")
     if int(sponsor_kit.get("numberOfItems") or 0) < 3:
         fail("sponsor-kit.json support tier count is too low")
-    if sponsor_kit.get("support_intent_url") != "https://www.calmsprout.com/daily-shelf/support/go":
-        fail("sponsor-kit.json missing branded support-intent URL")
-    require_contains(DOCS / "sponsor-kit.json", ["Daily Autodigital Shelf Sponsor Kit", "Commercial-use supporter", "Product checkout is not connected", "support_intent_url"])
+    if sponsor_kit.get("support_intent_url") != "https://www.calmsprout.com/daily-shelf/sponsor/support/go":
+        fail("sponsor-kit.json missing branded sponsor support-intent URL")
+    if sponsor_kit.get("commercial_support_intent_url") != "https://www.calmsprout.com/daily-shelf/commercial-use/support/go":
+        fail("sponsor-kit.json missing branded commercial support-intent URL")
+    require_contains(DOCS / "sponsor-kit.json", ["Daily Autodigital Shelf Sponsor Kit", "Commercial-use supporter", "Product checkout is not connected", "sponsor_support_intent_url", "commercial_support_intent_url"])
     require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Commercial use", "Sponsor kit", "Offers", "Support", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "download_page_url", "preview_url", "price_hint", "support_page_url", "pay_what_you_can_url", "branded_product_url", "branded_support_url", "branded_support_intent_url", "monetization_destination_url", "topic_urls", manifest["title"]])
     require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Sponsor page", "Commercial use page", "Sponsor Kit JSON", "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Templates", "Guides", "Product checkout is not connected"])
@@ -542,7 +544,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/commercial-use", "/daily-shelf/sponsor", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor/support/go", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
@@ -709,8 +711,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json missing commercial_use_branded_url")
     if status.get("sponsor_kit_branded_url") != "https://www.calmsprout.com/daily-shelf/sponsor-kit.json":
         fail("status.json missing sponsor_kit_branded_url")
-    if status.get("sponsor_support_intent_url") != "https://www.calmsprout.com/daily-shelf/support/go":
+    if status.get("sponsor_support_intent_url") != "https://www.calmsprout.com/daily-shelf/sponsor/support/go":
         fail("status.json missing sponsor_support_intent_url")
+    if status.get("commercial_support_intent_url") != "https://www.calmsprout.com/daily-shelf/commercial-use/support/go":
+        fail("status.json missing commercial_support_intent_url")
+    if status.get("general_support_intent_url") != "https://www.calmsprout.com/daily-shelf/support/go":
+        fail("status.json missing general_support_intent_url")
     if int(status.get("sponsor_tier_count") or 0) < 5:
         fail(f"status.json sponsor_tier_count is {status.get('sponsor_tier_count')}, expected at least 5")
     if not status.get("offer_pages_ready"):
