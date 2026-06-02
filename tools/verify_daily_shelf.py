@@ -69,10 +69,13 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             fail(f"manifest missing {key}")
 
     pack_cta_needle = "Store link not connected"
+    action_needle = "Store link not connected"
     if status.get("store_connected"):
         pack_cta_needle = "Buy or download from store"
+        action_needle = "BuyAction"
     elif status.get("support_connected"):
         pack_cta_needle = "Support this shelf"
+        action_needle = "DonateAction"
 
     require_contains(
         DOCS / "index.html",
@@ -114,6 +117,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "twitter:card",
             "contentUrl",
             "encodingFormat",
+            action_needle,
             "Related Topics",
             "topic-link",
         ],
@@ -135,13 +139,13 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "feed.xml", ["<rss version=\"2.0\">", "<channel>", manifest["title"], "application/rss+xml"])
     require_contains(DOCS / "atom.xml", ["<feed xmlns=\"http://www.w3.org/2005/Atom\">", "<entry>", manifest["title"], "application/atom+xml"])
     require_file(DOCS / "catalog.json", 100)
-    require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", "topic_urls", manifest["title"]])
+    require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", "support_page_url", "pay_what_you_can_url", "monetization_destination_url", "topic_urls", manifest["title"]])
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "Topics", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Offers", "Support", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "preview_url", "price_hint", "topic_urls", manifest["title"]])
+    require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "preview_url", "price_hint", "support_page_url", "pay_what_you_can_url", "monetization_destination_url", "topic_urls", manifest["title"]])
     require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Monetization destination", "Product checkout is not connected"])
     require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Machine-Readable Files", "status.json"])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
@@ -250,7 +254,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(DOCS / ".nojekyll", 0)
 
     catalog = read_json(DOCS / "catalog.json")
-    if not any(item.get("id") == manifest["id"] for item in catalog.get("items", [])):
+    catalog_item = next((item for item in catalog.get("items", []) if item.get("id") == manifest["id"]), None)
+    if not catalog_item:
         fail(f"catalog.json does not contain manifest id: {manifest['id']}")
 
     ledger_path = STATE / "ledger.jsonl"
@@ -278,6 +283,21 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         require_contains(DOCS / "llms.txt", [destination_url])
         require_contains(DOCS / "llms-full.txt", [destination_url])
         require_contains(pack_dir / "index.html", [destination_url])
+        if catalog_item.get("monetization_destination_url") != destination_url:
+            fail("catalog.json current item missing monetization destination URL")
+        if catalog_item.get("support_page_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/support.html":
+            fail("catalog.json current item missing support_page_url")
+        if catalog_item.get("pay_what_you_can_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html":
+            fail("catalog.json current item missing pay_what_you_can_url")
+        import_row = next((item for item in import_json.get("items", []) if item.get("sku", "").endswith(manifest["id"].split(":")[-1])), None)
+        if not import_row:
+            fail("store-listings.json missing current item")
+        if import_row.get("monetization_destination_url") != destination_url:
+            fail("store-listings.json current item missing monetization destination URL")
+        if import_row.get("support_page_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/support.html":
+            fail("store-listings.json current item missing support_page_url")
+        if import_row.get("pay_what_you_can_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html":
+            fail("store-listings.json current item missing pay_what_you_can_url")
     if not status.get("bundle_ready"):
         fail("status.json reports bundle_ready=false")
     if int(status.get("bundle_pack_count") or 0) < min_pack_count:
@@ -306,8 +326,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json policy_page_count is {status.get('policy_page_count')}, expected at least 4")
     if not status.get("support_page_ready") or status.get("support_page") != "support.html":
         fail("status.json missing support_page_ready/support.html")
+    if status.get("support_page_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/support.html":
+        fail("status.json missing support_page_url")
     if not status.get("pay_what_you_can_ready") or status.get("pay_what_you_can_page") != "pay-what-you-can.html":
         fail("status.json missing pay_what_you_can_ready/pay-what-you-can.html")
+    if status.get("pay_what_you_can_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html":
+        fail("status.json missing pay_what_you_can_url")
     if int(status.get("support_tier_count") or 0) < 3:
         fail(f"status.json support_tier_count is {status.get('support_tier_count')}, expected at least 3")
     if not status.get("offer_pages_ready"):

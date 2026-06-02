@@ -680,6 +680,8 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
     monetization = config["monetization"]
     store_url = monetization.get("store_url") or ""
     support_url = monetization.get("support_url") or ""
+    destination_url = store_url or support_url
+    destination_type = "store" if store_url else ("support" if support_url else "none")
     buy_label = "Store link not connected"
     buy_href = "../../#setup"
     if monetization.get("enabled") and store_url:
@@ -718,6 +720,12 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
         },
         "url": canonical_url,
     }
+    if destination_url:
+        structured_data["potentialAction"] = {
+            "@type": "BuyAction" if destination_type == "store" else "DonateAction",
+            "target": destination_url,
+            "name": "Open product checkout" if destination_type == "store" else "Support this shelf",
+        }
     worksheet_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["worksheets"])
     checklist_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["checklist"])
     topic_links = " ".join(
@@ -1175,6 +1183,13 @@ def listing_keywords(item: dict[str, Any]) -> str:
 
 def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
     rows = []
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "")
+    support_url = str(monetization.get("support_url") or "")
+    destination_url = store_url or support_url
+    destination_type = "store" if store_url else ("support" if support_url else "none")
+    support_page_url = pack_url(config, "support.html")
+    pay_what_you_can_url = pack_url(config, "pay-what-you-can.html")
     for item in read_manifests():
         rows.append(
             {
@@ -1190,6 +1205,12 @@ def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
                 "checklist_url": pack_url(config, item["checklist"]),
                 "cover_url": pack_url(config, item["cover"]),
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "support_page_url": support_page_url,
+                "pay_what_you_can_url": pay_what_you_can_url,
+                "monetization_destination_type": destination_type,
+                "monetization_destination_url": destination_url,
+                "store_connected": bool(store_url),
+                "support_connected": bool(support_url),
                 "topic_labels": "|".join(record["label"] for record in topic_records_for_item(item, config)),
                 "topic_urls": "|".join(record["url"] for record in topic_records_for_item(item, config)),
                 "tags": listing_keywords(item),
@@ -1431,6 +1452,12 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         "checklist_url",
         "cover_url",
         "seller_copy_url",
+        "support_page_url",
+        "pay_what_you_can_url",
+        "monetization_destination_type",
+        "monetization_destination_url",
+        "store_connected",
+        "support_connected",
         "topic_labels",
         "topic_urls",
         "tags",
@@ -2607,6 +2634,13 @@ def render_feed(config: dict[str, Any]) -> dict[str, Any]:
 def render_catalog(config: dict[str, Any]) -> None:
     manifests = read_manifests()
     catalog_items = []
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "")
+    support_url = str(monetization.get("support_url") or "")
+    destination_url = store_url or support_url
+    destination_type = "store" if store_url else ("support" if support_url else "none")
+    support_page_url = pack_url(config, "support.html")
+    pay_what_you_can_url = pack_url(config, "pay-what-you-can.html")
     for item in manifests:
         catalog_items.append(
             {
@@ -2623,6 +2657,12 @@ def render_catalog(config: dict[str, Any]) -> None:
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
                 "download_url": pack_url(config, pack_download_path(item)),
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
+                "support_page_url": support_page_url,
+                "pay_what_you_can_url": pay_what_you_can_url,
+                "monetization_destination_type": destination_type,
+                "monetization_destination_url": destination_url,
+                "store_connected": bool(store_url),
+                "support_connected": bool(support_url),
                 "topic_urls": "|".join(record["url"] for record in topic_records_for_item(item, config)),
                 "tags": listing_keywords(item),
                 "monetization_enabled": bool(config["monetization"].get("enabled")),
@@ -2649,6 +2689,12 @@ def render_catalog(config: dict[str, Any]) -> None:
         "seller_copy_url",
         "download_url",
         "starter_bundle_url",
+        "support_page_url",
+        "pay_what_you_can_url",
+        "monetization_destination_type",
+        "monetization_destination_url",
+        "store_connected",
+        "support_connected",
         "topic_urls",
         "tags",
         "monetization_enabled",
@@ -3382,8 +3428,10 @@ def write_status(
         "policy_pages": policies.get("paths", []),
         "support_page_ready": bool(support.get("page_path")),
         "support_page": support.get("page_path", "support.html"),
+        "support_page_url": pack_url(config, support.get("page_path", "support.html")),
         "pay_what_you_can_ready": bool(pay_page.get("page_path")),
         "pay_what_you_can_page": pay_page.get("page_path", "pay-what-you-can.html"),
+        "pay_what_you_can_url": pack_url(config, pay_page.get("page_path", "pay-what-you-can.html")),
         "support_tier_count": int(pay_page.get("tier_count", 0)),
         "offer_pages_ready": bool(offers.get("ready")),
         "offer_page_count": int(offers.get("count", 0)),
