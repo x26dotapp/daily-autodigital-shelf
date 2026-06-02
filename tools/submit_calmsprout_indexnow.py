@@ -78,6 +78,52 @@ def route_url(path: str) -> str:
     return f"{BASE_URL}/{path.lstrip('/')}"
 
 
+def clean_pack_slug(value: str) -> str:
+    slug = str(value or "").strip().lower()
+    allowed = set("abcdefghijklmnopqrstuvwxyz0123456789-")
+    first_allowed = set("abcdefghijklmnopqrstuvwxyz0123456789")
+    if len(slug) < 4 or slug[0] not in first_allowed or not all(char in allowed for char in slug):
+        return ""
+    return slug
+
+
+def pack_slug_from_item(item: dict[str, Any]) -> str:
+    candidates: list[str] = []
+    item_id = str(item.get("id") or "")
+    if ":" in item_id:
+        candidates.append(item_id.rsplit(":", 1)[-1])
+    for key in ("url", "download_url"):
+        try:
+            parsed = urllib.parse.urlparse(str(item.get(key) or ""))
+        except ValueError:
+            continue
+        parts = [urllib.parse.unquote(part) for part in parsed.path.split("/") if part]
+        if "packs" in parts:
+            index = parts.index("packs")
+            if index + 1 < len(parts):
+                candidates.append(parts[index + 1])
+        if "downloads" in parts:
+            index = parts.index("downloads")
+            if index + 1 < len(parts):
+                candidates.append(parts[index + 1].removesuffix(".zip"))
+    for candidate in candidates:
+        slug = clean_pack_slug(candidate)
+        if slug:
+            return slug
+    return ""
+
+
+def catalog_product_routes() -> list[tuple[str, str]]:
+    catalog = read_json(DOCS / "catalog.json")
+    routes: list[tuple[str, str]] = []
+    for item in catalog.get("items", []):
+        if isinstance(item, dict):
+            slug = pack_slug_from_item(item)
+            if slug:
+                routes.append((f"/daily-shelf/products/{slug}", "catalog.json"))
+    return routes
+
+
 def file_signature(path: Path) -> str:
     if not path.exists():
         return "missing"
@@ -108,6 +154,8 @@ def collect_candidates(include_static: bool) -> list[dict[str, str]]:
 
     candidates: list[dict[str, str]] = []
     for route_path, source_rel_path in DYNAMIC_ROUTE_SOURCES:
+        add_candidate(candidates, route_path, source_rel_path)
+    for route_path, source_rel_path in catalog_product_routes():
         add_candidate(candidates, route_path, source_rel_path)
     if include_static:
         for route_path, source_rel_path in STATIC_ROUTE_SOURCES:
