@@ -1,0 +1,78 @@
+{
+  "kind": "daily-shelf-daily-offer",
+  "generated_at": "2026-06-02T18:49:33+00:00",
+  "today": "2026-06-02",
+  "page_path": "daily-offer.html",
+  "json_path": "daily-offer.json",
+  "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/daily-offer.html",
+  "json_url": "https://x26dotapp.github.io/daily-autodigital-shelf/daily-offer.json",
+  "branded_page_url": "https://www.calmsprout.com/daily-shelf/daily-offer.html",
+  "branded_json_url": "https://www.calmsprout.com/daily-shelf/daily-offer.json",
+  "title": "Small Business Ops collection",
+  "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
+  "state": "Voluntary support offer",
+  "promoted": {
+    "type": "collection",
+    "slug": "small-business-ops",
+    "metric_slug": "collection-small-business-ops",
+    "title": "Small Business Ops collection",
+    "label": "Small Business Ops",
+    "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
+    "support_intent_clicks": 1,
+    "support_intent_clicks_by_day": {
+      "2026-06-02": 1
+    },
+    "download_interest": 0,
+    "download_interest_by_day": {},
+    "signal_score": 5,
+    "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
+    "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
+    "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
+    "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
+    "reason": "highest weighted signal from aggregate support intent and download interest",
+    "promotion_mode": "support_and_download_interest",
+    "promotion_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html"
+  },
+  "promotion_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
+  "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
+  "action_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
+  "action_type": "DonateAction",
+  "action_label": "Support this path",
+  "support_tiers": [
+    {
+      "label": "Small thank-you",
+      "amount": "$3",
+      "description": "A light support nudge for one useful worksheet."
+    },
+    {
+      "label": "Bundle supporter",
+      "amount": "$9",
+      "description": "A fair support level for the starter archive."
+    },
+    {
+      "label": "Keep it running",
+      "amount": "$21",
+      "description": "Helps keep daily publishing, hosting, and maintenance alive."
+    }
+  ],
+  "support_signal_page": "support-signal.html",
+  "support_signal_json": "support-signal.json",
+  "checkout_readiness_page": "checkout-readiness.html",
+  "checkout_readiness_json": "checkout-readiness.json",
+  "revenue_proof_page": "revenue-proof.html",
+  "revenue_proof_json": "revenue-proof.json",
+  "store_connected": false,
+  "support_connected": true,
+  "product_checkout_ready": false,
+  "actual_daily_revenue_proven": false,
+  "today_revenue_usd": "0.00",
+  "checkout_boundary": "Product checkout is not connected; this offer routes to voluntary support only.",
+  "revenue_boundary": "Daily revenue proof is not available for 2026-06-02. Today recorded revenue: $0.00.",
+  "privacy": "Aggregate support/download signal only. This page does not store buyer identity or payment data.",
+  "guardrails": [
+    "No guaranteed-income claims",
+    "No hidden checkout",
+    "No gated delivery while product checkout is disconnected",
+    "No revenue proof without accepted receipt evidence"
+  ]
+}

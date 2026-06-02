@@ -37,6 +37,8 @@ CHECKOUT_READINESS_JSON_PATH = "checkout-readiness.json"
 CHECKOUT_READINESS_PAGE_PATH = "checkout-readiness.html"
 REVENUE_PROOF_JSON_PATH = "revenue-proof.json"
 REVENUE_PROOF_PAGE_PATH = "revenue-proof.html"
+DAILY_OFFER_JSON_PATH = "daily-offer.json"
+DAILY_OFFER_PAGE_PATH = "daily-offer.html"
 DEFAULT_SUPPORT_METRICS_URL = "https://www.calmsprout.com/daily-shelf/support-metrics.json"
 DEFAULT_DOWNLOAD_METRICS_URL = "https://www.calmsprout.com/daily-shelf/download-metrics.json"
 
@@ -3284,6 +3286,248 @@ def render_revenue_proof(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def render_daily_offer(
+    config: dict[str, Any],
+    support_signal: dict[str, Any],
+    checkout_readiness: dict[str, Any],
+    revenue_proof: dict[str, Any],
+) -> dict[str, Any]:
+    manifests = read_manifests()
+    latest = manifests[0] if manifests else None
+    today = str(latest.get("date") if latest else dt.datetime.now().astimezone().date().isoformat())
+    promoted = support_signal.get("promoted") if isinstance(support_signal.get("promoted"), dict) else {}
+    store_url = safe_public_url(config["monetization"].get("store_url"))
+    support_url = safe_public_url(config["monetization"].get("support_url"))
+    promotion_url = signal_promotion_url(promoted)
+    support_intent_url = safe_public_url(promoted.get("support_intent_url")) or branded_url(config, "support/go") or support_url
+    action_url = store_url or support_intent_url or support_url
+    action_type = "BuyAction" if store_url else ("DonateAction" if support_intent_url or support_url else "ViewAction")
+    action_label = "Open product checkout" if store_url else ("Support this path" if action_url else "Open support setup")
+    title = str(promoted.get("title") or (latest or {}).get("title") or "Daily Shelf support offer")
+    summary = str(promoted.get("summary") or (latest or {}).get("summary") or config["site"]["tagline"])
+    page_url = pack_url(config, DAILY_OFFER_PAGE_PATH)
+    json_url = pack_url(config, DAILY_OFFER_JSON_PATH)
+    branded_page_url = branded_url(config, DAILY_OFFER_PAGE_PATH)
+    branded_json_url = branded_url(config, DAILY_OFFER_JSON_PATH)
+    generated_at = stable_generated_at(DOCS / DAILY_OFFER_JSON_PATH, today)
+    tiers = support_tiers(config)
+    product_checkout_ready = bool(checkout_readiness.get("product_checkout_ready"))
+    store_connected = bool(store_url)
+    support_connected = bool(support_url)
+    actual_daily_revenue_proven = bool(revenue_proof.get("actual_daily_revenue_proven"))
+    today_revenue_usd = str(revenue_proof.get("today_revenue_usd") or "0.00")
+    offer_state = "Product checkout live" if store_connected and product_checkout_ready else "Voluntary support offer"
+    checkout_boundary = (
+        "Product checkout is connected and separately verified."
+        if store_connected and product_checkout_ready
+        else "Product checkout is not connected; this offer routes to voluntary support only."
+    )
+    revenue_boundary = (
+        f"Daily revenue proof is {'available' if actual_daily_revenue_proven else 'not available'} for {today}. "
+        f"Today recorded revenue: ${today_revenue_usd}."
+    )
+    payload = {
+        "kind": "daily-shelf-daily-offer",
+        "generated_at": generated_at,
+        "today": today,
+        "page_path": DAILY_OFFER_PAGE_PATH,
+        "json_path": DAILY_OFFER_JSON_PATH,
+        "page_url": page_url,
+        "json_url": json_url,
+        "branded_page_url": branded_page_url,
+        "branded_json_url": branded_json_url,
+        "title": title,
+        "summary": summary,
+        "state": offer_state,
+        "promoted": promoted,
+        "promotion_url": promotion_url,
+        "support_intent_url": support_intent_url,
+        "action_url": action_url,
+        "action_type": action_type,
+        "action_label": action_label,
+        "support_tiers": tiers,
+        "support_signal_page": support_signal.get("page_path", SUPPORT_SIGNAL_PAGE_PATH),
+        "support_signal_json": support_signal.get("json_path", SUPPORT_SIGNAL_JSON_PATH),
+        "checkout_readiness_page": checkout_readiness.get("page_path", CHECKOUT_READINESS_PAGE_PATH),
+        "checkout_readiness_json": checkout_readiness.get("json_path", CHECKOUT_READINESS_JSON_PATH),
+        "revenue_proof_page": revenue_proof.get("page_path", REVENUE_PROOF_PAGE_PATH),
+        "revenue_proof_json": revenue_proof.get("json_path", REVENUE_PROOF_JSON_PATH),
+        "store_connected": store_connected,
+        "support_connected": support_connected,
+        "product_checkout_ready": product_checkout_ready,
+        "actual_daily_revenue_proven": actual_daily_revenue_proven,
+        "today_revenue_usd": today_revenue_usd,
+        "checkout_boundary": checkout_boundary,
+        "revenue_boundary": revenue_boundary,
+        "privacy": "Aggregate support/download signal only. This page does not store buyer identity or payment data.",
+        "guardrails": [
+            "No guaranteed-income claims",
+            "No hidden checkout",
+            "No gated delivery while product checkout is disconnected",
+            "No revenue proof without accepted receipt evidence",
+        ],
+    }
+    (DOCS / DAILY_OFFER_JSON_PATH).write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    tier_cards = "\n".join(
+        f"""<article class="tier-card">
+          <p class="label">{esc(tier["amount"])}</p>
+          <h3>{esc(tier["label"])}</h3>
+          <p>{esc(tier["description"])}</p>
+        </article>"""
+        for tier in tiers
+    )
+    if not tier_cards:
+        tier_cards = "<p>No support tiers configured.</p>"
+    action_cta = (
+        f"""<a class="button primary" href="{esc(action_url)}">{esc(action_label)}</a>"""
+        if action_url
+        else f"""<a class="button primary" href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout not connected</a>"""
+    )
+    promotion_cta = f"""<a class="button" href="{esc(promotion_url)}">Open promoted item</a>""" if promotion_url else ""
+    download_cta = (
+        f"""<a class="button" href="{esc(str(promoted.get("download_url")))}">Open bundle ZIP</a>"""
+        if safe_public_url(promoted.get("download_url"))
+        else ""
+    )
+    image_url = pack_url(config, latest["cover"]) if latest else pack_url(config, SUPPORT_CARD_REL_PATH)
+    structured_data: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Daily Support Offer | Daily Autodigital Shelf",
+        "description": "Current buyer-facing support offer selected from aggregate Daily Shelf interest signals.",
+        "url": page_url,
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": config["site"]["name"],
+            "url": pack_url(config, ""),
+        },
+    }
+    if action_url:
+        structured_data["potentialAction"] = {
+            "@type": action_type,
+            "target": action_url,
+            "name": action_label,
+        }
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Support Offer | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Current Daily Autodigital Shelf support offer selected from aggregate public interest signals.">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Daily Shelf Support Offer", "Current support offer selected from aggregate Daily Shelf interest signals.", page_url, image_url, "Daily Autodigital Shelf daily offer")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Daily offer navigation">
+        <a href="./">Home</a>
+        <a href="./offers/">Offers</a>
+        <a href="./support.html">Support</a>
+        <a href="./pay-what-you-can.html">Pay what you can</a>
+        <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
+        <a href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout readiness</a>
+        <a href="./{esc(REVENUE_PROOF_PAGE_PATH)}">Revenue proof</a>
+        <a href="./{esc(DAILY_OFFER_JSON_PATH)}">Offer JSON</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Daily support offer</p>
+          <h1>Support the strongest current shelf path.</h1>
+          <p>{esc(title)} is the current promoted path from aggregate support and download-interest signals. The files remain public while checkout is disconnected.</p>
+          <div class="actions">
+            {action_cta}
+            {promotion_cta}
+            {download_cta}
+            <a class="button" href="./{esc(REVENUE_PROOF_PAGE_PATH)}">Revenue proof</a>
+            <a class="button" href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout readiness</a>
+          </div>
+          <p class="fineprint">{esc(checkout_boundary)} {esc(revenue_boundary)}</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Current offer</p>
+              <h2>{esc(title)}</h2>
+            </div>
+            <span class="status">{esc(offer_state)}</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>{esc(str(promoted.get("label") or promoted.get("type") or "Shelf path"))}</h3>
+              <p>{esc(summary)}</p>
+              <p class="fineprint">Signal score {safe_count(promoted.get("signal_score"))}: {safe_count(promoted.get("support_intent_clicks"))} support-intent click{"s" if safe_count(promoted.get("support_intent_clicks")) != 1 else ""} and {safe_count(promoted.get("download_interest"))} download-interest event{"s" if safe_count(promoted.get("download_interest")) != 1 else ""}.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Support tiers</p>
+            <h2>Simple voluntary levels</h2>
+          </div>
+          <p>These levels describe voluntary support. This offer does not gate downloads, create product checkout, or prove revenue.</p>
+        </div>
+        <div class="tier-grid">
+          {tier_cards}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Machine boundary</p>
+            <h2>Offer evidence and limits</h2>
+          </div>
+          <p>This page exists so crawlers and visitors have one buyer-facing route for the current promoted path while the system stays honest about payment state.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done"><span class="setup-dot">1</span><div><strong>Support signal selected</strong><p><a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a> chose this path from aggregate support/download interest.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">2</span><div><strong>Product checkout is not connected</strong><p><a href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout readiness</a> must verify a real product checkout before this page can use BuyAction.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">3</span><div><strong>Revenue is not proven</strong><p><a href="./{esc(REVENUE_PROOF_PAGE_PATH)}">Revenue proof</a> publishes accepted receipt evidence only after a real payment export exists.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">4</span><div><strong>Public JSON available</strong><p><a href="./{esc(DAILY_OFFER_JSON_PATH)}">daily-offer.json</a> exposes the same offer state for discovery without touching support counters.</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(config["monetization"].get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / DAILY_OFFER_PAGE_PATH).write_text(content, encoding="utf-8")
+    return {
+        "ready": True,
+        "page_path": DAILY_OFFER_PAGE_PATH,
+        "json_path": DAILY_OFFER_JSON_PATH,
+        "page_url": page_url,
+        "json_url": json_url,
+        "branded_page_url": branded_page_url,
+        "branded_json_url": branded_json_url,
+        "title": title,
+        "promotion_url": promotion_url,
+        "support_intent_url": support_intent_url,
+        "action_url": action_url,
+        "action_type": action_type,
+        "store_connected": store_connected,
+        "support_connected": support_connected,
+        "product_checkout_ready": product_checkout_ready,
+        "actual_daily_revenue_proven": actual_daily_revenue_proven,
+    }
+
+
 def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         SUPPORT_CARD_REL_PATH,
@@ -5389,6 +5633,7 @@ def render_index(
     support_signal: dict[str, Any],
     checkout_readiness: dict[str, Any],
     revenue_proof: dict[str, Any],
+    daily_offer: dict[str, Any],
 ) -> None:
     recent_count = int(config["generation"].get("recent_pack_count", 7))
     manifests = read_manifests()[:recent_count]
@@ -5476,6 +5721,8 @@ def render_index(
     checkout_readiness_json_path = str(checkout_readiness.get("json_path") or CHECKOUT_READINESS_JSON_PATH)
     revenue_proof_page_path = str(revenue_proof.get("page_path") or REVENUE_PROOF_PAGE_PATH)
     revenue_proof_json_path = str(revenue_proof.get("json_path") or REVENUE_PROOF_JSON_PATH)
+    daily_offer_page_path = str(daily_offer.get("page_path") or DAILY_OFFER_PAGE_PATH)
+    daily_offer_json_path = str(daily_offer.get("json_path") or DAILY_OFFER_JSON_PATH)
     signal_markup = support_signal_card_markup(support_signal, "./")
     content = f"""<!doctype html>
 <html lang="en">
@@ -5515,6 +5762,7 @@ def render_index(
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
         <a href="./pricing.html">Pricing</a>
+        <a href="./{esc(daily_offer_page_path)}">Daily offer</a>
         <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
         <a href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a>
         <a href="./{esc(revenue_proof_page_path)}">Revenue proof</a>
@@ -5543,6 +5791,7 @@ def render_index(
             <a class="button" href="./commercial-use.html">Commercial use</a>
             <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./pricing.html">Pricing</a>
+            <a class="button" href="./{esc(daily_offer_page_path)}">Daily offer</a>
             <a class="button" href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a>
             <a class="button" href="./{esc(revenue_proof_page_path)}">Revenue proof</a>
             <a class="button" href="./store-import.html">Open import kit</a>
@@ -5591,6 +5840,32 @@ def render_index(
           <p>The daily run can promote the item with the strongest aggregate support intent while preserving the payment boundary. <a href="./{esc(SUPPORT_SIGNAL_JSON_PATH)}">Open signal JSON</a>.</p>
         </div>
         {signal_markup}
+      </section>
+
+      <section id="daily-offer">
+        <div class="section-head">
+          <div>
+            <p class="label">Buyer-facing route</p>
+            <h2>Daily support offer</h2>
+          </div>
+          <p>The daily run publishes one current offer page from the strongest measured support/download signal. <a href="./{esc(daily_offer_page_path)}">Open daily offer</a> - <a href="./{esc(daily_offer_json_path)}">JSON</a>.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done">
+            <span class="setup-dot">1</span>
+            <div>
+              <strong>{esc(str(daily_offer.get("title") or "Current promoted path"))}</strong>
+              <p>The route stays buyer-facing while preserving the same support, checkout, and revenue-proof boundaries.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">2</span>
+            <div>
+              <strong>No hidden checkout claim</strong>
+              <p>Action type: {esc(str(daily_offer.get("action_type") or "ViewAction"))}. Product checkout remains false unless status.json and checkout readiness both say otherwise.</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section id="checkout-readiness">
@@ -5651,7 +5926,7 @@ def render_index(
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a> - <a href="./{esc(revenue_proof_page_path)}">Revenue proof</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./{esc(daily_offer_page_path)}">Daily offer</a> - <a href="./support.html">Support</a> - <a href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a> - <a href="./{esc(revenue_proof_page_path)}">Revenue proof</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -5738,19 +6013,26 @@ def render_index(
           <article class="setup-item">
             <span class="setup-dot">4</span>
             <div>
+              <strong>Daily support offer</strong>
+              <p><a href="./{esc(daily_offer_page_path)}">Open daily offer</a>. It gives visitors one current support route without claiming product checkout.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">5</span>
+            <div>
               <strong>Checkout readiness inventory</strong>
               <p><a href="./{esc(checkout_readiness_page_path)}">Open readiness page</a>. It records candidates without claiming product checkout.</p>
             </div>
           </article>
           <article class="setup-item">
-            <span class="setup-dot">5</span>
+            <span class="setup-dot">6</span>
             <div>
               <strong>Revenue proof monitor</strong>
               <p><a href="./{esc(revenue_proof_page_path)}">Open proof page</a>. It publishes sanitized receipt evidence only after a real export exists.</p>
             </div>
           </article>
           <article class="setup-item">
-            <span class="setup-dot">6</span>
+            <span class="setup-dot">7</span>
             <div>
               <strong>Payment/legal layer</strong>
               <p>External platforms may require identity, tax, payout, approval, and threshold steps. This automation does not bypass those.</p>
@@ -6478,6 +6760,7 @@ def render_support_page(config: dict[str, Any], support_signal: dict[str, Any] |
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
+        <a href="./{esc(DAILY_OFFER_PAGE_PATH)}">Daily offer</a>
         <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
         <a href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout readiness</a>
         <a href="./store-import.html">Import kit</a>
@@ -6495,6 +6778,7 @@ def render_support_page(config: dict[str, Any], support_signal: dict[str, Any] |
             <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
             <a class="button" href="./commercial-use.html">Commercial use</a>
             <a class="button" href="./sponsor.html">Sponsor</a>
+            <a class="button" href="./{esc(DAILY_OFFER_PAGE_PATH)}">Daily offer</a>
             <a class="button" href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
             <a class="button" href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout readiness</a>
             <a class="button" href="./starter-bundle.html">Open starter bundle</a>
@@ -7424,6 +7708,7 @@ def render_ai_discovery_files(
     support_signal: dict[str, Any],
     checkout_readiness: dict[str, Any],
     revenue_proof: dict[str, Any],
+    daily_offer: dict[str, Any],
 ) -> dict[str, Any]:
     manifests = read_manifests()
     site_name = config["site"]["name"]
@@ -7446,6 +7731,8 @@ def render_ai_discovery_files(
     checkout_readiness_json_url = pack_url(config, str(checkout_readiness.get("json_path") or CHECKOUT_READINESS_JSON_PATH))
     revenue_proof_page_url = pack_url(config, str(revenue_proof.get("page_path") or REVENUE_PROOF_PAGE_PATH))
     revenue_proof_json_url = pack_url(config, str(revenue_proof.get("json_path") or REVENUE_PROOF_JSON_PATH))
+    daily_offer_page_url = pack_url(config, str(daily_offer.get("page_path") or DAILY_OFFER_PAGE_PATH))
+    daily_offer_json_url = pack_url(config, str(daily_offer.get("json_path") or DAILY_OFFER_JSON_PATH))
     preferred_bundle_label = preferred_collection_label()
     preferred_bundle_url = preferred_collection_bundle_page_url(config)
     destination_type = str(support.get("destination_type", "none"))
@@ -7494,6 +7781,8 @@ def render_ai_discovery_files(
             f"- Commercial use page: {commercial_use_url}",
             f"- Sponsor Kit JSON: {sponsor_kit_url}",
             f"- Support card SVG: {pack_url(config, SUPPORT_CARD_REL_PATH)}",
+            f"- Daily Offer page: {daily_offer_page_url}",
+            f"- Daily Offer JSON: {daily_offer_json_url}",
             f"- Support Signal report: {support_signal_page_url}",
             f"- Support Signal JSON: {support_signal_json_url}",
             f"- Checkout Readiness report: {checkout_readiness_page_url}",
@@ -7526,6 +7815,7 @@ def render_ai_discovery_files(
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Checkout Readiness records candidate payment surfaces without marking checkout live.",
             "- Revenue Proof records sanitized local receipt evidence only; it does not prove future revenue or activate checkout.",
+            "- Daily Offer is the current buyer-facing support route; it uses DonateAction unless product checkout is connected.",
             "- Support is voluntary and downloads remain public unless a real store checkout is connected.",
             "- Support Signal uses aggregate support-intent clicks only; it does not prove payments or daily revenue.",
             "",
@@ -7559,6 +7849,8 @@ def render_ai_discovery_files(
             "- Commercial use page: " + commercial_use_url,
             "- Sponsor Kit JSON: " + sponsor_kit_url,
             "- Support card SVG: " + pack_url(config, SUPPORT_CARD_REL_PATH),
+            "- Daily Offer page: " + daily_offer_page_url,
+            "- Daily Offer JSON: " + daily_offer_json_url,
             "- Support Signal report: " + support_signal_page_url,
             "- Support Signal JSON: " + support_signal_json_url,
             "- Checkout Readiness report: " + checkout_readiness_page_url,
@@ -7586,6 +7878,7 @@ def render_ai_discovery_files(
             f"- Support Funnel XML: {pack_url(config, 'support-funnel.xml')}",
             f"- Support Funnel CSV: {pack_url(config, 'support-funnel.csv')}",
             f"- Sponsor Kit JSON: {sponsor_kit_url}",
+            f"- Daily Offer JSON: {daily_offer_json_url}",
             f"- Support Signal JSON: {support_signal_json_url}",
             f"- Checkout Readiness JSON: {checkout_readiness_json_url}",
             f"- Revenue Proof JSON: {revenue_proof_json_url}",
@@ -7619,6 +7912,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "archive.html"),
         pack_url(config, "support.html"),
         pack_url(config, "pay-what-you-can.html"),
+        pack_url(config, DAILY_OFFER_PAGE_PATH),
+        pack_url(config, DAILY_OFFER_JSON_PATH),
         pack_url(config, SUPPORT_SIGNAL_PAGE_PATH),
         pack_url(config, SUPPORT_SIGNAL_JSON_PATH),
         pack_url(config, CHECKOUT_READINESS_PAGE_PATH),
@@ -7760,6 +8055,7 @@ def write_status(
     support_signal: dict[str, Any],
     checkout_readiness: dict[str, Any],
     revenue_proof: dict[str, Any],
+    daily_offer: dict[str, Any],
     ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
@@ -7926,6 +8222,18 @@ def write_status(
         "support_signal_promotion_mode": (support_signal.get("promoted") or {}).get("promotion_mode", ""),
         "support_signal_promoted_score": safe_count((support_signal.get("promoted") or {}).get("signal_score")),
         "support_signal_promoted_download_interest": safe_count((support_signal.get("promoted") or {}).get("download_interest")),
+        "daily_offer_ready": bool(daily_offer.get("ready")),
+        "daily_offer_page": daily_offer.get("page_path", DAILY_OFFER_PAGE_PATH),
+        "daily_offer_json": daily_offer.get("json_path", DAILY_OFFER_JSON_PATH),
+        "daily_offer_page_url": daily_offer.get("page_url", pack_url(config, DAILY_OFFER_PAGE_PATH)),
+        "daily_offer_json_url": daily_offer.get("json_url", pack_url(config, DAILY_OFFER_JSON_PATH)),
+        "daily_offer_branded_page_url": daily_offer.get("branded_page_url", branded_url(config, DAILY_OFFER_PAGE_PATH)),
+        "daily_offer_branded_json_url": daily_offer.get("branded_json_url", branded_url(config, DAILY_OFFER_JSON_PATH)),
+        "daily_offer_title": daily_offer.get("title", ""),
+        "daily_offer_promotion_url": daily_offer.get("promotion_url", ""),
+        "daily_offer_support_intent_url": daily_offer.get("support_intent_url", ""),
+        "daily_offer_action_url": daily_offer.get("action_url", ""),
+        "daily_offer_action_type": daily_offer.get("action_type", ""),
         "checkout_readiness_ready": bool(checkout_readiness.get("ready")),
         "checkout_readiness_page": checkout_readiness.get("page_path", CHECKOUT_READINESS_PAGE_PATH),
         "checkout_readiness_json": checkout_readiness.get("json_path", CHECKOUT_READINESS_JSON_PATH),
@@ -8032,16 +8340,17 @@ def generate(day: dt.date) -> dict[str, Any]:
     support_signal = render_support_signal(config, pack)
     checkout_readiness = render_checkout_readiness(config)
     revenue_proof = render_revenue_proof(config)
+    daily_offer = render_daily_offer(config, support_signal, checkout_readiness, revenue_proof)
     policies = render_policy_pages(config)
     support = render_support_page(config, support_signal)
     support_assets = render_support_assets(config, support)
     pay_page = render_pay_what_you_can_page(config, support)
     sponsor_pages = render_sponsor_pages(config)
     offers = render_offer_pages(config, support)
-    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages, support_signal, checkout_readiness, revenue_proof)
+    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages, support_signal, checkout_readiness, revenue_proof, daily_offer)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
-    render_index(pack, config, bundle, support_signal, checkout_readiness, revenue_proof)
+    render_index(pack, config, bundle, support_signal, checkout_readiness, revenue_proof, daily_offer)
     render_sitemap(config)
     render_robots(config)
     discovery = render_indexnow_key(config)
@@ -8068,6 +8377,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         support_signal,
         checkout_readiness,
         revenue_proof,
+        daily_offer,
         ai_discovery,
         discovery,
     )
