@@ -32,9 +32,9 @@
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, the daily task, and the watchdog task.
 - Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
 - Added 2026-06-02: Expanded the generator to 29 pack templates and seeded a 21-pack starter archive from `2026-05-13` through `2026-06-02`.
-- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 281,249 bytes.
+- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 297,097 bytes.
 - Added 2026-06-02: Generated shelf writes 21 individual product ZIPs under `docs/downloads/`; every seeded pack page now links its own `Download pack ZIP` action and catalog rows include `download_url`.
-- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows, topic metadata fields, and the ZIP is 154,516 bytes.
+- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows, topic metadata fields, policy pages, and the ZIP is 160,455 bytes.
 - Added 2026-06-02: Generated public pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for pack pages, archive, starter bundle, and import kit.
 - Added 2026-06-02: IndexNow discovery automation is enabled. Public key file `docs/b0d7a0387b4f41cc886dc47328c20bcb.txt` is generated; latest social-metadata submission sent 25 changed URLs and received HTTP 200 after Pages served the key.
 - Added 2026-06-02: Generated shelf writes topic surfaces under `docs/topics/`: topic index, 5 topic pages, and `topics/topics.json`. Product pages link related topics; catalog/import rows include `topic_urls`; sitemap and IndexNow include topic URLs. Commit `d631af4` pushed and Pages deployed successfully.
@@ -45,6 +45,19 @@
 - Verified 2026-06-02: Direct IndexNow submission after fallback/determinism updates accepted 5 changed URLs with HTTP 200; follow-up dry run showed 0 queued URLs.
 - Added 2026-06-02: Generated shelf writes store-readiness policy pages: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html`. Homepage/archive/import/bundle surfaces link policies; starter bundle and store upload kit include the policy files.
 - Verified 2026-06-02: Store policy commit `190d77c` deployed successfully. Live browser check passed for `terms.html` and `store-import.html`; `verify-system.ps1` now checks 4 policy pages and 28 files; IndexNow accepted 9 policy/discovery URLs and follow-up dry run showed 0 queued URLs.
+- Added 2026-06-02: Generated shelf now writes RSS and Atom feeds at `feed.xml`
+  and `atom.xml`, links them from the homepage, includes them in the starter
+  bundle, adds them to the sitemap and status file, and submits them through
+  IndexNow. Commit `cd2dd12` pushed to `main`.
+- Verified 2026-06-02: GitHub Pages deployment `26803871909` succeeded for
+  `cd2dd12`. Live `feed.xml` returned HTTP 200 with 10,552 bytes; live
+  `atom.xml` returned HTTP 200 with 8,706 bytes; both contain
+  `One-Page SOP Builder`. `verify-system.ps1` now checks 30 files.
+- Verified 2026-06-02: IndexNow accepted six changed feed/discovery URLs with
+  HTTP 200: homepage, starter bundle, `feed.json`, `feed.xml`, `atom.xml`, and
+  `sitemap.xml`; follow-up dry run showed 0 queued URLs.
+- Verified 2026-06-02: GitHub fallback publisher run `26803952952` succeeded
+  on `cd2dd12` and logged `No generated changes to publish`.
 - Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
 
 ## Operator Rule
