@@ -22,9 +22,11 @@
     "support_intent_clicks_by_day": {
       "2026-06-02": 1
     },
-    "download_interest": 0,
-    "download_interest_by_day": {},
-    "signal_score": 5,
+    "download_interest": 1,
+    "download_interest_by_day": {
+      "2026-06-02": 1
+    },
+    "signal_score": 6,
     "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
     "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
     "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",

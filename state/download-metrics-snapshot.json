@@ -1,19 +1,37 @@
 {
-  "by_day": {},
-  "by_kind": {},
-  "by_slug": {},
-  "by_slug_day": {},
-  "fetched_at": "2026-06-02T17:29:49+00:00",
+  "by_day": {
+    "2026-06-02": 1
+  },
+  "by_kind": {
+    "collection-bundle-page": 1
+  },
+  "by_slug": {
+    "collection-small-business-ops": 1
+  },
+  "by_slug_day": {
+    "collection-small-business-ops": {
+      "2026-06-02": 1
+    }
+  },
+  "fetched_at": "2026-06-02T18:54:04+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
-  "recent": [],
+  "recent": [
+    {
+      "at": "2026-06-02T18:43:53.620Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "collection-bundle-page",
+      "route": "/daily-shelf/bundles/small-business-ops-collection.html",
+      "slug": "collection-small-business-ops"
+    }
+  ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
   "source_kind": "daily-shelf-download-interest-metrics",
   "source_url": "https://www.calmsprout.com/daily-shelf/download-metrics.json",
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 0,
-  "updated_at": null,
+  "total_download_interest": 1,
+  "updated_at": "2026-06-02T18:43:53.620Z",
   "version": 1
 }
