@@ -1435,6 +1435,25 @@ def render_robots(config: dict[str, Any]) -> None:
     (DOCS / "robots.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def render_indexnow_key(config: dict[str, Any]) -> dict[str, Any]:
+    discovery = config.get("discovery", {})
+    enabled = bool(discovery.get("indexnow_enabled"))
+    key = str(discovery.get("indexnow_key", "")).strip()
+    if not enabled:
+        return {"enabled": False}
+    if not re.fullmatch(r"[A-Za-z0-9-]{8,128}", key):
+        raise ValueError("discovery.indexnow_key must be 8-128 letters, numbers, or dashes")
+
+    key_file = f"{key}.txt"
+    (DOCS / key_file).write_text(key, encoding="utf-8")
+    return {
+        "enabled": True,
+        "key_file": key_file,
+        "key_location": pack_url(config, key_file),
+        "endpoint": discovery.get("indexnow_endpoint", "https://api.indexnow.org/indexnow"),
+    }
+
+
 def append_ledger(pack: dict[str, Any]) -> None:
     STATE.mkdir(parents=True, exist_ok=True)
     if LEDGER.exists():
@@ -1459,7 +1478,12 @@ def append_ledger(pack: dict[str, Any]) -> None:
         handle.write(json.dumps(row, sort_keys=True) + "\n")
 
 
-def write_status(pack: dict[str, Any], config: dict[str, Any], bundle: dict[str, Any]) -> None:
+def write_status(
+    pack: dict[str, Any],
+    config: dict[str, Any],
+    bundle: dict[str, Any],
+    discovery: dict[str, Any],
+) -> None:
     status_path = DOCS / "status.json"
     generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
     if status_path.exists():
@@ -1480,6 +1504,10 @@ def write_status(pack: dict[str, Any], config: dict[str, Any], bundle: dict[str,
         "bundle_page": bundle.get("page_path", "starter-bundle.html"),
         "bundle_pack_count": int(bundle.get("pack_count", 0)),
         "bundle_bytes": int(bundle.get("bytes", 0)),
+        "indexnow_enabled": bool(discovery.get("enabled")),
+        "indexnow_key_file": discovery.get("key_file", ""),
+        "indexnow_key_location": discovery.get("key_location", ""),
+        "indexnow_endpoint": discovery.get("endpoint", ""),
         "monetization_enabled": bool(config["monetization"].get("enabled")),
         "store_connected": bool(config["monetization"].get("store_url")),
         "support_connected": bool(config["monetization"].get("support_url")),
@@ -1531,8 +1559,9 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_index(pack, config, bundle)
     render_sitemap(config)
     render_robots(config)
+    discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle)
+    write_status(pack, config, bundle, discovery)
     append_ledger(pack)
     return manifest
 

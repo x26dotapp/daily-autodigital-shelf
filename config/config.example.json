@@ -19,5 +19,10 @@
     "recent_pack_count": 7,
     "default_price_hint": "$3 to $9 digital pack",
     "daily_seed": "daily-autodigital-shelf"
+  },
+  "discovery": {
+    "indexnow_enabled": true,
+    "indexnow_key": "b0d7a0387b4f41cc886dc47328c20bcb",
+    "indexnow_endpoint": "https://api.indexnow.org/indexnow"
   }
 }

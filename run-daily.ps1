@@ -5,6 +5,7 @@ $logDir = Join-Path $root 'logs'
 $logPath = Join-Path $logDir 'daily-run.log'
 $scriptPath = Join-Path $root 'tools\generate_daily_shelf.py'
 $verifyPath = Join-Path $root 'tools\verify_daily_shelf.py'
+$indexNowPath = Join-Path $root 'tools\submit_indexnow.py'
 
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 
@@ -55,6 +56,18 @@ if (Test-Path -LiteralPath (Join-Path $root '.git')) {
         git commit -m "Daily shelf update $stamp" | Out-Null
         git push origin main | Out-Null
         Write-RunLog 'Committed and pushed site update.'
+        try {
+            & $python $indexNowPath --wait-for-key-seconds 90
+            if ($LASTEXITCODE -eq 0) {
+                Write-RunLog 'IndexNow submission complete.'
+            }
+            else {
+                Write-RunLog "IndexNow submission returned exit code $LASTEXITCODE."
+            }
+        }
+        catch {
+            Write-RunLog "IndexNow submission failed: $($_.Exception.Message)"
+        }
     }
     else {
         Write-RunLog 'No git changes to publish.'

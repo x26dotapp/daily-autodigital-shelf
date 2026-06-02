@@ -11,6 +11,7 @@ connected to a store, affiliate link, support link, or ad setup later.
 
 - `tools/generate_daily_shelf.py` creates today's pack under `docs/packs/`.
 - `tools/verify_daily_shelf.py` checks that the generated site and pack are complete.
+- `tools/submit_indexnow.py` submits changed public URLs to IndexNow after a successful push.
 - `run-daily.ps1` runs the generator, commits site changes, and pushes them.
 - `install-scheduled-task.ps1` installs a daily Windows Scheduled Task.
 - `verify-system.ps1` checks local output, the live site, and the scheduled task.
@@ -33,6 +34,11 @@ The site also publishes:
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
 - `feed.json`, `sitemap.xml`, and `robots.txt` for discoverability
+- an IndexNow key file so changed URLs can be submitted to participating search engines
+
+IndexNow submission state is kept locally in `state/indexnow-state.json` and is
+ignored by Git. The key file itself is public by design because the protocol
+uses a public text file to prove site control.
 
 ## Current Guardrail
 

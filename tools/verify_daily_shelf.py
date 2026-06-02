@@ -140,6 +140,17 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json reports bundle_ready=false")
     if int(status.get("bundle_pack_count") or 0) < min_pack_count:
         fail(f"status.json bundle_pack_count is {status.get('bundle_pack_count')}, expected at least {min_pack_count}")
+    if not status.get("indexnow_enabled"):
+        fail("status.json reports indexnow_enabled=false")
+    indexnow_key_file = str(status.get("indexnow_key_file", ""))
+    if not indexnow_key_file.endswith(".txt"):
+        fail("status.json missing indexnow_key_file")
+    require_file(DOCS / indexnow_key_file, 8)
+    indexnow_key = (DOCS / indexnow_key_file).read_text(encoding="utf-8").strip()
+    if indexnow_key_file != f"{indexnow_key}.txt":
+        fail("IndexNow key file name does not match file body")
+    if not status.get("indexnow_key_location"):
+        fail("status.json missing indexnow_key_location")
 
     return {
         "today": day,
@@ -147,7 +158,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "path": pack_path,
         "pack_count": pack_count,
         "bundle_bytes": bundle_path.stat().st_size,
-        "files_checked": 15,
+        "files_checked": 16,
+        "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
         "support_connected": bool(status.get("support_connected")),
