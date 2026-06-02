@@ -2,6 +2,7 @@ logs/*
 !logs/.gitkeep
 config/config.local.json
 state/indexnow-state.json
+state/watchdog-status.json
 *.tmp
 *.bak
 __pycache__/

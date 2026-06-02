@@ -14,6 +14,8 @@ connected to a store, affiliate link, support link, or ad setup later.
 - `tools/submit_indexnow.py` submits changed public URLs to IndexNow after a successful push.
 - `run-daily.ps1` runs the generator, commits site changes, and pushes them.
 - `install-scheduled-task.ps1` installs a daily Windows Scheduled Task.
+- `watchdog.ps1` verifies the daily task, live site, and generated artifacts, then reruns the safe daily wrapper only when verification fails.
+- `install-watchdog-task.ps1` installs the daily watchdog Scheduled Task.
 - `verify-system.ps1` checks local output, the live site, and the scheduled task.
 - `docs/` is the GitHub Pages site root.
 
@@ -97,6 +99,17 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\install-scheduled-task
 ```
 
 The task name is `HUMANi Daily Autodigital Shelf`.
+
+## Install Watchdog Task
+
+```powershell
+cd C:\GitHub\x26dotapp\daily-autodigital-shelf
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\install-watchdog-task.ps1
+```
+
+The watchdog task name is `HUMANi Daily Autodigital Shelf Watchdog`. It runs at
+7:15am local time, after the daily generator. It logs to `logs/watchdog.log` and
+writes local status to `state/watchdog-status.json`.
 
 ## Honest Money Note
 
