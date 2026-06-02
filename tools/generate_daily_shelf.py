@@ -5332,11 +5332,11 @@ def display_url(value: str, limit: int = 84) -> str:
 def support_card_markup(prefix: str, action_url: str, caption: str) -> str:
     base = prefix if prefix.endswith("/") else f"{prefix}/"
     href = action_url.strip() if action_url.strip() else f"{base}support.html"
-    return f"""<figure class="support-card">
-            <a href="{esc(href)}">
-              <img src="{esc(base + SUPPORT_CARD_REL_PATH)}" alt="Daily Autodigital Shelf support card">
+    return f"""<figure class="support-card" style="grid-column:1/-1;margin:22px 0 0;max-width:100%;">
+            <a href="{esc(href)}" style="display:block;overflow:hidden;max-width:100%;border-radius:8px;">
+              <img src="{esc(base + SUPPORT_CARD_REL_PATH)}" alt="Daily Autodigital Shelf support card" style="display:block;width:100%;max-width:100%;height:auto;">
             </a>
-            <figcaption>{esc(caption)}</figcaption>
+            <figcaption style="margin-top:8px;">{esc(caption)}</figcaption>
           </figure>"""
 
 

@@ -26,7 +26,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 29,
-  "bundle_bytes": 884271,
+  "bundle_bytes": 884701,
   "pack_download_count": 29,
   "pack_download_page_count": 29,
   "pack_download_bytes": 205706,
@@ -36,7 +36,7 @@
   "store_import_csv": "imports/store-listings.csv",
   "store_import_json": "imports/store-listings.json",
   "store_import_zip": "imports/store-upload-kit.zip",
-  "store_import_zip_bytes": 455835,
+  "store_import_zip_bytes": 455945,
   "topic_pages_ready": true,
   "topic_page_count": 5,
   "topic_item_count": 70,
@@ -321,7 +321,7 @@
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip"
   ],
-  "collection_bundle_bytes": 1584321,
+  "collection_bundle_bytes": 1585391,
   "collection_bundle_page_paths": [
     "bundles/small-business-ops-collection.html",
     "bundles/home-admin-collection.html",
