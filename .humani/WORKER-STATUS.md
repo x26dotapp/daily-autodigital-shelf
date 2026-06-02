@@ -5,22 +5,22 @@
 - Operator: `DAI-AUT-01`
 - Project: `daily-autodigital-shelf`
 - State: idle
-- Last updated: `2026-06-02T07:00:36-04:00`
+- Last updated: `2026-06-02T07:55:00-04:00`
 - Active broker action: none
 
 ## Latest Verified Work
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest handoff update: ZIP support cards and ZIP IndexNow coverage recorded
-- Latest functional commit: `ab350a5` (`Track zip artifacts in IndexNow`)
+- Latest handoff update: support-aware download pages and CalmSprout proxied download-page routing recorded
+- Latest functional commit: `de0b29a` (`Add support-aware download pages`)
 - Latest adjacent bridge commit: CalmSprout `f063a55` (`Add Daily Shelf bridge`)
-- Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), `3001f49` (`Add Daily Shelf product support funnels`), `6b5e7bf` (`Add Daily Shelf support intent redirects`), `2821d51` (`Expose support intent in LLM discovery`), `392479e` (`Record support intent LLM deploy`), `187a1b6` (`Add product offer FAQ schema`), and `874504d` (`Record product offer FAQ schema deploy`)
-- CalmSprout deploy: Cloudflare Worker version `4108d3fb-3cb6-444f-88db-9914c995a967`
-- Pages deployment: `26815383934` for ZIP artifact IndexNow coverage; prior support-card deployment `26815277958` succeeded for `6cbeba1`
+- Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), `3001f49` (`Add Daily Shelf product support funnels`), `6b5e7bf` (`Add Daily Shelf support intent redirects`), `2821d51` (`Expose support intent in LLM discovery`), `392479e` (`Record support intent LLM deploy`), `187a1b6` (`Add product offer FAQ schema`), `874504d` (`Record product offer FAQ schema deploy`), `53b3183` (`Route shelf downloads through landing pages`), and `1d44688` (`Proxy Daily Shelf stylesheet`)
+- CalmSprout deploy: Cloudflare Worker version `4be3afcc-a783-43d4-a442-32777a74acfd`
+- Pages deployment: `26816113707` for support-aware download pages; prior ZIP artifact deployment `26815383934` succeeded for `ab350a5`
 - Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
-- Verification: `verify-system.ps1` passed with `files_checked: 40`, `bundle_bytes: 360116`, `pack_download_bytes: 148948`, `store_import_zip_bytes: 182206`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
-- Discovery: IndexNow accepted 23 direct GitHub Pages ZIP artifact URLs and 30 CalmSprout download/data URLs with HTTP 200 after adding ZIP support cards
+- Verification: `verify-system.ps1` passed with `files_checked: 40`, `bundle_bytes: 361321`, current `download_bytes: 6875`, `store_import_zip_bytes: 182765`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
+- Discovery: IndexNow accepted 88 GitHub Pages URLs, then 100 and 31 CalmSprout URLs with HTTP 200 after adding support-aware download pages; follow-up dry runs returned `submit_count: 0` for both hosts
 - Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` are generated
 - Support metadata: catalog/import JSON and CSV expose `support_page_url`, `pay_what_you_can_url`, `monetization_destination_type`, `monetization_destination_url`, `store_connected`, and `support_connected`; current pack JSON-LD exposes `DonateAction` while only support mode is connected
 - Branded support metadata: catalog/import JSON and CSV expose `branded_product_url`, `branded_support_url`, and `branded_support_intent_url`; `status.json` exposes `today_branded_product_url`, `today_branded_support_url`, and `today_branded_support_intent_url`
@@ -40,6 +40,7 @@
 - CalmSprout product offer/FAQ schema QA: live `/daily-shelf/products/2026-06-02-one-page-sop` returned HTTP 200 with JSON-LD `CreativeWork`/`Product`, a free-public-download `Offer`, product-specific `DonateAction` to `/support/go`, `FAQPage`, and a visible FAQ section; desktop/mobile QA found no console messages and no horizontal overflow
 - Static pack offer/FAQ schema QA: live GitHub Pages `/packs/2026-06-02-one-page-sop/` returned HTTPS browser proof with JSON-LD `CreativeWork`, `Product`, `FAQPage`, free `Offer` price `0.00` `USD`, product support-intent href, visible FAQ, no console warnings/errors, and no horizontal overflow
 - ZIP support-card QA: live GitHub Pages current product ZIP and starter archive both contain `SUPPORT.txt` with `/support/go` and `Product checkout is not connected`
+- Support-aware download-page QA: live GitHub Pages `/downloads/2026-06-02-one-page-sop.html` and CalmSprout `/daily-shelf/downloads/2026-06-02-one-page-sop.html` return rendered landing pages with `DownloadAction`, `DonateAction`, a direct ZIP button, `/support/go`, and the product-checkout boundary; browser QA found no console warnings/errors and no horizontal overflow. Live CalmSprout `/daily-shelf/products/2026-06-02-one-page-sop` now routes its primary CTA to the download page and still exposes ZIP encoding metadata.
 - Support destination: `https://gift.calmsprout.com` resolves to the Square-hosted CalmSprout gift/support page
 
 ## Boundaries
