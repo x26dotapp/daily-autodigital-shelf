@@ -1,0 +1,12 @@
+{
+  "operator": {
+    "name": "x26dotapp",
+    "contact_label": "x26.app",
+    "contact_url": "https://x26.app"
+  },
+  "monetization": {
+    "enabled": true,
+    "support_url": "https://gift.calmsprout.com",
+    "affiliate_disclosure": "Support links route to a Square-hosted CalmSprout gift-card/support page. Product checkout is not connected yet; pack downloads remain public until a store is connected."
+  }
+}

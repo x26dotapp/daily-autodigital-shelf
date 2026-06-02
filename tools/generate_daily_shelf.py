@@ -19,6 +19,7 @@ IMPORTS = DOCS / "imports"
 TOPICS = DOCS / "topics"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
+CONFIG_PUBLIC = ROOT / "config" / "config.public.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
 LEDGER = STATE / "ledger.jsonl"
 
@@ -593,6 +594,9 @@ def slugify(value: str) -> str:
 
 def load_config() -> dict[str, Any]:
     config = json.loads(CONFIG_EXAMPLE.read_text(encoding="utf-8"))
+    if CONFIG_PUBLIC.exists():
+        public_override = json.loads(CONFIG_PUBLIC.read_text(encoding="utf-8"))
+        deep_update(config, public_override)
     if CONFIG_LOCAL.exists():
         override = json.loads(CONFIG_LOCAL.read_text(encoding="utf-8"))
         deep_update(config, override)
@@ -1998,6 +2002,29 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
     )
 
     support_or_store = monetization.get("store_url") or monetization.get("support_url") or "#setup"
+    if store_connected:
+        recent_monetization_note = "Each pack is plain, reusable, and ready for the connected external store path."
+        bundle_monetization_note = "The starter archive is packaged for the connected external checkout path."
+        destination_label = "Store destination"
+        destination_detail = f"Current store destination: {support_or_store}."
+        destination_cta_label = "Open store"
+    elif support_connected:
+        recent_monetization_note = "Each pack is plain, reusable, and public while the connected support path can receive voluntary support."
+        bundle_monetization_note = "The starter archive is packaged and ready; product checkout is still separate from the connected support path."
+        destination_label = "Support destination"
+        destination_detail = f"Current support destination: {support_or_store}. This is not product checkout."
+        destination_cta_label = "Support this shelf"
+    else:
+        recent_monetization_note = "Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists."
+        bundle_monetization_note = "The daily generator also creates one ZIP containing the starter archive. This is the simplest file to upload when a real checkout, support, or affiliate path is connected."
+        destination_label = "Store, support, or affiliate link"
+        destination_detail = f"Current destination: {support_or_store}. Edit local config when a real payout path exists."
+        destination_cta_label = ""
+    destination_cta = (
+        f"""<a class="button" href="{esc(support_or_store)}">{esc(destination_cta_label)}</a>"""
+        if destination_cta_label
+        else ""
+    )
     policy_nav_links = policy_links(config)
     bundle_zip_path = str(bundle.get("zip_path", "bundles/starter-archive.zip"))
     bundle_page_path = str(bundle.get("page_path", "starter-bundle.html"))
@@ -2090,7 +2117,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -2103,7 +2130,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Sellable bundle</p>
             <h2>Single download product</h2>
           </div>
-          <p>The daily generator also creates one ZIP containing the starter archive. This is the simplest file to upload when a real checkout, support, or affiliate path is connected.</p>
+          <p>{esc(bundle_monetization_note)}</p>
         </div>
         <div class="bundle-panel">
           <div>
@@ -2113,6 +2140,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <div class="actions">
               <a class="button primary" href="./{esc(bundle_zip_path)}">Download ZIP</a>
               <a class="button" href="./{esc(bundle_page_path)}">Bundle page</a>
+              {destination_cta}
             </div>
           </div>
           <div class="bundle-stat">
@@ -2162,8 +2190,8 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
           <article class="setup-item {setup_class}">
             <span class="setup-dot">3</span>
             <div>
-              <strong>Store, support, or affiliate link</strong>
-              <p>Current destination: {esc(support_or_store)}. Edit local config when a real payout path exists.</p>
+              <strong>{esc(destination_label)}</strong>
+              <p>{esc(destination_detail)}</p>
             </div>
           </article>
           <article class="setup-item">
@@ -2519,6 +2547,11 @@ def write_status(
     discovery: dict[str, Any],
 ) -> None:
     status_path = DOCS / "status.json"
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "")
+    support_url = str(monetization.get("support_url") or "")
+    destination_url = store_url or support_url
+    destination_type = "store" if store_url else ("support" if support_url else "none")
     generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
     if status_path.exists():
         try:
@@ -2564,9 +2597,11 @@ def write_status(
         "indexnow_key_file": discovery.get("key_file", ""),
         "indexnow_key_location": discovery.get("key_location", ""),
         "indexnow_endpoint": discovery.get("endpoint", ""),
-        "monetization_enabled": bool(config["monetization"].get("enabled")),
-        "store_connected": bool(config["monetization"].get("store_url")),
-        "support_connected": bool(config["monetization"].get("support_url")),
+        "monetization_enabled": bool(monetization.get("enabled")),
+        "monetization_destination_type": destination_type,
+        "monetization_destination_url": destination_url,
+        "store_connected": bool(store_url),
+        "support_connected": bool(support_url),
         "guardrails": [
             "No live trading",
             "No paid account creation",

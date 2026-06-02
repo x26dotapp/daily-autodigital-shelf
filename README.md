@@ -51,9 +51,13 @@ uses a public text file to prove site control.
 
 ## Current Guardrail
 
-No payout or monetization account is configured by default. Edit
-`config/config.local.json` only when a real store/support/affiliate destination
-exists.
+A public support destination is configured in `config/config.public.json`:
+`https://gift.calmsprout.com`. This is a Square-hosted CalmSprout gift-card /
+support path, not product checkout. The generated packs remain public downloads
+until a real store checkout is connected.
+
+Use `config/config.local.json` only for private local overrides. Do not put
+secrets in this repo.
 
 Copy the example first:
 
@@ -61,7 +65,7 @@ Copy the example first:
 Copy-Item .\config\config.example.json .\config\config.local.json
 ```
 
-Then set real URLs in `config.local.json`. Do not put secrets in this repo.
+Then set real private override URLs in `config.local.json` when needed.
 
 ## Manual Run
 

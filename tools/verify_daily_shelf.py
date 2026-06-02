@@ -68,6 +68,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         if not manifest.get(key):
             fail(f"manifest missing {key}")
 
+    pack_cta_needle = "Store link not connected"
+    if status.get("store_connected"):
+        pack_cta_needle = "Buy or download from store"
+    elif status.get("support_connected"):
+        pack_cta_needle = "Support this shelf"
+
     require_contains(
         DOCS / "index.html",
         [
@@ -98,7 +104,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         pack_dir / "index.html",
         [
             manifest["title"],
-            "Store link not connected",
+            pack_cta_needle,
             "Download pack ZIP",
             "og:image",
             "twitter:card",
@@ -211,6 +217,14 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
 
     if status.get("monetization_enabled") and not (status.get("store_connected") or status.get("support_connected")):
         fail("Monetization is enabled but no store/support destination is connected")
+    if status.get("store_connected") or status.get("support_connected"):
+        if status.get("monetization_destination_type") not in {"store", "support"}:
+            fail("Connected monetization is missing a store/support destination type")
+        destination_url = str(status.get("monetization_destination_url") or "")
+        if not destination_url.startswith(("https://", "http://")):
+            fail("Connected monetization destination is missing a public URL")
+        require_contains(DOCS / "index.html", [destination_url])
+        require_contains(pack_dir / "index.html", [destination_url])
     if not status.get("bundle_ready"):
         fail("status.json reports bundle_ready=false")
     if int(status.get("bundle_pack_count") or 0) < min_pack_count:
