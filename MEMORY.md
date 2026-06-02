@@ -27,10 +27,11 @@
 - Monetization is not connected by default. `config/config.local.json` can add a real store/support/affiliate destination later without committing secrets.
 - Verified 2026-06-02: GitHub Pages is built at `https://x26dotapp.github.io/daily-autodigital-shelf/`.
 - Verified 2026-06-02: Scheduled task `HUMANi Daily Autodigital Shelf` runs daily at 06:10 local time, last manual Task Scheduler run returned `0`, and next run was `2026-06-02 06:10`.
-- Verified 2026-06-02: Today's pack is `Micro Budget Reset` under `docs/packs/2026-06-02-micro-budget/`, including landing page, worksheet, checklist, cover SVG, manifest, and `seller-copy.md`.
+- Verified 2026-06-02: Today's pack is `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`, including landing page, worksheet, checklist, cover SVG, manifest, and `seller-copy.md`.
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, and the scheduled task.
 - Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
 - Added 2026-06-02: Expanded the generator to 29 pack templates and seeded a 21-pack starter archive from `2026-05-13` through `2026-06-02`.
+- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified at 116,613 bytes.
 - Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
 
 ## Operator Rule
