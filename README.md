@@ -71,6 +71,7 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf/today.zip`
 - `https://www.calmsprout.com/daily-shelf/products`
 - `https://www.calmsprout.com/daily-shelf/products/<pack-slug>`
+- `https://www.calmsprout.com/daily-shelf/product-sitemap.xml`
 - `https://www.calmsprout.com/daily-shelf/catalog.json`
 - `https://www.calmsprout.com/daily-shelf/feed.xml`
 - `https://www.calmsprout.com/daily-shelf/starter.zip`
