@@ -5,22 +5,22 @@
 - Operator: `DAI-AUT-01`
 - Project: `daily-autodigital-shelf`
 - State: idle
-- Last updated: `2026-06-02T05:53:58-04:00`
+- Last updated: `2026-06-02T06:03:32-04:00`
 - Active broker action: none
 
 ## Latest Verified Work
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest handoff update: CalmSprout product sitemap routes recorded
-- Latest functional commit: `8b42dce` (`Track CalmSprout product sitemap routes`)
+- Latest handoff update: CalmSprout product support routes recorded
+- Latest functional commit: `41949c7` (`Track CalmSprout product support routes`)
 - Latest adjacent bridge commit: CalmSprout `f063a55` (`Add Daily Shelf bridge`)
-- Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), and `d8af561` (`Add Daily Shelf dynamic product sitemap`)
-- CalmSprout deploy: Cloudflare Worker version `738a15ee-3f18-44b1-b92d-cf75d865f0f6`
-- Pages deployment: `26812212317` for product sitemap route tracking
+- Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), and `3001f49` (`Add Daily Shelf product support funnels`)
+- CalmSprout deploy: Cloudflare Worker version `8777e666-af2d-40db-bcbc-317dccf50560`
+- Pages deployment: `26812672540` for product support route tracking
 - Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
 - Verification: `verify-system.ps1` passed with `files_checked: 40`, `bundle_bytes: 328177`, `store_import_zip_bytes: 162402`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
-- Discovery: IndexNow accepted 8 support-metadata URLs with HTTP 200; CalmSprout IndexNow automation accepted 27 branded current-pack/bridge/data URLs, 2 product catalog URLs, 21 product detail URLs, and 2 sitemap URLs with HTTP 200; follow-up dry runs returned `submit_count: 0`
+- Discovery: IndexNow accepted 8 support-metadata URLs with HTTP 200; CalmSprout IndexNow automation accepted 27 branded current-pack/bridge/data URLs, 2 product catalog URLs, 21 product detail URLs, 2 sitemap URLs, and 21 product support URLs with HTTP 200; follow-up dry runs returned `submit_count: 0`
 - Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` are generated
 - Support metadata: catalog/import JSON and CSV expose `support_page_url`, `pay_what_you_can_url`, `monetization_destination_type`, `monetization_destination_url`, `store_connected`, and `support_connected`; current pack JSON-LD exposes `DonateAction` while only support mode is connected
 - Pay-what-you-can QA: local browser loaded the page with no console errors and verified the support CTA reaches `https://app.squareup.com/gift/MLZ021BP45QKH/order`
@@ -34,6 +34,7 @@
 - CalmSprout product catalog QA: live `/daily-shelf/products` and `/daily-shelf/browse` returned HTTP 200 with 21 product cards, `One-Page SOP Builder`, support state, and product-checkout boundary; live browser QA found no console messages and no mobile horizontal overflow; `/daily-shelf/downloads/2026-06-02-one-page-sop.zip` returned a 5,869-byte ZIP response
 - CalmSprout product detail QA: live `/daily-shelf/products/2026-06-02-one-page-sop` returned HTTP 200 with related packs, support state, product-checkout boundary, and first-party ZIP CTA; live `/daily-shelf/packs/2026-06-02-one-page-sop/` proxied the public pack page; live browser QA found no console messages and no mobile horizontal overflow
 - CalmSprout product sitemap QA: live `/sitemap.xml` returned HTTP 200 with 44 URLs including product detail URLs and `/daily-shelf/product-sitemap.xml`; live `/daily-shelf/product-sitemap.xml` returned HTTP 200 with 21 product detail URLs; browser QA found no console messages
+- CalmSprout product support QA: live `/daily-shelf/products/2026-06-02-one-page-sop/support` returned HTTP 200 with Square support CTA, suggested support tiers, and product-checkout boundary; live product detail links to the support funnel; browser QA found no console messages and no mobile horizontal overflow
 - Support destination: `https://gift.calmsprout.com` resolves to the Square-hosted CalmSprout gift/support page
 
 ## Boundaries
