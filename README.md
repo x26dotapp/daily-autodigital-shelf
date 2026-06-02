@@ -35,10 +35,11 @@ The site also publishes:
 
 - `archive.html` for all generated packs
 - `topics/index.html`, topic pages, and `topics/topics.json` for use-case browsing
+- `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` for store-readiness policy review
 - `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
 - `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
-  `imports/store-upload-kit.zip` for generic marketplace import workflows
+  `imports/store-upload-kit.zip` for generic marketplace import workflows, including policy pages
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
 - `feed.json`, `sitemap.xml`, and `robots.txt` for discoverability

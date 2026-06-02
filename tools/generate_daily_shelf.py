@@ -895,6 +895,10 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
         "store-import.html",
+        "license.html",
+        "privacy.html",
+        "refund-policy.html",
+        "terms.html",
         "topics/index.html",
         "topics/topics.json",
         "catalog.csv",
@@ -1180,6 +1184,217 @@ def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+POLICY_DEFINITIONS: dict[str, dict[str, Any]] = {
+    "license": {
+        "path": "license.html",
+        "title": "Digital Product License",
+        "label": "License",
+        "description": "Plain license terms for Daily Autodigital Shelf generated printable packs.",
+        "sections": [
+            (
+                "Personal And Internal Use",
+                "A buyer may use downloaded packs for personal planning, household organization, or internal business operations.",
+            ),
+            (
+                "No Resale Of The Files",
+                "A buyer may not resell, redistribute, upload, or claim ownership of the original generated files, ZIP archives, templates, or listing copy.",
+            ),
+            (
+                "Printable Workflow Use",
+                "A buyer may print copies for their own household, team, client call, or internal workflow as long as the files themselves are not resold or republished.",
+            ),
+            (
+                "No Professional Advice",
+                "The packs are general organizational tools. They are not medical, legal, financial, tax, investment, or mental-health advice.",
+            ),
+        ],
+    },
+    "terms": {
+        "path": "terms.html",
+        "title": "Terms Of Use",
+        "label": "Terms",
+        "description": "Operating terms for the Daily Autodigital Shelf public site and generated files.",
+        "sections": [
+            (
+                "Static Site",
+                "This site publishes generated digital pack previews, listing metadata, and downloadable ZIP files. It does not operate checkout or collect payment directly.",
+            ),
+            (
+                "External Platforms",
+                "When a legitimate store, support, ad, affiliate, or marketplace destination is connected, that external platform will control its own checkout, tax, refund, and account rules.",
+            ),
+            (
+                "No Income Claims",
+                "The site does not claim guaranteed revenue, automated profit, buyer demand, or marketplace approval.",
+            ),
+            (
+                "Acceptable Use",
+                "Do not use these materials for spam, fraud, deceptive income claims, or regulated professional advice.",
+            ),
+        ],
+    },
+    "privacy": {
+        "path": "privacy.html",
+        "title": "Privacy Notice",
+        "label": "Privacy",
+        "description": "Privacy notice for the static Daily Autodigital Shelf site.",
+        "sections": [
+            (
+                "No Native Accounts",
+                "This static site does not create user accounts, run a checkout form, or ask visitors for payment credentials.",
+            ),
+            (
+                "No Local Visitor Database",
+                "The generator does not write a visitor database, mailing list, customer table, or lead file.",
+            ),
+            (
+                "Hosting And External Services",
+                "GitHub Pages and any future external store, support, ad, affiliate, or analytics provider may process requests under their own policies.",
+            ),
+            (
+                "Future Changes",
+                "If checkout, contact forms, analytics, or support links are connected later, this notice should be updated before collecting personal data.",
+            ),
+        ],
+    },
+    "refund": {
+        "path": "refund-policy.html",
+        "title": "Digital Download Refund Note",
+        "label": "Refund",
+        "description": "Refund and delivery note for future Daily Autodigital Shelf digital downloads.",
+        "sections": [
+            (
+                "Checkout Not Connected",
+                "No direct checkout is currently active on this site, so this site does not process refunds directly.",
+            ),
+            (
+                "Future Store Rules",
+                "If these files are sold through an external marketplace or support platform, that platform's refund, dispute, tax, and payout rules will apply.",
+            ),
+            (
+                "Digital Delivery",
+                "Generated packs are digital downloads. Buyers should review the public preview and listing text before purchase when a store is connected.",
+            ),
+            (
+                "Broken Files",
+                "If a future paid download is broken or incomplete, the intended remedy is access to a working copy through the external platform where the purchase happened.",
+            ),
+        ],
+    },
+}
+
+
+def policy_records(config: dict[str, Any]) -> list[dict[str, str]]:
+    return [
+        {
+            "slug": slug,
+            "label": policy["label"],
+            "title": policy["title"],
+            "path": policy["path"],
+            "url": pack_url(config, policy["path"]),
+        }
+        for slug, policy in POLICY_DEFINITIONS.items()
+    ]
+
+
+def policy_links(config: dict[str, Any], prefix: str = "./") -> str:
+    return " ".join(
+        f"""<a href="{esc(prefix + record["path"])}">{esc(record["label"])}</a>"""
+        for record in policy_records(config)
+    )
+
+
+def render_policy_pages(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    records = policy_records(config)
+    all_links = policy_links(config)
+    for slug, policy in POLICY_DEFINITIONS.items():
+        page_url = pack_url(config, policy["path"])
+        sections = "\n".join(
+            f"""<article class="setup-item">
+            <span class="setup-dot">{index}</span>
+            <div>
+              <strong>{esc(title)}</strong>
+              <p>{esc(body)}</p>
+            </div>
+          </article>"""
+            for index, (title, body) in enumerate(policy["sections"], start=1)
+        )
+        structured_data = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": policy["title"],
+            "description": policy["description"],
+            "url": page_url,
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": config["site"]["name"],
+                "url": pack_url(config, ""),
+            },
+        }
+        html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(policy["title"])} | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="{esc(policy["description"])}">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta(policy["title"], policy["description"], page_url, image_url, f"{policy['title']} page")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Policy navigation">
+        <a href="./">Home</a>
+        <a href="./archive.html">Archive</a>
+        <a href="./store-import.html">Import kit</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Policy</p>
+            <h2>{esc(policy["title"])}</h2>
+          </div>
+          <p>{esc(policy["description"])}</p>
+        </div>
+        <div class="setup-list">
+          {sections}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Store readiness</p>
+            <h2>Policy set</h2>
+          </div>
+          <p>These pages support future store setup. They do not activate checkout, collect payment, or create a payout account.</p>
+        </div>
+        <p class="policy-links">{all_links}</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+        (DOCS / policy["path"]).write_text(html, encoding="utf-8")
+
+    return {
+        "count": len(records),
+        "paths": [record["path"] for record in records],
+        "urls": [record["url"] for record in records],
+    }
+
+
 def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
     IMPORTS.mkdir(parents=True, exist_ok=True)
     rows = marketplace_rows(config)
@@ -1220,6 +1435,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
             f"Listing count: {len(rows)}",
             "",
             "This kit contains generic marketplace listing metadata, seller-copy files, and generated product ZIPs.",
+            "It also includes policy pages for license, terms, privacy, and refund/delivery notes.",
             "It is intended for a legitimate external store, support platform, or marketplace after payout setup exists.",
             "",
             "No checkout, payout account, tax profile, or payment processor is configured inside this archive.",
@@ -1227,7 +1443,8 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
     )
     with zipfile.ZipFile(DOCS / zip_rel_path, "w") as bundle:
         write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
-        for rel_path in [csv_rel_path, json_rel_path, "catalog.csv", "catalog.json"]:
+        policy_paths = [record["path"] for record in policy_records(config)]
+        for rel_path in [csv_rel_path, json_rel_path, "catalog.csv", "catalog.json", *policy_paths]:
             source = DOCS / rel_path
             if source.exists():
                 write_zip_entry(bundle, f"{zip_root}/{rel_path}", read_zip_source_bytes(source))
@@ -1297,6 +1514,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./terms.html">Policies</a>
         <a href="./starter-bundle.html">Starter bundle</a>
       </nav>
     </header>
@@ -1307,17 +1525,18 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
             <p class="label">Store import kit</p>
             <h2>Listings ready for a real marketplace</h2>
           </div>
-          <p>This page packages titles, descriptions, tags, suggested pricing, listing copy, preview links, and product ZIP URLs. It does not connect checkout or claim revenue.</p>
+          <p>This page packages titles, descriptions, tags, suggested pricing, listing copy, preview links, product ZIP URLs, and store policy pages. It does not connect checkout or claim revenue.</p>
         </div>
         <div class="bundle-panel">
           <div>
             <p class="label">Import files</p>
             <h3>{len(rows)} product listings prepared</h3>
-            <p>Use the CSV, JSON, or ZIP when a legitimate payout-enabled store exists. Each row points at a direct product ZIP, public preview page, topic_labels, and topic_urls.</p>
+            <p>Use the CSV, JSON, or ZIP when a legitimate payout-enabled store exists. Each row points at a direct product ZIP, public preview page, topic_labels, and topic_urls, and the ZIP includes license, terms, privacy, and refund notes.</p>
             <div class="actions">
               <a class="button primary" href="./{esc(zip_rel_path)}">Download import kit</a>
               <a class="button" href="./{esc(csv_rel_path)}">Listing CSV</a>
               <a class="button" href="./{esc(json_rel_path)}">Listing JSON</a>
+              <a class="button" href="./terms.html">Policy pages</a>
             </div>
           </div>
           <div class="bundle-stat">
@@ -1668,6 +1887,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./terms.html">Policies</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
     </header>
@@ -1776,6 +1996,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
     )
 
     support_or_store = monetization.get("store_url") or monetization.get("support_url") or "#setup"
+    policy_nav_links = policy_links(config)
     bundle_zip_path = str(bundle.get("zip_path", "bundles/starter-archive.zip"))
     bundle_page_path = str(bundle.get("page_path", "starter-bundle.html"))
     bundle_pack_count = int(bundle.get("pack_count", 0))
@@ -1808,6 +2029,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./topics/">Topics</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
         <a href="./store-import.html">Import kit</a>
+        <a href="./terms.html">Policies</a>
         <a href="#ledger">Automation ledger</a>
         <a href="#setup">Monetization setup</a>
       </nav>
@@ -1864,7 +2086,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -1953,6 +2175,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
 
     <footer class="site-footer">
       <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_nav_links}</p>
     </footer>
   </div>
 </body>
@@ -2095,6 +2318,7 @@ def render_archive(config: dict[str, Any]) -> None:
         <a href="./topics/">Topics</a>
         <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./store-import.html">Import kit</a>
+        <a href="./terms.html">Policies</a>
         <a href="./catalog.json">Catalog JSON</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
@@ -2106,7 +2330,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, and the <a href="./store-import.html">import kit</a> packages marketplace listing metadata. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -2127,6 +2351,10 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "topics/"),
         pack_url(config, "starter-bundle.html"),
         pack_url(config, "store-import.html"),
+        pack_url(config, "license.html"),
+        pack_url(config, "privacy.html"),
+        pack_url(config, "refund-policy.html"),
+        pack_url(config, "terms.html"),
         pack_url(config, "catalog.json"),
         pack_url(config, "topics/topics.json"),
         pack_url(config, "imports/store-listings.csv"),
@@ -2208,6 +2436,7 @@ def write_status(
     downloads: dict[str, Any],
     import_kit: dict[str, Any],
     topics: dict[str, Any],
+    policies: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
     status_path = DOCS / "status.json"
@@ -2245,6 +2474,9 @@ def write_status(
         "topic_item_count": int(topics.get("items", 0)),
         "topics_index": topics.get("index_path", "topics/index.html"),
         "topics_json": topics.get("json_path", "topics/topics.json"),
+        "policy_pages_ready": bool(policies.get("count")),
+        "policy_page_count": int(policies.get("count", 0)),
+        "policy_pages": policies.get("paths", []),
         "indexnow_enabled": bool(discovery.get("enabled")),
         "indexnow_key_file": discovery.get("key_file", ""),
         "indexnow_key_location": discovery.get("key_location", ""),
@@ -2299,6 +2531,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_catalog(config)
     render_archive(config)
     topics = render_topic_pages(config)
+    policies = render_policy_pages(config)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
     render_index(pack, config, bundle)
@@ -2306,7 +2539,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, import_kit, topics, discovery)
+    write_status(pack, config, bundle, downloads, import_kit, topics, policies, discovery)
     append_ledger(pack)
     return manifest
 

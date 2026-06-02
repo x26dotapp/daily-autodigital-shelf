@@ -334,13 +334,15 @@ section {
   width: 100%;
 }
 
-.topic-links {
+.topic-links,
+.policy-links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.topic-link {
+.topic-link,
+.policy-links a {
   display: inline-flex;
   align-items: center;
   min-height: 34px;

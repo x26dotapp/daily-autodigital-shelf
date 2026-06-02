@@ -86,6 +86,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "starter-bundle.html",
             "starter-archive.zip",
             "store-import.html",
+            "terms.html",
             "Download ZIP",
             "catalog.csv",
             "catalog.json",
@@ -121,9 +122,9 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(DOCS / "feed.json", 100)
     require_file(DOCS / "catalog.json", 100)
     require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", "topic_urls", manifest["title"]])
-    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "Topics", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", manifest["title"], "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Policies", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "Topics", "Policies", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "preview_url", "price_hint", "topic_urls", manifest["title"]])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
     if len(import_json.get("items", [])) < min_pack_count:
@@ -147,13 +148,19 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"topics.json does not assign current manifest id: {manifest['id']}")
     topic_page = DOCS / "topics" / f"{today_topic['slug']}.html"
     require_contains(topic_page, [today_topic["label"], manifest["title"], "Product ZIP", "Listing copy", "CollectionPage"])
+    policy_paths = [str(path).strip("/") for path in status.get("policy_pages", [])]
+    expected_policy_paths = ["license.html", "privacy.html", "refund-policy.html", "terms.html"]
+    for policy_path in expected_policy_paths:
+        if policy_path not in policy_paths:
+            fail(f"status.json policy_pages missing {policy_path}")
+        require_contains(DOCS / policy_path, ["Policy", "Store readiness", "WebPage", "og:image", "twitter:card", "checkout", "payout"])
     import_zip_path = DOCS / "imports" / "store-upload-kit.zip"
     require_file(import_zip_path, max(15000, min_pack_count * 1200))
     with zipfile.ZipFile(import_zip_path) as import_zip:
         names = import_zip.namelist()
         if any(name.startswith("/") or ".." in Path(name).parts for name in names):
             fail("Store import kit ZIP contains unsafe archive paths")
-        for suffix in ["README.txt", "store-listings.csv", "store-listings.json", "seller-copy.md", ".zip"]:
+        for suffix in ["README.txt", "store-listings.csv", "store-listings.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "seller-copy.md", ".zip"]:
             if not any(name.endswith(suffix) for name in names):
                 fail(f"Store import kit ZIP missing {suffix}")
     bundle_path = DOCS / "bundles" / "starter-archive.zip"
@@ -168,6 +175,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         required_names = [
             "daily-autodigital-shelf-starter/README.txt",
             "daily-autodigital-shelf-starter/STARTER-BUNDLE-MANIFEST.json",
+            "daily-autodigital-shelf-starter/terms.html",
+            "daily-autodigital-shelf-starter/license.html",
+            "daily-autodigital-shelf-starter/privacy.html",
+            "daily-autodigital-shelf-starter/refund-policy.html",
             f"daily-autodigital-shelf-starter/{manifest['worksheet']}",
             f"daily-autodigital-shelf-starter/{manifest['checklist']}",
             f"daily-autodigital-shelf-starter/{manifest['seller_copy']}",
@@ -176,7 +187,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if name not in names:
                 fail(f"Starter bundle missing {name}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "topics/", "topics/topics.json"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
 
@@ -214,6 +225,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json topic_page_count is {status.get('topic_page_count')}, expected at least 3")
     if int(status.get("topic_item_count") or 0) < min_pack_count:
         fail(f"status.json topic_item_count is {status.get('topic_item_count')}, expected at least {min_pack_count}")
+    if not status.get("policy_pages_ready"):
+        fail("status.json reports policy_pages_ready=false")
+    if int(status.get("policy_page_count") or 0) < 4:
+        fail(f"status.json policy_page_count is {status.get('policy_page_count')}, expected at least 4")
     if not status.get("indexnow_enabled"):
         fail("status.json reports indexnow_enabled=false")
     indexnow_key_file = str(status.get("indexnow_key_file", ""))
@@ -235,7 +250,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "download_bytes": download_path.stat().st_size,
         "store_import_zip_bytes": import_zip_path.stat().st_size,
         "topic_page_count": int(status.get("topic_page_count") or 0),
-        "files_checked": 24,
+        "policy_page_count": int(status.get("policy_page_count") or 0),
+        "files_checked": 28,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
