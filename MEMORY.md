@@ -556,9 +556,32 @@
   `store_connected: false`. Live GitHub Pages and CalmSprout checks confirmed
   zero accepted receipts, zero today revenue cents, no proven daily revenue,
   and no product checkout. IndexNow accepted 9 GitHub Pages URLs and 12
-  CalmSprout URLs. Support/download metrics remain `total_support_intent_clicks:
-  4` and `total_download_interest: 0`. This is revenue-proof guardrail
+  CalmSprout URLs. Support/download metrics at that proof point were
+  `total_support_intent_clicks: 4` and `total_download_interest: 0`. This is revenue-proof guardrail
   automation, not payment or daily revenue proof.
+
+- 2026-06-02 daily support offer surface: Daily Shelf commits `203165e` (`Add
+  daily support offer surface`) and `485923b` (`Refresh daily offer signal
+  metrics`) publish `daily-offer.html` and `daily-offer.json` from the current
+  support/download signal. The active buyer-facing target is `Small Business
+  Ops collection` at
+  `https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html`,
+  with score `6` from 1 support-intent click and 1 download-interest event. The
+  offer uses `DonateAction`, not `BuyAction`, and keeps `store_connected:
+  false`, `product_checkout_ready: false`, and `actual_daily_revenue_proven:
+  false`. GitHub Pages runs `26841135810` and `26841255599` succeeded.
+  CalmSprout commits `9afe3c1` (`Proxy Daily Shelf daily offer`) and `8e20a9d`
+  (`Record daily offer deploy`) deployed Worker version
+  `9d70f296-f03c-4e92-8d18-e0bd3522e387`, exposing
+  `/daily-shelf/daily-offer`, `/daily-shelf/daily-offer.html`, and
+  `/daily-shelf/daily-offer.json`. `verify-system.ps1` passed with
+  `files_checked: 76`, `daily_offer_ready: true`,
+  `daily_offer_action_type: DonateAction`, `support_signal_total_intent_clicks:
+  4`, `support_signal_total_download_interest: 1`,
+  `revenue_proof_today_revenue_cents: 0`, and `actual_daily_revenue_proven:
+  false`. IndexNow accepted 19 GitHub Pages URLs and 35 CalmSprout URLs.
+  This is buyer-facing support/conversion infrastructure, not product checkout
+  or daily revenue proof.
 
 ## Operator Rule
 
