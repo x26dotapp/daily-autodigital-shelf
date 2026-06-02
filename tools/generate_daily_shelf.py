@@ -630,6 +630,23 @@ def pack_url(config: dict[str, Any], path: str) -> str:
     return f"{base}/{path.lstrip('/')}"
 
 
+def social_meta(title: str, description: str, url: str, image_url: str, image_alt: str, og_type: str = "website") -> str:
+    return "\n".join(
+        [
+            f'  <meta property="og:title" content="{esc(title)}">',
+            f'  <meta property="og:description" content="{esc(description)}">',
+            f'  <meta property="og:type" content="{esc(og_type)}">',
+            f'  <meta property="og:url" content="{esc(url)}">',
+            f'  <meta property="og:image" content="{esc(image_url)}">',
+            f'  <meta property="og:image:alt" content="{esc(image_alt)}">',
+            '  <meta name="twitter:card" content="summary_large_image">',
+            f'  <meta name="twitter:title" content="{esc(title)}">',
+            f'  <meta name="twitter:description" content="{esc(description)}">',
+            f'  <meta name="twitter:image" content="{esc(image_url)}">',
+        ]
+    )
+
+
 def render_cover_svg(pack: dict[str, Any], out_path: Path) -> None:
     title = esc(pack["title"])
     date_label = esc(pack["date_label"])
@@ -668,12 +685,26 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
 
     pack_path = f"packs/{pack['pack_slug']}/"
     canonical_url = pack_url(config, pack_path)
+    cover_url = pack_url(config, f"{pack_path}cover.svg")
+    download_url = pack_url(config, f"downloads/{pack['pack_slug']}.zip")
     structured_data = {
         "@context": "https://schema.org",
         "@type": "CreativeWork",
         "name": pack["title"],
         "description": pack["summary"],
         "datePublished": pack["date"],
+        "image": cover_url,
+        "keywords": "printable worksheet, digital download, planner, checklist",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": pack["buyer"],
+        },
+        "encoding": {
+            "@type": "MediaObject",
+            "contentUrl": download_url,
+            "encodingFormat": "application/zip",
+            "name": f"{pack['title']} download ZIP",
+        },
         "isPartOf": {
             "@type": "WebSite",
             "name": config["site"]["name"],
@@ -691,10 +722,7 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
   <title>{esc(pack["title"])} | {esc(config["site"]["name"])}</title>
   <meta name="description" content="{esc(pack["summary"])}">
   <link rel="canonical" href="{esc(canonical_url)}">
-  <meta property="og:title" content="{esc(pack["title"])}">
-  <meta property="og:description" content="{esc(pack["summary"])}">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="{esc(canonical_url)}">
+{social_meta(pack["title"], pack["summary"], canonical_url, cover_url, f"{pack['title']} cover", "article")}
   <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -1075,6 +1103,25 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
 
     zip_bytes = (DOCS / zip_rel_path).stat().st_size
     zip_kb = max(1, round(zip_bytes / 1024))
+    page_url = pack_url(config, page_rel_path)
+    image_url = rows[0]["cover_url"] if rows else pack_url(config, "")
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Daily Autodigital Shelf Store Import Kit",
+        "description": "Generated marketplace listing metadata for digital download products.",
+        "url": page_url,
+        "numberOfItems": len(rows),
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": row["title"],
+                "url": row["preview_url"],
+            }
+            for index, row in enumerate(rows[:50])
+        ],
+    }
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1082,7 +1129,9 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Store Import Kit | {esc(config["site"]["name"])}</title>
   <meta name="description" content="Generic marketplace import kit for Daily Autodigital Shelf generated digital products.">
-  <link rel="canonical" href="{esc(pack_url(config, page_rel_path))}">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Store Import Kit", "Generated marketplace listing metadata for Daily Autodigital Shelf digital products.", page_url, image_url, "Daily Autodigital Shelf store import kit")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -1229,6 +1278,25 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
     if not rows:
         rows = "<p>No packs generated yet.</p>"
 
+    page_url = pack_url(config, page_rel_path)
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Daily Autodigital Shelf Starter Archive",
+        "description": "Generated starter archive of printable worksheet digital packs.",
+        "url": page_url,
+        "numberOfItems": len(manifests),
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": item["title"],
+                "url": pack_url(config, item["path"]),
+            }
+            for index, item in enumerate(manifests[:50])
+        ],
+    }
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1236,7 +1304,9 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Starter Bundle | {esc(config["site"]["name"])}</title>
   <meta name="description" content="Downloadable starter archive for Daily Autodigital Shelf generated packs.">
-  <link rel="canonical" href="{esc(pack_url(config, page_rel_path))}">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Daily Autodigital Shelf Starter Archive", "Downloadable starter archive of generated printable digital packs.", page_url, image_url, "Daily Autodigital Shelf starter archive")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -1316,6 +1386,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
     home_url = pack_url(config, "")
     today_path = f"packs/{today_pack['pack_slug']}/"
     today_url = pack_url(config, today_path)
+    today_cover_url = pack_url(config, f"{today_path}cover.svg")
     structured_data = {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -1329,6 +1400,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
                 "description": today_pack["summary"],
                 "url": today_url,
                 "datePublished": today_pack["date"],
+                "image": today_cover_url,
             }
         ],
     }
@@ -1370,10 +1442,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
   <link rel="canonical" href="{esc(home_url)}">
   <link rel="alternate" type="application/feed+json" title="{esc(config["site"]["name"])} feed" href="./feed.json">
   <link rel="sitemap" type="application/xml" href="./sitemap.xml">
-  <meta property="og:title" content="{esc(config["site"]["name"])}">
-  <meta property="og:description" content="{esc(config["site"]["tagline"])}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{esc(home_url)}">
+{social_meta(config["site"]["name"], config["site"]["tagline"], home_url, today_cover_url, f"{today_pack['title']} cover")}
   <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -1631,6 +1700,25 @@ def render_archive(config: dict[str, Any]) -> None:
     if not rows:
         rows = "<p>No packs generated yet.</p>"
 
+    page_url = pack_url(config, "archive.html")
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Daily Autodigital Shelf Pack Archive",
+        "description": "Archive of generated printable digital packs.",
+        "url": page_url,
+        "numberOfItems": len(manifests),
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": item["title"],
+                "url": pack_url(config, item["path"]),
+            }
+            for index, item in enumerate(manifests[:80])
+        ],
+    }
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1638,7 +1726,9 @@ def render_archive(config: dict[str, Any]) -> None:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pack Archive | {esc(config["site"]["name"])}</title>
   <meta name="description" content="Archive of generated Daily Autodigital Shelf packs.">
-  <link rel="canonical" href="{esc(pack_url(config, "archive.html"))}">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Daily Autodigital Shelf Pack Archive", "Archive of generated printable digital packs.", page_url, image_url, "Daily Autodigital Shelf pack archive")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>

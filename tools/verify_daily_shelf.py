@@ -75,6 +75,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "Open today's pack",
             "View setup status",
             "application/ld+json",
+            "og:image",
+            "twitter:card",
             "feed.json",
             "sitemap.xml",
             "seller-copy.md",
@@ -88,7 +90,18 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "catalog.json",
         ],
     )
-    require_contains(pack_dir / "index.html", [manifest["title"], "Store link not connected", "Download pack ZIP"])
+    require_contains(
+        pack_dir / "index.html",
+        [
+            manifest["title"],
+            "Store link not connected",
+            "Download pack ZIP",
+            "og:image",
+            "twitter:card",
+            "contentUrl",
+            "encodingFormat",
+        ],
+    )
     require_file(pack_dir / "printable.html", 800)
     require_file(pack_dir / "checklist.html", 800)
     require_file(pack_dir / "cover.svg", 800)
@@ -105,9 +118,9 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(DOCS / "feed.json", 100)
     require_file(DOCS / "catalog.json", 100)
     require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", manifest["title"]])
-    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Import kit", "Catalog CSV", "Download ZIP"])
-    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP"])
-    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", manifest["title"]])
+    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", manifest["title"], "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "preview_url", "price_hint", manifest["title"]])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
     if len(import_json.get("items", [])) < min_pack_count:
