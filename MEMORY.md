@@ -521,6 +521,22 @@
   CalmSprout URLs. This is checkout boundary documentation, not payment or
   daily revenue proof.
 
+- 2026-06-02 checkout-readiness monitor: `tools/sync_checkout_readiness.py`
+  now runs before generation in `run-daily.ps1` and the GitHub fallback
+  workflow, writes `state/checkout-readiness-snapshot.json`, skips measured
+  `/support/go` and ZIP/download routes, and publishes monitor fields into
+  `checkout-readiness.json` and `status.json`. Latest local proof checked 2
+  public candidate URLs, reached both, and verified 0 Daily Shelf product
+  checkout URLs. `gift.calmsprout.com` resolves to Square with title `Order
+  LNBS eGift Cards`; `shop.calmsprout.com` resolves to a Square shop with
+  CalmSprout/CBD/store signals but no Daily Shelf signal. `verify-system.ps1`
+  passed with `files_checked: 72`, `checkout_monitor_sync_ok: true`,
+  `checkout_monitor_checked_url_count: 2`,
+  `checkout_monitor_reachable_url_count: 2`,
+  `checkout_monitor_verified_product_checkout_count: 0`,
+  `product_checkout_ready: false`, and `store_connected: false`. This is
+  stronger unattended evidence, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.

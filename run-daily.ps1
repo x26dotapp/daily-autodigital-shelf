@@ -7,6 +7,7 @@ $scriptPath = Join-Path $root 'tools\generate_daily_shelf.py'
 $verifyPath = Join-Path $root 'tools\verify_daily_shelf.py'
 $supportMetricsPath = Join-Path $root 'tools\sync_support_metrics.py'
 $downloadMetricsPath = Join-Path $root 'tools\sync_download_metrics.py'
+$checkoutReadinessPath = Join-Path $root 'tools\sync_checkout_readiness.py'
 $indexNowPath = Join-Path $root 'tools\submit_indexnow.py'
 $calmSproutIndexNowPath = Join-Path $root 'tools\submit_calmsprout_indexnow.py'
 
@@ -65,6 +66,19 @@ try {
 }
 catch {
     Write-RunLog "Download metrics sync failed: $($_.Exception.Message)"
+}
+
+try {
+    & $python $checkoutReadinessPath
+    if ($LASTEXITCODE -eq 0) {
+        Write-RunLog 'Checkout readiness sync complete.'
+    }
+    else {
+        Write-RunLog "Checkout readiness sync returned exit code $LASTEXITCODE."
+    }
+}
+catch {
+    Write-RunLog "Checkout readiness sync failed: $($_.Exception.Message)"
 }
 
 & $python $scriptPath

@@ -17,6 +17,86 @@
   "candidate_count": 3,
   "publicly_linkable_candidate_count": 1,
   "verified_checkout_candidate_count": 0,
+  "monitor_sync_ok": true,
+  "monitor_fetched_at": "2026-06-02T18:18:05+00:00",
+  "monitor_checked_url_count": 2,
+  "monitor_reachable_url_count": 2,
+  "monitor_counter_route_skip_count": 0,
+  "monitor_verified_product_checkout_count": 0,
+  "monitor_public_support_reachable": true,
+  "monitor_daily_shelf_checkout_reachable": false,
+  "monitor_boundary": "This public monitor checks configured destinations without triggering support-intent redirects or download counters. It does not prove payments or daily revenue.",
+  "candidate_checks": [
+    {
+      "checked": true,
+      "configured_daily_shelf_checkout": false,
+      "configured_status": "connected_support_only",
+      "content_type": "text/html;charset=utf-8",
+      "counter_route_skipped": false,
+      "error": "",
+      "final_url": "https://app.squareup.com/gift/MLZ021BP45QKH/order",
+      "id": "calmsprout-square-support",
+      "kind": "support",
+      "label": "CalmSprout Square support",
+      "reachable": true,
+      "signals": {
+        "contains_calmsprout": false,
+        "contains_cbd_terms": false,
+        "contains_checkout_terms": false,
+        "contains_daily_shelf": false,
+        "contains_paypal": false,
+        "contains_sold_out": false,
+        "contains_square": true,
+        "text_sample": "Order LNBS eGift Cards"
+      },
+      "status_code": 200,
+      "title": "Order LNBS eGift Cards",
+      "url": "https://gift.calmsprout.com"
+    },
+    {
+      "checked": true,
+      "configured_daily_shelf_checkout": false,
+      "configured_status": "not_daily_shelf_checkout",
+      "content_type": "text/html; charset=UTF-8",
+      "counter_route_skipped": false,
+      "error": "",
+      "final_url": "https://calmsprout.square.site/s/shop",
+      "id": "calmsprout-square-shop",
+      "kind": "external_store",
+      "label": "CalmSprout Square shop",
+      "reachable": true,
+      "signals": {
+        "contains_calmsprout": true,
+        "contains_cbd_terms": true,
+        "contains_checkout_terms": true,
+        "contains_daily_shelf": false,
+        "contains_paypal": true,
+        "contains_sold_out": false,
+        "contains_square": true,
+        "text_sample": ""
+      },
+      "status_code": 200,
+      "title": "",
+      "url": "https://shop.calmsprout.com"
+    },
+    {
+      "checked": false,
+      "configured_daily_shelf_checkout": false,
+      "configured_status": "requires_owner_verification",
+      "content_type": "",
+      "counter_route_skipped": false,
+      "error": "no public URL configured",
+      "final_url": "",
+      "id": "archived-paypal-hosted-button-code",
+      "kind": "archived_payment_code",
+      "label": "Archived PayPal hosted-button code",
+      "reachable": false,
+      "signals": {},
+      "status_code": 0,
+      "title": "",
+      "url": ""
+    }
+  ],
   "candidates": [
     {
       "id": "calmsprout-square-support",
@@ -28,7 +108,33 @@
       "daily_shelf_checkout": false,
       "notes": "Voluntary support only. This does not gate delivery, create an order, or prove product revenue.",
       "evidence": "Configured support_url redirects to the Square-hosted CalmSprout support page.",
-      "blocker": "Needs a separate Daily Shelf store or product checkout before store_connected can become true."
+      "blocker": "Needs a separate Daily Shelf store or product checkout before store_connected can become true.",
+      "live_check": {
+        "checked": true,
+        "configured_daily_shelf_checkout": false,
+        "configured_status": "connected_support_only",
+        "content_type": "text/html;charset=utf-8",
+        "counter_route_skipped": false,
+        "error": "",
+        "final_url": "https://app.squareup.com/gift/MLZ021BP45QKH/order",
+        "id": "calmsprout-square-support",
+        "kind": "support",
+        "label": "CalmSprout Square support",
+        "reachable": true,
+        "signals": {
+          "contains_calmsprout": false,
+          "contains_cbd_terms": false,
+          "contains_checkout_terms": false,
+          "contains_daily_shelf": false,
+          "contains_paypal": false,
+          "contains_sold_out": false,
+          "contains_square": true,
+          "text_sample": "Order LNBS eGift Cards"
+        },
+        "status_code": 200,
+        "title": "Order LNBS eGift Cards",
+        "url": "https://gift.calmsprout.com"
+      }
     },
     {
       "id": "calmsprout-square-shop",
@@ -40,7 +146,33 @@
       "daily_shelf_checkout": false,
       "notes": "This is not configured for Daily Shelf printable packs and should not be used as the shelf checkout.",
       "evidence": "Existing public CalmSprout shop URL found in prior site markup.",
-      "blocker": "Needs product, compliance, fulfillment, refund, and payout verification for Daily Shelf before any link is used."
+      "blocker": "Needs product, compliance, fulfillment, refund, and payout verification for Daily Shelf before any link is used.",
+      "live_check": {
+        "checked": true,
+        "configured_daily_shelf_checkout": false,
+        "configured_status": "not_daily_shelf_checkout",
+        "content_type": "text/html; charset=UTF-8",
+        "counter_route_skipped": false,
+        "error": "",
+        "final_url": "https://calmsprout.square.site/s/shop",
+        "id": "calmsprout-square-shop",
+        "kind": "external_store",
+        "label": "CalmSprout Square shop",
+        "reachable": true,
+        "signals": {
+          "contains_calmsprout": true,
+          "contains_cbd_terms": true,
+          "contains_checkout_terms": true,
+          "contains_daily_shelf": false,
+          "contains_paypal": true,
+          "contains_sold_out": false,
+          "contains_square": true,
+          "text_sample": ""
+        },
+        "status_code": 200,
+        "title": "",
+        "url": "https://shop.calmsprout.com"
+      }
     },
     {
       "id": "archived-paypal-hosted-button-code",
@@ -52,7 +184,24 @@
       "daily_shelf_checkout": false,
       "notes": "The public shelf does not publish archived pay buttons as checkout without owner and product verification.",
       "evidence": "Archived CalmSprout template contains PayPal hosted-button code.",
-      "blocker": "Needs merchant ownership, payout, product, price, delivery, refund, and compliance verification."
+      "blocker": "Needs merchant ownership, payout, product, price, delivery, refund, and compliance verification.",
+      "live_check": {
+        "checked": false,
+        "configured_daily_shelf_checkout": false,
+        "configured_status": "requires_owner_verification",
+        "content_type": "",
+        "counter_route_skipped": false,
+        "error": "no public URL configured",
+        "final_url": "",
+        "id": "archived-paypal-hosted-button-code",
+        "kind": "archived_payment_code",
+        "label": "Archived PayPal hosted-button code",
+        "reachable": false,
+        "signals": {},
+        "status_code": 0,
+        "title": "",
+        "url": ""
+      }
     }
   ],
   "boundary": "Support is connected, but product checkout remains disconnected unless store_connected is true.",

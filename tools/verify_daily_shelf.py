@@ -687,6 +687,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(DOCS / ".nojekyll", 0)
     require_file(ROOT / "tools" / "sync_download_metrics.py", 3000)
     require_contains(ROOT / "tools" / "sync_download_metrics.py", ["download-metrics.json", "total_download_interest", "daily-shelf-download-metrics-snapshot"])
+    require_contains(ROOT / "tools" / "sync_checkout_readiness.py", ["checkout-readiness-snapshot.json", "counter_route_skipped", "daily-shelf-checkout-readiness-snapshot"])
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
@@ -699,11 +700,11 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     )
     require_contains(
         ROOT / "run-daily.ps1",
-        ["tools\\sync_support_metrics.py", "tools\\sync_download_metrics.py", "Support metrics sync complete", "Download metrics sync complete", "tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
+        ["tools\\sync_support_metrics.py", "tools\\sync_download_metrics.py", "tools\\sync_checkout_readiness.py", "Support metrics sync complete", "Download metrics sync complete", "Checkout readiness sync complete", "tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
     )
     require_contains(
         ROOT / ".github" / "workflows" / "daily-shelf.yml",
-        ["Sync public support metrics", "tools/sync_support_metrics.py", "Sync public download metrics", "tools/sync_download_metrics.py", "Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
+        ["Sync public support metrics", "tools/sync_support_metrics.py", "Sync public download metrics", "tools/sync_download_metrics.py", "Sync public checkout readiness", "tools/sync_checkout_readiness.py", "Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
     )
     require_contains(
         ROOT / ".gitignore",
@@ -893,6 +894,19 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     if promoted_signal_url not in support_signal_html:
         fail("support-signal.html missing branded promoted URL")
     checkout_readiness = read_json(DOCS / checkout_readiness_json)
+    checkout_snapshot = read_json(STATE / "checkout-readiness-snapshot.json")
+    if checkout_snapshot.get("kind") != "daily-shelf-checkout-readiness-snapshot":
+        fail("checkout-readiness snapshot has wrong kind")
+    if int(checkout_snapshot.get("configured_candidate_count") or 0) < 3:
+        fail("checkout-readiness snapshot missing configured candidates")
+    if int(checkout_snapshot.get("checked_url_count") or 0) < 2:
+        fail("checkout-readiness snapshot did not check public candidate URLs")
+    if int(checkout_snapshot.get("reachable_url_count") or 0) < 1:
+        fail("checkout-readiness snapshot has no reachable public candidate URL")
+    if int(checkout_snapshot.get("verified_product_checkout_count") or 0) != 0:
+        fail("checkout-readiness snapshot unexpectedly verified product checkout")
+    if checkout_snapshot.get("daily_shelf_checkout_reachable"):
+        fail("checkout-readiness snapshot claims Daily Shelf checkout is reachable")
     if checkout_readiness.get("kind") != "daily-shelf-checkout-readiness":
         fail("checkout-readiness.json has wrong kind")
     if checkout_readiness.get("page_path") != checkout_readiness_page or checkout_readiness.get("json_path") != checkout_readiness_json:
@@ -921,6 +935,14 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("Archived PayPal candidate should not publish a live pay URL")
     if int(checkout_readiness.get("verified_checkout_candidate_count") or 0) != int(status.get("checkout_verified_candidate_count") or 0):
         fail("checkout readiness verified candidate count mismatch")
+    if int(checkout_readiness.get("monitor_checked_url_count") or 0) != int(status.get("checkout_monitor_checked_url_count") or 0):
+        fail("checkout readiness monitor checked count mismatch")
+    if int(checkout_readiness.get("monitor_reachable_url_count") or 0) != int(status.get("checkout_monitor_reachable_url_count") or 0):
+        fail("checkout readiness monitor reachable count mismatch")
+    if int(checkout_readiness.get("monitor_verified_product_checkout_count") or 0) != 0:
+        fail("checkout readiness monitor unexpectedly verified product checkout")
+    if checkout_readiness.get("monitor_daily_shelf_checkout_reachable"):
+        fail("checkout readiness monitor claims Daily Shelf checkout is reachable")
     if not status.get("checkout_readiness_ready"):
         fail("status.json reports checkout_readiness_ready=false")
     if status.get("checkout_readiness_page") != checkout_readiness_page or status.get("checkout_readiness_json") != checkout_readiness_json:
@@ -940,6 +962,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "CalmSprout Square support",
             "CalmSprout Square shop",
             "Archived PayPal hosted-button code",
+            "Public monitor sync",
+            "Monitor-verified product checkout URLs",
             "Store checkout remains disconnected",
             checkout_readiness_json,
             "not linked as checkout",
@@ -1030,7 +1054,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "policy_page_count": int(status.get("policy_page_count") or 0),
         "sponsor_tier_count": int(status.get("sponsor_tier_count") or 0),
         "collection_bundle_page_count": int(status.get("collection_bundle_page_count") or 0),
-        "files_checked": 70,
+        "files_checked": 72,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
@@ -1041,6 +1065,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "checkout_readiness_ready": bool(status.get("checkout_readiness_ready")),
         "checkout_candidate_count": int(status.get("checkout_candidate_count") or 0),
         "checkout_verified_candidate_count": int(status.get("checkout_verified_candidate_count") or 0),
+        "checkout_monitor_sync_ok": bool(status.get("checkout_monitor_sync_ok")),
+        "checkout_monitor_checked_url_count": int(status.get("checkout_monitor_checked_url_count") or 0),
+        "checkout_monitor_reachable_url_count": int(status.get("checkout_monitor_reachable_url_count") or 0),
+        "checkout_monitor_verified_product_checkout_count": int(status.get("checkout_monitor_verified_product_checkout_count") or 0),
         "product_checkout_ready": bool(status.get("product_checkout_ready")),
     }
 

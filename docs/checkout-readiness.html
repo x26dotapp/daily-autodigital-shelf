@@ -63,7 +63,7 @@
               <h3>Support path connected</h3>
               <p>Support URL: https://gift.calmsprout.com.</p>
               <p>Store URL: not connected.</p>
-              <p class="fineprint">Verified product-checkout candidates: 0. Public candidate destinations: 1.</p>
+              <p class="fineprint">Verified product-checkout candidates: 0. Public candidate destinations: 1. Monitor reachable URLs: 2.</p>
             </div>
           </article>
         </aside>
@@ -76,12 +76,14 @@
           </div>
           <p>These are not automatically promoted as product checkout. A candidate must be verified for ownership, payout, product fit, delivery, refunds, and compliance first.</p>
         </div>
+        <p class="fineprint">Public monitor sync: ok. Checked URLs: 2. Reachable URLs: 2. Monitor-verified product checkout URLs: 0. This monitor does not touch support-intent redirects or download ZIP routes.</p>
         <div class="ledger">
           <article class="ledger-row">
           <strong>CalmSprout Square support</strong>
           <p>Voluntary support only. This does not gate delivery, create an order, or prove product revenue.</p>
           <p class="fineprint">Kind: support. Status: connected_support_only. Daily Shelf checkout: no.</p>
           <p class="fineprint">Known URL: https://gift.calmsprout.com</p>
+          <p class="fineprint">Monitor: HTTP 200, reachable yes, title Order LNBS eGift Cards.</p>
           <p class="fineprint">Evidence: Configured support_url redirects to the Square-hosted CalmSprout support page.</p>
           <p class="fineprint">Blocker: Needs a separate Daily Shelf store or product checkout before store_connected can become true.</p>
           <div class="row-actions">
@@ -93,6 +95,7 @@
           <p>This is not configured for Daily Shelf printable packs and should not be used as the shelf checkout.</p>
           <p class="fineprint">Kind: external_store. Status: not_daily_shelf_checkout. Daily Shelf checkout: no.</p>
           <p class="fineprint">Known URL: https://shop.calmsprout.com</p>
+          <p class="fineprint">Monitor: HTTP 200, reachable yes, title untitled.</p>
           <p class="fineprint">Evidence: Existing public CalmSprout shop URL found in prior site markup.</p>
           <p class="fineprint">Blocker: Needs product, compliance, fulfillment, refund, and payout verification for Daily Shelf before any link is used.</p>
           <div class="row-actions">
@@ -104,6 +107,7 @@
           <p>The public shelf does not publish archived pay buttons as checkout without owner and product verification.</p>
           <p class="fineprint">Kind: archived_payment_code. Status: requires_owner_verification. Daily Shelf checkout: no.</p>
           <p class="fineprint">No public URL is published for this candidate.</p>
+          <p class="fineprint">Monitor: HTTP 0, reachable no, title untitled.</p>
           <p class="fineprint">Evidence: Archived CalmSprout template contains PayPal hosted-button code.</p>
           <p class="fineprint">Blocker: Needs merchant ownership, payout, product, price, delivery, refund, and compliance verification.</p>
           <div class="row-actions">

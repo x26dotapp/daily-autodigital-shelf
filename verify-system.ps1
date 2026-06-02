@@ -19,6 +19,7 @@ foreach ($needle in @(
     'America/New_York',
     'tools/sync_support_metrics.py',
     'tools/sync_download_metrics.py',
+    'tools/sync_checkout_readiness.py',
     'tools/generate_daily_shelf.py --date',
     'tools/verify_daily_shelf.py --date',
     'tools/submit_indexnow.py',
@@ -35,8 +36,10 @@ foreach ($needle in @(
     'tools\submit_calmsprout_indexnow.py',
     'tools\sync_support_metrics.py',
     'tools\sync_download_metrics.py',
+    'tools\sync_checkout_readiness.py',
     'Support metrics sync complete',
     'Download metrics sync complete',
+    'Checkout readiness sync complete',
     'CalmSprout IndexNow submission complete'
 )) {
     if (-not $runDailyText.Contains($needle)) {

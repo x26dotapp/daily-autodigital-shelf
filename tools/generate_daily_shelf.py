@@ -29,6 +29,7 @@ CONFIG_LOCAL = ROOT / "config" / "config.local.json"
 LEDGER = STATE / "ledger.jsonl"
 SUPPORT_METRICS_SNAPSHOT = STATE / "support-metrics-snapshot.json"
 DOWNLOAD_METRICS_SNAPSHOT = STATE / "download-metrics-snapshot.json"
+CHECKOUT_READINESS_SNAPSHOT = STATE / "checkout-readiness-snapshot.json"
 SUPPORT_SIGNAL_JSON_PATH = "support-signal.json"
 SUPPORT_SIGNAL_PAGE_PATH = "support-signal.html"
 CHECKOUT_READINESS_JSON_PATH = "checkout-readiness.json"
@@ -1228,6 +1229,23 @@ def blank_download_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def blank_checkout_readiness_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "kind": "daily-shelf-checkout-readiness-snapshot",
+        "fetched_at": None,
+        "sync_ok": False,
+        "checked_url_count": 0,
+        "reachable_url_count": 0,
+        "counter_route_skip_count": 0,
+        "configured_candidate_count": len(config.get("monetization", {}).get("checkout_candidates") or []),
+        "verified_product_checkout_count": 0,
+        "public_support_reachable": False,
+        "daily_shelf_checkout_reachable": False,
+        "checks": [],
+        "boundary": "This public monitor checks configured destinations without triggering support-intent redirects or download counters. It does not prove payments or daily revenue.",
+    }
+
+
 def load_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     if not SUPPORT_METRICS_SNAPSHOT.exists():
         return blank_support_metrics_snapshot(config)
@@ -1258,6 +1276,23 @@ def load_download_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     snapshot["by_kind"] = clean_count_map(snapshot.get("by_kind"))
     snapshot["total_download_interest"] = safe_count(snapshot.get("total_download_interest"))
     snapshot["recent"] = snapshot.get("recent") if isinstance(snapshot.get("recent"), list) else []
+    return snapshot
+
+
+def load_checkout_readiness_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    if not CHECKOUT_READINESS_SNAPSHOT.exists():
+        return blank_checkout_readiness_snapshot(config)
+    try:
+        raw = json.loads(CHECKOUT_READINESS_SNAPSHOT.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return blank_checkout_readiness_snapshot(config)
+    snapshot = {**blank_checkout_readiness_snapshot(config), **raw}
+    snapshot["checked_url_count"] = safe_count(snapshot.get("checked_url_count"))
+    snapshot["reachable_url_count"] = safe_count(snapshot.get("reachable_url_count"))
+    snapshot["counter_route_skip_count"] = safe_count(snapshot.get("counter_route_skip_count"))
+    snapshot["configured_candidate_count"] = safe_count(snapshot.get("configured_candidate_count"))
+    snapshot["verified_product_checkout_count"] = safe_count(snapshot.get("verified_product_checkout_count"))
+    snapshot["checks"] = snapshot.get("checks") if isinstance(snapshot.get("checks"), list) else []
     return snapshot
 
 
@@ -2774,6 +2809,21 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
     support_state = "Support path connected" if support_url else "Support path not connected"
     generated_at = stable_generated_at(DOCS / CHECKOUT_READINESS_JSON_PATH, today)
     support_intent_url = branded_url(config, "support/go") or support_url
+    monitor = load_checkout_readiness_snapshot(config)
+    monitor_checks = monitor.get("checks") if isinstance(monitor.get("checks"), list) else []
+    monitor_by_id = {
+        str(item.get("id") or ""): item
+        for item in monitor_checks
+        if isinstance(item, dict) and item.get("id")
+    }
+    candidate_checks = []
+    for candidate in candidates:
+        live_check = monitor_by_id.get(str(candidate.get("id") or ""), {})
+        if live_check:
+            candidate["live_check"] = live_check
+            candidate_checks.append(live_check)
+    monitor_verified_checkout_count = safe_count(monitor.get("verified_product_checkout_count"))
+    monitor_reachable_url_count = safe_count(monitor.get("reachable_url_count"))
 
     payload = {
         "kind": "daily-shelf-checkout-readiness",
@@ -2794,6 +2844,16 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
         "candidate_count": len(candidates),
         "publicly_linkable_candidate_count": publicly_linkable_count,
         "verified_checkout_candidate_count": verified_checkout_count,
+        "monitor_sync_ok": bool(monitor.get("sync_ok")),
+        "monitor_fetched_at": monitor.get("fetched_at"),
+        "monitor_checked_url_count": safe_count(monitor.get("checked_url_count")),
+        "monitor_reachable_url_count": monitor_reachable_url_count,
+        "monitor_counter_route_skip_count": safe_count(monitor.get("counter_route_skip_count")),
+        "monitor_verified_product_checkout_count": monitor_verified_checkout_count,
+        "monitor_public_support_reachable": bool(monitor.get("public_support_reachable")),
+        "monitor_daily_shelf_checkout_reachable": bool(monitor.get("daily_shelf_checkout_reachable")),
+        "monitor_boundary": str(monitor.get("boundary") or ""),
+        "candidate_checks": candidate_checks,
         "candidates": candidates,
         "boundary": "Support is connected, but product checkout remains disconnected unless store_connected is true.",
         "next_safe_actions": [
@@ -2816,6 +2876,7 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
           <p>{esc(item["notes"] or "No notes recorded.")}</p>
           <p class="fineprint">Kind: {esc(item["kind"])}. Status: {esc(item["status"])}. Daily Shelf checkout: {esc("yes" if item["daily_shelf_checkout"] else "no")}.</p>
           {f'<p class="fineprint">Known URL: {esc(item["url"])}</p>' if item["url"] else '<p class="fineprint">No public URL is published for this candidate.</p>'}
+          {f'<p class="fineprint">Monitor: HTTP {esc(item["live_check"].get("status_code", 0))}, reachable {esc("yes" if item["live_check"].get("reachable") else "no")}, title {esc(item["live_check"].get("title") or "untitled")}.</p>' if item.get("live_check") else '<p class="fineprint">Monitor: no live public URL check recorded yet.</p>'}
           {f'<p class="fineprint">Evidence: {esc(item["evidence"])}</p>' if item["evidence"] else ''}
           {f'<p class="fineprint">Blocker: {esc(item["blocker"])}</p>' if item["blocker"] else ''}
           <div class="row-actions">
@@ -2894,7 +2955,7 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
               <h3>{esc(support_state)}</h3>
               <p>Support URL: {esc(support_url or "not connected")}.</p>
               <p>Store URL: {esc(store_url or "not connected")}.</p>
-              <p class="fineprint">Verified product-checkout candidates: {verified_checkout_count}. Public candidate destinations: {publicly_linkable_count}.</p>
+              <p class="fineprint">Verified product-checkout candidates: {verified_checkout_count}. Public candidate destinations: {publicly_linkable_count}. Monitor reachable URLs: {monitor_reachable_url_count}.</p>
             </div>
           </article>
         </aside>
@@ -2907,6 +2968,7 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
           </div>
           <p>These are not automatically promoted as product checkout. A candidate must be verified for ownership, payout, product fit, delivery, refunds, and compliance first.</p>
         </div>
+        <p class="fineprint">Public monitor sync: {esc("ok" if monitor.get("sync_ok") else "not yet ok")}. Checked URLs: {safe_count(monitor.get("checked_url_count"))}. Reachable URLs: {monitor_reachable_url_count}. Monitor-verified product checkout URLs: {monitor_verified_checkout_count}. This monitor does not touch support-intent redirects or download ZIP routes.</p>
         <div class="ledger">
           {candidate_cards}
         </div>
@@ -2946,6 +3008,13 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
         "candidate_count": len(candidates),
         "publicly_linkable_candidate_count": publicly_linkable_count,
         "verified_checkout_candidate_count": verified_checkout_count,
+        "monitor_sync_ok": bool(monitor.get("sync_ok")),
+        "monitor_fetched_at": monitor.get("fetched_at"),
+        "monitor_checked_url_count": safe_count(monitor.get("checked_url_count")),
+        "monitor_reachable_url_count": monitor_reachable_url_count,
+        "monitor_verified_product_checkout_count": monitor_verified_checkout_count,
+        "monitor_public_support_reachable": bool(monitor.get("public_support_reachable")),
+        "monitor_daily_shelf_checkout_reachable": bool(monitor.get("daily_shelf_checkout_reachable")),
         "product_checkout_ready": product_checkout_ready,
     }
 
@@ -7552,6 +7621,13 @@ def write_status(
         "checkout_candidate_count": int(checkout_readiness.get("candidate_count", 0)),
         "checkout_public_candidate_count": int(checkout_readiness.get("publicly_linkable_candidate_count", 0)),
         "checkout_verified_candidate_count": int(checkout_readiness.get("verified_checkout_candidate_count", 0)),
+        "checkout_monitor_sync_ok": bool(checkout_readiness.get("monitor_sync_ok")),
+        "checkout_monitor_fetched_at": checkout_readiness.get("monitor_fetched_at"),
+        "checkout_monitor_checked_url_count": int(checkout_readiness.get("monitor_checked_url_count", 0)),
+        "checkout_monitor_reachable_url_count": int(checkout_readiness.get("monitor_reachable_url_count", 0)),
+        "checkout_monitor_verified_product_checkout_count": int(checkout_readiness.get("monitor_verified_product_checkout_count", 0)),
+        "checkout_monitor_public_support_reachable": bool(checkout_readiness.get("monitor_public_support_reachable")),
+        "checkout_monitor_daily_shelf_checkout_reachable": bool(checkout_readiness.get("monitor_daily_shelf_checkout_reachable")),
         "product_checkout_ready": bool(checkout_readiness.get("product_checkout_ready")),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
         "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),

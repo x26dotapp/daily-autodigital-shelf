@@ -41,6 +41,10 @@ jobs:
         continue-on-error: true
         run: python tools/sync_download_metrics.py
 
+      - name: Sync public checkout readiness
+        continue-on-error: true
+        run: python tools/sync_checkout_readiness.py
+
       - name: Generate site output
         run: python tools/generate_daily_shelf.py --date "$SHELF_DATE"
 
