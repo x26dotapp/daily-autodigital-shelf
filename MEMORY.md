@@ -384,6 +384,31 @@
   and `store_connected: false`. This is conversion-path infrastructure, not
   payment or daily revenue proof.
 
+- 2026-06-02 generated support-card asset: Daily Shelf commits `da88826`,
+  `7eabae3`, and `10011b1` add a deterministic
+  `docs/assets/support-card.svg`, embed it on generated support,
+  pay-what-you-can, pricing, starter bundle, and collection bundle pages,
+  include it in the starter archive and all collection bundle ZIPs, expose
+  `support_card_*` fields in `status.json`, and add verifier plus IndexNow
+  coverage. CalmSprout commit `493c162` proxies
+  `/daily-shelf/assets/support-card.svg`; commit `3bb171d` records Worker
+  version `bdd64ce9-cf85-4a4c-8857-60147f5e6d25`. GitHub Pages run
+  `26833933357` succeeded for `10011b1`. `verify-system.ps1` passed with
+  `pack_count: 29`, `files_checked: 63`, `bundle_bytes: 884701`,
+  `store_import_zip_bytes: 455945`, `support_connected: true`, and
+  `store_connected: false`. Live HTTP QA verified GitHub Pages and CalmSprout
+  SVG/page routes return HTTP 200 with inline constrained support-card markup;
+  support metrics stayed `total_support_intent_clicks: 4`. Browser QA at
+  1280x720 and 390x844 on fresh CalmSprout support/starter routes found the
+  card image loaded, link target `/daily-shelf/support/go`, no console
+  warnings/errors, no framework overlay, and no horizontal overflow. IndexNow
+  accepted 213 GitHub Pages URLs and 357 CalmSprout URLs; follow-up dry runs
+  returned `submit_count: 0` for both hosts. A prior normal-path browser click
+  showed stale cached pre-inline starter markup, so current proof uses fresh
+  published markup and inline sizing prevents recurrence after cache refresh.
+  This is conversion-path support infrastructure, not payment or daily revenue
+  proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
