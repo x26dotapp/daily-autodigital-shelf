@@ -457,6 +457,38 @@ section {
   font-weight: 800;
 }
 
+.signal-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+  gap: 20px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.signal-panel h3 {
+  margin: 6px 0 10px;
+  font-size: 1.45rem;
+}
+
+.signal-panel p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.signal-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.signal-actions .button {
+  width: 100%;
+}
+
 .support-card {
   grid-column: 1 / -1;
   margin: 22px 0 0;
@@ -575,7 +607,8 @@ section {
   .tier-grid,
   .artifact,
   .ledger-row,
-  .bundle-panel {
+  .bundle-panel,
+  .signal-panel {
     grid-template-columns: 1fr;
   }
 }

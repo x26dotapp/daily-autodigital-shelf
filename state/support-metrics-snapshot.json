@@ -1,0 +1,67 @@
+{
+  "by_day": {
+    "2026-06-02": 4
+  },
+  "by_slug": {
+    "2026-06-02-one-page-sop": 1,
+    "collection-small-business-ops": 1,
+    "daily-shelf-general": 2
+  },
+  "by_slug_day": {
+    "2026-06-02-one-page-sop": {
+      "2026-06-02": 1
+    },
+    "collection-small-business-ops": {
+      "2026-06-02": 1
+    },
+    "daily-shelf-general": {
+      "2026-06-02": 2
+    }
+  },
+  "fetched_at": "2026-06-02T17:09:08+00:00",
+  "kind": "daily-shelf-support-metrics-snapshot",
+  "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
+  "recent": [
+    {
+      "at": "2026-06-02T12:11:31.368Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/small-business-ops/support/go",
+      "slug": "collection-small-business-ops",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-small-business-ops"
+    },
+    {
+      "at": "2026-06-02T12:01:49.398Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/support",
+      "slug": "daily-shelf-general",
+      "utm_campaign": "general_support",
+      "utm_content": "daily-shelf-general"
+    },
+    {
+      "at": "2026-06-02T12:01:48.984Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/support/go",
+      "slug": "daily-shelf-general",
+      "utm_campaign": "general_support",
+      "utm_content": "daily-shelf-general"
+    },
+    {
+      "at": "2026-06-02T11:51:20.878Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-02-one-page-sop/support/go",
+      "slug": "2026-06-02-one-page-sop",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-02-one-page-sop"
+    }
+  ],
+  "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
+  "source_kind": "daily-shelf-support-intent-metrics",
+  "source_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
+  "storage_connected": true,
+  "sync_error": "",
+  "sync_ok": true,
+  "total_support_intent_clicks": 4,
+  "updated_at": "2026-06-02T12:11:31.368Z",
+  "version": 1
+}

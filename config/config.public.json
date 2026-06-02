@@ -10,6 +10,7 @@
   "monetization": {
     "enabled": true,
     "support_url": "https://gift.calmsprout.com",
+    "support_metrics_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
     "support_tiers": [
       {
         "label": "Small thank-you",

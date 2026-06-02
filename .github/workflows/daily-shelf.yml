@@ -33,6 +33,10 @@ jobs:
         run: |
           echo "SHELF_DATE=$(TZ=America/New_York date +%F)" >> "$GITHUB_ENV"
 
+      - name: Sync public support metrics
+        continue-on-error: true
+        run: python tools/sync_support_metrics.py
+
       - name: Generate site output
         run: python tools/generate_daily_shelf.py --date "$SHELF_DATE"
 

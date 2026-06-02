@@ -27,6 +27,10 @@ CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_PUBLIC = ROOT / "config" / "config.public.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
 LEDGER = STATE / "ledger.jsonl"
+SUPPORT_METRICS_SNAPSHOT = STATE / "support-metrics-snapshot.json"
+SUPPORT_SIGNAL_JSON_PATH = "support-signal.json"
+SUPPORT_SIGNAL_PAGE_PATH = "support-signal.html"
+DEFAULT_SUPPORT_METRICS_URL = "https://www.calmsprout.com/daily-shelf/support-metrics.json"
 
 
 PACKS: list[dict[str, Any]] = [
@@ -1121,11 +1125,108 @@ def read_manifests() -> list[dict[str, Any]]:
     return manifests
 
 
+def safe_count(value: Any) -> int:
+    try:
+        return max(0, int(value))
+    except (TypeError, ValueError):
+        return 0
+
+
+def clean_count_map(value: Any) -> dict[str, int]:
+    if not isinstance(value, dict):
+        return {}
+    return {str(key): safe_count(count) for key, count in value.items()}
+
+
+def clean_nested_count_map(value: Any) -> dict[str, dict[str, int]]:
+    if not isinstance(value, dict):
+        return {}
+    cleaned: dict[str, dict[str, int]] = {}
+    for key, raw_days in value.items():
+        if isinstance(raw_days, dict):
+            cleaned[str(key)] = clean_count_map(raw_days)
+    return cleaned
+
+
+def support_metrics_source_url(config: dict[str, Any]) -> str:
+    monetization = config.get("monetization", {})
+    source_url = str(monetization.get("support_metrics_url") or "").strip()
+    if source_url:
+        return source_url
+    branded_base = str(config.get("site", {}).get("branded_base_url") or "").strip().rstrip("/")
+    if branded_base:
+        return f"{branded_base}/support-metrics.json"
+    return DEFAULT_SUPPORT_METRICS_URL
+
+
+def blank_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "kind": "daily-shelf-support-metrics-snapshot",
+        "source_url": support_metrics_source_url(config),
+        "fetched_at": None,
+        "sync_ok": False,
+        "storage_connected": False,
+        "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
+        "revenue_boundary": "This measures clicks to the external support page. It does not prove payments or daily revenue.",
+        "total_support_intent_clicks": 0,
+        "by_day": {},
+        "by_slug": {},
+        "by_slug_day": {},
+        "recent": [],
+        "updated_at": None,
+    }
+
+
+def load_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    if not SUPPORT_METRICS_SNAPSHOT.exists():
+        return blank_support_metrics_snapshot(config)
+    try:
+        raw = json.loads(SUPPORT_METRICS_SNAPSHOT.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return blank_support_metrics_snapshot(config)
+    snapshot = {**blank_support_metrics_snapshot(config), **raw}
+    snapshot["by_day"] = clean_count_map(snapshot.get("by_day"))
+    snapshot["by_slug"] = clean_count_map(snapshot.get("by_slug"))
+    snapshot["by_slug_day"] = clean_nested_count_map(snapshot.get("by_slug_day"))
+    snapshot["total_support_intent_clicks"] = safe_count(snapshot.get("total_support_intent_clicks"))
+    snapshot["recent"] = snapshot.get("recent") if isinstance(snapshot.get("recent"), list) else []
+    return snapshot
+
+
+def sorted_signal_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return sorted(
+        items,
+        key=lambda item: (
+            safe_count(item.get("support_intent_clicks")),
+            str(item.get("date") or item.get("label") or ""),
+        ),
+        reverse=True,
+    )
+
+
+def manifest_pack_slug(item: dict[str, Any]) -> str:
+    direct = str(item.get("pack_slug") or "").strip()
+    if direct:
+        return direct
+    item_id = str(item.get("id") or "").strip()
+    if ":" in item_id:
+        candidate = item_id.rsplit(":", 1)[-1].strip()
+        if candidate:
+            return candidate
+    path = str(item.get("path") or "").strip("/")
+    parts = path.split("/")
+    if len(parts) >= 2 and parts[0] == "packs" and parts[1]:
+        return parts[1]
+    return ""
+
+
 def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
         SUPPORT_CARD_REL_PATH,
         "support.html",
+        SUPPORT_SIGNAL_PAGE_PATH,
+        SUPPORT_SIGNAL_JSON_PATH,
         "pay-what-you-can.html",
         "pricing.html",
         "sponsor.html",
@@ -1970,6 +2071,8 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
             "support-funnel.json",
             "support-funnel.xml",
             "support-funnel.csv",
+            SUPPORT_SIGNAL_JSON_PATH,
+            SUPPORT_SIGNAL_PAGE_PATH,
             "pricing.html",
             "sponsor.html",
             "commercial-use.html",
@@ -2054,6 +2157,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./offers/">Offers</a>
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
+        <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
         <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
         <a href="./starter-bundle.html">Starter bundle</a>
@@ -2143,6 +2247,323 @@ def preferred_collection_bundle_page_url(config: dict[str, Any]) -> str:
 
 def preferred_collection_label() -> str:
     return TOPIC_DEFINITIONS.get(PREFERRED_COLLECTION_SLUG, {}).get("label", "Small Business Ops")
+
+
+def product_signal_records(config: dict[str, Any], metrics: dict[str, Any], manifests: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    by_slug = clean_count_map(metrics.get("by_slug"))
+    by_slug_day = clean_nested_count_map(metrics.get("by_slug_day"))
+    records: list[dict[str, Any]] = []
+    for item in manifests:
+        slug = manifest_pack_slug(item)
+        if not slug:
+            continue
+        branded_urls = branded_product_urls(config, item)
+        records.append(
+            {
+                "type": "product",
+                "slug": slug,
+                "title": item.get("title", slug),
+                "summary": item.get("summary", ""),
+                "date": item.get("date", ""),
+                "date_label": item.get("date_label", ""),
+                "support_intent_clicks": by_slug.get(slug, 0),
+                "support_intent_clicks_by_day": by_slug_day.get(slug, {}),
+                "public_url": pack_url(config, item.get("path", f"packs/{slug}/")),
+                "branded_url": branded_urls.get("branded_product_url") or pack_url(config, item.get("path", f"packs/{slug}/")),
+                "download_page_url": pack_url(config, pack_download_page_path(item)),
+                "support_page_url": branded_urls.get("branded_support_url") or pack_url(config, "support.html"),
+                "support_intent_url": branded_urls.get("branded_support_intent_url") or str(config["monetization"].get("support_url") or ""),
+            }
+        )
+    return sorted_signal_items(records)
+
+
+def collection_signal_records(config: dict[str, Any], metrics: dict[str, Any]) -> list[dict[str, Any]]:
+    by_slug = clean_count_map(metrics.get("by_slug"))
+    by_slug_day = clean_nested_count_map(metrics.get("by_slug_day"))
+    records: list[dict[str, Any]] = []
+    for slug, topic in TOPIC_DEFINITIONS.items():
+        metric_slug = f"collection-{slug}"
+        records.append(
+            {
+                "type": "collection",
+                "slug": slug,
+                "metric_slug": metric_slug,
+                "title": f"{topic['label']} collection",
+                "label": topic["label"],
+                "summary": topic["description"],
+                "support_intent_clicks": by_slug.get(metric_slug, 0),
+                "support_intent_clicks_by_day": by_slug_day.get(metric_slug, {}),
+                "public_url": pack_url(config, collection_bundle_page_rel_path(slug)),
+                "branded_url": branded_url(config, collection_bundle_page_rel_path(slug)) or pack_url(config, collection_bundle_page_rel_path(slug)),
+                "download_url": pack_url(config, collection_bundle_rel_path(slug)),
+                "support_intent_url": branded_collection_support_url(config, slug) or str(config["monetization"].get("support_url") or ""),
+            }
+        )
+    return sorted_signal_items(records)
+
+
+def choose_support_signal_promotion(
+    today_pack: dict[str, Any],
+    products: list[dict[str, Any]],
+    collections: list[dict[str, Any]],
+) -> dict[str, Any]:
+    candidates = [item for item in products + collections if safe_count(item.get("support_intent_clicks")) > 0]
+    if candidates:
+        promoted = sorted_signal_items(candidates)[0]
+        return {
+            **promoted,
+            "reason": "highest measured aggregate support-intent count",
+            "promotion_mode": "support_intent",
+        }
+
+    today_slug = str(today_pack.get("pack_slug") or "")
+    today_record = next((item for item in products if item.get("slug") == today_slug), products[0] if products else {})
+    return {
+        **today_record,
+        "reason": "freshly generated fallback while measured support intent is still sparse",
+        "promotion_mode": "freshness",
+    }
+
+
+def support_signal_card_markup(signal: dict[str, Any], prefix: str = "./") -> str:
+    promoted = signal.get("promoted") if isinstance(signal.get("promoted"), dict) else {}
+    if not promoted:
+        return ""
+    title = str(promoted.get("title") or "Support signal")
+    summary = str(promoted.get("summary") or "")
+    clicks = safe_count(promoted.get("support_intent_clicks"))
+    public_url = str(promoted.get("public_url") or promoted.get("branded_url") or "")
+    support_url = str(promoted.get("support_intent_url") or "")
+    report_path = f"{prefix}{SUPPORT_SIGNAL_PAGE_PATH}"
+    public_cta = f"""<a class="button primary" href="{esc(public_url)}">Open promoted item</a>""" if public_url else ""
+    support_cta = f"""<a class="button" href="{esc(support_url)}">Support this path</a>""" if support_url else ""
+    return f"""<article class="signal-panel">
+          <div>
+            <p class="label">Autonomous support signal</p>
+            <h3>{esc(title)}</h3>
+            <p>{esc(summary)}</p>
+            <p class="fineprint">{clicks} measured support-intent click{"s" if clicks != 1 else ""}. Clicks do not prove payments or daily revenue.</p>
+          </div>
+          <div class="signal-actions">
+            {public_cta}
+            {support_cta}
+            <a class="button" href="{esc(report_path)}">Open signal report</a>
+          </div>
+        </article>"""
+
+
+def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    metrics = load_support_metrics_snapshot(config)
+    products = product_signal_records(config, metrics, manifests)
+    collections = collection_signal_records(config, metrics)
+    promoted = choose_support_signal_promotion(today_pack, products, collections)
+    support_url = str(config["monetization"].get("support_url") or "").strip()
+    store_url = str(config["monetization"].get("store_url") or "").strip()
+    generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
+    signal = {
+        "version": 1,
+        "kind": "daily-shelf-support-signal",
+        "generated_at": generated_at,
+        "source_url": metrics.get("source_url") or support_metrics_source_url(config),
+        "snapshot_fetched_at": metrics.get("fetched_at"),
+        "metrics_updated_at": metrics.get("updated_at"),
+        "metrics_sync_ok": bool(metrics.get("sync_ok")),
+        "storage_connected": bool(metrics.get("storage_connected")),
+        "support_connected": bool(support_url),
+        "store_connected": bool(store_url),
+        "monetization_destination_type": "store" if store_url else ("support" if support_url else "none"),
+        "total_support_intent_clicks": safe_count(metrics.get("total_support_intent_clicks")),
+        "revenue_boundary": metrics.get("revenue_boundary") or "Clicks do not prove payments or daily revenue.",
+        "privacy": metrics.get("privacy") or "Aggregate support-intent counts only.",
+        "promoted": promoted,
+        "top_products": products[:7],
+        "top_collections": collections[:5],
+        "recent": metrics.get("recent", [])[:10],
+        "json_path": SUPPORT_SIGNAL_JSON_PATH,
+        "page_path": SUPPORT_SIGNAL_PAGE_PATH,
+        "json_url": pack_url(config, SUPPORT_SIGNAL_JSON_PATH),
+        "page_url": pack_url(config, SUPPORT_SIGNAL_PAGE_PATH),
+        "branded_json_url": branded_url(config, SUPPORT_SIGNAL_JSON_PATH),
+        "branded_page_url": branded_url(config, SUPPORT_SIGNAL_PAGE_PATH),
+    }
+
+    (DOCS / SUPPORT_SIGNAL_JSON_PATH).write_text(json.dumps(signal, indent=2), encoding="utf-8")
+
+    top_product_rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["support_intent_clicks"])}</strong>
+          <p><a href="{esc(item["public_url"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="{esc(item["download_page_url"])}">Download page</a>
+            <a class="button" href="{esc(item["support_intent_url"])}">Support route</a>
+          </div>
+        </article>"""
+        for item in signal["top_products"]
+    )
+    if not top_product_rows:
+        top_product_rows = "<p>No product signal records generated yet.</p>"
+
+    top_collection_rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["support_intent_clicks"])}</strong>
+          <p><a href="{esc(item["public_url"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="{esc(item["download_url"])}">Bundle ZIP</a>
+            <a class="button" href="{esc(item["support_intent_url"])}">Support route</a>
+          </div>
+        </article>"""
+        for item in signal["top_collections"]
+    )
+    if not top_collection_rows:
+        top_collection_rows = "<p>No collection signal records generated yet.</p>"
+
+    promoted_public_url = str(promoted.get("public_url") or promoted.get("branded_url") or "")
+    promoted_support_url = str(promoted.get("support_intent_url") or "")
+    promoted_title = str(promoted.get("title") or "Daily Shelf support signal")
+    promoted_summary = str(promoted.get("summary") or "")
+    promoted_clicks = safe_count(promoted.get("support_intent_clicks"))
+    promoted_public_cta = f"""<a class="button primary" href="{esc(promoted_public_url)}">Open promoted item</a>""" if promoted_public_url else ""
+    promoted_support_cta = f"""<a class="button" href="{esc(promoted_support_url)}">Support promoted path</a>""" if promoted_support_url else ""
+    page_url = pack_url(config, SUPPORT_SIGNAL_PAGE_PATH)
+    home_url = pack_url(config, "")
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "Daily Autodigital Shelf support signal",
+        "description": "Aggregate support-intent signal used by the unattended Daily Autodigital Shelf publisher.",
+        "url": page_url,
+        "measurementTechnique": "Aggregate support-intent redirect counters",
+        "isBasedOn": str(signal["source_url"]),
+        "license": pack_url(config, "license.html"),
+    }
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support Signal | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Aggregate support-intent signal for the unattended Daily Autodigital Shelf publisher.">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Daily Autodigital Shelf Support Signal", "Aggregate support-intent signal for the unattended Daily Shelf publisher.", page_url, image_url, "Daily Autodigital Shelf support signal")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Support signal navigation">
+        <a href="./">Home</a>
+        <a href="./support.html">Support</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./offers/">Offers</a>
+        <a href="./templates/">Templates</a>
+        <a href="./{esc(SUPPORT_SIGNAL_JSON_PATH)}">Signal JSON</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Autonomous conversion signal</p>
+          <h1>Promote what shows support intent.</h1>
+          <p>This report lets the unattended publisher react to aggregate support clicks. It never treats clicks as payments and never claims revenue before a verified payment exists.</p>
+          <div class="actions">
+            {promoted_public_cta}
+            {promoted_support_cta}
+            <a class="button" href="./{esc(SUPPORT_SIGNAL_JSON_PATH)}">Open JSON report</a>
+            <a class="button" href="./support.html">Open support page</a>
+          </div>
+          <p class="fineprint">{esc(str(signal["revenue_boundary"]))}</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Current promoted path</p>
+              <h2>{esc(promoted_title)}</h2>
+            </div>
+            <span class="status">{esc(str(promoted.get("promotion_mode") or "signal"))}</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>{promoted_clicks} support-intent click{"s" if promoted_clicks != 1 else ""}</h3>
+              <p>{esc(promoted_summary)}</p>
+              <p class="fineprint">Reason: {esc(str(promoted.get("reason") or ""))}.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Product signal</p>
+            <h2>Top pack routes</h2>
+          </div>
+          <p>Counts are aggregate support-intent redirects by product slug. They are useful for promotion order, not revenue proof.</p>
+        </div>
+        <div class="ledger">
+          {top_product_rows}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Collection signal</p>
+            <h2>Top bundle routes</h2>
+          </div>
+          <p>Collection counts come from measured collection support routes and can promote the most interesting bundle page automatically.</p>
+        </div>
+        <div class="ledger">
+          {top_collection_rows}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Boundary</p>
+            <h2>Intent is not income</h2>
+          </div>
+          <p>{esc(str(signal["privacy"]))}</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done">
+            <span class="setup-dot">1</span>
+            <div>
+              <strong>Metrics snapshot synced</strong>
+              <p>Source: {esc(str(signal["source_url"]))}. Last metrics update: {esc(str(signal.get("metrics_updated_at") or "none"))}.</p>
+            </div>
+          </article>
+          <article class="setup-item done">
+            <span class="setup-dot">2</span>
+            <div>
+              <strong>Promotion target selected</strong>
+              <p>The current target is selected from aggregate support intent, or from the newest pack when no intent exists.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">3</span>
+            <div>
+              <strong>Revenue remains unproven</strong>
+              <p>{esc(str(signal["revenue_boundary"]))}</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / SUPPORT_SIGNAL_PAGE_PATH).write_text(content, encoding="utf-8")
+    return signal
 
 
 def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list[Path]:
@@ -4243,7 +4664,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dict[str, Any]) -> None:
+def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dict[str, Any], support_signal: dict[str, Any]) -> None:
     recent_count = int(config["generation"].get("recent_pack_count", 7))
     manifests = read_manifests()[:recent_count]
     monetization = config["monetization"]
@@ -4326,6 +4747,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
     bundle_kb = max(1, round(bundle_bytes / 1024)) if bundle_bytes else 0
     preferred_bundle_page_path = preferred_collection_bundle_page_path()
     preferred_bundle_label = preferred_collection_label()
+    signal_markup = support_signal_card_markup(support_signal, "./")
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -4364,6 +4786,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
         <a href="./pricing.html">Pricing</a>
+        <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
         <a href="./support.html">Support</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./store-import.html">Import kit</a>
@@ -4424,6 +4847,17 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <div class="mini-cover">{esc(today_pack["title"])}</div>
           </article>
         </aside>
+      </section>
+
+      <section id="support-signal">
+        <div class="section-head">
+          <div>
+            <p class="label">Autonomous promotion</p>
+            <h2>Support-interest signal</h2>
+          </div>
+          <p>The daily run can promote the item with the strongest aggregate support intent while preserving the payment boundary. <a href="./{esc(SUPPORT_SIGNAL_JSON_PATH)}">Open signal JSON</a>.</p>
+        </div>
+        {signal_markup}
       </section>
 
       <section>
@@ -5149,7 +5583,7 @@ def render_archive(config: dict[str, Any]) -> None:
     (DOCS / "archive.html").write_text(content, encoding="utf-8")
 
 
-def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
+def render_support_page(config: dict[str, Any], support_signal: dict[str, Any] | None = None) -> dict[str, Any]:
     manifests = read_manifests()
     monetization = config["monetization"]
     store_url = str(monetization.get("store_url") or "").strip()
@@ -5166,6 +5600,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
     latest_pack_url = pack_url(config, latest_pack["path"]) if latest_pack else home_url
     preferred_bundle_page_path = preferred_collection_bundle_page_path()
     preferred_bundle_label = preferred_collection_label()
+    signal_markup = support_signal_card_markup(support_signal or {}, "./")
     external_cta_label = "Open product checkout" if store_url else "Open Square support page"
     external_cta = (
         f"""<a class="button primary" href="{esc(action_url)}">{esc(external_cta_label)}</a>"""
@@ -5244,6 +5679,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
+        <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
       </nav>
@@ -5259,6 +5695,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
             <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
             <a class="button" href="./commercial-use.html">Commercial use</a>
             <a class="button" href="./sponsor.html">Sponsor</a>
+            <a class="button" href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
             <a class="button" href="./starter-bundle.html">Open starter bundle</a>
             <a class="button" href="./{esc(preferred_bundle_page_path)}">Open {esc(preferred_bundle_label)} bundle</a>
             <a class="button" href="./bundles/starter-archive.zip">Download starter bundle</a>
@@ -5283,6 +5720,16 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
           </article>
           {support_card_markup("./", action_url if connected else "", "Shareable support card for the connected voluntary support path.")}
         </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Autonomous promotion</p>
+            <h2>Current support-interest target</h2>
+          </div>
+          <p>The daily publisher reads aggregate support-intent metrics and promotes the path with the strongest signal. This is still not revenue proof.</p>
+        </div>
+        {signal_markup}
       </section>
       <section>
         <div class="section-head">
@@ -6168,7 +6615,13 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], pay_page: dict[str, Any], sponsor_pages: dict[str, Any]) -> dict[str, Any]:
+def render_ai_discovery_files(
+    config: dict[str, Any],
+    support: dict[str, Any],
+    pay_page: dict[str, Any],
+    sponsor_pages: dict[str, Any],
+    support_signal: dict[str, Any],
+) -> dict[str, Any]:
     manifests = read_manifests()
     site_name = config["site"]["name"]
     base_url = pack_url(config, "")
@@ -6184,6 +6637,8 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
     commercial_use_url = pack_url(config, commercial_use_path)
     sponsor_kit_path = str(sponsor_pages.get("kit_path", "sponsor-kit.json"))
     sponsor_kit_url = pack_url(config, sponsor_kit_path)
+    support_signal_page_url = pack_url(config, str(support_signal.get("page_path") or SUPPORT_SIGNAL_PAGE_PATH))
+    support_signal_json_url = pack_url(config, str(support_signal.get("json_path") or SUPPORT_SIGNAL_JSON_PATH))
     preferred_bundle_label = preferred_collection_label()
     preferred_bundle_url = preferred_collection_bundle_page_url(config)
     destination_type = str(support.get("destination_type", "none"))
@@ -6232,6 +6687,8 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Commercial use page: {commercial_use_url}",
             f"- Sponsor Kit JSON: {sponsor_kit_url}",
             f"- Support card SVG: {pack_url(config, SUPPORT_CARD_REL_PATH)}",
+            f"- Support Signal report: {support_signal_page_url}",
+            f"- Support Signal JSON: {support_signal_json_url}",
             f"- Offers: {pack_url(config, 'offers/')}",
             f"- Use cases: {pack_url(config, 'use-cases/')}",
             f"- Templates: {pack_url(config, 'templates/')}",
@@ -6257,6 +6714,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             monetization_line,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Support is voluntary and downloads remain public unless a real store checkout is connected.",
+            "- Support Signal uses aggregate support-intent clicks only; it does not prove payments or daily revenue.",
             "",
             "## Guardrails",
             "",
@@ -6288,6 +6746,8 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             "- Commercial use page: " + commercial_use_url,
             "- Sponsor Kit JSON: " + sponsor_kit_url,
             "- Support card SVG: " + pack_url(config, SUPPORT_CARD_REL_PATH),
+            "- Support Signal report: " + support_signal_page_url,
+            "- Support Signal JSON: " + support_signal_json_url,
             f"- {preferred_bundle_label} bundle page: {preferred_bundle_url}",
             *latest_branded_lines,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
@@ -6309,6 +6769,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Support Funnel XML: {pack_url(config, 'support-funnel.xml')}",
             f"- Support Funnel CSV: {pack_url(config, 'support-funnel.csv')}",
             f"- Sponsor Kit JSON: {sponsor_kit_url}",
+            f"- Support Signal JSON: {support_signal_json_url}",
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
             f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Use Cases JSON: {pack_url(config, 'use-cases/use-cases.json')}",
@@ -6339,6 +6800,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "archive.html"),
         pack_url(config, "support.html"),
         pack_url(config, "pay-what-you-can.html"),
+        pack_url(config, SUPPORT_SIGNAL_PAGE_PATH),
+        pack_url(config, SUPPORT_SIGNAL_JSON_PATH),
         pack_url(config, "pricing.html"),
         pack_url(config, "sponsor.html"),
         pack_url(config, "commercial-use.html"),
@@ -6471,6 +6934,7 @@ def write_status(
     pay_page: dict[str, Any],
     sponsor_pages: dict[str, Any],
     offers: dict[str, Any],
+    support_signal: dict[str, Any],
     ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
@@ -6615,6 +7079,20 @@ def write_status(
         "preferred_collection_bundle_branded_page_url": branded_url(config, preferred_collection_bundle_page_path()),
         "collection_support_intent_urls": offers.get("support_intent_urls", []),
         "collection_support_intent_count": len(offers.get("support_intent_urls", [])),
+        "support_signal_ready": bool(support_signal.get("page_path") and support_signal.get("json_path")),
+        "support_signal_page": support_signal.get("page_path", SUPPORT_SIGNAL_PAGE_PATH),
+        "support_signal_json": support_signal.get("json_path", SUPPORT_SIGNAL_JSON_PATH),
+        "support_signal_page_url": support_signal.get("page_url", pack_url(config, SUPPORT_SIGNAL_PAGE_PATH)),
+        "support_signal_json_url": support_signal.get("json_url", pack_url(config, SUPPORT_SIGNAL_JSON_PATH)),
+        "support_signal_branded_page_url": support_signal.get("branded_page_url", branded_url(config, SUPPORT_SIGNAL_PAGE_PATH)),
+        "support_signal_branded_json_url": support_signal.get("branded_json_url", branded_url(config, SUPPORT_SIGNAL_JSON_PATH)),
+        "support_signal_source_url": support_signal.get("source_url", support_metrics_source_url(config)),
+        "support_signal_metrics_sync_ok": bool(support_signal.get("metrics_sync_ok")),
+        "support_signal_total_intent_clicks": safe_count(support_signal.get("total_support_intent_clicks")),
+        "support_signal_promoted_type": (support_signal.get("promoted") or {}).get("type", ""),
+        "support_signal_promoted_slug": (support_signal.get("promoted") or {}).get("slug", ""),
+        "support_signal_promoted_title": (support_signal.get("promoted") or {}).get("title", ""),
+        "support_signal_promotion_mode": (support_signal.get("promoted") or {}).get("promotion_mode", ""),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
         "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),
         "llms_full_txt": ai_discovery.get("llms_full_txt", "llms-full.txt"),
@@ -6680,16 +7158,17 @@ def generate(day: dt.date) -> dict[str, Any]:
     use_cases = render_use_case_pages(config)
     templates = render_template_pages(config)
     guides = render_guide_pages(config)
+    support_signal = render_support_signal(config, pack)
     policies = render_policy_pages(config)
-    support = render_support_page(config)
+    support = render_support_page(config, support_signal)
     support_assets = render_support_assets(config, support)
     pay_page = render_pay_what_you_can_page(config, support)
     sponsor_pages = render_sponsor_pages(config)
     offers = render_offer_pages(config, support)
-    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages)
+    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages, support_signal)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
-    render_index(pack, config, bundle)
+    render_index(pack, config, bundle, support_signal)
     render_sitemap(config)
     render_robots(config)
     discovery = render_indexnow_key(config)
@@ -6713,6 +7192,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         pay_page,
         sponsor_pages,
         offers,
+        support_signal,
         ai_discovery,
         discovery,
     )

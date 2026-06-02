@@ -17,6 +17,7 @@ foreach ($needle in @(
     'Daily Autodigital Shelf Fallback',
     'contents: write',
     'America/New_York',
+    'tools/sync_support_metrics.py',
     'tools/generate_daily_shelf.py --date',
     'tools/verify_daily_shelf.py --date',
     'tools/submit_indexnow.py',
@@ -31,6 +32,8 @@ foreach ($needle in @(
 $runDailyText = Get-Content -LiteralPath (Join-Path $root 'run-daily.ps1') -Raw
 foreach ($needle in @(
     'tools\submit_calmsprout_indexnow.py',
+    'tools\sync_support_metrics.py',
+    'Support metrics sync complete',
     'CalmSprout IndexNow submission complete'
 )) {
     if (-not $runDailyText.Contains($needle)) {

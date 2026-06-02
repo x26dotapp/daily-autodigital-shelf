@@ -5,6 +5,7 @@ $logDir = Join-Path $root 'logs'
 $logPath = Join-Path $logDir 'daily-run.log'
 $scriptPath = Join-Path $root 'tools\generate_daily_shelf.py'
 $verifyPath = Join-Path $root 'tools\verify_daily_shelf.py'
+$supportMetricsPath = Join-Path $root 'tools\sync_support_metrics.py'
 $indexNowPath = Join-Path $root 'tools\submit_indexnow.py'
 $calmSproutIndexNowPath = Join-Path $root 'tools\submit_calmsprout_indexnow.py'
 
@@ -39,6 +40,19 @@ Set-Location $root
 Write-RunLog 'Daily Autodigital Shelf run starting.'
 
 $python = Get-Python
+try {
+    & $python $supportMetricsPath
+    if ($LASTEXITCODE -eq 0) {
+        Write-RunLog 'Support metrics sync complete.'
+    }
+    else {
+        Write-RunLog "Support metrics sync returned exit code $LASTEXITCODE."
+    }
+}
+catch {
+    Write-RunLog "Support metrics sync failed: $($_.Exception.Message)"
+}
+
 & $python $scriptPath
 if ($LASTEXITCODE -ne 0) {
     throw "Generator failed with exit code $LASTEXITCODE"
