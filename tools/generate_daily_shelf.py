@@ -1091,6 +1091,9 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
         "archive.html",
         "support.html",
         "pay-what-you-can.html",
+        "sponsor.html",
+        "commercial-use.html",
+        "sponsor-kit.json",
         "store-import.html",
         "license.html",
         "privacy.html",
@@ -1927,6 +1930,9 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
             "support-funnel.json",
             "support-funnel.xml",
             "support-funnel.csv",
+            "sponsor.html",
+            "commercial-use.html",
+            "sponsor-kit.json",
             "guides/index.html",
             "guides/guides.json",
             *policy_paths,
@@ -2005,6 +2011,8 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./templates/">Templates</a>
         <a href="./guides/">Guides</a>
         <a href="./offers/">Offers</a>
+        <a href="./commercial-use.html">Commercial use</a>
+        <a href="./sponsor.html">Sponsor</a>
         <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
         <a href="./starter-bundle.html">Starter bundle</a>
@@ -2028,6 +2036,8 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
               <a class="button primary" href="./{esc(zip_rel_path)}">Download import kit</a>
               <a class="button" href="./{esc(csv_rel_path)}">Listing CSV</a>
               <a class="button" href="./{esc(json_rel_path)}">Listing JSON</a>
+              <a class="button" href="./commercial-use.html">Commercial use</a>
+              <a class="button" href="./sponsor.html">Sponsor kit</a>
               <a class="button" href="./terms.html">Policy pages</a>
             </div>
           </div>
@@ -3895,6 +3905,8 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./templates/">Templates</a>
         <a href="./guides/">Guides</a>
         <a href="./offers/">Offers</a>
+        <a href="./commercial-use.html">Commercial use</a>
+        <a href="./sponsor.html">Sponsor</a>
         <a href="./support.html">Support</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./terms.html">Policies</a>
@@ -3921,6 +3933,8 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
               <a class="button" href="./use-cases/">Browse use cases</a>
               <a class="button" href="./templates/">Browse templates</a>
               <a class="button" href="./guides/">Browse guides</a>
+              <a class="button" href="./commercial-use.html">Commercial use</a>
+              <a class="button" href="./sponsor.html">Sponsor</a>
               <a class="button" href="./catalog.csv">Open catalog CSV</a>
             </div>
           </div>
@@ -4073,6 +4087,8 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./guides/">Guides</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
         <a href="./offers/">Offers</a>
+        <a href="./commercial-use.html">Commercial use</a>
+        <a href="./sponsor.html">Sponsor</a>
         <a href="./support.html">Support</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./store-import.html">Import kit</a>
@@ -4094,6 +4110,8 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <a class="button" href="./templates/">Browse templates</a>
             <a class="button" href="./guides/">Browse guides</a>
             <a class="button" href="./{esc(bundle_page_path)}">Open starter bundle</a>
+            <a class="button" href="./commercial-use.html">Commercial use</a>
+            <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./store-import.html">Open import kit</a>
             <a class="button" href="#setup">View setup status</a>
           </div>
@@ -4823,6 +4841,8 @@ def render_archive(config: dict[str, Any]) -> None:
         <a href="./templates/">Templates</a>
         <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./offers/">Offers</a>
+        <a href="./commercial-use.html">Commercial use</a>
+        <a href="./sponsor.html">Sponsor</a>
         <a href="./support.html">Support</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
@@ -4837,7 +4857,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, <a href="./use-cases/">buyer-intent use-case pages</a> make the archive easier to discover, <a href="./templates/">template pages</a> provide stable non-dated product URLs, <a href="./guides/">guide pages</a> add how-to search surfaces, <a href="./offers/">offer pages</a> make the collections easier to support, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, <a href="./use-cases/">buyer-intent use-case pages</a> make the archive easier to discover, <a href="./templates/">template pages</a> provide stable non-dated product URLs, <a href="./guides/">guide pages</a> add how-to search surfaces, <a href="./offers/">offer pages</a> make the collections easier to support, the <a href="./commercial-use.html">commercial-use page</a> and <a href="./sponsor.html">sponsor page</a> add an unattended support ladder, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -4940,6 +4960,8 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./offers/">Offers</a>
         <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
+        <a href="./commercial-use.html">Commercial use</a>
+        <a href="./sponsor.html">Sponsor</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
       </nav>
@@ -4953,6 +4975,8 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
           <div class="actions">
             {external_cta}
             <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
+            <a class="button" href="./commercial-use.html">Commercial use</a>
+            <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./starter-bundle.html">Open starter bundle</a>
             <a class="button" href="./bundles/starter-archive.zip">Download starter bundle</a>
             <a class="button" href="{esc(latest_pack_url)}">Open latest pack</a>
@@ -5157,6 +5181,8 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
             {primary_cta}
             <a class="button" href="./{esc(bundle_path)}">Download starter ZIP</a>
             <a class="button" href="./starter-bundle.html">Inspect bundle</a>
+            <a class="button" href="./commercial-use.html">Commercial use</a>
+            <a class="button" href="./sponsor.html">Sponsor</a>
           </div>
           <p class="fineprint">{esc(destination_note)} This is not product checkout unless store_connected is true in status.json.</p>
         </div>
@@ -5218,7 +5244,382 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
     }
 
 
-def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], pay_page: dict[str, Any]) -> dict[str, Any]:
+def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    monetization = config["monetization"]
+    support_url = str(monetization.get("support_url") or "").strip()
+    support_intent_url = branded_url(config, "support/go") or support_url
+    sponsor_page_path = "sponsor.html"
+    commercial_page_path = "commercial-use.html"
+    kit_path = "sponsor-kit.json"
+    sponsor_url = pack_url(config, sponsor_page_path)
+    commercial_url = pack_url(config, commercial_page_path)
+    image_url = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    tiers = list(monetization.get("support_tiers", []))
+    sponsor_tiers = [
+        *tiers,
+        {
+            "label": "Commercial-use supporter",
+            "amount": "$49",
+            "description": "A practical support level for a small team using the worksheets internally.",
+        },
+        {
+            "label": "Shelf sponsor",
+            "amount": "$99",
+            "description": "A stronger contribution for keeping the unattended public shelf online.",
+        },
+    ]
+    checkout_boundary = (
+        "Product checkout is not connected. Downloads remain public and support is voluntary through the connected support path."
+        if support_url
+        else "No external store, support, or affiliate destination is connected yet."
+    )
+    support_cta = (
+        f"""<a class="button primary" href="{esc(support_intent_url)}">Open support page</a>"""
+        if support_intent_url
+        else """<a class="button primary" href="./support.html">Open support page</a>"""
+    )
+    tier_cards = "\n".join(
+        f"""<article class="tier-card">
+          <span class="tier-amount">{esc(tier.get("amount", ""))}</span>
+          <h3>{esc(tier.get("label", "Support level"))}</h3>
+          <p>{esc(tier.get("description", ""))}</p>
+          {support_cta}
+        </article>"""
+        for tier in sponsor_tiers
+    )
+    recent_rows = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="./{esc(template_page_path(item))}">Template</a>
+            <a class="button" href="./{esc(guide_page_path(item))}">Guide</a>
+            <a class="button" href="./{esc(pack_download_page_path(item))}">Download page</a>
+          </div>
+        </article>"""
+        for item in manifests[:6]
+    )
+    if not recent_rows:
+        recent_rows = "<p>No packs generated yet.</p>"
+
+    sponsor_graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "name": "Sponsor Daily Autodigital Shelf",
+                "description": "Sponsor and voluntary support page for an unattended public worksheet shelf.",
+                "url": sponsor_url,
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": config["site"]["name"],
+                    "url": pack_url(config, ""),
+                },
+                "potentialAction": {
+                    "@type": "DonateAction",
+                    "target": support_intent_url,
+                    "name": "Support the shelf",
+                },
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Does sponsoring create a private order or manual fulfillment promise?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. The downloads remain public and unattended. Support helps keep the automated shelf online.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is product checkout connected?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": checkout_boundary,
+                        },
+                    },
+                ],
+            },
+        ],
+    }
+    commercial_graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "name": "Commercial Use Support",
+                "description": "Commercial and internal-use support page for Daily Autodigital Shelf templates.",
+                "url": commercial_url,
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": config["site"]["name"],
+                    "url": pack_url(config, ""),
+                },
+                "potentialAction": {
+                    "@type": "DonateAction",
+                    "target": support_intent_url,
+                    "name": "Support commercial use",
+                },
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Can a team use these templates internally?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. The plain license allows personal and internal business use. The files themselves should not be resold, redistributed, or claimed as original work.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is support required for commercial use?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Support is voluntary while product checkout is disconnected. The commercial-use page exists to give teams a clear unattended support path.",
+                        },
+                    },
+                ],
+            },
+        ],
+    }
+    sponsor_kit = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Daily Autodigital Shelf Sponsor Kit",
+        "description": "Machine-readable sponsor and commercial-use support metadata for Daily Autodigital Shelf.",
+        "url": sponsor_url,
+        "branded_url": branded_url(config, "sponsor"),
+        "commercial_use_url": commercial_url,
+        "branded_commercial_use_url": branded_url(config, "commercial-use"),
+        "support_intent_url": support_intent_url,
+        "checkout_boundary": checkout_boundary,
+        "support_connected": bool(support_url),
+        "store_connected": bool(monetization.get("store_url")),
+        "numberOfItems": len(sponsor_tiers),
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": tier.get("label", "Support level"),
+                "description": tier.get("description", ""),
+                "url": support_intent_url,
+            }
+            for index, tier in enumerate(sponsor_tiers)
+        ],
+        "items": sponsor_tiers,
+    }
+    (DOCS / kit_path).write_text(json.dumps(sponsor_kit, indent=2), encoding="utf-8")
+
+    sponsor_html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sponsor Daily Autodigital Shelf | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Sponsor the unattended Daily Autodigital Shelf public worksheet library through the connected support path.">
+  <link rel="canonical" href="{esc(sponsor_url)}">
+{social_meta("Sponsor Daily Autodigital Shelf", "Sponsor the unattended public worksheet shelf through the connected support path.", sponsor_url, image_url, "Daily Autodigital Shelf sponsor page")}
+  <script type="application/ld+json">{json_for_script(sponsor_graph)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Sponsor navigation">
+        <a href="./">Home</a>
+        <a href="./commercial-use.html">Commercial use</a>
+        <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./templates/">Templates</a>
+        <a href="./guides/">Guides</a>
+        <a href="./support.html">Support</a>
+        <a href="./terms.html">Policies</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Sponsor</p>
+          <h1>Sponsor the unattended public worksheet shelf.</h1>
+          <p>Daily Autodigital Shelf publishes reusable worksheets, templates, guide pages, feeds, and bundles without manual delivery. Sponsorship is voluntary support through the connected external path.</p>
+          <div class="actions">
+            {support_cta}
+            <a class="button" href="./commercial-use.html">Commercial use terms</a>
+            <a class="button" href="./sponsor-kit.json">Sponsor kit JSON</a>
+            <a class="button" href="./bundles/starter-archive.zip">Download starter ZIP</a>
+          </div>
+          <p class="fineprint">{esc(checkout_boundary)} Sponsorship does not promise private fulfillment, paid placement, or revenue proof.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Unattended output</p>
+              <h2>{len(manifests)} packs</h2>
+            </div>
+            <span class="status">support</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>What support keeps running</h3>
+              <p>Daily generation, public downloads, guide pages, template pages, collection bundles, metadata feeds, and search submission.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Suggested support</p>
+            <h2>Support ladder</h2>
+          </div>
+          <p>All buttons route to the connected support path. Amount selection happens externally, not on this static page.</p>
+        </div>
+        <div class="tier-grid">
+          {tier_cards}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Proof of work</p>
+            <h2>Recent generated assets</h2>
+          </div>
+          <p>These public files show what the support path keeps available without manual delivery.</p>
+        </div>
+        <div class="ledger">
+          {recent_rows}
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / sponsor_page_path).write_text(sponsor_html, encoding="utf-8")
+
+    commercial_html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commercial Use Support | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Commercial and internal-use support page for Daily Autodigital Shelf public templates and guides.">
+  <link rel="canonical" href="{esc(commercial_url)}">
+{social_meta("Commercial Use Support", "Use Daily Autodigital Shelf templates internally and support the unattended public shelf.", commercial_url, image_url, "Daily Autodigital Shelf commercial use page")}
+  <script type="application/ld+json">{json_for_script(commercial_graph)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Commercial use navigation">
+        <a href="./">Home</a>
+        <a href="./sponsor.html">Sponsor</a>
+        <a href="./license.html">License</a>
+        <a href="./templates/">Templates</a>
+        <a href="./guides/">Guides</a>
+        <a href="./support.html">Support</a>
+        <a href="./terms.html">Policies</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Commercial use</p>
+          <h1>Use the templates internally. Support the shelf if they help.</h1>
+          <p>The public license allows personal and internal business use. The files should not be resold, redistributed, uploaded as-is, or claimed as original work.</p>
+          <div class="actions">
+            {support_cta}
+            <a class="button" href="./license.html">Read license</a>
+            <a class="button" href="./templates/">Browse templates</a>
+            <a class="button" href="./guides/">Browse guides</a>
+          </div>
+          <p class="fineprint">{esc(checkout_boundary)} Support is voluntary and handled by the external provider.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Use boundary</p>
+              <h2>Internal use</h2>
+            </div>
+            <span class="status">license</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>Allowed shape</h3>
+              <p>Print or use the worksheets for household, team, client-call, and internal workflow operations. Do not resell or republish the generated files.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Commercial support path</p>
+            <h2>Suggested team support</h2>
+          </div>
+          <p>These suggested levels keep support unattended and low-friction while making the buyer-intent path explicit.</p>
+        </div>
+        <div class="tier-grid">
+          {tier_cards}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Useful starting points</p>
+            <h2>Templates with guides</h2>
+          </div>
+          <p>Each item has a stable template page, guide page, and public download page.</p>
+        </div>
+        <div class="ledger">
+          {recent_rows}
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / commercial_page_path).write_text(commercial_html, encoding="utf-8")
+
+    return {
+        "ready": True,
+        "sponsor_page": sponsor_page_path,
+        "sponsor_page_url": sponsor_url,
+        "sponsor_branded_url": branded_url(config, "sponsor"),
+        "commercial_use_page": commercial_page_path,
+        "commercial_use_page_url": commercial_url,
+        "commercial_use_branded_url": branded_url(config, "commercial-use"),
+        "kit_path": kit_path,
+        "kit_url": pack_url(config, kit_path),
+        "kit_branded_url": branded_url(config, "sponsor-kit.json"),
+        "support_intent_url": support_intent_url,
+        "tier_count": len(sponsor_tiers),
+    }
+
+
+def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], pay_page: dict[str, Any], sponsor_pages: dict[str, Any]) -> dict[str, Any]:
     manifests = read_manifests()
     site_name = config["site"]["name"]
     base_url = pack_url(config, "")
@@ -5226,6 +5627,12 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
     support_url = pack_url(config, support_path)
     pay_path = str(pay_page.get("page_path", "pay-what-you-can.html"))
     pay_url = pack_url(config, pay_path)
+    sponsor_path = str(sponsor_pages.get("sponsor_page", "sponsor.html"))
+    sponsor_url = pack_url(config, sponsor_path)
+    commercial_use_path = str(sponsor_pages.get("commercial_use_page", "commercial-use.html"))
+    commercial_use_url = pack_url(config, commercial_use_path)
+    sponsor_kit_path = str(sponsor_pages.get("kit_path", "sponsor-kit.json"))
+    sponsor_kit_url = pack_url(config, sponsor_kit_path)
     destination_type = str(support.get("destination_type", "none"))
     destination_url = str(support.get("destination_url", ""))
     latest = manifests[0] if manifests else None
@@ -5267,6 +5674,9 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Home: {base_url}",
             f"- Support page: {support_url}",
             f"- Pay what you can bundle: {pay_url}",
+            f"- Sponsor page: {sponsor_url}",
+            f"- Commercial use page: {commercial_use_url}",
+            f"- Sponsor Kit JSON: {sponsor_kit_url}",
             f"- Offers: {pack_url(config, 'offers/')}",
             f"- Use cases: {pack_url(config, 'use-cases/')}",
             f"- Templates: {pack_url(config, 'templates/')}",
@@ -5317,6 +5727,9 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             monetization_line,
             "- Current public support page: " + support_url,
             "- Pay what you can bundle page: " + pay_url,
+            "- Sponsor page: " + sponsor_url,
+            "- Commercial use page: " + commercial_use_url,
+            "- Sponsor Kit JSON: " + sponsor_kit_url,
             *latest_branded_lines,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Revenue is not guaranteed or claimed by the site.",
@@ -5336,6 +5749,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Support Funnel JSON: {pack_url(config, 'support-funnel.json')}",
             f"- Support Funnel XML: {pack_url(config, 'support-funnel.xml')}",
             f"- Support Funnel CSV: {pack_url(config, 'support-funnel.csv')}",
+            f"- Sponsor Kit JSON: {sponsor_kit_url}",
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
             f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Use Cases JSON: {pack_url(config, 'use-cases/use-cases.json')}",
@@ -5366,6 +5780,9 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "archive.html"),
         pack_url(config, "support.html"),
         pack_url(config, "pay-what-you-can.html"),
+        pack_url(config, "sponsor.html"),
+        pack_url(config, "commercial-use.html"),
+        pack_url(config, "sponsor-kit.json"),
         pack_url(config, "offers/"),
         pack_url(config, "offers/offers.json"),
         pack_url(config, "topics/"),
@@ -5487,6 +5904,7 @@ def write_status(
     policies: dict[str, Any],
     support: dict[str, Any],
     pay_page: dict[str, Any],
+    sponsor_pages: dict[str, Any],
     offers: dict[str, Any],
     ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
@@ -5582,6 +6000,18 @@ def write_status(
         "pay_what_you_can_page": pay_page.get("page_path", "pay-what-you-can.html"),
         "pay_what_you_can_url": pack_url(config, pay_page.get("page_path", "pay-what-you-can.html")),
         "support_tier_count": int(pay_page.get("tier_count", 0)),
+        "sponsor_surface_ready": bool(sponsor_pages.get("ready")),
+        "sponsor_page": sponsor_pages.get("sponsor_page", "sponsor.html"),
+        "sponsor_page_url": sponsor_pages.get("sponsor_page_url", pack_url(config, "sponsor.html")),
+        "sponsor_branded_url": sponsor_pages.get("sponsor_branded_url", branded_url(config, "sponsor")),
+        "commercial_use_page": sponsor_pages.get("commercial_use_page", "commercial-use.html"),
+        "commercial_use_page_url": sponsor_pages.get("commercial_use_page_url", pack_url(config, "commercial-use.html")),
+        "commercial_use_branded_url": sponsor_pages.get("commercial_use_branded_url", branded_url(config, "commercial-use")),
+        "sponsor_kit_json": sponsor_pages.get("kit_path", "sponsor-kit.json"),
+        "sponsor_kit_url": sponsor_pages.get("kit_url", pack_url(config, "sponsor-kit.json")),
+        "sponsor_kit_branded_url": sponsor_pages.get("kit_branded_url", branded_url(config, "sponsor-kit.json")),
+        "sponsor_support_intent_url": sponsor_pages.get("support_intent_url", branded_url(config, "support/go") or support_url),
+        "sponsor_tier_count": int(sponsor_pages.get("tier_count", 0)),
         "offer_pages_ready": bool(offers.get("ready")),
         "offer_page_count": int(offers.get("count", 0)),
         "offers_index": offers.get("index_path", "offers/index.html"),
@@ -5662,8 +6092,9 @@ def generate(day: dt.date) -> dict[str, Any]:
     policies = render_policy_pages(config)
     support = render_support_page(config)
     pay_page = render_pay_what_you_can_page(config, support)
+    sponsor_pages = render_sponsor_pages(config)
     offers = render_offer_pages(config, support)
-    ai_discovery = render_ai_discovery_files(config, support, pay_page)
+    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
     render_index(pack, config, bundle)
@@ -5687,6 +6118,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         policies,
         support,
         pay_page,
+        sponsor_pages,
         offers,
         ai_discovery,
         discovery,

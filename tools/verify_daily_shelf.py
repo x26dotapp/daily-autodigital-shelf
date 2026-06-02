@@ -122,6 +122,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "use-cases/",
             "templates/",
             "guides/",
+            "commercial-use.html",
+            "sponsor.html",
             "offers/",
             "starter-bundle.html",
             "starter-archive.zip",
@@ -210,13 +212,21 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "support-funnel.csv", ["branded_support_intent_url", "utm_campaign", "suggested_support_tiers", "checkout_boundary", manifest["title"]])
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Use cases", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download page", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "archive.html", ["Templates", "template pages"])
-    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Download page", "Topics", "Use cases", "Templates", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
-    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
-    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Offers", "Support", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Download page", "Topics", "Use cases", "Templates", "Guides", "Commercial use", "Sponsor", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "Commercial use", "Sponsor", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "Commercial use", "Sponsor", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "commercial-use.html", ["Commercial use", "Use the templates internally", "Read license", "Browse templates", "Browse guides", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
+    require_contains(DOCS / "sponsor.html", ["Sponsor", "Support ladder", "Sponsor kit JSON", "sponsor-kit.json", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
+    sponsor_kit = read_json(DOCS / "sponsor-kit.json")
+    if int(sponsor_kit.get("numberOfItems") or 0) < 3:
+        fail("sponsor-kit.json support tier count is too low")
+    if sponsor_kit.get("support_intent_url") != "https://www.calmsprout.com/daily-shelf/support/go":
+        fail("sponsor-kit.json missing branded support-intent URL")
+    require_contains(DOCS / "sponsor-kit.json", ["Daily Autodigital Shelf Sponsor Kit", "Commercial-use supporter", "Product checkout is not connected", "support_intent_url"])
+    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Commercial use", "Sponsor kit", "Offers", "Support", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "download_page_url", "preview_url", "price_hint", "support_page_url", "pay_what_you_can_url", "branded_product_url", "branded_support_url", "branded_support_intent_url", "monetization_destination_url", "topic_urls", manifest["title"]])
-    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Templates", "Guides", "Product checkout is not connected"])
-    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Use Cases JSON", "Templates JSON", "Guides JSON", "Machine-Readable Files", "status.json"])
+    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Sponsor page", "Commercial use page", "Sponsor Kit JSON", "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Templates", "Guides", "Product checkout is not connected"])
+    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Sponsor Kit JSON", "Use Cases JSON", "Templates JSON", "Guides JSON", "Machine-Readable Files", "status.json"])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
     if len(import_json.get("items", [])) < min_pack_count:
         fail(f"store-listings.json item count is {len(import_json.get('items', []))}, expected at least {min_pack_count}")
@@ -442,7 +452,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         names = import_zip.namelist()
         if any(name.startswith("/") or ".." in Path(name).parts for name in names):
             fail("Store import kit ZIP contains unsafe archive paths")
-        for suffix in ["README.txt", "store-listings.csv", "store-listings.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "seller-copy.md", ".zip"]:
+        for suffix in ["README.txt", "store-listings.csv", "store-listings.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "seller-copy.md", ".zip"]:
             if not any(name.endswith(suffix) for name in names):
                 fail(f"Store import kit ZIP missing {suffix}")
         for suffix in ["product-feed.json", "product-feed.xml", "product-feed.csv"]:
@@ -473,6 +483,9 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "daily-autodigital-shelf-starter/refund-policy.html",
             "daily-autodigital-shelf-starter/support.html",
             "daily-autodigital-shelf-starter/pay-what-you-can.html",
+            "daily-autodigital-shelf-starter/commercial-use.html",
+            "daily-autodigital-shelf-starter/sponsor.html",
+            "daily-autodigital-shelf-starter/sponsor-kit.json",
             "daily-autodigital-shelf-starter/offers/index.html",
             "daily-autodigital-shelf-starter/offers/offers.json",
             "daily-autodigital-shelf-starter/use-cases/index.html",
@@ -517,19 +530,19 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if needle not in support_text:
                 fail(f"Collection bundle SUPPORT.txt missing {needle}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", today_collection_bundle_path, "topics/", "topics/topics.json", "use-cases/", "use-cases/use-cases.json", today_use_case_path, "templates/", "templates/templates.json", today_template_path, "guides/", "guides/guides.json", today_guide_path, "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "offers/", "offers/offers.json", today_collection_bundle_path, "topics/", "topics/topics.json", "use-cases/", "use-cases/use-cases.json", today_use_case_path, "templates/", "templates/templates.json", today_template_path, "guides/", "guides/guides.json", today_guide_path, "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "sitemap.xml", [download_page_url])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
-        ["bundles/starter-archive.zip", "collection_bundle_path", "imports/store-upload-kit.zip", "use-cases/index.html", "use-cases/use-cases.json", "templates/index.html", "templates/templates.json", "guides/index.html", "guides/guides.json", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
+        ["bundles/starter-archive.zip", "collection_bundle_path", "imports/store-upload-kit.zip", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "use-cases/index.html", "use-cases/use-cases.json", "templates/index.html", "templates/templates.json", "guides/index.html", "guides/guides.json", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
     )
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/commercial-use", "/daily-shelf/sponsor", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
@@ -684,6 +697,22 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json missing pay_what_you_can_url")
     if int(status.get("support_tier_count") or 0) < 3:
         fail(f"status.json support_tier_count is {status.get('support_tier_count')}, expected at least 3")
+    if not status.get("sponsor_surface_ready"):
+        fail("status.json reports sponsor_surface_ready=false")
+    if status.get("sponsor_page") != "sponsor.html" or status.get("commercial_use_page") != "commercial-use.html":
+        fail("status.json missing sponsor/commercial page paths")
+    if status.get("sponsor_kit_json") != "sponsor-kit.json":
+        fail("status.json missing sponsor-kit JSON path")
+    if status.get("sponsor_branded_url") != "https://www.calmsprout.com/daily-shelf/sponsor":
+        fail("status.json missing sponsor_branded_url")
+    if status.get("commercial_use_branded_url") != "https://www.calmsprout.com/daily-shelf/commercial-use":
+        fail("status.json missing commercial_use_branded_url")
+    if status.get("sponsor_kit_branded_url") != "https://www.calmsprout.com/daily-shelf/sponsor-kit.json":
+        fail("status.json missing sponsor_kit_branded_url")
+    if status.get("sponsor_support_intent_url") != "https://www.calmsprout.com/daily-shelf/support/go":
+        fail("status.json missing sponsor_support_intent_url")
+    if int(status.get("sponsor_tier_count") or 0) < 5:
+        fail(f"status.json sponsor_tier_count is {status.get('sponsor_tier_count')}, expected at least 5")
     if not status.get("offer_pages_ready"):
         fail("status.json reports offer_pages_ready=false")
     if int(status.get("offer_page_count") or 0) < 3:
@@ -723,7 +752,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "template_page_count": int(status.get("template_page_count") or 0),
         "guide_page_count": int(status.get("guide_page_count") or 0),
         "policy_page_count": int(status.get("policy_page_count") or 0),
-        "files_checked": 55,
+        "sponsor_tier_count": int(status.get("sponsor_tier_count") or 0),
+        "files_checked": 58,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
