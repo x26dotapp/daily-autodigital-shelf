@@ -276,6 +276,25 @@
   This is buyer-intent support infrastructure, not payment or daily revenue
   proof.
 
+- 2026-06-02 general support funnel attribution: Daily Shelf commit `7d86844`
+  (`Route support funnels through measured support intent`) routes generated
+  `support.html` and `pay-what-you-can.html` CTAs and `DonateAction` JSON-LD
+  through measured `https://www.calmsprout.com/daily-shelf/support/go` while
+  keeping `https://gift.calmsprout.com` visible as the external Square support
+  destination. The generated starter archive and 5 collection bundles were
+  refreshed because they embed the updated support/pay pages. GitHub Pages run
+  `26830081016` succeeded. Live QA verified GitHub Pages `support.html` and
+  `pay-what-you-can.html`, CalmSprout `/daily-shelf/support.html`, and
+  `/daily-shelf/pay-what-you-can` return HTTP 200 with measured support intent
+  and the product-checkout boundary; browser QA found no console errors and no
+  horizontal overflow on support desktop and pay mobile. `verify-system.ps1`
+  passed with `files_checked: 58`, `bundle_bytes: 882620`,
+  `support_connected: true`, and `store_connected: false`. IndexNow accepted 9
+  GitHub Pages URLs and 37 CalmSprout URLs; follow-up dry runs returned
+  `submit_count: 0` for both hosts. No support redirect was triggered; live
+  metrics remain `total_support_intent_clicks: 4`. This is
+  attribution/conversion infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
