@@ -527,6 +527,36 @@ section {
   padding: 14px;
 }
 
+.print-support {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--teal-soft);
+}
+
+.print-support h2,
+.print-support p {
+  margin: 0;
+}
+
+.print-support h2 {
+  font-size: 1.2rem;
+}
+
+.print-support p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.print-support a {
+  color: var(--teal);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 860px) {
   .topbar,
   .section-head {

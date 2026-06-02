@@ -962,16 +962,47 @@ def refresh_existing_pack_pages(config: dict[str, Any]) -> dict[str, Any]:
         ):
             skipped += 1
             continue
-        render_pack_page(pack, config, DOCS / str(manifest["path"]).strip("/") / "index.html")
+        pack_dir = DOCS / str(manifest["path"]).strip("/")
+        render_pack_page(pack, config, pack_dir / "index.html")
+        render_printable(pack, config, pack_dir / "printable.html")
+        render_checklist(pack, config, pack_dir / "checklist.html")
         refreshed += 1
     return {"refreshed": refreshed, "skipped": skipped}
 
 
-def render_printable(pack: dict[str, Any], out_path: Path) -> None:
+def pack_artifact_support_markup(pack: dict[str, Any], config: dict[str, Any]) -> str:
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "").strip()
+    support_url = str(monetization.get("support_url") or "").strip()
+    branded_urls = branded_product_urls(config, pack)
+    support_intent_url = branded_urls.get("branded_support_intent_url") or support_url
+    support_page_url = branded_urls.get("branded_support_url") or pack_url(config, "support.html")
+    if store_url:
+        action_url = store_url
+        action_label = "Open product checkout"
+        boundary = "External checkout is handled by the connected store. Keep downloads and support boundaries visible before changing this file."
+    elif support_intent_url:
+        action_url = support_intent_url
+        action_label = "Support this pack"
+        boundary = "Product checkout is not connected. Downloads remain public and support is voluntary through the connected support path."
+    else:
+        action_url = support_page_url
+        action_label = "Open support page"
+        boundary = "No external store, support, or affiliate destination is connected yet. This worksheet remains a public download."
+    return f"""    <section class="print-support" aria-label="Support this pack">
+      <h2>Support this pack</h2>
+      <p>If this worksheet helps, use the support link below. Delivery does not require manual fulfillment.</p>
+      <p><a class="print-support-link" href="{esc(action_url)}">{esc(action_label)}</a></p>
+      <p class="fineprint">{esc(boundary)}</p>
+    </section>"""
+
+
+def render_printable(pack: dict[str, Any], config: dict[str, Any], out_path: Path) -> None:
     boxes = "\n".join(
         f"""<section class="print-box"><strong>{esc(item)}</strong><br><span>Notes:</span></section>"""
         for item in pack["worksheets"]
     )
+    support_markup = pack_artifact_support_markup(pack, config)
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -988,6 +1019,7 @@ def render_printable(pack: dict[str, Any], out_path: Path) -> None:
     <div class="print-grid">
       {boxes}
     </div>
+{support_markup}
   </main>
 </body>
 </html>
@@ -995,11 +1027,12 @@ def render_printable(pack: dict[str, Any], out_path: Path) -> None:
     out_path.write_text(content, encoding="utf-8")
 
 
-def render_checklist(pack: dict[str, Any], out_path: Path) -> None:
+def render_checklist(pack: dict[str, Any], config: dict[str, Any], out_path: Path) -> None:
     items = "\n".join(
         f"""<section class="print-box"><strong>[ ] {esc(item)}</strong><br><span>Proof or note:</span></section>"""
         for item in pack["checklist"]
     )
+    support_markup = pack_artifact_support_markup(pack, config)
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1015,6 +1048,7 @@ def render_checklist(pack: dict[str, Any], out_path: Path) -> None:
     <div class="print-grid">
       {items}
     </div>
+{support_markup}
   </main>
 </body>
 </html>
@@ -6349,6 +6383,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
     urls.extend(record["url"] for record in template_records(config))
     urls.extend(pack_url(config, f"guides/{record['slug']}.html") for record in template_records(config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
+    urls.extend(pack_url(config, item.get("worksheet", f"{item['path']}printable.html")) for item in read_manifests()[:80])
+    urls.extend(pack_url(config, item.get("checklist", f"{item['path']}checklist.html")) for item in read_manifests()[:80])
     urls.extend(pack_url(config, pack_download_page_path(item)) for item in read_manifests()[:80])
     rows = "\n".join(f"  <url><loc>{esc(url)}</loc></url>" for url in urls if url)
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -6459,6 +6495,12 @@ def write_status(
         "today": pack["date"],
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
+        "today_printable": f"packs/{pack['pack_slug']}/printable.html",
+        "today_checklist": f"packs/{pack['pack_slug']}/checklist.html",
+        "today_printable_url": pack_url(config, f"packs/{pack['pack_slug']}/printable.html"),
+        "today_checklist_url": pack_url(config, f"packs/{pack['pack_slug']}/checklist.html"),
+        "today_branded_printable_url": branded_url(config, f"packs/{pack['pack_slug']}/printable.html"),
+        "today_branded_checklist_url": branded_url(config, f"packs/{pack['pack_slug']}/checklist.html"),
         "today_download": f"downloads/{pack['pack_slug']}.zip",
         "today_download_page": f"downloads/{pack['pack_slug']}.html",
         "today_branded_product_url": today_branded_urls["branded_product_url"],
@@ -6531,6 +6573,7 @@ def write_status(
         "support_card_action_url": support_assets.get("support_card_action_url", branded_url(config, "support/go") or support_url),
         "support_card_destination_url": support_assets.get("support_card_destination_url", destination_url),
         "support_card_bytes": int(support_assets.get("support_card_bytes", 0)),
+        "artifact_support_links_ready": bool(store_url or support_url),
         "pay_what_you_can_ready": bool(pay_page.get("page_path")),
         "pay_what_you_can_page": pay_page.get("page_path", "pay-what-you-can.html"),
         "pay_what_you_can_url": pack_url(config, pay_page.get("page_path", "pay-what-you-can.html")),
@@ -6621,8 +6664,8 @@ def generate(day: dt.date) -> dict[str, Any]:
 
     render_cover_svg(pack, pack_dir / "cover.svg")
     render_pack_page(pack, config, pack_dir / "index.html")
-    render_printable(pack, pack_dir / "printable.html")
-    render_checklist(pack, pack_dir / "checklist.html")
+    render_printable(pack, config, pack_dir / "printable.html")
+    render_checklist(pack, config, pack_dir / "checklist.html")
     render_seller_copy(pack, config, pack_dir / "seller-copy.md")
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 

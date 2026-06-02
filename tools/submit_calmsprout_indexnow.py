@@ -159,6 +159,8 @@ def catalog_product_routes() -> list[tuple[str, str]]:
             slug = pack_slug_from_item(item)
             if slug:
                 routes.append((f"/daily-shelf/packs/{slug}/", f"packs/{slug}/index.html"))
+                routes.append((f"/daily-shelf/packs/{slug}/printable.html", f"packs/{slug}/printable.html"))
+                routes.append((f"/daily-shelf/packs/{slug}/checklist.html", f"packs/{slug}/checklist.html"))
                 routes.append((f"/daily-shelf/downloads/{slug}.zip", f"downloads/{slug}.zip"))
                 routes.append((f"/daily-shelf/downloads/{slug}.html", f"downloads/{slug}.html"))
                 routes.append((f"/daily-shelf/products/{slug}", "catalog.json"))

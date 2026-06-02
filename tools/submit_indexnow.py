@@ -143,6 +143,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     today_path = str(status.get("today_path", "")).strip("/")
     if today_path:
         add_candidate(candidates, config, f"{today_path}/index.html")
+        add_candidate(candidates, config, f"{today_path}/printable.html")
+        add_candidate(candidates, config, f"{today_path}/checklist.html")
     today_download = str(status.get("today_download", "")).strip("/")
     if today_download:
         add_candidate(candidates, config, today_download)
@@ -154,7 +156,10 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         for item in catalog.get("items", []):
             path = str(item.get("url", "")).replace(site_base(config) + "/", "")
             if path:
-                add_candidate(candidates, config, path.rstrip("/") + "/index.html")
+                pack_path = path.rstrip("/")
+                add_candidate(candidates, config, pack_path + "/index.html")
+                add_candidate(candidates, config, pack_path + "/printable.html")
+                add_candidate(candidates, config, pack_path + "/checklist.html")
             download_url = str(item.get("download_url", "")).replace(site_base(config) + "/", "")
             if download_url:
                 add_candidate(candidates, config, download_url)

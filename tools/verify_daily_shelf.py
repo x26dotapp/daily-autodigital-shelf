@@ -81,11 +81,17 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             for path in (DOCS / "packs").glob("*/manifest.json")
         }
     )
+    printable_rel = f"packs/{pack_slug}/printable.html"
+    checklist_rel = f"packs/{pack_slug}/checklist.html"
+    printable_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{printable_rel}"
+    checklist_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{checklist_rel}"
     download_page_rel = f"downloads/{pack_slug}.html"
     download_page_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{download_page_rel}"
     branded_product_url = f"https://www.calmsprout.com/daily-shelf/products/{pack_slug}"
     branded_support_url = f"{branded_product_url}/support"
     branded_support_intent_url = f"{branded_support_url}/go"
+    branded_printable_url = f"https://www.calmsprout.com/daily-shelf/{printable_rel}"
+    branded_checklist_url = f"https://www.calmsprout.com/daily-shelf/{checklist_rel}"
     general_support_intent_url = "https://www.calmsprout.com/daily-shelf/support/go"
     template_support_url = f"https://www.calmsprout.com/daily-shelf/templates/{template_slug}/support"
     template_support_intent_url = f"{template_support_url}/go"
@@ -105,6 +111,13 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     elif status.get("support_connected"):
         pack_cta_needle = "Support this pack"
         action_needle = "DonateAction"
+    artifact_support_needles = ["Support this pack", "Delivery does not require manual fulfillment"]
+    if status.get("store_connected"):
+        artifact_support_needles.extend(["Open product checkout", str(status.get("monetization_destination_url") or "")])
+    elif status.get("support_connected"):
+        artifact_support_needles.extend([branded_support_intent_url, "Product checkout is not connected", "Downloads remain public"])
+    else:
+        artifact_support_needles.extend(["Open support page", "No external store, support, or affiliate destination is connected yet"])
 
     require_file(DOCS / support_card_path, 1000)
     require_contains(
@@ -182,6 +195,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     )
     require_file(pack_dir / "printable.html", 800)
     require_file(pack_dir / "checklist.html", 800)
+    require_contains(pack_dir / "printable.html", artifact_support_needles)
+    require_contains(pack_dir / "checklist.html", artifact_support_needles)
     require_file(pack_dir / "cover.svg", 800)
     require_contains(pack_dir / "seller-copy.md", ["Store-Ready Listing Copy", "Price Hint", "Safety Note"])
     download_path = DOCS / manifest.get("download", f"downloads/{Path(pack_path).parts[-1]}.zip")
@@ -213,6 +228,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         for needle in [branded_support_intent_url, "Support is voluntary", "Product checkout is not connected"]:
             if needle not in support_text:
                 fail(f"Pack ZIP SUPPORT.txt missing {needle}")
+        for suffix in ["printable.html", "checklist.html"]:
+            artifact_name = next((name for name in names if name.endswith(suffix)), "")
+            artifact_text = pack_zip.read(artifact_name).decode("utf-8") if artifact_name else ""
+            for needle in artifact_support_needles:
+                if needle and needle not in artifact_text:
+                    fail(f"Pack ZIP {suffix} missing {needle}")
     require_file(DOCS / "feed.json", 100)
     require_contains(DOCS / "feed.xml", ["<rss version=\"2.0\">", "<channel>", manifest["title"], "application/rss+xml"])
     require_contains(DOCS / "atom.xml", ["<feed xmlns=\"http://www.w3.org/2005/Atom\">", "<entry>", manifest["title"], "application/atom+xml"])
@@ -599,18 +620,18 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
                 fail(f"Collection bundle support-card.svg missing {needle}")
     require_file(DOCS / "sitemap.xml", 100)
     require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "pricing.html", support_card_path, "commercial-use.html", "sponsor.html", "sponsor-kit.json", "offers/", "offers/offers.json", today_collection_bundle_path, today_collection_bundle_page_path, "topics/", "topics/topics.json", "use-cases/", "use-cases/use-cases.json", today_use_case_path, "templates/", "templates/templates.json", today_template_path, "guides/", "guides/guides.json", today_guide_path, "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
-    require_contains(DOCS / "sitemap.xml", [download_page_url])
+    require_contains(DOCS / "sitemap.xml", [download_page_url, printable_url, checklist_url])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
-        ["bundles/starter-archive.zip", support_card_path, "collection_bundle_path", "collection_bundle_page_path", "imports/store-upload-kit.zip", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "use-cases/index.html", "use-cases/use-cases.json", "templates/index.html", "templates/templates.json", "guides/index.html", "guides/guides.json", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
+        ["bundles/starter-archive.zip", support_card_path, "collection_bundle_path", "collection_bundle_page_path", "imports/store-upload-kit.zip", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "use-cases/index.html", "use-cases/use-cases.json", "templates/index.html", "templates/templates.json", "guides/index.html", "guides/guides.json", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "printable.html", "checklist.html", "download_url", "download_page_url"],
     )
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/bundles/{bundle_page_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/assets/support-card.svg", "/daily-shelf/pricing", "/daily-shelf/pricing.html", "/daily-shelf/pricing/support/go", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use.html", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor.html", "/daily-shelf/sponsor/support/go", "/daily-shelf/starter-bundle.html", "/daily-shelf/support.html", "/daily-shelf/license.html", "/daily-shelf/privacy.html", "/daily-shelf/terms.html", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/packs/{slug}/printable.html", "/daily-shelf/packs/{slug}/checklist.html", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/bundles/{bundle_page_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/assets/support-card.svg", "/daily-shelf/pricing", "/daily-shelf/pricing.html", "/daily-shelf/pricing/support/go", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use.html", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor.html", "/daily-shelf/sponsor/support/go", "/daily-shelf/starter-bundle.html", "/daily-shelf/support.html", "/daily-shelf/license.html", "/daily-shelf/privacy.html", "/daily-shelf/terms.html", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
@@ -689,6 +710,14 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             fail("store-listings.json current item missing download_page_url")
         if status.get("today_branded_product_url") != branded_product_url:
             fail("status.json missing today_branded_product_url")
+        if status.get("today_printable") != printable_rel or status.get("today_checklist") != checklist_rel:
+            fail("status.json missing today artifact paths")
+        if status.get("today_printable_url") != printable_url or status.get("today_checklist_url") != checklist_url:
+            fail("status.json missing today artifact URLs")
+        if status.get("today_branded_printable_url") != branded_printable_url or status.get("today_branded_checklist_url") != branded_checklist_url:
+            fail("status.json missing branded artifact URLs")
+        if not status.get("artifact_support_links_ready"):
+            fail("status.json artifact_support_links_ready is false")
         if status.get("today_branded_support_url") != branded_support_url:
             fail("status.json missing today_branded_support_url")
         if status.get("today_branded_support_intent_url") != branded_support_intent_url:
