@@ -89,8 +89,11 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "index.html",
         "archive.html",
         "starter-bundle.html",
+        "store-import.html",
         "catalog.json",
         "catalog.csv",
+        "imports/store-listings.json",
+        "imports/store-listings.csv",
         "feed.json",
         "sitemap.xml",
     ]:

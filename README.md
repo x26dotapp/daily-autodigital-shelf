@@ -33,6 +33,8 @@ The site also publishes:
 - `archive.html` for all generated packs
 - `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
+- `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
+  `imports/store-upload-kit.zip` for generic marketplace import workflows
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
 - `feed.json`, `sitemap.xml`, and `robots.txt` for discoverability

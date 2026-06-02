@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 BUNDLES = DOCS / "bundles"
 DOWNLOADS = DOCS / "downloads"
+IMPORTS = DOCS / "imports"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
@@ -858,8 +859,12 @@ def read_manifests() -> list[dict[str, Any]]:
 def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
+        "store-import.html",
         "catalog.csv",
         "catalog.json",
+        "imports/store-listings.csv",
+        "imports/store-listings.json",
+        "imports/store-upload-kit.zip",
         "feed.json",
     ]
     for item in manifests:
@@ -957,6 +962,194 @@ def render_pack_downloads() -> dict[str, Any]:
         "count": len(outputs),
         "bytes": sum(item["bytes"] for item in outputs),
         "downloads": outputs,
+    }
+
+
+def listing_keywords(item: dict[str, Any]) -> str:
+    title_words = slugify(str(item["title"])).replace("-", ",")
+    base = [
+        "digital download",
+        "printable worksheet",
+        "planner",
+        "checklist",
+        "low maintenance",
+    ]
+    return ",".join(dict.fromkeys([*base, *[word for word in title_words.split(",") if word]]))
+
+
+def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = []
+    for item in read_manifests():
+        rows.append(
+            {
+                "sku": item["id"].replace("daily-autodigital-shelf:", "das-"),
+                "title": item["title"],
+                "subtitle": item["summary"],
+                "buyer": item.get("buyer", ""),
+                "price_hint": config["generation"].get("default_price_hint", "$3 to $9 digital pack"),
+                "currency": "USD",
+                "download_url": pack_url(config, pack_download_path(item)),
+                "preview_url": pack_url(config, item["path"]),
+                "worksheet_url": pack_url(config, item["worksheet"]),
+                "checklist_url": pack_url(config, item["checklist"]),
+                "cover_url": pack_url(config, item["cover"]),
+                "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "tags": listing_keywords(item),
+                "fulfillment": "digital download",
+                "status": "ready for external store import; checkout not connected",
+            }
+        )
+    return rows
+
+
+def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
+    IMPORTS.mkdir(parents=True, exist_ok=True)
+    rows = marketplace_rows(config)
+    csv_rel_path = "imports/store-listings.csv"
+    json_rel_path = "imports/store-listings.json"
+    zip_rel_path = "imports/store-upload-kit.zip"
+    page_rel_path = "store-import.html"
+    fieldnames = [
+        "sku",
+        "title",
+        "subtitle",
+        "buyer",
+        "price_hint",
+        "currency",
+        "download_url",
+        "preview_url",
+        "worksheet_url",
+        "checklist_url",
+        "cover_url",
+        "seller_copy_url",
+        "tags",
+        "fulfillment",
+        "status",
+    ]
+    with (DOCS / csv_rel_path).open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    (DOCS / json_rel_path).write_text(json.dumps({"items": rows}, indent=2), encoding="utf-8")
+
+    zip_root = "daily-autodigital-shelf-store-upload-kit"
+    readme = "\n".join(
+        [
+            "Daily Autodigital Shelf Store Upload Kit",
+            "",
+            f"Listing count: {len(rows)}",
+            "",
+            "This kit contains generic marketplace listing metadata, seller-copy files, and generated product ZIPs.",
+            "It is intended for a legitimate external store, support platform, or marketplace after payout setup exists.",
+            "",
+            "No checkout, payout account, tax profile, or payment processor is configured inside this archive.",
+        ]
+    )
+    with zipfile.ZipFile(DOCS / zip_rel_path, "w") as bundle:
+        write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
+        for rel_path in [csv_rel_path, json_rel_path, "catalog.csv", "catalog.json"]:
+            source = DOCS / rel_path
+            if source.exists():
+                write_zip_entry(bundle, f"{zip_root}/{rel_path}", source.read_bytes())
+        for item in read_manifests():
+            for rel_path in [item.get("seller_copy", ""), pack_download_path(item), item["cover"]]:
+                if not rel_path:
+                    continue
+                source = DOCS / rel_path
+                if source.exists():
+                    write_zip_entry(bundle, f"{zip_root}/{source.relative_to(DOCS).as_posix()}", source.read_bytes())
+
+    cards = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(row["sku"])}</strong>
+          <p><a href="{esc(row["preview_url"])}">{esc(row["title"])}</a><br>{esc(row["subtitle"])}</p>
+          <div class="row-actions">
+            <a class="button" href="{esc(row["download_url"])}">Product ZIP</a>
+            <a class="button" href="{esc(row["seller_copy_url"])}">Listing copy</a>
+          </div>
+        </article>"""
+        for row in rows
+    )
+    if not cards:
+        cards = "<p>No listings generated yet.</p>"
+
+    zip_bytes = (DOCS / zip_rel_path).stat().st_size
+    zip_kb = max(1, round(zip_bytes / 1024))
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store Import Kit | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Generic marketplace import kit for Daily Autodigital Shelf generated digital products.">
+  <link rel="canonical" href="{esc(pack_url(config, page_rel_path))}">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Import kit navigation">
+        <a href="./">Home</a>
+        <a href="./archive.html">Archive</a>
+        <a href="./starter-bundle.html">Starter bundle</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Store import kit</p>
+            <h2>Listings ready for a real marketplace</h2>
+          </div>
+          <p>This page packages titles, descriptions, tags, suggested pricing, listing copy, preview links, and product ZIP URLs. It does not connect checkout or claim revenue.</p>
+        </div>
+        <div class="bundle-panel">
+          <div>
+            <p class="label">Import files</p>
+            <h3>{len(rows)} product listings prepared</h3>
+            <p>Use the CSV, JSON, or ZIP when a legitimate payout-enabled store exists. Each row points at a direct product ZIP and public preview page.</p>
+            <div class="actions">
+              <a class="button primary" href="./{esc(zip_rel_path)}">Download import kit</a>
+              <a class="button" href="./{esc(csv_rel_path)}">Listing CSV</a>
+              <a class="button" href="./{esc(json_rel_path)}">Listing JSON</a>
+            </div>
+          </div>
+          <div class="bundle-stat">
+            <span>{len(rows)}</span>
+            <strong>listings</strong>
+            <small>{zip_kb} KB ZIP</small>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Prepared listings</p>
+            <h2>Marketplace queue</h2>
+          </div>
+          <p>These are generated listing records. They are not active paid listings until an external store account and payout path are connected.</p>
+        </div>
+        <div class="ledger">
+          {cards}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / page_rel_path).write_text(content, encoding="utf-8")
+    return {
+        "count": len(rows),
+        "csv_path": csv_rel_path,
+        "json_path": json_rel_path,
+        "zip_path": zip_rel_path,
+        "page_path": page_rel_path,
+        "zip_bytes": zip_bytes,
     }
 
 
@@ -1195,6 +1388,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="#today">Today's pack</a>
         <a href="./archive.html">Archive</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
+        <a href="./store-import.html">Import kit</a>
         <a href="#ledger">Automation ledger</a>
         <a href="#setup">Monetization setup</a>
       </nav>
@@ -1208,6 +1402,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
           <div class="actions">
             <a class="button primary" href="./{esc(today_path)}">Open today's pack</a>
             <a class="button" href="./{esc(bundle_page_path)}">Open starter bundle</a>
+            <a class="button" href="./store-import.html">Open import kit</a>
             <a class="button" href="#setup">View setup status</a>
           </div>
           <div class="system-note">
@@ -1250,7 +1445,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists. <a href="./archive.html">Open archive</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./store-import.html">Import kit</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -1456,6 +1651,7 @@ def render_archive(config: dict[str, Any]) -> None:
       <nav class="topnav" aria-label="Archive navigation">
         <a href="./">Home</a>
         <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./store-import.html">Import kit</a>
         <a href="./catalog.json">Catalog JSON</a>
         <a href="./catalog.csv">Catalog CSV</a>
       </nav>
@@ -1467,7 +1663,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page and store-ready listing copy. The <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. The <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, and the <a href="./store-import.html">import kit</a> packages marketplace listing metadata. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -1486,7 +1682,10 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, ""),
         pack_url(config, "archive.html"),
         pack_url(config, "starter-bundle.html"),
+        pack_url(config, "store-import.html"),
         pack_url(config, "catalog.json"),
+        pack_url(config, "imports/store-listings.csv"),
+        pack_url(config, "imports/store-listings.json"),
         pack_url(config, "feed.json"),
     ]
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
@@ -1561,6 +1760,7 @@ def write_status(
     config: dict[str, Any],
     bundle: dict[str, Any],
     downloads: dict[str, Any],
+    import_kit: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
     status_path = DOCS / "status.json"
@@ -1586,6 +1786,13 @@ def write_status(
         "bundle_bytes": int(bundle.get("bytes", 0)),
         "pack_download_count": int(downloads.get("count", 0)),
         "pack_download_bytes": int(downloads.get("bytes", 0)),
+        "store_import_ready": bool(import_kit.get("count")),
+        "store_import_count": int(import_kit.get("count", 0)),
+        "store_import_page": import_kit.get("page_path", "store-import.html"),
+        "store_import_csv": import_kit.get("csv_path", "imports/store-listings.csv"),
+        "store_import_json": import_kit.get("json_path", "imports/store-listings.json"),
+        "store_import_zip": import_kit.get("zip_path", "imports/store-upload-kit.zip"),
+        "store_import_zip_bytes": int(import_kit.get("zip_bytes", 0)),
         "indexnow_enabled": bool(discovery.get("enabled")),
         "indexnow_key_file": discovery.get("key_file", ""),
         "indexnow_key_location": discovery.get("key_location", ""),
@@ -1639,13 +1846,14 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_feed(config)
     render_catalog(config)
     render_archive(config)
+    import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
     render_index(pack, config, bundle)
     render_sitemap(config)
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, discovery)
+    write_status(pack, config, bundle, downloads, import_kit, discovery)
     append_ledger(pack)
     return manifest
 
