@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T07:41:42+00:00",
+  "generated_at": "2026-06-02T12:09:40+00:00",
   "today": "2026-06-02",
   "today_pack": "One-Page SOP Builder",
   "today_path": "packs/2026-06-02-one-page-sop/",
@@ -26,7 +26,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 21,
-  "bundle_bytes": 389716,
+  "bundle_bytes": 389865,
   "pack_download_count": 21,
   "pack_download_page_count": 21,
   "pack_download_bytes": 148994,
@@ -68,6 +68,14 @@
     "offers/digital-product-prep.html",
     "offers/cleanup-and-reset.html"
   ],
+  "collection_support_intent_urls": [
+    "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
+    "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
+    "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
+    "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
+    "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
+  ],
+  "collection_support_intent_count": 5,
   "ai_discovery_ready": true,
   "llms_txt": "llms.txt",
   "llms_full_txt": "llms-full.txt",

@@ -138,6 +138,17 @@ def catalog_product_routes() -> list[tuple[str, str]]:
     return routes
 
 
+def offer_support_routes() -> list[tuple[str, str]]:
+    offers = read_json(DOCS / "offers" / "offers.json", fallback={"offers": []})
+    routes: list[tuple[str, str]] = []
+    for offer in offers.get("offers", []):
+        if isinstance(offer, dict):
+            slug = clean_pack_slug(str(offer.get("slug") or ""))
+            if slug:
+                routes.append((f"/daily-shelf/offers/{slug}/support/go", "offers/offers.json"))
+    return routes
+
+
 def file_signature(path: Path) -> str:
     if not path.exists():
         return "missing"
@@ -170,6 +181,8 @@ def collect_candidates(include_static: bool) -> list[dict[str, str]]:
     for route_path, source_rel_path in DYNAMIC_ROUTE_SOURCES:
         add_candidate(candidates, route_path, source_rel_path)
     for route_path, source_rel_path in catalog_product_routes():
+        add_candidate(candidates, route_path, source_rel_path)
+    for route_path, source_rel_path in offer_support_routes():
         add_candidate(candidates, route_path, source_rel_path)
     if include_static:
         for route_path, source_rel_path in STATIC_ROUTE_SOURCES:

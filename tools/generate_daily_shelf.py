@@ -661,6 +661,13 @@ def branded_product_urls(config: dict[str, Any], item: dict[str, Any]) -> dict[s
     }
 
 
+def branded_collection_support_url(config: dict[str, Any], slug: str) -> str:
+    clean_slug = slug.strip().lower()
+    if not clean_slug or not all(char in "abcdefghijklmnopqrstuvwxyz0123456789-" for char in clean_slug):
+        return ""
+    return branded_url(config, f"offers/{clean_slug}/support/go")
+
+
 def pack_faq_items(pack: dict[str, Any]) -> list[dict[str, str]]:
     return [
         {
@@ -2122,6 +2129,8 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
     for slug, items in topics.items():
         topic = TOPIC_DEFINITIONS[slug]
         page_path = f"offers/{slug}.html"
+        collection_support_url = branded_collection_support_url(config, slug)
+        action_url = store_url or collection_support_url or support_url
         offer_records.append(
             {
                 "slug": slug,
@@ -2130,7 +2139,9 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
                 "path": page_path,
                 "url": pack_url(config, page_path),
                 "count": len(items),
-                "support_url": destination_url,
+                "support_url": action_url,
+                "branded_support_intent_url": collection_support_url,
+                "external_support_destination": support_url,
                 "destination_type": destination_type,
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "topic_url": pack_url(config, f"topics/{slug}.html"),
@@ -2230,9 +2241,10 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
         items = topics[record["slug"]]
         page_url = record["url"]
         image_url = pack_url(config, items[0]["cover"])
+        action_url = str(record.get("support_url") or destination_url)
         support_cta = (
-            f"""<a class="button primary" href="{esc(destination_url)}">{esc(cta_label)}</a>"""
-            if destination_url
+            f"""<a class="button primary" href="{esc(action_url)}">{esc(cta_label)}</a>"""
+            if action_url
             else """<a class="button primary" href="../support.html">Support destination not connected</a>"""
         )
         rows = "\n".join(
@@ -2275,7 +2287,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
         if destination_url:
             page_data["potentialAction"] = {
                 "@type": "BuyAction" if store_url else "DonateAction",
-                "target": destination_url,
+                "target": action_url,
                 "name": cta_label,
             }
 
@@ -2365,6 +2377,11 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
         "index_path": "offers/index.html",
         "json_path": "offers/offers.json",
         "paths": [record["path"] for record in offer_records],
+        "support_intent_urls": [
+            record["branded_support_intent_url"]
+            for record in offer_records
+            if record.get("branded_support_intent_url")
+        ],
     }
 
 
@@ -4126,6 +4143,8 @@ def write_status(
         "offers_index": offers.get("index_path", "offers/index.html"),
         "offers_json": offers.get("json_path", "offers/offers.json"),
         "offer_pages": offers.get("paths", []),
+        "collection_support_intent_urls": offers.get("support_intent_urls", []),
+        "collection_support_intent_count": len(offers.get("support_intent_urls", [])),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
         "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),
         "llms_full_txt": ai_discovery.get("llms_full_txt", "llms-full.txt"),

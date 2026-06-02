@@ -235,6 +235,18 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     if not today_offer:
         fail(f"offers.json does not assign current manifest id: {manifest['id']}")
     offer_cta_needle = "Open product checkout" if status.get("store_connected") else "Support this collection"
+    today_offer_support_intent = f"https://www.calmsprout.com/daily-shelf/offers/{today_offer['slug']}/support/go"
+    if not status.get("store_connected"):
+        if today_offer.get("support_url") != today_offer_support_intent:
+            fail("offers.json current offer support_url is not the measured CalmSprout support-intent route")
+        if today_offer.get("branded_support_intent_url") != today_offer_support_intent:
+            fail("offers.json current offer missing branded_support_intent_url")
+        if not str(today_offer.get("external_support_destination") or "").startswith(("https://", "http://")):
+            fail("offers.json current offer missing external_support_destination")
+        if today_offer_support_intent not in status.get("collection_support_intent_urls", []):
+            fail("status.json missing current offer collection support-intent URL")
+        if int(status.get("collection_support_intent_count", 0)) < 3:
+            fail("status.json collection_support_intent_count is too low")
     offer_page = DOCS / str(today_offer.get("path", f"offers/{today_offer['slug']}.html")).strip("/")
     require_contains(
         offer_page,
@@ -244,6 +256,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "Collection offer",
             "Download starter bundle",
             offer_cta_needle,
+            today_offer_support_intent,
             "Product checkout is not connected",
             "CollectionPage",
             "og:image",
@@ -319,7 +332,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
@@ -359,7 +372,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         require_contains(DOCS / "index.html", [destination_url])
         require_contains(DOCS / "support.html", [destination_url])
         require_contains(DOCS / "pay-what-you-can.html", [destination_url])
-        require_contains(offer_page, [destination_url])
+        if status.get("store_connected"):
+            require_contains(offer_page, [destination_url])
         require_contains(DOCS / "llms.txt", [destination_url])
         require_contains(DOCS / "llms-full.txt", [destination_url])
         pack_destination_needle = (branded_support_intent_url or destination_url) if status.get("support_connected") else destination_url
