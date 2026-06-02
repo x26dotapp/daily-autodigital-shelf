@@ -20,7 +20,7 @@ Verified 2026-06-02:
 - Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 161,610 bytes and rows include topic fields plus policy pages
 - Support/discovery surfaces: `support.html`, `llms.txt`, and `llms-full.txt` live; the support page links to `https://gift.calmsprout.com` while stating that product checkout is not connected
 - Offer surfaces: `offers/index.html`, `offers/offers.json`, and 5 topic collection offer pages live; offer pages link the starter bundle, expose CollectionPage JSON-LD, route support CTAs to `https://gift.calmsprout.com`, and state that product checkout is not connected
-- CalmSprout bridge: `C:\scripts\CalmSprout` commit `f063a55` (`Add Daily Shelf bridge`) deployed directly to Cloudflare as Worker version `cb0233b3-ec1d-4599-b445-417ee04f610e`. Live `https://www.calmsprout.com/daily-shelf` redirects to the shelf, `/daily-shelf/offers` redirects to the offer index, `/daily-shelf/support` redirects to the public Square support page, and the `www.calmsprout.com` homepage includes a Daily Shelf banner.
+- CalmSprout bridge: `C:\scripts\CalmSprout` commits `f063a55` (`Add Daily Shelf bridge`), `d8fa6d9` (`Add Daily Shelf landing page`), and `8a689e1` (`Add CalmSprout IndexNow key`) deployed directly to Cloudflare. Latest Worker version is `61361a87-0bab-4cdc-b477-d332b254cf23`. Live `https://www.calmsprout.com/daily-shelf` is an indexable landing page; `/daily-shelf/offers` redirects to the offer index; `/daily-shelf/support` redirects to the public Square support page; `robots.txt`, `sitemap.xml`, and public IndexNow key file `a4f604db6d2046939ff6c7e3d29d341e.txt` are live; the `www.calmsprout.com` homepage includes a Daily Shelf banner.
 - Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
 - Policy surfaces: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` live; they are store-readiness pages and do not activate checkout or payout
 - Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
@@ -33,8 +33,9 @@ Verified 2026-06-02:
 - Latest functional infrastructure commit: `5d6eec6` (`Add support-backed offer pages`) pushed to `main`; GitHub Pages deployment `26805912605` succeeded
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: public support destination connected; public site says `Status: Connected`, shows `Support this shelf`, and links to `https://gift.calmsprout.com`, which resolves to the Square-hosted CalmSprout gift/support page. Product checkout is not connected, `store_connected` is false, and daily revenue is not proven.
-- Direct deploy note: CalmSprout has local Git but no remote, so the bridge was committed locally before direct Wrangler deploy. Keep future CalmSprout changes committed locally and record deployed Worker version IDs.
+- Direct deploy note: CalmSprout has local Git but no remote, so bridge changes were committed locally before direct Wrangler deploy. Keep future CalmSprout changes committed locally and record deployed Worker version IDs.
 - Latest verifier baseline: `files_checked: 36`, `bundle_bytes: 323728`, `pack_download_bytes: 126854`, `store_import_zip_bytes: 161610`, `support_connected: true`, `store_connected: false`
+- CalmSprout discovery proof: public key `https://www.calmsprout.com/a4f604db6d2046939ff6c7e3d29d341e.txt` returned HTTP 200; IndexNow accepted 6 CalmSprout URLs with HTTP 202: homepage, `/daily-shelf`, `/daily-shelf/offers`, `/daily-shelf/support`, `robots.txt`, and `sitemap.xml`.
 
 ## Where To Start
 

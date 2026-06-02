@@ -61,6 +61,8 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf`
 - `https://www.calmsprout.com/daily-shelf/offers`
 - `https://www.calmsprout.com/daily-shelf/support`
+- `https://www.calmsprout.com/sitemap.xml`
+- `https://www.calmsprout.com/a4f604db6d2046939ff6c7e3d29d341e.txt`
 
 This improves discovery and support conversion through an existing public
 domain. It does not make CalmSprout product checkout and does not prove revenue.
