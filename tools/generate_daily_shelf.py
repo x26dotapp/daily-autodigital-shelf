@@ -4172,6 +4172,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
               <a class="button" href="./pricing.html">Pricing</a>
               <a class="button" href="./catalog.csv">Open catalog CSV</a>
             </div>
+            <p class="fineprint">Product checkout is not connected. The ZIP remains public and support is voluntary through the measured support path.</p>
           </div>
           <div class="bundle-stat">
             <span>{len(manifests)}</span>
