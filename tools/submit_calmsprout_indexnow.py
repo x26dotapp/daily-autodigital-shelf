@@ -123,6 +123,7 @@ def catalog_product_routes() -> list[tuple[str, str]]:
             slug = pack_slug_from_item(item)
             if slug:
                 routes.append((f"/daily-shelf/products/{slug}", "catalog.json"))
+                routes.append((f"/daily-shelf/products/{slug}/support", "catalog.json"))
     return routes
 
 
