@@ -38,11 +38,13 @@ The site also publishes:
 - `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` for store-readiness policy review
 - `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
+- `support.html` as a dedicated support/conversion page for the connected public support path
 - `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
   `imports/store-upload-kit.zip` for generic marketplace import workflows, including policy pages
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
-- `feed.json`, `feed.xml`, `atom.xml`, `sitemap.xml`, and `robots.txt` for discoverability
+- `feed.json`, `feed.xml`, `atom.xml`, `llms.txt`, `llms-full.txt`,
+  `sitemap.xml`, and `robots.txt` for search/AI discoverability
 - an IndexNow key file so changed URLs can be submitted to participating search engines
 
 IndexNow submission state is kept locally in `state/indexnow-state.json` and is
@@ -53,8 +55,9 @@ uses a public text file to prove site control.
 
 A public support destination is configured in `config/config.public.json`:
 `https://gift.calmsprout.com`. This is a Square-hosted CalmSprout gift-card /
-support path, not product checkout. The generated packs remain public downloads
-until a real store checkout is connected.
+support path, not product checkout. The generated `support.html` page links to
+that destination while keeping the boundary explicit. The generated packs
+remain public downloads until a real store checkout is connected.
 
 Use `config/config.local.json` only for private local overrides. Do not put
 secrets in this repo.
