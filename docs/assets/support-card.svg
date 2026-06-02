@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Daily Autodigital Shelf support card</title>
+  <desc id="desc">Shareable support card for the public Daily Autodigital Shelf support path.</desc>
+  <rect width="1200" height="630" fill="#f7f8f5"/>
+  <rect x="42" y="42" width="1116" height="546" rx="8" fill="#ffffff" stroke="#d9ded8" stroke-width="3"/>
+  <rect x="80" y="82" width="210" height="52" rx="8" fill="#d7f2ee"/>
+  <text x="104" y="116" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800">Support card</text>
+  <text x="80" y="198" fill="#141716" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="900">Daily Autodigital Shelf</text>
+  <text x="80" y="258" fill="#626b66" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="600">Public downloads stay free. Support keeps the automated shelf running.</text>
+  <rect x="80" y="314" width="1040" height="116" rx="8" fill="#faecd6" stroke="#d88a1d" stroke-width="2"/>
+  <text x="112" y="362" fill="#141716" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="800">Open: gift.calmsprout.com</text>
+  <text x="112" y="404" fill="#626b66" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Measured route: www.calmsprout.com/daily-shelf/support/go</text>
+  <text x="80" y="488" fill="#246b45" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Suggested support: $3 / $9 / $21</text>
+  <text x="80" y="538" fill="#9a3f35" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">No product checkout claim. No payment credentials are collected on this page.</text>
+  <text x="80" y="573" fill="#626b66" font-family="Inter, Arial, sans-serif" font-size="18">Asset URL: x26dotapp.github.io/daily-autodigital-shelf/assets/support-card.svg</text>
+</svg>

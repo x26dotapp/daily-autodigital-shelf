@@ -16,6 +16,7 @@ DOCS = ROOT / "docs"
 BUNDLES = DOCS / "bundles"
 DOWNLOADS = DOCS / "downloads"
 IMPORTS = DOCS / "imports"
+ASSETS = DOCS / "assets"
 TOPICS = DOCS / "topics"
 OFFERS = DOCS / "offers"
 USE_CASES = DOCS / "use-cases"
@@ -1089,6 +1090,7 @@ def read_manifests() -> list[dict[str, Any]]:
 def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "archive.html",
+        SUPPORT_CARD_REL_PATH,
         "support.html",
         "pay-what-you-can.html",
         "pricing.html",
@@ -1336,6 +1338,7 @@ TOPIC_DEFINITIONS: dict[str, dict[str, Any]] = {
 }
 
 PREFERRED_COLLECTION_SLUG = "small-business-ops"
+SUPPORT_CARD_REL_PATH = "assets/support-card.svg"
 
 
 USE_CASE_DEFINITIONS: dict[str, dict[str, Any]] = {
@@ -2110,6 +2113,7 @@ def preferred_collection_label() -> str:
 
 def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
+        SUPPORT_CARD_REL_PATH,
         "support.html",
         "pay-what-you-can.html",
         "topics/topics.json",
@@ -3855,6 +3859,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
               <p>The bundle packages worksheet pages, checklists, covers, manifests, seller copy, template pages, guide pages, and individual downloads for this collection.</p>
             </div>
           </article>
+          {support_card_markup("../", action_url, "Collection support clicks use the measured collection route before the external support destination.")}
         </aside>
       </section>
       <section>
@@ -4173,6 +4178,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
             <strong>packs</strong>
             <small>{bundle_kb} KB ZIP</small>
           </div>
+          {support_card_markup("./", branded_url(config, "support/go") or str(config["monetization"].get("support_url") or ""), "This support card is included in the starter ZIP for low-friction sharing without adding checkout claims.")}
         </div>
       </section>
       <section>
@@ -5240,6 +5246,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
               <p class="fineprint">This is not product checkout unless store_connected is true in status.json.</p>
             </div>
           </article>
+          {support_card_markup("./", action_url if connected else "", "Shareable support card for the connected voluntary support path.")}
         </aside>
       </section>
       <section>
@@ -5312,6 +5319,69 @@ def support_tiers(config: dict[str, Any]) -> list[dict[str, str]]:
             "description": "Helps keep daily publishing, hosting, and maintenance alive.",
         },
     ]
+
+
+def display_url(value: str, limit: int = 84) -> str:
+    text = re.sub(r"^https?://", "", str(value or "").strip()).rstrip("/")
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 3)].rstrip("/") + "..."
+
+
+def support_card_markup(prefix: str, action_url: str, caption: str) -> str:
+    base = prefix if prefix.endswith("/") else f"{prefix}/"
+    href = action_url.strip() if action_url.strip() else f"{base}support.html"
+    return f"""<figure class="support-card">
+            <a href="{esc(href)}">
+              <img src="{esc(base + SUPPORT_CARD_REL_PATH)}" alt="Daily Autodigital Shelf support card">
+            </a>
+            <figcaption>{esc(caption)}</figcaption>
+          </figure>"""
+
+
+def render_support_assets(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
+    ASSETS.mkdir(parents=True, exist_ok=True)
+    monetization = config["monetization"]
+    support_url = str(monetization.get("support_url") or "").strip()
+    action_url = str(
+        support.get("support_intent_url")
+        or support.get("action_url")
+        or branded_url(config, "support/go")
+        or support_url
+        or pack_url(config, "support.html")
+    ).strip()
+    destination_url = str(support.get("destination_url") or support_url or action_url).strip()
+    display_destination = display_url(destination_url or support_url or action_url, 62)
+    display_action = display_url(action_url, 68)
+    tier_amounts = " / ".join(tier["amount"] for tier in support_tiers(config)[:3])
+    tier_text = f"Suggested support: {tier_amounts}" if tier_amounts else "Support is voluntary"
+    card_url = pack_url(config, SUPPORT_CARD_REL_PATH)
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Daily Autodigital Shelf support card</title>
+  <desc id="desc">Shareable support card for the public Daily Autodigital Shelf support path.</desc>
+  <rect width="1200" height="630" fill="#f7f8f5"/>
+  <rect x="42" y="42" width="1116" height="546" rx="8" fill="#ffffff" stroke="#d9ded8" stroke-width="3"/>
+  <rect x="80" y="82" width="210" height="52" rx="8" fill="#d7f2ee"/>
+  <text x="104" y="116" fill="#0f766e" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800">Support card</text>
+  <text x="80" y="198" fill="#141716" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="900">Daily Autodigital Shelf</text>
+  <text x="80" y="258" fill="#626b66" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="600">Public downloads stay free. Support keeps the automated shelf running.</text>
+  <rect x="80" y="314" width="1040" height="116" rx="8" fill="#faecd6" stroke="#d88a1d" stroke-width="2"/>
+  <text x="112" y="362" fill="#141716" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="800">Open: {esc(display_destination)}</text>
+  <text x="112" y="404" fill="#626b66" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Measured route: {esc(display_action)}</text>
+  <text x="80" y="488" fill="#246b45" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">{esc(tier_text)}</text>
+  <text x="80" y="538" fill="#9a3f35" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">No product checkout claim. No payment credentials are collected on this page.</text>
+  <text x="80" y="573" fill="#626b66" font-family="Inter, Arial, sans-serif" font-size="18">Asset URL: {esc(display_url(card_url, 78))}</text>
+</svg>
+"""
+    (DOCS / SUPPORT_CARD_REL_PATH).write_text(svg, encoding="utf-8")
+    return {
+        "ready": True,
+        "support_card_path": SUPPORT_CARD_REL_PATH,
+        "support_card_url": card_url,
+        "support_card_action_url": action_url,
+        "support_card_destination_url": destination_url,
+        "support_card_bytes": (DOCS / SUPPORT_CARD_REL_PATH).stat().st_size,
+    }
 
 
 def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
@@ -5449,6 +5519,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
               <p>A ZIP containing worksheets, checklists, cover SVGs, listing copy, catalog files, and policy pages. Support is voluntary while downloads remain public.</p>
             </div>
           </article>
+          {support_card_markup("./", action_url if connected else "", "A shareable support card is also included in the downloadable starter archive.")}
         </aside>
       </section>
       <section>
@@ -6001,6 +6072,7 @@ def render_sponsor_pages(config: dict[str, Any]) -> dict[str, Any]:
               <p>Worksheet packs, template pages, how-to guides, collection bundles, feeds, and store-ready metadata remain available without manual delivery.</p>
             </div>
           </article>
+          {support_card_markup("./", pricing_support_intent_url, "Pricing support clicks use the measured pricing route before the external support destination.")}
         </aside>
       </section>
       <section>
@@ -6124,6 +6196,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Sponsor page: {sponsor_url}",
             f"- Commercial use page: {commercial_use_url}",
             f"- Sponsor Kit JSON: {sponsor_kit_url}",
+            f"- Support card SVG: {pack_url(config, SUPPORT_CARD_REL_PATH)}",
             f"- Offers: {pack_url(config, 'offers/')}",
             f"- Use cases: {pack_url(config, 'use-cases/')}",
             f"- Templates: {pack_url(config, 'templates/')}",
@@ -6179,6 +6252,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             "- Sponsor page: " + sponsor_url,
             "- Commercial use page: " + commercial_use_url,
             "- Sponsor Kit JSON: " + sponsor_kit_url,
+            "- Support card SVG: " + pack_url(config, SUPPORT_CARD_REL_PATH),
             f"- {preferred_bundle_label} bundle page: {preferred_bundle_url}",
             *latest_branded_lines,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
@@ -6234,6 +6308,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "sponsor.html"),
         pack_url(config, "commercial-use.html"),
         pack_url(config, "sponsor-kit.json"),
+        pack_url(config, SUPPORT_CARD_REL_PATH),
         pack_url(config, "offers/"),
         pack_url(config, "offers/offers.json"),
         pack_url(config, "topics/"),
@@ -6355,6 +6430,7 @@ def write_status(
     guides: dict[str, Any],
     policies: dict[str, Any],
     support: dict[str, Any],
+    support_assets: dict[str, Any],
     pay_page: dict[str, Any],
     sponsor_pages: dict[str, Any],
     offers: dict[str, Any],
@@ -6448,6 +6524,12 @@ def write_status(
         "support_page_ready": bool(support.get("page_path")),
         "support_page": support.get("page_path", "support.html"),
         "support_page_url": pack_url(config, support.get("page_path", "support.html")),
+        "support_card_ready": bool(support_assets.get("ready")),
+        "support_card_path": support_assets.get("support_card_path", SUPPORT_CARD_REL_PATH),
+        "support_card_url": support_assets.get("support_card_url", pack_url(config, SUPPORT_CARD_REL_PATH)),
+        "support_card_action_url": support_assets.get("support_card_action_url", branded_url(config, "support/go") or support_url),
+        "support_card_destination_url": support_assets.get("support_card_destination_url", destination_url),
+        "support_card_bytes": int(support_assets.get("support_card_bytes", 0)),
         "pay_what_you_can_ready": bool(pay_page.get("page_path")),
         "pay_what_you_can_page": pay_page.get("page_path", "pay-what-you-can.html"),
         "pay_what_you_can_url": pack_url(config, pay_page.get("page_path", "pay-what-you-can.html")),
@@ -6556,6 +6638,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     guides = render_guide_pages(config)
     policies = render_policy_pages(config)
     support = render_support_page(config)
+    support_assets = render_support_assets(config, support)
     pay_page = render_pay_what_you_can_page(config, support)
     sponsor_pages = render_sponsor_pages(config)
     offers = render_offer_pages(config, support)
@@ -6582,6 +6665,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         guides,
         policies,
         support,
+        support_assets,
         pay_page,
         sponsor_pages,
         offers,

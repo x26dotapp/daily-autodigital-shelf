@@ -11,6 +11,7 @@
 - Sponsor page: https://x26dotapp.github.io/daily-autodigital-shelf/sponsor.html
 - Commercial use page: https://x26dotapp.github.io/daily-autodigital-shelf/commercial-use.html
 - Sponsor Kit JSON: https://x26dotapp.github.io/daily-autodigital-shelf/sponsor-kit.json
+- Support card SVG: https://x26dotapp.github.io/daily-autodigital-shelf/assets/support-card.svg
 - Offers: https://x26dotapp.github.io/daily-autodigital-shelf/offers/
 - Use cases: https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/
 - Templates: https://x26dotapp.github.io/daily-autodigital-shelf/templates/

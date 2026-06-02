@@ -98,6 +98,7 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "archive.html",
         "support.html",
         "pay-what-you-can.html",
+        "assets/support-card.svg",
         "pricing.html",
         "commercial-use.html",
         "sponsor.html",

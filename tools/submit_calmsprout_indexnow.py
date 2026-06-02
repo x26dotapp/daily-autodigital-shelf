@@ -65,6 +65,7 @@ DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
     ("/daily-shelf/atom.xml", "atom.xml"),
     ("/daily-shelf/starter.zip", "bundles/starter-archive.zip"),
     ("/daily-shelf/bundles/starter-archive.zip", "bundles/starter-archive.zip"),
+    ("/daily-shelf/assets/support-card.svg", "assets/support-card.svg"),
 ]
 
 STATIC_ROUTE_SOURCES: list[tuple[str, str]] = [
