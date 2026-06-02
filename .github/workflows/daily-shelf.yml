@@ -1,0 +1,59 @@
+name: Daily Autodigital Shelf Fallback
+
+on:
+  schedule:
+    # Runs after the local PC task and watchdog in both Eastern time offsets.
+    - cron: "15 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-autodigital-shelf-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Generate and publish shelf
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compute New York shelf date
+        run: |
+          echo "SHELF_DATE=$(TZ=America/New_York date +%F)" >> "$GITHUB_ENV"
+
+      - name: Generate site output
+        run: python tools/generate_daily_shelf.py --date "$SHELF_DATE"
+
+      - name: Verify generated output
+        run: python tools/verify_daily_shelf.py --date "$SHELF_DATE" --min-pack-count 21
+
+      - name: Commit and push changed output
+        id: publish
+        run: |
+          git config user.name "x26dotapp"
+          git config user.email "git@x26.app"
+          git add docs state README.md config/config.example.json tools run-daily.ps1 watchdog.ps1 install-scheduled-task.ps1 install-watchdog-task.ps1 verify-system.ps1 .gitignore .github/workflows/daily-shelf.yml
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No generated changes to publish."
+          else
+            git commit -m "Daily shelf update $SHELF_DATE"
+            git push origin main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Submit changed URLs to IndexNow
+        if: steps.publish.outputs.changed == 'true'
+        run: python tools/submit_indexnow.py --wait-for-key-seconds 120

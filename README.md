@@ -16,6 +16,7 @@ connected to a store, affiliate link, support link, or ad setup later.
 - `install-scheduled-task.ps1` installs a daily Windows Scheduled Task.
 - `watchdog.ps1` verifies the daily task, live site, and generated artifacts, then reruns the safe daily wrapper only when verification fails.
 - `install-watchdog-task.ps1` installs the daily watchdog Scheduled Task.
+- `.github/workflows/daily-shelf.yml` is a GitHub Actions fallback publisher in case the PC misses a daily run.
 - `verify-system.ps1` checks local output, the live site, and the scheduled task.
 - `docs/` is the GitHub Pages site root.
 
@@ -111,6 +112,15 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\install-watchdog-task.
 The watchdog task name is `HUMANi Daily Autodigital Shelf Watchdog`. It runs at
 7:15am local time, after the daily generator. It logs to `logs/watchdog.log` and
 writes local status to `state/watchdog-status.json`.
+
+## GitHub Fallback Publisher
+
+The workflow `.github/workflows/daily-shelf.yml` runs daily from GitHub Actions
+after the local PC task and watchdog. It computes the shelf date in
+`America/New_York`, runs the generator and verifier, commits only when files
+changed, pushes to `main`, and submits changed URLs to IndexNow.
+
+This is a reliability fallback, not a separate monetization layer.
 
 ## Honest Money Note
 
