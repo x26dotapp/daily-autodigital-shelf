@@ -9,6 +9,7 @@ This is revenue infrastructure, not guaranteed revenue. It does not touch live f
 Verified 2026-06-02:
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
+- Branded entry: `https://www.calmsprout.com/daily-shelf`
 - Repo: `https://github.com/x26dotapp/daily-autodigital-shelf`
 - Task: `HUMANi Daily Autodigital Shelf`, daily at 06:10 local time, last manual run result `0`
 - Watchdog task: `HUMANi Daily Autodigital Shelf Watchdog`, daily at 07:15 local time, last Task Scheduler run result `0`
@@ -19,6 +20,7 @@ Verified 2026-06-02:
 - Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 161,610 bytes and rows include topic fields plus policy pages
 - Support/discovery surfaces: `support.html`, `llms.txt`, and `llms-full.txt` live; the support page links to `https://gift.calmsprout.com` while stating that product checkout is not connected
 - Offer surfaces: `offers/index.html`, `offers/offers.json`, and 5 topic collection offer pages live; offer pages link the starter bundle, expose CollectionPage JSON-LD, route support CTAs to `https://gift.calmsprout.com`, and state that product checkout is not connected
+- CalmSprout bridge: `C:\scripts\CalmSprout` commit `f063a55` (`Add Daily Shelf bridge`) deployed directly to Cloudflare as Worker version `cb0233b3-ec1d-4599-b445-417ee04f610e`. Live `https://www.calmsprout.com/daily-shelf` redirects to the shelf, `/daily-shelf/offers` redirects to the offer index, `/daily-shelf/support` redirects to the public Square support page, and the `www.calmsprout.com` homepage includes a Daily Shelf banner.
 - Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
 - Policy surfaces: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` live; they are store-readiness pages and do not activate checkout or payout
 - Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
@@ -31,6 +33,7 @@ Verified 2026-06-02:
 - Latest functional infrastructure commit: `5d6eec6` (`Add support-backed offer pages`) pushed to `main`; GitHub Pages deployment `26805912605` succeeded
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: public support destination connected; public site says `Status: Connected`, shows `Support this shelf`, and links to `https://gift.calmsprout.com`, which resolves to the Square-hosted CalmSprout gift/support page. Product checkout is not connected, `store_connected` is false, and daily revenue is not proven.
+- Direct deploy note: CalmSprout has local Git but no remote, so the bridge was committed locally before direct Wrangler deploy. Keep future CalmSprout changes committed locally and record deployed Worker version IDs.
 - Latest verifier baseline: `files_checked: 36`, `bundle_bytes: 323728`, `pack_download_bytes: 126854`, `store_import_zip_bytes: 161610`, `support_connected: true`, `store_connected: false`
 
 ## Where To Start
@@ -65,6 +68,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\offers`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\llms.txt`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\llms-full.txt`
+- `C:\scripts\CalmSprout\src\worker.js`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\config\config.public.json`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\generate_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\verify_daily_shelf.py`

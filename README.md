@@ -53,6 +53,18 @@ IndexNow submission state is kept locally in `state/indexnow-state.json` and is
 ignored by Git. The key file itself is public by design because the protocol
 uses a public text file to prove site control.
 
+## Branded Entry Bridge
+
+The CalmSprout Worker at `C:\scripts\CalmSprout` also exposes a branded bridge
+for this shelf:
+
+- `https://www.calmsprout.com/daily-shelf`
+- `https://www.calmsprout.com/daily-shelf/offers`
+- `https://www.calmsprout.com/daily-shelf/support`
+
+This improves discovery and support conversion through an existing public
+domain. It does not make CalmSprout product checkout and does not prove revenue.
+
 ## Current Guardrail
 
 A public support destination is configured in `config/config.public.json`:
