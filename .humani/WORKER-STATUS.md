@@ -5,22 +5,22 @@
 - Operator: `DAI-AUT-01`
 - Project: `daily-autodigital-shelf`
 - State: idle
-- Last updated: `2026-06-02T07:29:30-04:00`
+- Last updated: `2026-06-02T07:41:46-04:00`
 - Active broker action: none
 
 ## Latest Verified Work
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest handoff update: public product feed and CalmSprout feed proxy routing recorded
-- Latest functional commit: `0a5d3da` (`Add public product feed`)
+- Latest handoff update: support funnel feed and CalmSprout support feed proxy routing recorded
+- Latest functional commit: `468f34f` (`Add support funnel feed`)
 - Latest adjacent bridge commit: CalmSprout `f063a55` (`Add Daily Shelf bridge`)
-- Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), `3001f49` (`Add Daily Shelf product support funnels`), `6b5e7bf` (`Add Daily Shelf support intent redirects`), `2821d51` (`Expose support intent in LLM discovery`), `392479e` (`Record support intent LLM deploy`), `187a1b6` (`Add product offer FAQ schema`), `874504d` (`Record product offer FAQ schema deploy`), `53b3183` (`Route shelf downloads through landing pages`), `1d44688` (`Proxy Daily Shelf stylesheet`), and `8d70dc3` (`Proxy Daily Shelf product feeds`)
-- CalmSprout deploy: Cloudflare Worker version `da74cb60-539e-4717-8be2-696257d252b3`
-- Pages deployment: `26816697269` for public product feed; prior download-page deployment `26816113707` succeeded for `de0b29a`
+- Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), `3001f49` (`Add Daily Shelf product support funnels`), `6b5e7bf` (`Add Daily Shelf support intent redirects`), `2821d51` (`Expose support intent in LLM discovery`), `392479e` (`Record support intent LLM deploy`), `187a1b6` (`Add product offer FAQ schema`), `874504d` (`Record product offer FAQ schema deploy`), `53b3183` (`Route shelf downloads through landing pages`), `1d44688` (`Proxy Daily Shelf stylesheet`), `8d70dc3` (`Proxy Daily Shelf product feeds`), and `c8c0833` (`Proxy Daily Shelf support funnel feed`)
+- CalmSprout deploy: Cloudflare Worker version `28df22d3-2e56-4107-9545-cca23922a759`
+- Pages deployment: `26817314700` for support funnel feed; prior product-feed deployment `26816697269` succeeded for `0a5d3da`
 - Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
-- Verification: `verify-system.ps1` passed with `files_checked: 43`, `bundle_bytes: 375773`, current `download_bytes: 6875`, `store_import_zip_bytes: 197650`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
-- Discovery: IndexNow accepted 11 GitHub Pages URLs and 15 CalmSprout URLs with HTTP 200 after adding the public product feed; follow-up dry runs returned `submit_count: 0` for both hosts
+- Verification: `verify-system.ps1` passed with `files_checked: 46`, `bundle_bytes: 389716`, current `download_bytes: 6875`, `store_import_zip_bytes: 211788`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
+- Discovery: IndexNow accepted 11 GitHub Pages URLs and 15 CalmSprout URLs with HTTP 200 after adding the support funnel feed; follow-up dry runs returned `submit_count: 0` for both hosts
 - Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` are generated
 - Support metadata: catalog/import JSON and CSV expose `support_page_url`, `pay_what_you_can_url`, `monetization_destination_type`, `monetization_destination_url`, `store_connected`, and `support_connected`; current pack JSON-LD exposes `DonateAction` while only support mode is connected
 - Branded support metadata: catalog/import JSON and CSV expose `branded_product_url`, `branded_support_url`, and `branded_support_intent_url`; `status.json` exposes `today_branded_product_url`, `today_branded_support_url`, and `today_branded_support_intent_url`
@@ -42,6 +42,7 @@
 - ZIP support-card QA: live GitHub Pages current product ZIP and starter archive both contain `SUPPORT.txt` with `/support/go` and `Product checkout is not connected`
 - Support-aware download-page QA: live GitHub Pages `/downloads/2026-06-02-one-page-sop.html` and CalmSprout `/daily-shelf/downloads/2026-06-02-one-page-sop.html` return rendered landing pages with `DownloadAction`, `DonateAction`, a direct ZIP button, `/support/go`, and the product-checkout boundary; browser QA found no console warnings/errors and no horizontal overflow. Live CalmSprout `/daily-shelf/products/2026-06-02-one-page-sop` now routes its primary CTA to the download page and still exposes ZIP encoding metadata.
 - Public product feed QA: live GitHub Pages and CalmSprout `product-feed.json`, `product-feed.xml`, and `product-feed.csv` return HTTP 200, include 21 items, include `One-Page SOP Builder`, include product-specific `/support/go`, and repeat the `Product checkout is not connected` boundary. The store upload kit includes the feed files.
+- Support funnel feed QA: live GitHub Pages and CalmSprout `support-funnel.json`, `support-funnel.xml`, and `support-funnel.csv` return HTTP 200, include 21 items, include `One-Page SOP Builder`, expose `DownloadAction`, `DonateAction`, `branded_support_intent_url`, `utm_campaign=product_support`, suggested support tiers, and repeat the `Product checkout is not connected` boundary. The store upload kit includes the support funnel files.
 - Support destination: `https://gift.calmsprout.com` resolves to the Square-hosted CalmSprout gift/support page
 
 ## Boundaries
