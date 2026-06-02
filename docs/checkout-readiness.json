@@ -1,0 +1,70 @@
+{
+  "kind": "daily-shelf-checkout-readiness",
+  "generated_at": "2026-06-02T17:59:23+00:00",
+  "today": "2026-06-02",
+  "page_path": "checkout-readiness.html",
+  "json_path": "checkout-readiness.json",
+  "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.html",
+  "json_url": "https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.json",
+  "branded_page_url": "https://www.calmsprout.com/daily-shelf/checkout-readiness.html",
+  "branded_json_url": "https://www.calmsprout.com/daily-shelf/checkout-readiness.json",
+  "product_checkout_ready": false,
+  "store_connected": false,
+  "support_connected": true,
+  "store_url": "",
+  "support_url": "https://gift.calmsprout.com",
+  "support_intent_url": "https://www.calmsprout.com/daily-shelf/support/go",
+  "candidate_count": 3,
+  "publicly_linkable_candidate_count": 1,
+  "verified_checkout_candidate_count": 0,
+  "candidates": [
+    {
+      "id": "calmsprout-square-support",
+      "label": "CalmSprout Square support",
+      "kind": "support",
+      "status": "connected_support_only",
+      "url": "https://gift.calmsprout.com",
+      "publicly_linkable": true,
+      "daily_shelf_checkout": false,
+      "notes": "Voluntary support only. This does not gate delivery, create an order, or prove product revenue.",
+      "evidence": "Configured support_url redirects to the Square-hosted CalmSprout support page.",
+      "blocker": "Needs a separate Daily Shelf store or product checkout before store_connected can become true."
+    },
+    {
+      "id": "calmsprout-square-shop",
+      "label": "CalmSprout Square shop",
+      "kind": "external_store",
+      "status": "not_daily_shelf_checkout",
+      "url": "https://shop.calmsprout.com",
+      "publicly_linkable": false,
+      "daily_shelf_checkout": false,
+      "notes": "This is not configured for Daily Shelf printable packs and should not be used as the shelf checkout.",
+      "evidence": "Existing public CalmSprout shop URL found in prior site markup.",
+      "blocker": "Needs product, compliance, fulfillment, refund, and payout verification for Daily Shelf before any link is used."
+    },
+    {
+      "id": "archived-paypal-hosted-button-code",
+      "label": "Archived PayPal hosted-button code",
+      "kind": "archived_payment_code",
+      "status": "requires_owner_verification",
+      "url": "",
+      "publicly_linkable": false,
+      "daily_shelf_checkout": false,
+      "notes": "The public shelf does not publish archived pay buttons as checkout without owner and product verification.",
+      "evidence": "Archived CalmSprout template contains PayPal hosted-button code.",
+      "blocker": "Needs merchant ownership, payout, product, price, delivery, refund, and compliance verification."
+    }
+  ],
+  "boundary": "Support is connected, but product checkout remains disconnected unless store_connected is true.",
+  "next_safe_actions": [
+    "Verify ownership, payout, product fit, fulfillment, refund policy, and tax/account requirements before enabling a product checkout.",
+    "Keep public downloads available until a legitimate checkout and delivery path exists.",
+    "Do not use archived payment code as a live Daily Shelf checkout without owner and product verification."
+  ],
+  "guardrails": [
+    "No fake revenue claims",
+    "No hidden payment credentials",
+    "No redirected checkout unless it is verified for Daily Shelf",
+    "No live trading or live-fund automation"
+  ]
+}

@@ -16,6 +16,7 @@
     "support_url": "",
     "support_metrics_url": "",
     "download_metrics_url": "",
+    "checkout_candidates": [],
     "support_tiers": [
       {"label": "Small thank-you", "amount": "$3", "description": "A light support nudge for one useful worksheet."},
       {"label": "Bundle supporter", "amount": "$9", "description": "A fair support level for the starter archive."},

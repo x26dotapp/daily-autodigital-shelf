@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout Readiness | Daily Autodigital Shelf</title>
+  <meta name="description" content="Checkout readiness, payment boundary, and candidate destination inventory for Daily Autodigital Shelf.">
+  <link rel="canonical" href="https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.html">
+  <meta property="og:title" content="Checkout Readiness | Daily Autodigital Shelf">
+  <meta property="og:description" content="Support is connected, but product checkout is still not connected.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.html">
+  <meta property="og:image" content="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/cover.svg">
+  <meta property="og:image:alt" content="Daily Autodigital Shelf checkout readiness">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Checkout Readiness | Daily Autodigital Shelf">
+  <meta name="twitter:description" content="Support is connected, but product checkout is still not connected.">
+  <meta name="twitter:image" content="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/cover.svg">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Checkout Readiness | Daily Autodigital Shelf", "description": "Public checkout-readiness boundary for Daily Autodigital Shelf.", "url": "https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.html", "isPartOf": {"@type": "WebSite", "name": "Daily Autodigital Shelf", "url": "https://x26dotapp.github.io/daily-autodigital-shelf/"}}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">Daily Autodigital Shelf</span>
+      </a>
+      <nav class="topnav" aria-label="Checkout readiness navigation">
+        <a href="./">Home</a>
+        <a href="./support.html">Support</a>
+        <a href="./pay-what-you-can.html">Pay what you can</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./support-signal.html">Support signal</a>
+        <a href="./store-import.html">Import kit</a>
+        <a href="./status.json">Status JSON</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Checkout readiness</p>
+          <h1>Product checkout not connected.</h1>
+          <p>This page records what is payment-capable, what is only support, and what still needs verification before it can become a real Daily Shelf product checkout.</p>
+          <div class="actions">
+            <a class="button primary" href="./support.html">Open support page</a>
+            <a class="button" href="./checkout-readiness.json">Read JSON</a>
+            <a class="button" href="./store-import.html">Open import kit</a>
+            <a class="button" href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/">Latest pack</a>
+          </div>
+          <p class="fineprint">This page does not collect payment credentials, trigger checkout, or claim revenue. Store checkout remains disconnected unless status.json reports store_connected: true.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Current boundary</p>
+              <h2>Not ready</h2>
+            </div>
+            <span class="status">support only</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>Support path connected</h3>
+              <p>Support URL: https://gift.calmsprout.com.</p>
+              <p>Store URL: not connected.</p>
+              <p class="fineprint">Verified product-checkout candidates: 0. Public candidate destinations: 1.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Destination inventory</p>
+            <h2>Candidate payment surfaces</h2>
+          </div>
+          <p>These are not automatically promoted as product checkout. A candidate must be verified for ownership, payout, product fit, delivery, refunds, and compliance first.</p>
+        </div>
+        <div class="ledger">
+          <article class="ledger-row">
+          <strong>CalmSprout Square support</strong>
+          <p>Voluntary support only. This does not gate delivery, create an order, or prove product revenue.</p>
+          <p class="fineprint">Kind: support. Status: connected_support_only. Daily Shelf checkout: no.</p>
+          <p class="fineprint">Known URL: https://gift.calmsprout.com</p>
+          <p class="fineprint">Evidence: Configured support_url redirects to the Square-hosted CalmSprout support page.</p>
+          <p class="fineprint">Blocker: Needs a separate Daily Shelf store or product checkout before store_connected can become true.</p>
+          <div class="row-actions">
+            <a class="button" href="https://gift.calmsprout.com">Open destination</a>
+          </div>
+        </article>
+<article class="ledger-row">
+          <strong>CalmSprout Square shop</strong>
+          <p>This is not configured for Daily Shelf printable packs and should not be used as the shelf checkout.</p>
+          <p class="fineprint">Kind: external_store. Status: not_daily_shelf_checkout. Daily Shelf checkout: no.</p>
+          <p class="fineprint">Known URL: https://shop.calmsprout.com</p>
+          <p class="fineprint">Evidence: Existing public CalmSprout shop URL found in prior site markup.</p>
+          <p class="fineprint">Blocker: Needs product, compliance, fulfillment, refund, and payout verification for Daily Shelf before any link is used.</p>
+          <div class="row-actions">
+            <span class="status">not linked as checkout</span>
+          </div>
+        </article>
+<article class="ledger-row">
+          <strong>Archived PayPal hosted-button code</strong>
+          <p>The public shelf does not publish archived pay buttons as checkout without owner and product verification.</p>
+          <p class="fineprint">Kind: archived_payment_code. Status: requires_owner_verification. Daily Shelf checkout: no.</p>
+          <p class="fineprint">No public URL is published for this candidate.</p>
+          <p class="fineprint">Evidence: Archived CalmSprout template contains PayPal hosted-button code.</p>
+          <p class="fineprint">Blocker: Needs merchant ownership, payout, product, price, delivery, refund, and compliance verification.</p>
+          <div class="row-actions">
+            <span class="status">not linked as checkout</span>
+          </div>
+        </article>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Next safe actions</p>
+            <h2>What can become checkout</h2>
+          </div>
+          <p>A real checkout can be enabled only after a legitimate store or marketplace URL exists for these digital packs. Until then, the generator keeps public delivery and voluntary support separate.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done"><span class="setup-dot">1</span><div><strong>Support route connected</strong><p>The Square-hosted support path can accept voluntary support, but it is not product checkout.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">2</span><div><strong>Product checkout still missing</strong><p>No Daily Shelf store URL is configured, so store_connected remains false.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">3</span><div><strong>Verification required</strong><p>Archived payment code and unrelated shops must not be reused until owner, payout, product, and fulfillment fit are proven.</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>Support links route to a Square-hosted CalmSprout gift-card/support page. Product checkout is not connected yet; pack downloads remain public until a store is connected.</p>
+      <p><a href="./license.html">License</a> <a href="./terms.html">Terms</a> <a href="./privacy.html">Privacy</a> <a href="./refund-policy.html">Refund</a></p>
+    </footer>
+  </div>
+</body>
+</html>

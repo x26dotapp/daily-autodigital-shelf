@@ -12,6 +12,41 @@
     "support_url": "https://gift.calmsprout.com",
     "support_metrics_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
     "download_metrics_url": "https://www.calmsprout.com/daily-shelf/download-metrics.json",
+    "checkout_candidates": [
+      {
+        "label": "CalmSprout Square support",
+        "kind": "support",
+        "url": "https://gift.calmsprout.com",
+        "status": "connected_support_only",
+        "publicly_linkable": true,
+        "daily_shelf_checkout": false,
+        "evidence": "Configured support_url redirects to the Square-hosted CalmSprout support page.",
+        "notes": "Voluntary support only. This does not gate delivery, create an order, or prove product revenue.",
+        "blocker": "Needs a separate Daily Shelf store or product checkout before store_connected can become true."
+      },
+      {
+        "label": "CalmSprout Square shop",
+        "kind": "external_store",
+        "url": "https://shop.calmsprout.com",
+        "status": "not_daily_shelf_checkout",
+        "publicly_linkable": false,
+        "daily_shelf_checkout": false,
+        "evidence": "Existing public CalmSprout shop URL found in prior site markup.",
+        "notes": "This is not configured for Daily Shelf printable packs and should not be used as the shelf checkout.",
+        "blocker": "Needs product, compliance, fulfillment, refund, and payout verification for Daily Shelf before any link is used."
+      },
+      {
+        "label": "Archived PayPal hosted-button code",
+        "kind": "archived_payment_code",
+        "url": "",
+        "status": "requires_owner_verification",
+        "publicly_linkable": false,
+        "daily_shelf_checkout": false,
+        "evidence": "Archived CalmSprout template contains PayPal hosted-button code.",
+        "notes": "The public shelf does not publish archived pay buttons as checkout without owner and product verification.",
+        "blocker": "Needs merchant ownership, payout, product, price, delivery, refund, and compliance verification."
+      }
+    ],
     "support_tiers": [
       {
         "label": "Small thank-you",
