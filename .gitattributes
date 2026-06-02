@@ -1,0 +1,12 @@
+*.zip binary
+
+docs/**/*.csv text eol=lf
+docs/**/*.html text eol=lf
+docs/**/*.json text eol=lf
+docs/**/*.md text eol=lf
+docs/**/*.svg text eol=lf
+docs/**/*.txt text eol=lf
+docs/**/*.xml text eol=lf
+tools/**/*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf

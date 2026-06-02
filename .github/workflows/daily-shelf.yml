@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "x26dotapp"
           git config user.email "git@x26.app"
-          git add docs state README.md config/config.example.json tools run-daily.ps1 watchdog.ps1 install-scheduled-task.ps1 install-watchdog-task.ps1 verify-system.ps1 .gitignore .github/workflows/daily-shelf.yml
+          git add docs state README.md config/config.example.json tools run-daily.ps1 watchdog.ps1 install-scheduled-task.ps1 install-watchdog-task.ps1 verify-system.ps1 .gitignore .gitattributes .github/workflows/daily-shelf.yml
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No generated changes to publish."

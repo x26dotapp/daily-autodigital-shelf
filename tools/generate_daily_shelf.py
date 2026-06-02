@@ -930,10 +930,30 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
 
 def write_zip_entry(bundle: zipfile.ZipFile, arcname: str, data: bytes) -> None:
     info = zipfile.ZipInfo(arcname)
+    info.create_system = 3
     info.date_time = (2026, 1, 1, 0, 0, 0)
     info.compress_type = zipfile.ZIP_DEFLATED
     info.external_attr = 0o644 << 16
     bundle.writestr(info, data)
+
+
+ZIP_TEXT_SUFFIXES = {
+    ".css",
+    ".csv",
+    ".html",
+    ".json",
+    ".md",
+    ".svg",
+    ".txt",
+    ".xml",
+}
+
+
+def read_zip_source_bytes(source: Path) -> bytes:
+    data = source.read_bytes()
+    if source.suffix.lower() in ZIP_TEXT_SUFFIXES:
+        return data.replace(b"\r\n", b"\n")
+    return data
 
 
 def pack_slug_from_manifest(item: dict[str, Any]) -> str:
@@ -1103,7 +1123,7 @@ def render_pack_downloads() -> dict[str, Any]:
                     continue
                 source = DOCS / rel_path
                 if source.exists():
-                    write_zip_entry(bundle, f"{zip_root}/{source.relative_to(DOCS).as_posix()}", source.read_bytes())
+                    write_zip_entry(bundle, f"{zip_root}/{source.relative_to(DOCS).as_posix()}", read_zip_source_bytes(source))
 
         outputs.append(
             {
@@ -1187,7 +1207,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         "status",
     ]
     with (DOCS / csv_rel_path).open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     (DOCS / json_rel_path).write_text(json.dumps({"items": rows}, indent=2), encoding="utf-8")
@@ -1210,14 +1230,14 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         for rel_path in [csv_rel_path, json_rel_path, "catalog.csv", "catalog.json"]:
             source = DOCS / rel_path
             if source.exists():
-                write_zip_entry(bundle, f"{zip_root}/{rel_path}", source.read_bytes())
+                write_zip_entry(bundle, f"{zip_root}/{rel_path}", read_zip_source_bytes(source))
         for item in read_manifests():
             for rel_path in [item.get("seller_copy", ""), pack_download_path(item), item["cover"]]:
                 if not rel_path:
                     continue
                 source = DOCS / rel_path
                 if source.exists():
-                    write_zip_entry(bundle, f"{zip_root}/{source.relative_to(DOCS).as_posix()}", source.read_bytes())
+                    write_zip_entry(bundle, f"{zip_root}/{source.relative_to(DOCS).as_posix()}", read_zip_source_bytes(source))
 
     cards = "\n".join(
         f"""<article class="ledger-row">
@@ -1588,7 +1608,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         )
         for source in bundle_file_paths(manifests):
             rel = source.relative_to(DOCS).as_posix()
-            write_zip_entry(bundle, f"{zip_root}/{rel}", source.read_bytes())
+            write_zip_entry(bundle, f"{zip_root}/{rel}", read_zip_source_bytes(source))
 
     bundle_bytes = bundle_path.stat().st_size
     bundle_kb = max(1, round(bundle_bytes / 1024))
@@ -2011,7 +2031,7 @@ def render_catalog(config: dict[str, Any]) -> None:
         "monetization_enabled",
     ]
     with csv_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(catalog_items)
 

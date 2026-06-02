@@ -49,7 +49,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 if (Test-Path -LiteralPath (Join-Path $root '.git')) {
-    git add docs state README.md config/config.example.json tools run-daily.ps1 watchdog.ps1 install-scheduled-task.ps1 install-watchdog-task.ps1 verify-system.ps1 .gitignore | Out-Null
+    git add docs state README.md config/config.example.json tools run-daily.ps1 watchdog.ps1 install-scheduled-task.ps1 install-watchdog-task.ps1 verify-system.ps1 .gitignore .gitattributes .github/workflows/daily-shelf.yml | Out-Null
     $status = git status --porcelain
     if ($status) {
         $stamp = Get-Date -Format 'yyyy-MM-dd'
