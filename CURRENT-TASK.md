@@ -6,9 +6,9 @@ Keep the daily generator, public site, scheduled task, GitHub push flow, and mon
 
 ## Current Completion Edge
 
-- Stable: generator, 21-pack starter archive, 21 individual product ZIPs, generated starter bundle ZIP, current June 2, 2026 pack, static site files, seller-copy output, SEO/feed/robots/sitemap metadata, catalog JSON/CSV with download URLs, IndexNow submission, ledger/status output, run wrapper, verifier, scheduled task, GitHub Pages, HUMANi lane registration.
+- Stable: generator, 21-pack starter archive, 21 individual product ZIPs, generated starter bundle ZIP, marketplace import kit, current June 2, 2026 pack, static site files, seller-copy output, SEO/feed/robots/sitemap metadata, catalog JSON/CSV with download URLs, IndexNow submission, ledger/status output, run wrapper, verifier, scheduled task, GitHub Pages, HUMANi lane registration.
 - Remaining gap: actual revenue still requires a real external payout/store/support/ad/affiliate connection. Do not fake this in the site.
-- Latest verification: `verify-system.ps1` requires at least 21 pack manifests and 21 generated pack download ZIPs and passed after the per-pack ZIP push. The live homepage, old seeded pack pages, `starter-bundle.html`, pack ZIPs, and IndexNow key file returned HTTP 200 on 2026-06-02; IndexNow accepted 26 refreshed URLs with HTTP 200.
+- Latest verification: `verify-system.ps1` requires at least 21 pack manifests, 21 generated pack download ZIPs, and the marketplace import kit and passed after the import-kit push. The live homepage, `store-import.html`, `imports/store-upload-kit.zip`, listing JSON, seeded pack pages, pack ZIPs, and IndexNow key file returned HTTP 200 on 2026-06-02; IndexNow accepted 7 import-kit URLs with HTTP 200.
 
 ## Recommended Next Moves
 

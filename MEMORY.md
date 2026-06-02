@@ -31,9 +31,10 @@
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, and the scheduled task.
 - Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
 - Added 2026-06-02: Expanded the generator to 29 pack templates and seeded a 21-pack starter archive from `2026-05-13` through `2026-06-02`.
-- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 118,021 bytes.
+- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 264,102 bytes.
 - Added 2026-06-02: Generated shelf writes 21 individual product ZIPs under `docs/downloads/`; every seeded pack page now links its own `Download pack ZIP` action and catalog rows include `download_url`.
-- Added 2026-06-02: IndexNow discovery automation is enabled. Public key file `docs/b0d7a0387b4f41cc886dc47328c20bcb.txt` is generated; current page-refresh submission sent 26 changed URLs and received HTTP 200 after Pages served the key.
+- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows and the ZIP is 148,744 bytes.
+- Added 2026-06-02: IndexNow discovery automation is enabled. Public key file `docs/b0d7a0387b4f41cc886dc47328c20bcb.txt` is generated; latest import-kit submission sent 7 changed URLs and received HTTP 200 after Pages served the key.
 - Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
 
 ## Operator Rule
