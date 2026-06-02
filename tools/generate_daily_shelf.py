@@ -525,6 +525,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
           <div class="system-note">
             <div class="signal">Generates one dated pack per run.</div>
             <div class="signal">Publishes static files only.</div>
+            <div class="signal">Writes store-ready listing copy.</div>
             <div class="signal">Payment links stay off until connected.</div>
           </div>
         </div>
@@ -546,6 +547,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any]) -> None:
                 <a class="button primary" href="./{esc(today_path)}">Open today's pack</a>
                 <a class="button" href="./{esc(today_path)}printable.html">Worksheet</a>
                 <a class="button" href="./{esc(today_path)}cover.svg">Cover</a>
+                <a class="button" href="./{esc(today_path)}seller-copy.md">Seller copy</a>
               </div>
             </div>
             <div class="mini-cover">{esc(today_pack["title"])}</div>

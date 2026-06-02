@@ -72,6 +72,8 @@ def verify_local(day: str) -> dict[str, Any]:
             "application/ld+json",
             "feed.json",
             "sitemap.xml",
+            "seller-copy.md",
+            "Writes store-ready listing copy",
         ],
     )
     require_contains(pack_dir / "index.html", [manifest["title"], "Store link not connected"])
