@@ -504,6 +504,23 @@
   No support redirect or download route was triggered. This is conversion-path
   tightening, not payment or daily revenue proof.
 
+- 2026-06-02 checkout-readiness inventory: Daily Shelf commit `f3d3533` (`Add
+  checkout readiness inventory`) publishes `checkout-readiness.html` and
+  `checkout-readiness.json`, records 3 candidate payment surfaces, marks 0
+  verified product checkout candidates, keeps `store_connected: false` and
+  `product_checkout_ready: false`, and warns not to reuse archived PayPal or
+  unrelated shop surfaces without payout/product/fulfillment verification.
+  GitHub Pages run `26838444641` succeeded; `verify-system.ps1` passed with
+  `files_checked: 70`, `bundle_bytes: 924353`, `download_bytes: 7350`,
+  `store_import_zip_bytes: 475635`, `checkout_readiness_ready: true`,
+  `checkout_candidate_count: 3`, `checkout_verified_candidate_count: 0`,
+  `support_connected: true`, and `store_connected: false`. CalmSprout commit
+  `c690f6a` (`Proxy Daily Shelf checkout readiness`) deployed Worker version
+  `95dfafb2-228f-43f0-b37d-28e5b1e4085a`; live readiness page/JSON checks and
+  in-app browser QA passed. IndexNow accepted 275 GitHub Pages URLs and 423
+  CalmSprout URLs. This is checkout boundary documentation, not payment or
+  daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
