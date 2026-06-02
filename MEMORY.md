@@ -32,13 +32,17 @@
 - Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, the daily task, and the watchdog task.
 - Added 2026-06-02: Generated shelf also writes `archive.html`, `catalog.json`, and `catalog.csv` so future store/import workflows can reuse packs without scraping the site.
 - Added 2026-06-02: Expanded the generator to 29 pack templates and seeded a 21-pack starter archive from `2026-05-13` through `2026-06-02`.
-- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 282,576 bytes.
+- Added 2026-06-02: Generated shelf also writes `starter-bundle.html` and `docs/bundles/starter-archive.zip` as a single store-uploadable ZIP; live ZIP verified and current local bundle size is 281,249 bytes.
 - Added 2026-06-02: Generated shelf writes 21 individual product ZIPs under `docs/downloads/`; every seeded pack page now links its own `Download pack ZIP` action and catalog rows include `download_url`.
-- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows, topic metadata fields, and the ZIP is 155,257 bytes.
+- Added 2026-06-02: Generated shelf writes `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip`; current import kit has 21 listing rows, topic metadata fields, and the ZIP is 154,516 bytes.
 - Added 2026-06-02: Generated public pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for pack pages, archive, starter bundle, and import kit.
 - Added 2026-06-02: IndexNow discovery automation is enabled. Public key file `docs/b0d7a0387b4f41cc886dc47328c20bcb.txt` is generated; latest social-metadata submission sent 25 changed URLs and received HTTP 200 after Pages served the key.
 - Added 2026-06-02: Generated shelf writes topic surfaces under `docs/topics/`: topic index, 5 topic pages, and `topics/topics.json`. Product pages link related topics; catalog/import rows include `topic_urls`; sitemap and IndexNow include topic URLs. Commit `d631af4` pushed and Pages deployed successfully.
 - Verified 2026-06-02: Live topic browser check passed for `https://x26dotapp.github.io/daily-autodigital-shelf/topics/` and `topics/small-business-ops.html`; IndexNow accepted 37 changed URLs with HTTP 200 and a follow-up dry run showed 0 queued URLs.
+- Added 2026-06-02: GitHub Actions fallback publisher `.github/workflows/daily-shelf.yml` is active. It runs after the local PC task/watchdog, computes the date in `America/New_York`, generates/verifies, commits only on changed output, pushes to `main`, and submits IndexNow.
+- Verified 2026-06-02: Manual fallback run `26803177994` succeeded on commit `4c3b5a2` and logged `No generated changes to publish`; this proves the fallback can execute without creating repeat same-day churn.
+- Added 2026-06-02: Generator now normalizes text bytes inside ZIPs, fixes ZIP creator metadata, forces LF CSV output, and uses `.gitattributes` for generated text files so Windows and GitHub runners stay stable.
+- Verified 2026-06-02: Direct IndexNow submission after fallback/determinism updates accepted 5 changed URLs with HTTP 200; follow-up dry run showed 0 queued URLs.
 - Current 2026-06-02 pack after library expansion: `One-Page SOP Builder` under `docs/packs/2026-06-02-one-page-sop/`.
 
 ## Operator Rule
