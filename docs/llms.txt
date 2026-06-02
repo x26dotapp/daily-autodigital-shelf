@@ -18,6 +18,9 @@
 ## Current State
 
 - Latest pack: [One-Page SOP Builder](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/) - A worksheet for documenting one repeatable task so someone else can follow it.
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Support is voluntary and downloads remain public unless a real store checkout is connected.

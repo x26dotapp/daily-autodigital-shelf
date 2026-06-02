@@ -1,4 +1,7 @@
 {
+  "site": {
+    "branded_base_url": "https://www.calmsprout.com/daily-shelf/"
+  },
   "operator": {
     "name": "x26dotapp",
     "contact_label": "x26.app",

@@ -636,6 +636,31 @@ def pack_url(config: dict[str, Any], path: str) -> str:
     return f"{base}/{path.lstrip('/')}"
 
 
+def branded_url(config: dict[str, Any], path: str) -> str:
+    base = str(config["site"].get("branded_base_url") or "").rstrip("/")
+    if not base:
+        return ""
+    return f"{base}/{path.lstrip('/')}"
+
+
+def branded_product_urls(config: dict[str, Any], item: dict[str, Any]) -> dict[str, str]:
+    path_parts = Path(str(item.get("path", ""))).parts
+    slug = str(item.get("pack_slug") or (path_parts[-1] if path_parts else "")).strip("/")
+    if not slug:
+        return {
+            "branded_product_url": "",
+            "branded_support_url": "",
+            "branded_support_intent_url": "",
+        }
+    product_path = f"products/{slug}"
+    support_path = f"{product_path}/support"
+    return {
+        "branded_product_url": branded_url(config, product_path),
+        "branded_support_url": branded_url(config, support_path),
+        "branded_support_intent_url": branded_url(config, f"{support_path}/go"),
+    }
+
+
 def social_meta(title: str, description: str, url: str, image_url: str, image_alt: str, og_type: str = "website") -> str:
     return "\n".join(
         [
@@ -1191,6 +1216,7 @@ def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
     support_page_url = pack_url(config, "support.html")
     pay_what_you_can_url = pack_url(config, "pay-what-you-can.html")
     for item in read_manifests():
+        branded_urls = branded_product_urls(config, item)
         rows.append(
             {
                 "sku": item["id"].replace("daily-autodigital-shelf:", "das-"),
@@ -1207,6 +1233,7 @@ def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
                 "support_page_url": support_page_url,
                 "pay_what_you_can_url": pay_what_you_can_url,
+                **branded_urls,
                 "monetization_destination_type": destination_type,
                 "monetization_destination_url": destination_url,
                 "store_connected": bool(store_url),
@@ -1454,6 +1481,9 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         "seller_copy_url",
         "support_page_url",
         "pay_what_you_can_url",
+        "branded_product_url",
+        "branded_support_url",
+        "branded_support_intent_url",
         "monetization_destination_type",
         "monetization_destination_url",
         "store_connected",
@@ -2642,6 +2672,7 @@ def render_catalog(config: dict[str, Any]) -> None:
     support_page_url = pack_url(config, "support.html")
     pay_what_you_can_url = pack_url(config, "pay-what-you-can.html")
     for item in manifests:
+        branded_urls = branded_product_urls(config, item)
         catalog_items.append(
             {
                 "id": item["id"],
@@ -2659,6 +2690,7 @@ def render_catalog(config: dict[str, Any]) -> None:
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "support_page_url": support_page_url,
                 "pay_what_you_can_url": pay_what_you_can_url,
+                **branded_urls,
                 "monetization_destination_type": destination_type,
                 "monetization_destination_url": destination_url,
                 "store_connected": bool(store_url),
@@ -2691,6 +2723,9 @@ def render_catalog(config: dict[str, Any]) -> None:
         "starter_bundle_url",
         "support_page_url",
         "pay_what_you_can_url",
+        "branded_product_url",
+        "branded_support_url",
+        "branded_support_intent_url",
         "monetization_destination_type",
         "monetization_destination_url",
         "store_connected",
@@ -3170,11 +3205,21 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
     destination_type = str(support.get("destination_type", "none"))
     destination_url = str(support.get("destination_url", ""))
     latest = manifests[0] if manifests else None
+    latest_branded_urls = branded_product_urls(config, latest) if latest else {}
     latest_line = (
         f"- Latest pack: [{latest['title']}]({pack_url(config, latest['path'])}) - {latest['summary']}"
         if latest
         else "- Latest pack: none generated yet"
     )
+    latest_branded_lines = []
+    if latest_branded_urls.get("branded_product_url"):
+        latest_branded_lines.extend(
+            [
+                f"- Branded latest product: {latest_branded_urls['branded_product_url']}",
+                f"- Branded product support page: {latest_branded_urls['branded_support_url']}",
+                f"- Branded support intent redirect: {latest_branded_urls['branded_support_intent_url']}",
+            ]
+        )
     pack_lines = "\n".join(
         f"- [{item['title']}]({pack_url(config, item['path'])}) - {item['summary']} Download: {pack_url(config, pack_download_path(item))}"
         for item in manifests
@@ -3209,6 +3254,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             "## Current State",
             "",
             latest_line,
+            *latest_branded_lines,
             monetization_line,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Support is voluntary and downloads remain public unless a real store checkout is connected.",
@@ -3238,6 +3284,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             monetization_line,
             "- Current public support page: " + support_url,
             "- Pay what you can bundle page: " + pay_url,
+            *latest_branded_lines,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Revenue is not guaranteed or claimed by the site.",
             "",
@@ -3385,6 +3432,7 @@ def write_status(
     support_url = str(monetization.get("support_url") or "")
     destination_url = store_url or support_url
     destination_type = "store" if store_url else ("support" if support_url else "none")
+    today_branded_urls = branded_product_urls(config, pack)
     generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
     if status_path.exists():
         try:
@@ -3400,6 +3448,9 @@ def write_status(
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
         "today_download": f"downloads/{pack['pack_slug']}.zip",
+        "today_branded_product_url": today_branded_urls["branded_product_url"],
+        "today_branded_support_url": today_branded_urls["branded_support_url"],
+        "today_branded_support_intent_url": today_branded_urls["branded_support_intent_url"],
         "feed_json": feeds.get("json_path", "feed.json"),
         "feed_xml": feeds.get("rss_path", "feed.xml"),
         "atom_xml": feeds.get("atom_path", "atom.xml"),

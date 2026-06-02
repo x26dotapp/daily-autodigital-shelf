@@ -2,7 +2,8 @@
   "site": {
     "name": "Daily Autodigital Shelf",
     "tagline": "A quiet system that makes a new sellable pack every day.",
-    "base_url": "https://x26dotapp.github.io/daily-autodigital-shelf/"
+    "base_url": "https://x26dotapp.github.io/daily-autodigital-shelf/",
+    "branded_base_url": ""
   },
   "operator": {
     "name": "x26dotapp",
