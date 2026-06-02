@@ -12,7 +12,7 @@
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest commit: `2b4365d` (`Update daily shelf handoff state`)
+- Latest handoff commit: `2b4365d` (`Update daily shelf handoff state`)
 - Latest functional commit: `cd2dd12` (`Add RSS and Atom feeds`)
 - Pages deployments: `26803871909` for RSS/Atom, `26804107976` for handoff state
 - Fallback proof: run `26803952952` logged `No generated changes to publish`
