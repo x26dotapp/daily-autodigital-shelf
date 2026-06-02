@@ -295,6 +295,22 @@
   metrics remain `total_support_intent_clicks: 4`. This is
   attribution/conversion infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 CalmSprout bridge support ladder: CalmSprout commit `fdcbd94`
+  (`Surface pricing paths on Daily Shelf bridge`) updates `/daily-shelf`,
+  `/daily-shelf/pay`, `/daily-shelf/bundle`, and `/daily-shelf/support` so the
+  first-party bridge surfaces expose `/daily-shelf/pricing`,
+  `/daily-shelf/commercial-use`, `/daily-shelf/sponsor`, and measured
+  `/daily-shelf/support/go` paths. Cloudflare Worker version
+  `42c2c27f-487a-49d2-af85-3170476dfd12` is live. Live HTTP and browser QA
+  verified the landing, pay, bundle, and support pages return HTTP 200, expose
+  pricing/commercial/sponsor/support links, keep the product-checkout boundary
+  visible, have no console errors, and have no horizontal overflow at 1280x720
+  and 390x844. IndexNow accepted 351 forced CalmSprout URLs; follow-up dry run
+  returned `submit_count: 0`. No support redirect was triggered; live metrics
+  remain `total_support_intent_clicks: 4` with `support_connected: true` and
+  `store_connected: false`. This is conversion-path infrastructure, not payment
+  or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
