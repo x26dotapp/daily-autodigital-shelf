@@ -64,6 +64,7 @@ STATIC_ROUTE_SOURCES: list[tuple[str, str]] = [
     ("/daily-shelf/pay-what-you-can", "pay-what-you-can.html"),
     ("/daily-shelf/bundle", "bundles/starter-archive.zip"),
     ("/daily-shelf/support", "support.html"),
+    ("/daily-shelf/support/go", "support.html"),
     ("/llms.txt", "llms.txt"),
     ("/llms-full.txt", "llms-full.txt"),
     ("/daily-shelf/llms.txt", "llms.txt"),

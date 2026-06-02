@@ -69,6 +69,7 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf`
 - `https://www.calmsprout.com/daily-shelf/offers`
 - `https://www.calmsprout.com/daily-shelf/support`
+- `https://www.calmsprout.com/daily-shelf/support/go`
 - `https://www.calmsprout.com/daily-shelf/status`
 - `https://www.calmsprout.com/daily-shelf/today.zip`
 - `https://www.calmsprout.com/daily-shelf/products`
