@@ -458,6 +458,31 @@
   `total_support_intent_clicks: 4`. This is autonomous conversion
   optimization, not payment or daily revenue proof.
 
+- 2026-06-02 download-interest signal loop: Daily Shelf commit `601db80`
+  (`Add download interest to support signal`) syncs aggregate CalmSprout
+  download/page-interest metrics from
+  `https://www.calmsprout.com/daily-shelf/download-metrics.json`, stores a
+  sanitized snapshot at `state/download-metrics-snapshot.json`, and combines
+  support clicks plus download interest into `support-signal.html`,
+  `support-signal.json`, and `status.json`. CalmSprout commits `c0d3882`
+  (`Track Daily Shelf download interest`) and `90fda36` (`Record download
+  interest deploy`) deployed Worker version
+  `36444f88-dd0a-4221-9962-037f88a56757`, with aggregate counters only and no
+  IP, user-agent, cookie, email, or payment data stored. GitHub Pages run
+  `26836802806` succeeded; `verify-system.ps1` passed with `pack_count: 29`,
+  `files_checked: 68`, `bundle_bytes: 924236`, `download_bytes: 7350`,
+  `store_import_zip_bytes: 475627`, `support_signal_ready: true`,
+  `support_signal_total_intent_clicks: 4`,
+  `support_signal_total_download_interest: 0`,
+  `support_signal_promoted_score: 5`, `support_connected: true`, and
+  `store_connected: false`. Live HTTP and in-app browser QA verified the
+  CalmSprout signal/metrics/discovery routes with no console warnings/errors
+  and no horizontal overflow. IndexNow accepted 273 GitHub Pages URLs and 419
+  CalmSprout URLs. No support redirect or download route was triggered; metrics
+  remain `total_support_intent_clicks: 4` and `total_download_interest: 0`.
+  This is autonomous conversion optimization, not payment or daily revenue
+  proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
