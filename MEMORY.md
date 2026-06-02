@@ -363,6 +363,27 @@
   `store_connected: false`. This is conversion-path infrastructure, not payment
   or daily revenue proof.
 
+- 2026-06-02 public preferred bundle promotion: Daily Shelf commit `bc14553`
+  (`Promote preferred collection bundle`) adds the deterministic preferred
+  route `bundles/small-business-ops-collection.html` to the generated public
+  homepage, `support.html`, `pay-what-you-can.html`, `llms.txt`,
+  `llms-full.txt`, and `status.json` fields
+  `preferred_collection_bundle_*`. GitHub Pages run `26832639314` succeeded.
+  `python -m py_compile` passed for the generator/verifier/submitters, and
+  `verify-system.ps1` passed with `pack_count: 29`, `files_checked: 63`,
+  `collection_bundle_page_count: 5`, `bundle_bytes: 882979`,
+  `support_connected: true`, and `store_connected: false`. Live HTTP QA
+  verified GitHub Pages homepage/support/pay/LLM/status routes and CalmSprout
+  proxied support/pay aliases return HTTP 200 and expose
+  `small-business-ops-collection.html`. Browser QA at 1280x720 and 390x844
+  found the preferred bundle links visible on the public homepage/support/pay
+  pages with no console errors and no horizontal overflow. IndexNow accepted
+  212 GitHub Pages URLs and 356 CalmSprout URLs; follow-up dry runs returned
+  `submit_count: 0` for both hosts. No support redirect was triggered; live
+  metrics remain `total_support_intent_clicks: 4`, `support_connected: true`,
+  and `store_connected: false`. This is conversion-path infrastructure, not
+  payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
