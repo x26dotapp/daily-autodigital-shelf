@@ -150,6 +150,10 @@ def offer_routes() -> list[tuple[str, str]]:
                 routes.append((f"/daily-shelf/offers/{slug}", "offers/offers.json"))
                 routes.append((f"/daily-shelf/offers/{slug}.html", "offers/offers.json"))
                 routes.append((f"/daily-shelf/offers/{slug}/support/go", "offers/offers.json"))
+            bundle_path = str(offer.get("collection_bundle_path") or "").strip("/")
+            bundle_name = Path(bundle_path).name
+            if bundle_path.startswith("bundles/") and bundle_name.endswith(".zip"):
+                routes.append((f"/daily-shelf/bundles/{bundle_name}", bundle_path))
     return routes
 
 

@@ -236,6 +236,15 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"offers.json does not assign current manifest id: {manifest['id']}")
     offer_cta_needle = "Open product checkout" if status.get("store_connected") else "Support this collection"
     today_offer_support_intent = f"https://www.calmsprout.com/daily-shelf/offers/{today_offer['slug']}/support/go"
+    today_collection_bundle_path = str(today_offer.get("collection_bundle_path") or "").strip("/")
+    today_collection_bundle_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{today_collection_bundle_path}"
+    if not today_collection_bundle_path:
+        fail("offers.json current offer missing collection_bundle_path")
+    if today_offer.get("collection_bundle_url") != today_collection_bundle_url:
+        fail("offers.json current offer collection_bundle_url does not match the public bundle path")
+    if today_collection_bundle_path not in status.get("collection_bundle_paths", []):
+        fail("status.json missing current offer collection bundle path")
+    require_file(DOCS / today_collection_bundle_path, 3000)
     if not status.get("store_connected"):
         if today_offer.get("support_url") != today_offer_support_intent:
             fail("offers.json current offer support_url is not the measured CalmSprout support-intent route")
@@ -254,9 +263,11 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             today_offer["label"],
             manifest["title"],
             "Collection offer",
+            "Download collection bundle",
             "Download starter bundle",
             offer_cta_needle,
             today_offer_support_intent,
+            today_collection_bundle_path,
             "Product checkout is not connected",
             "CollectionPage",
             "og:image",
@@ -319,20 +330,32 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         for needle in ["Pay what you can page", "Support is voluntary", "Product checkout is not connected"]:
             if needle not in starter_support_text:
                 fail(f"Starter bundle SUPPORT.txt missing {needle}")
+    with zipfile.ZipFile(DOCS / today_collection_bundle_path) as collection_zip:
+        names = collection_zip.namelist()
+        if any(name.startswith("/") or ".." in Path(name).parts for name in names):
+            fail("Collection bundle ZIP contains unsafe archive paths")
+        for suffix in ["README.txt", "SUPPORT.txt", "COLLECTION-BUNDLE-MANIFEST.json", "manifest.json", "seller-copy.md", ".zip"]:
+            if not any(name.endswith(suffix) for name in names):
+                fail(f"Collection bundle ZIP missing {suffix}")
+        support_name = next((name for name in names if name.endswith("SUPPORT.txt")), "")
+        support_text = collection_zip.read(support_name).decode("utf-8") if support_name else ""
+        for needle in [today_offer_support_intent, "Support is voluntary", "Product checkout is not connected"]:
+            if needle not in support_text:
+                fail(f"Collection bundle SUPPORT.txt missing {needle}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", today_collection_bundle_path, "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "sitemap.xml", [download_page_url])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
-        ["bundles/starter-archive.zip", "imports/store-upload-kit.zip", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
+        ["bundles/starter-archive.zip", "collection_bundle_path", "imports/store-upload-kit.zip", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
     )
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
@@ -475,6 +498,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json offer_page_count is {status.get('offer_page_count')}, expected at least 3")
     if status.get("offers_index") != "offers/index.html" or status.get("offers_json") != "offers/offers.json":
         fail("status.json missing offers index/json paths")
+    if not status.get("collection_bundle_ready"):
+        fail("status.json reports collection_bundle_ready=false")
+    if int(status.get("collection_bundle_count") or 0) < 3:
+        fail(f"status.json collection_bundle_count is {status.get('collection_bundle_count')}, expected at least 3")
     if not status.get("ai_discovery_ready"):
         fail("status.json reports ai_discovery_ready=false")
     if status.get("llms_txt") != "llms.txt" or status.get("llms_full_txt") != "llms-full.txt":

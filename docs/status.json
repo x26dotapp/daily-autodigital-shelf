@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T12:28:30+00:00",
+  "generated_at": "2026-06-02T12:43:09+00:00",
   "today": "2026-06-02",
   "today_pack": "One-Page SOP Builder",
   "today_path": "packs/2026-06-02-one-page-sop/",
@@ -26,7 +26,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 29,
-  "bundle_bytes": 517838,
+  "bundle_bytes": 518112,
   "pack_download_count": 29,
   "pack_download_page_count": 29,
   "pack_download_bytes": 205706,
@@ -68,6 +68,23 @@
     "offers/digital-product-prep.html",
     "offers/cleanup-and-reset.html"
   ],
+  "collection_bundle_ready": true,
+  "collection_bundle_count": 5,
+  "collection_bundle_paths": [
+    "bundles/small-business-ops-collection.zip",
+    "bundles/home-admin-collection.zip",
+    "bundles/low-energy-systems-collection.zip",
+    "bundles/digital-product-prep-collection.zip",
+    "bundles/cleanup-and-reset-collection.zip"
+  ],
+  "collection_bundle_urls": [
+    "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
+    "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
+    "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
+    "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
+    "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip"
+  ],
+  "collection_bundle_bytes": 1064282,
   "collection_support_intent_urls": [
     "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
     "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",

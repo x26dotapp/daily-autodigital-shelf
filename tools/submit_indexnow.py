@@ -157,6 +157,9 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         path = str(offer.get("path", "")).strip("/")
         if path:
             add_candidate(candidates, config, path)
+        collection_bundle_path = str(offer.get("collection_bundle_path", "")).strip("/")
+        if collection_bundle_path:
+            add_candidate(candidates, config, collection_bundle_path)
 
     deduped: list[dict[str, str]] = []
     seen: set[str] = set()

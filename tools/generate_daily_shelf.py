@@ -1916,6 +1916,150 @@ def topic_index(manifests: list[dict[str, Any]], config: dict[str, Any]) -> dict
     return {slug: items for slug, items in topics.items() if items}
 
 
+def collection_bundle_rel_path(slug: str) -> str:
+    return f"bundles/{slug}-collection.zip"
+
+
+def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list[Path]:
+    rel_paths = [
+        "support.html",
+        "pay-what-you-can.html",
+        "topics/topics.json",
+        f"topics/{slug}.html",
+        "catalog.json",
+        "catalog.csv",
+    ]
+    for item in items:
+        pack_path = str(item["path"]).rstrip("/")
+        rel_paths.extend(
+            [
+                f"{pack_path}/index.html",
+                f"{pack_path}/printable.html",
+                f"{pack_path}/checklist.html",
+                f"{pack_path}/cover.svg",
+                f"{pack_path}/manifest.json",
+                f"{pack_path}/seller-copy.md",
+                pack_download_path(item),
+                pack_download_page_path(item),
+            ]
+        )
+
+    files: list[Path] = []
+    seen: set[str] = set()
+    for rel_path in rel_paths:
+        path = DOCS / rel_path
+        key = path.resolve().as_posix()
+        if path.exists() and key not in seen:
+            files.append(path)
+            seen.add(key)
+    return files
+
+
+def collection_support_card_text(
+    slug: str,
+    topic: dict[str, Any],
+    items: list[dict[str, Any]],
+    config: dict[str, Any],
+) -> str:
+    support_url = str(config["monetization"].get("support_url") or "").strip()
+    support_intent_url = branded_collection_support_url(config, slug) or support_url or pack_url(config, "support.html")
+    return "\n".join(
+        [
+            f"{topic['label']} Collection Bundle - Support Card",
+            "",
+            f"Collection offer page: {pack_url(config, f'offers/{slug}.html')}",
+            f"Topic page: {pack_url(config, f'topics/{slug}.html')}",
+            f"Collection bundle ZIP: {pack_url(config, collection_bundle_rel_path(slug))}",
+            f"Support this collection: {support_intent_url}",
+            f"Included pack count: {len(items)}",
+            "",
+            "Support is voluntary. Product checkout is not connected. The collection bundle remains public.",
+            "This file does not contain payment credentials, private account data, or guaranteed-income claims.",
+            f"External support destination: {support_url}" if support_url else "External support destination: not connected",
+        ]
+    )
+
+
+def write_collection_bundle(
+    config: dict[str, Any],
+    slug: str,
+    topic: dict[str, Any],
+    items: list[dict[str, Any]],
+) -> dict[str, Any]:
+    BUNDLES.mkdir(parents=True, exist_ok=True)
+    bundle_rel_path = collection_bundle_rel_path(slug)
+    bundle_path = DOCS / bundle_rel_path
+    zip_root = f"daily-autodigital-shelf-{slug}-collection"
+    latest_date = items[0]["date"] if items else ""
+    oldest_date = items[-1]["date"] if items else ""
+    support_intent_url = branded_collection_support_url(config, slug)
+    bundle_manifest = {
+        "id": f"daily-autodigital-shelf:collection:{slug}",
+        "title": f"{topic['label']} Collection Bundle",
+        "description": topic["description"],
+        "slug": slug,
+        "pack_count": len(items),
+        "oldest_date": oldest_date,
+        "latest_date": latest_date,
+        "zip_path": bundle_rel_path,
+        "url": pack_url(config, bundle_rel_path),
+        "offer_page": f"offers/{slug}.html",
+        "topic_page": f"topics/{slug}.html",
+        "support_intent_url": support_intent_url,
+        "items": [
+            {
+                "id": item["id"],
+                "date": item["date"],
+                "title": item["title"],
+                "path": item["path"],
+                "download": pack_download_path(item),
+                "download_page": pack_download_page_path(item),
+            }
+            for item in items
+        ],
+    }
+    readme = "\n".join(
+        [
+            f"{topic['label']} Collection Bundle",
+            "",
+            topic["description"],
+            "",
+            f"Pack count: {len(items)}",
+            f"Date range: {oldest_date} to {latest_date}",
+            f"Offer page: {pack_url(config, f'offers/{slug}.html')}",
+            f"Topic page: {pack_url(config, f'topics/{slug}.html')}",
+            "",
+            "This bundle contains public generated worksheets, checklists, cover SVGs, manifests, seller-copy files, individual ZIPs, and download landing pages for one topic collection.",
+            "It is designed as a focused digital-download bundle that can be supported voluntarily while checkout is disconnected.",
+            "",
+            "Guardrails: no guaranteed-income claims, no payment credentials, no medical/legal/investment advice, and no hidden live-fund behavior.",
+        ]
+    )
+
+    with zipfile.ZipFile(bundle_path, "w") as bundle:
+        write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
+        write_zip_entry(
+            bundle,
+            f"{zip_root}/SUPPORT.txt",
+            collection_support_card_text(slug, topic, items, config).encode("utf-8"),
+        )
+        write_zip_entry(
+            bundle,
+            f"{zip_root}/COLLECTION-BUNDLE-MANIFEST.json",
+            json.dumps(bundle_manifest, indent=2).encode("utf-8"),
+        )
+        for source in collection_bundle_file_paths(slug, items):
+            rel = source.relative_to(DOCS).as_posix()
+            write_zip_entry(bundle, f"{zip_root}/{rel}", read_zip_source_bytes(source))
+
+    return {
+        "path": bundle_rel_path,
+        "url": pack_url(config, bundle_rel_path),
+        "bytes": bundle_path.stat().st_size,
+        "pack_count": len(items),
+    }
+
+
 def render_topic_pages(config: dict[str, Any]) -> dict[str, Any]:
     TOPICS.mkdir(parents=True, exist_ok=True)
     manifests = read_manifests()
@@ -2129,6 +2273,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
     for slug, items in topics.items():
         topic = TOPIC_DEFINITIONS[slug]
         page_path = f"offers/{slug}.html"
+        collection_bundle = write_collection_bundle(config, slug, topic, items)
         collection_support_url = branded_collection_support_url(config, slug)
         action_url = store_url or collection_support_url or support_url
         offer_records.append(
@@ -2143,6 +2288,9 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
                 "branded_support_intent_url": collection_support_url,
                 "external_support_destination": support_url,
                 "destination_type": destination_type,
+                "collection_bundle_url": collection_bundle["url"],
+                "collection_bundle_path": collection_bundle["path"],
+                "collection_bundle_bytes": collection_bundle["bytes"],
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "topic_url": pack_url(config, f"topics/{slug}.html"),
                 "items": [
@@ -2247,6 +2395,13 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
             if action_url
             else """<a class="button primary" href="../support.html">Support destination not connected</a>"""
         )
+        collection_bundle_path = str(record.get("collection_bundle_path") or "").strip("/")
+        collection_bundle_url = str(record.get("collection_bundle_url") or pack_url(config, collection_bundle_path))
+        collection_bundle_cta = (
+            f"""<a class="button" href="../{esc(collection_bundle_path)}">Download collection bundle</a>"""
+            if collection_bundle_path
+            else ""
+        )
         rows = "\n".join(
             f"""<article class="ledger-row">
           <strong>{esc(item["date_label"])}</strong>
@@ -2283,6 +2438,12 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
                 }
                 for item in items[:50]
             ],
+            "encoding": {
+                "@type": "MediaObject",
+                "contentUrl": collection_bundle_url,
+                "encodingFormat": "application/zip",
+                "name": f"{record['label']} collection bundle ZIP",
+            },
         }
         if destination_url:
             page_data["potentialAction"] = {
@@ -2327,6 +2488,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
           <p>{esc(record["description"])}</p>
           <div class="actions">
             {support_cta}
+            {collection_bundle_cta}
             <a class="button" href="../bundles/starter-archive.zip">Download starter bundle</a>
             <a class="button" href="../topics/{esc(record["slug"])}.html">Browse topic</a>
           </div>
@@ -2377,6 +2539,18 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
         "index_path": "offers/index.html",
         "json_path": "offers/offers.json",
         "paths": [record["path"] for record in offer_records],
+        "collection_bundle_paths": [
+            record["collection_bundle_path"]
+            for record in offer_records
+            if record.get("collection_bundle_path")
+        ],
+        "collection_bundle_urls": [
+            record["collection_bundle_url"]
+            for record in offer_records
+            if record.get("collection_bundle_url")
+        ],
+        "collection_bundle_count": len([record for record in offer_records if record.get("collection_bundle_path")]),
+        "collection_bundle_bytes": sum(int(record.get("collection_bundle_bytes") or 0) for record in offer_records),
         "support_intent_urls": [
             record["branded_support_intent_url"]
             for record in offer_records
@@ -3982,6 +4156,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "llms-full.txt"),
     ]
     urls.extend(pack_url(config, f"offers/{slug}.html") for slug in topic_index(read_manifests(), config))
+    urls.extend(pack_url(config, collection_bundle_rel_path(slug)) for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
     urls.extend(pack_url(config, pack_download_page_path(item)) for item in read_manifests()[:80])
@@ -4143,6 +4318,11 @@ def write_status(
         "offers_index": offers.get("index_path", "offers/index.html"),
         "offers_json": offers.get("json_path", "offers/offers.json"),
         "offer_pages": offers.get("paths", []),
+        "collection_bundle_ready": bool(offers.get("collection_bundle_count")),
+        "collection_bundle_count": int(offers.get("collection_bundle_count", 0)),
+        "collection_bundle_paths": offers.get("collection_bundle_paths", []),
+        "collection_bundle_urls": offers.get("collection_bundle_urls", []),
+        "collection_bundle_bytes": int(offers.get("collection_bundle_bytes", 0)),
         "collection_support_intent_urls": offers.get("support_intent_urls", []),
         "collection_support_intent_count": len(offers.get("support_intent_urls", [])),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
