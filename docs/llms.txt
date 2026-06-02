@@ -7,6 +7,7 @@
 - Home: https://x26dotapp.github.io/daily-autodigital-shelf/
 - Support page: https://x26dotapp.github.io/daily-autodigital-shelf/support.html
 - Pay what you can bundle: https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html
+- Pricing page: https://x26dotapp.github.io/daily-autodigital-shelf/pricing.html
 - Sponsor page: https://x26dotapp.github.io/daily-autodigital-shelf/sponsor.html
 - Commercial use page: https://x26dotapp.github.io/daily-autodigital-shelf/commercial-use.html
 - Sponsor Kit JSON: https://x26dotapp.github.io/daily-autodigital-shelf/sponsor-kit.json
