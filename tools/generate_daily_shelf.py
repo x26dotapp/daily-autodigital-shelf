@@ -678,6 +678,51 @@ def pack_faq_items(pack: dict[str, Any]) -> list[dict[str, str]]:
     ]
 
 
+def pack_support_card_text(item: dict[str, Any], config: dict[str, Any]) -> str:
+    monetization = config["monetization"]
+    support_url = str(monetization.get("support_url") or "").strip()
+    branded_urls = branded_product_urls(config, item)
+    support_intent_url = branded_urls.get("branded_support_intent_url") or support_url or pack_url(config, "support.html")
+    support_page_url = branded_urls.get("branded_support_url") or pack_url(config, "support.html")
+    return "\n".join(
+        [
+            f"{item['title']} - Support Card",
+            "",
+            f"Pack page: {pack_url(config, str(item['path']))}",
+            f"Pack ZIP: {pack_url(config, pack_download_path(item))}",
+            f"Product support page: {support_page_url}",
+            f"Support this pack: {support_intent_url}",
+            "",
+            "Support is voluntary. Product checkout is not connected. The pack download remains public.",
+            "This file does not contain payment credentials, private account data, or guaranteed-income claims.",
+            f"External support destination: {support_url}" if support_url else "External support destination: not connected",
+        ]
+    )
+
+
+def starter_support_card_text(manifests: list[dict[str, Any]], config: dict[str, Any]) -> str:
+    monetization = config["monetization"]
+    support_url = str(monetization.get("support_url") or "").strip()
+    latest = manifests[0] if manifests else None
+    latest_support_url = ""
+    if latest:
+        latest_support_url = branded_product_urls(config, latest).get("branded_support_intent_url", "")
+    return "\n".join(
+        [
+            "Daily Autodigital Shelf Starter Archive - Support Card",
+            "",
+            f"Starter bundle page: {pack_url(config, 'starter-bundle.html')}",
+            f"Pay what you can page: {pack_url(config, 'pay-what-you-can.html')}",
+            f"Support page: {pack_url(config, 'support.html')}",
+            f"Latest pack support: {latest_support_url or support_url or pack_url(config, 'support.html')}",
+            "",
+            "Support is voluntary. Product checkout is not connected. The bundle remains public.",
+            "This file does not contain payment credentials, private account data, or guaranteed-income claims.",
+            f"External support destination: {support_url}" if support_url else "External support destination: not connected",
+        ]
+    )
+
+
 def social_meta(title: str, description: str, url: str, image_url: str, image_alt: str, og_type: str = "website") -> str:
     return "\n".join(
         [
@@ -1222,7 +1267,7 @@ def topic_records_for_item(item: dict[str, Any], config: dict[str, Any]) -> list
     ]
 
 
-def render_pack_downloads() -> dict[str, Any]:
+def render_pack_downloads(config: dict[str, Any]) -> dict[str, Any]:
     manifests = read_manifests()
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
     outputs = []
@@ -1246,10 +1291,12 @@ def render_pack_downloads() -> dict[str, Any]:
                 "",
                 "Included files: pack page, printable worksheet, checklist, cover SVG, manifest JSON, and seller-copy markdown.",
                 "This ZIP is generated for digital-product upload workflows. It contains no payment credentials or guaranteed-income claims.",
+                "See SUPPORT.txt for the voluntary support URL for this pack.",
             ]
         )
         with zipfile.ZipFile(zip_path, "w") as bundle:
             write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
+            write_zip_entry(bundle, f"{zip_root}/SUPPORT.txt", pack_support_card_text(item, config).encode("utf-8"))
             for rel_path in [
                 item["path"] + "index.html",
                 item["worksheet"],
@@ -2246,6 +2293,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
             "It is designed to be uploaded to a store or support platform as one digital-download product.",
             "",
             "Guardrails: no guaranteed-income claims, no payment credentials, no medical/legal/investment advice, and no hidden live-fund behavior.",
+            "See SUPPORT.txt for voluntary support URLs. Product checkout is not connected yet.",
             "",
             "Suggested listing position: starter printable archive for low-maintenance planning and operations worksheets.",
         ]
@@ -2253,6 +2301,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
 
     with zipfile.ZipFile(bundle_path, "w") as bundle:
         write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
+        write_zip_entry(bundle, f"{zip_root}/SUPPORT.txt", starter_support_card_text(manifests, config).encode("utf-8"))
         write_zip_entry(
             bundle,
             f"{zip_root}/STARTER-BUNDLE-MANIFEST.json",
@@ -3630,7 +3679,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     refresh_existing_pack_pages(config)
-    downloads = render_pack_downloads()
+    downloads = render_pack_downloads(config)
     feeds = render_feed(config)
     render_catalog(config)
     render_archive(config)

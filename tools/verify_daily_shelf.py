@@ -64,6 +64,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
 
     pack_dir = DOCS / pack_path
     manifest = read_json(pack_dir / "manifest.json")
+    pack_slug = Path(str(pack_path).strip("/")).parts[-1]
+    branded_product_url = f"https://www.calmsprout.com/daily-shelf/products/{pack_slug}"
+    branded_support_url = f"{branded_product_url}/support"
+    branded_support_intent_url = f"{branded_support_url}/go"
     for key in ["path", "worksheet", "checklist", "cover", "seller_copy"]:
         if not manifest.get(key):
             fail(f"manifest missing {key}")
@@ -137,9 +141,14 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         names = pack_zip.namelist()
         if any(name.startswith("/") or ".." in Path(name).parts for name in names):
             fail("Pack ZIP contains unsafe archive paths")
-        for suffix in ["README.txt", "printable.html", "checklist.html", "cover.svg", "seller-copy.md", "manifest.json"]:
+        for suffix in ["README.txt", "SUPPORT.txt", "printable.html", "checklist.html", "cover.svg", "seller-copy.md", "manifest.json"]:
             if not any(name.endswith(suffix) for name in names):
                 fail(f"Pack ZIP missing {suffix}")
+        support_name = next((name for name in names if name.endswith("SUPPORT.txt")), "")
+        support_text = pack_zip.read(support_name).decode("utf-8") if support_name else ""
+        for needle in [branded_support_intent_url, "Support is voluntary", "Product checkout is not connected"]:
+            if needle not in support_text:
+                fail(f"Pack ZIP SUPPORT.txt missing {needle}")
     require_file(DOCS / "feed.json", 100)
     require_contains(DOCS / "feed.xml", ["<rss version=\"2.0\">", "<channel>", manifest["title"], "application/rss+xml"])
     require_contains(DOCS / "atom.xml", ["<feed xmlns=\"http://www.w3.org/2005/Atom\">", "<entry>", manifest["title"], "application/atom+xml"])
@@ -234,6 +243,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             fail(f"Starter bundle manifest count is {len(manifest_names)}, expected at least {min_pack_count}")
         required_names = [
             "daily-autodigital-shelf-starter/README.txt",
+            "daily-autodigital-shelf-starter/SUPPORT.txt",
             "daily-autodigital-shelf-starter/STARTER-BUNDLE-MANIFEST.json",
             "daily-autodigital-shelf-starter/terms.html",
             "daily-autodigital-shelf-starter/license.html",
@@ -253,6 +263,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         for name in required_names:
             if name not in names:
                 fail(f"Starter bundle missing {name}")
+        starter_support_text = bundle.read("daily-autodigital-shelf-starter/SUPPORT.txt").decode("utf-8")
+        for needle in ["Pay what you can page", "Support is voluntary", "Product checkout is not connected"]:
+            if needle not in starter_support_text:
+                fail(f"Starter bundle SUPPORT.txt missing {needle}")
     require_file(DOCS / "sitemap.xml", 100)
     require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
@@ -279,11 +293,6 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     catalog_item = next((item for item in catalog.get("items", []) if item.get("id") == manifest["id"]), None)
     if not catalog_item:
         fail(f"catalog.json does not contain manifest id: {manifest['id']}")
-    pack_slug = Path(str(pack_path).strip("/")).parts[-1]
-    branded_product_url = f"https://www.calmsprout.com/daily-shelf/products/{pack_slug}"
-    branded_support_url = f"{branded_product_url}/support"
-    branded_support_intent_url = f"{branded_support_url}/go"
-
     ledger_path = STATE / "ledger.jsonl"
     require_file(ledger_path, 20)
     ledger_rows = [
