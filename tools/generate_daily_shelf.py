@@ -661,6 +661,23 @@ def branded_product_urls(config: dict[str, Any], item: dict[str, Any]) -> dict[s
     }
 
 
+def pack_faq_items(pack: dict[str, Any]) -> list[dict[str, str]]:
+    return [
+        {
+            "question": f"Is {pack['title']} a paid checkout?",
+            "answer": "No. The pack download is public while product checkout remains disconnected.",
+        },
+        {
+            "question": "How can someone support this pack?",
+            "answer": "Use the support action for this pack. The branded support-intent redirect goes to the external Square support page with pack attribution.",
+        },
+        {
+            "question": "What is included in the download?",
+            "answer": "The ZIP includes a printable worksheet, checklist, cover image, seller copy, manifest, and related pack files.",
+        },
+    ]
+
+
 def social_meta(title: str, description: str, url: str, image_url: str, image_alt: str, og_type: str = "website") -> str:
     return "\n".join(
         [
@@ -705,24 +722,40 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
     monetization = config["monetization"]
     store_url = monetization.get("store_url") or ""
     support_url = monetization.get("support_url") or ""
-    destination_url = store_url or support_url
+    branded_urls = branded_product_urls(config, pack)
+    support_intent_url = branded_urls.get("branded_support_intent_url") or support_url
+    destination_url = store_url or support_intent_url
     destination_type = "store" if store_url else ("support" if support_url else "none")
     buy_label = "Store link not connected"
     buy_href = "../../#setup"
     if monetization.get("enabled") and store_url:
         buy_label = "Buy or download from store"
         buy_href = store_url
-    elif support_url:
-        buy_label = "Support this shelf"
-        buy_href = support_url
+    elif support_intent_url:
+        buy_label = "Support this pack"
+        buy_href = support_intent_url
 
     pack_path = f"packs/{pack['pack_slug']}/"
     canonical_url = pack_url(config, pack_path)
     cover_url = pack_url(config, f"{pack_path}cover.svg")
     download_url = pack_url(config, f"downloads/{pack['pack_slug']}.zip")
-    structured_data = {
-        "@context": "https://schema.org",
-        "@type": "CreativeWork",
+    offer_data: dict[str, Any] = {
+        "@type": "Offer",
+        "url": canonical_url if not store_url else store_url,
+        "availability": "https://schema.org/InStock",
+    }
+    if store_url:
+        offer_data["description"] = "External store checkout for this digital pack."
+    else:
+        offer_data.update(
+            {
+                "price": "0.00",
+                "priceCurrency": "USD",
+                "description": "Public digital-pack download. Voluntary support is handled separately through Square.",
+            }
+        )
+    product_data: dict[str, Any] = {
+        "@type": ["CreativeWork", "Product"],
         "name": pack["title"],
         "description": pack["summary"],
         "datePublished": pack["date"],
@@ -743,16 +776,43 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
             "name": config["site"]["name"],
             "url": pack_url(config, ""),
         },
+        "offers": offer_data,
         "url": canonical_url,
     }
     if destination_url:
-        structured_data["potentialAction"] = {
+        product_data["potentialAction"] = {
             "@type": "BuyAction" if destination_type == "store" else "DonateAction",
             "target": destination_url,
-            "name": "Open product checkout" if destination_type == "store" else "Support this shelf",
+            "name": "Open product checkout" if destination_type == "store" else "Support this pack",
         }
+    faq_items = pack_faq_items(pack)
+    faq_data = {
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": item["question"],
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item["answer"],
+                },
+            }
+            for item in faq_items
+        ],
+    }
+    structured_data = {
+        "@context": "https://schema.org",
+        "@graph": [product_data, faq_data],
+    }
     worksheet_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["worksheets"])
     checklist_items = "\n".join(f"<li>{esc(item)}</li>" for item in pack["checklist"])
+    faq_sections = "\n".join(
+        f"""        <section class="faq-item">
+          <h3>{esc(item["question"])}</h3>
+          <p>{esc(item["answer"])}</p>
+        </section>"""
+        for item in faq_items
+    )
     topic_links = " ".join(
         f"""<a class="topic-link" href="../../topics/{esc(slug)}.html">{esc(TOPIC_DEFINITIONS[slug]["label"])}</a>"""
         for slug in topic_slugs_for_item(pack)
@@ -801,6 +861,10 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
       <ol>{worksheet_items}</ol>
       <h2>Pack Checklist</h2>
       <ol>{checklist_items}</ol>
+      <h2>Product FAQ</h2>
+      <div class="faq-list">
+{faq_sections}
+      </div>
       <p class="fineprint">{esc(monetization.get("affiliate_disclosure", ""))}</p>
     </article>
   </main>
@@ -808,6 +872,28 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
 </html>
 """
     out_path.write_text(content, encoding="utf-8")
+
+
+def refresh_existing_pack_pages(config: dict[str, Any]) -> dict[str, Any]:
+    refreshed = 0
+    skipped = 0
+    for manifest in read_manifests():
+        try:
+            day = dt.date.fromisoformat(str(manifest["date"]))
+        except (KeyError, ValueError):
+            skipped += 1
+            continue
+        pack = pack_for_day(day, config)
+        if (
+            manifest.get("title") != pack["title"]
+            or manifest.get("summary") != pack["summary"]
+            or Path(str(manifest.get("path", ""))).parts[-1] != pack["pack_slug"]
+        ):
+            skipped += 1
+            continue
+        render_pack_page(pack, config, DOCS / str(manifest["path"]).strip("/") / "index.html")
+        refreshed += 1
+    return {"refreshed": refreshed, "skipped": skipped}
 
 
 def render_printable(pack: dict[str, Any], out_path: Path) -> None:
@@ -3543,6 +3629,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_seller_copy(pack, config, pack_dir / "seller-copy.md")
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
+    refresh_existing_pack_pages(config)
     downloads = render_pack_downloads()
     feeds = render_feed(config)
     render_catalog(config)

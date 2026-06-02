@@ -74,7 +74,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         pack_cta_needle = "Buy or download from store"
         action_needle = "BuyAction"
     elif status.get("support_connected"):
-        pack_cta_needle = "Support this shelf"
+        pack_cta_needle = "Support this pack"
         action_needle = "DonateAction"
 
     require_contains(
@@ -117,6 +117,11 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "twitter:card",
             "contentUrl",
             "encodingFormat",
+            "Product",
+            "Offer",
+            "priceCurrency",
+            "FAQPage",
+            "Product FAQ",
             action_needle,
             "Related Topics",
             "topic-link",
@@ -303,7 +308,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         require_contains(offer_page, [destination_url])
         require_contains(DOCS / "llms.txt", [destination_url])
         require_contains(DOCS / "llms-full.txt", [destination_url])
-        require_contains(pack_dir / "index.html", [destination_url])
+        pack_destination_needle = (branded_support_intent_url or destination_url) if status.get("support_connected") else destination_url
+        require_contains(pack_dir / "index.html", [pack_destination_needle])
         if catalog_item.get("monetization_destination_url") != destination_url:
             fail("catalog.json current item missing monetization destination URL")
         if catalog_item.get("support_page_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/support.html":
