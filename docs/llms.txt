@@ -17,6 +17,7 @@
 - Guides: https://x26dotapp.github.io/daily-autodigital-shelf/guides/
 - Archive: https://x26dotapp.github.io/daily-autodigital-shelf/archive.html
 - Starter bundle: https://x26dotapp.github.io/daily-autodigital-shelf/starter-bundle.html
+- Small Business Ops bundle page: https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html
 - Store import kit: https://x26dotapp.github.io/daily-autodigital-shelf/store-import.html
 - Catalog JSON: https://x26dotapp.github.io/daily-autodigital-shelf/catalog.json
 - Product Feed JSON: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json

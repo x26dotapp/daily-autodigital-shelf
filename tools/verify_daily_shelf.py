@@ -89,6 +89,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     general_support_intent_url = "https://www.calmsprout.com/daily-shelf/support/go"
     template_support_url = f"https://www.calmsprout.com/daily-shelf/templates/{template_slug}/support"
     template_support_intent_url = f"{template_support_url}/go"
+    preferred_collection_bundle_page = "bundles/small-business-ops-collection.html"
+    preferred_collection_bundle_page_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{preferred_collection_bundle_page}"
     for key in ["path", "worksheet", "checklist", "cover", "seller_copy"]:
         if not manifest.get(key):
             fail(f"manifest missing {key}")
@@ -127,6 +129,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "sponsor.html",
             "pricing.html",
             "offers/",
+            preferred_collection_bundle_page,
             "starter-bundle.html",
             "starter-archive.zip",
             "support.html",
@@ -215,8 +218,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Use cases", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download page", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "archive.html", ["Templates", "template pages"])
     require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Download page", "Topics", "Use cases", "Templates", "Guides", "Commercial use", "Sponsor", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "Commercial use", "Sponsor", general_support_intent_url, "This is not product checkout", "WebPage", "og:image", "twitter:card"])
-    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "Commercial use", "Sponsor", general_support_intent_url, "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", preferred_collection_bundle_page, "Commercial use", "Sponsor", general_support_intent_url, "This is not product checkout", "WebPage", "og:image", "twitter:card"])
+    require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", preferred_collection_bundle_page, "Suggested support", "Simple levels", "Commercial use", "Sponsor", general_support_intent_url, "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "pricing.html", ["Pricing", "Clear support levels", "Value ladder", "https://www.calmsprout.com/daily-shelf/pricing/support/go", "Product checkout is not connected", "OfferCatalog", "FAQPage", "DonateAction", "og:image", "twitter:card"])
     require_contains(DOCS / "commercial-use.html", ["Commercial use", "Use the templates internally", "Read license", "Browse templates", "Browse guides", "https://www.calmsprout.com/daily-shelf/commercial-use/support/go", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
     require_contains(DOCS / "sponsor.html", ["Sponsor", "Support ladder", "Sponsor kit JSON", "sponsor-kit.json", "https://www.calmsprout.com/daily-shelf/sponsor/support/go", "Product checkout is not connected", "FAQPage", "DonateAction", "og:image", "twitter:card"])
@@ -232,8 +235,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "sponsor-kit.json", ["Daily Autodigital Shelf Sponsor Kit", "Commercial-use supporter", "Product checkout is not connected", "pricing_support_intent_url", "sponsor_support_intent_url", "commercial_support_intent_url"])
     require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Commercial use", "Sponsor kit", "Offers", "Support", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "download_page_url", "preview_url", "price_hint", "support_page_url", "pay_what_you_can_url", "branded_product_url", "branded_support_url", "branded_support_intent_url", "monetization_destination_url", "topic_urls", manifest["title"]])
-    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Sponsor page", "Commercial use page", "Sponsor Kit JSON", "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Templates", "Guides", "Product checkout is not connected"])
-    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Sponsor Kit JSON", "Use Cases JSON", "Templates JSON", "Guides JSON", "Machine-Readable Files", "status.json"])
+    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Sponsor page", "Commercial use page", "Sponsor Kit JSON", preferred_collection_bundle_page_url, "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Templates", "Guides", "Product checkout is not connected"])
+    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Sponsor Kit JSON", "Use Cases JSON", "Templates JSON", "Guides JSON", preferred_collection_bundle_page_url, "Machine-Readable Files", "status.json"])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
     if len(import_json.get("items", [])) < min_pack_count:
         fail(f"store-listings.json item count is {len(import_json.get('items', []))}, expected at least {min_pack_count}")
@@ -774,6 +777,14 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json collection_bundle_count is {status.get('collection_bundle_count')}, expected at least 3")
     if int(status.get("collection_bundle_page_count") or 0) < 3:
         fail(f"status.json collection_bundle_page_count is {status.get('collection_bundle_page_count')}, expected at least 3")
+    if status.get("preferred_collection_bundle_slug") != "small-business-ops":
+        fail("status.json missing preferred_collection_bundle_slug")
+    if status.get("preferred_collection_bundle_page") != preferred_collection_bundle_page:
+        fail("status.json missing preferred_collection_bundle_page")
+    if status.get("preferred_collection_bundle_page_url") != preferred_collection_bundle_page_url:
+        fail("status.json missing preferred_collection_bundle_page_url")
+    if status.get("preferred_collection_bundle_branded_page_url") != "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html":
+        fail("status.json missing preferred_collection_bundle_branded_page_url")
     if not status.get("ai_discovery_ready"):
         fail("status.json reports ai_discovery_ready=false")
     if status.get("llms_txt") != "llms.txt" or status.get("llms_full_txt") != "llms-full.txt":

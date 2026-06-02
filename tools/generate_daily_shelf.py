@@ -1335,6 +1335,8 @@ TOPIC_DEFINITIONS: dict[str, dict[str, Any]] = {
     },
 }
 
+PREFERRED_COLLECTION_SLUG = "small-business-ops"
+
 
 USE_CASE_DEFINITIONS: dict[str, dict[str, Any]] = {
     "small-business-ops": {
@@ -2092,6 +2094,18 @@ def collection_bundle_rel_path(slug: str) -> str:
 
 def collection_bundle_page_rel_path(slug: str) -> str:
     return f"bundles/{slug}-collection.html"
+
+
+def preferred_collection_bundle_page_path() -> str:
+    return collection_bundle_page_rel_path(PREFERRED_COLLECTION_SLUG)
+
+
+def preferred_collection_bundle_page_url(config: dict[str, Any]) -> str:
+    return pack_url(config, preferred_collection_bundle_page_path())
+
+
+def preferred_collection_label() -> str:
+    return TOPIC_DEFINITIONS.get(PREFERRED_COLLECTION_SLUG, {}).get("label", "Small Business Ops")
 
 
 def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list[Path]:
@@ -4269,6 +4283,8 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
     bundle_pack_count = int(bundle.get("pack_count", 0))
     bundle_bytes = int(bundle.get("bytes", 0))
     bundle_kb = max(1, round(bundle_bytes / 1024)) if bundle_bytes else 0
+    preferred_bundle_page_path = preferred_collection_bundle_page_path()
+    preferred_bundle_label = preferred_collection_label()
     content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -4302,6 +4318,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./templates/">Templates</a>
         <a href="./guides/">Guides</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
+        <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a>
         <a href="./offers/">Offers</a>
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
@@ -4327,6 +4344,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <a class="button" href="./templates/">Browse templates</a>
             <a class="button" href="./guides/">Browse guides</a>
             <a class="button" href="./{esc(bundle_page_path)}">Open starter bundle</a>
+            <a class="button" href="./{esc(preferred_bundle_page_path)}">Open {esc(preferred_bundle_label)} bundle</a>
             <a class="button" href="./commercial-use.html">Commercial use</a>
             <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./pricing.html">Pricing</a>
@@ -4373,7 +4391,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -4396,6 +4414,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <div class="actions">
               <a class="button primary" href="./{esc(bundle_zip_path)}">Download ZIP</a>
               <a class="button" href="./{esc(bundle_page_path)}">Bundle page</a>
+              <a class="button" href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a>
               <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
               <a class="button" href="./offers/">Offer pages</a>
               <a class="button" href="./use-cases/">Use cases</a>
@@ -5104,6 +5123,8 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
     image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
     latest_pack = manifests[0] if manifests else None
     latest_pack_url = pack_url(config, latest_pack["path"]) if latest_pack else home_url
+    preferred_bundle_page_path = preferred_collection_bundle_page_path()
+    preferred_bundle_label = preferred_collection_label()
     external_cta_label = "Open product checkout" if store_url else "Open Square support page"
     external_cta = (
         f"""<a class="button primary" href="{esc(action_url)}">{esc(external_cta_label)}</a>"""
@@ -5178,6 +5199,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./topics/">Topics</a>
         <a href="./offers/">Offers</a>
         <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./commercial-use.html">Commercial use</a>
         <a href="./sponsor.html">Sponsor</a>
@@ -5197,6 +5219,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
             <a class="button" href="./commercial-use.html">Commercial use</a>
             <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./starter-bundle.html">Open starter bundle</a>
+            <a class="button" href="./{esc(preferred_bundle_page_path)}">Open {esc(preferred_bundle_label)} bundle</a>
             <a class="button" href="./bundles/starter-archive.zip">Download starter bundle</a>
             <a class="button" href="{esc(latest_pack_url)}">Open latest pack</a>
           </div>
@@ -5303,6 +5326,8 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
     home_url = pack_url(config, "")
     bundle_path = "bundles/starter-archive.zip"
     bundle_url = pack_url(config, bundle_path)
+    preferred_bundle_page_path = preferred_collection_bundle_page_path()
+    preferred_bundle_label = preferred_collection_label()
     image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
     cta_label = "Open Square support page" if destination_type == "support" else "Open product checkout"
     primary_cta = (
@@ -5388,6 +5413,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
       <nav class="topnav" aria-label="Pay what you can navigation">
         <a href="./">Home</a>
         <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
@@ -5403,6 +5429,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
             {primary_cta}
             <a class="button" href="./{esc(bundle_path)}">Download starter ZIP</a>
             <a class="button" href="./starter-bundle.html">Inspect bundle</a>
+            <a class="button" href="./{esc(preferred_bundle_page_path)}">Open {esc(preferred_bundle_label)} bundle</a>
             <a class="button" href="./commercial-use.html">Commercial use</a>
             <a class="button" href="./sponsor.html">Sponsor</a>
           </div>
@@ -6050,6 +6077,8 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
     commercial_use_url = pack_url(config, commercial_use_path)
     sponsor_kit_path = str(sponsor_pages.get("kit_path", "sponsor-kit.json"))
     sponsor_kit_url = pack_url(config, sponsor_kit_path)
+    preferred_bundle_label = preferred_collection_label()
+    preferred_bundle_url = preferred_collection_bundle_page_url(config)
     destination_type = str(support.get("destination_type", "none"))
     destination_url = str(support.get("destination_url", ""))
     latest = manifests[0] if manifests else None
@@ -6101,6 +6130,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Guides: {pack_url(config, 'guides/')}",
             f"- Archive: {pack_url(config, 'archive.html')}",
             f"- Starter bundle: {pack_url(config, 'starter-bundle.html')}",
+            f"- {preferred_bundle_label} bundle page: {preferred_bundle_url}",
             f"- Store import kit: {pack_url(config, 'store-import.html')}",
             f"- Catalog JSON: {pack_url(config, 'catalog.json')}",
             f"- Product Feed JSON: {pack_url(config, 'product-feed.json')}",
@@ -6149,6 +6179,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             "- Sponsor page: " + sponsor_url,
             "- Commercial use page: " + commercial_use_url,
             "- Sponsor Kit JSON: " + sponsor_kit_url,
+            f"- {preferred_bundle_label} bundle page: {preferred_bundle_url}",
             *latest_branded_lines,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Revenue is not guaranteed or claimed by the site.",
@@ -6452,6 +6483,10 @@ def write_status(
         "collection_bundle_page_paths": offers.get("collection_bundle_page_paths", []),
         "collection_bundle_page_urls": offers.get("collection_bundle_page_urls", []),
         "collection_bundle_page_count": int(offers.get("collection_bundle_page_count", 0)),
+        "preferred_collection_bundle_slug": PREFERRED_COLLECTION_SLUG,
+        "preferred_collection_bundle_page": preferred_collection_bundle_page_path(),
+        "preferred_collection_bundle_page_url": preferred_collection_bundle_page_url(config),
+        "preferred_collection_bundle_branded_page_url": branded_url(config, preferred_collection_bundle_page_path()),
         "collection_support_intent_urls": offers.get("support_intent_urls", []),
         "collection_support_intent_count": len(offers.get("support_intent_urls", [])),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),

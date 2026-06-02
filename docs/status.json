@@ -26,7 +26,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 29,
-  "bundle_bytes": 882838,
+  "bundle_bytes": 882979,
   "pack_download_count": 29,
   "pack_download_page_count": 29,
   "pack_download_bytes": 205706,
@@ -315,7 +315,7 @@
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip"
   ],
-  "collection_bundle_bytes": 1578445,
+  "collection_bundle_bytes": 1578825,
   "collection_bundle_page_paths": [
     "bundles/small-business-ops-collection.html",
     "bundles/home-admin-collection.html",
@@ -331,6 +331,10 @@
     "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html"
   ],
   "collection_bundle_page_count": 5,
+  "preferred_collection_bundle_slug": "small-business-ops",
+  "preferred_collection_bundle_page": "bundles/small-business-ops-collection.html",
+  "preferred_collection_bundle_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
+  "preferred_collection_bundle_branded_page_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
   "collection_support_intent_urls": [
     "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
     "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
