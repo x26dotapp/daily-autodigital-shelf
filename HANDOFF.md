@@ -15,6 +15,7 @@ Verified 2026-06-02:
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; ZIP verified at 116,613 bytes
 - Catalog surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `sitemap.xml`, `robots.txt`
+- Discovery: IndexNow key file live; `tools/submit_indexnow.py --all --force` submitted 28 URLs and received HTTP 202
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: not connected; public site says `Status: Not connected`
 
@@ -39,6 +40,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\generate_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\verify_daily_shelf.py`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\submit_indexnow.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\run-daily.ps1`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\verify-system.ps1`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\install-scheduled-task.ps1`
