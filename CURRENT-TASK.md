@@ -6,9 +6,9 @@ Keep the daily generator, public site, scheduled task, GitHub push flow, and mon
 
 ## Current Completion Edge
 
-- Stable: generator, June 2, 2026 seed pack, static site files, ledger/status output, run wrapper, installable scheduled task, HUMANi lane registration.
+- Stable: generator, June 2, 2026 seed pack, static site files, seller-copy output, SEO/feed/robots/sitemap metadata, ledger/status output, run wrapper, verifier, scheduled task, GitHub Pages, HUMANi lane registration.
 - Remaining gap: actual revenue still requires a real external payout/store/support/ad/affiliate connection. Do not fake this in the site.
-- Next verification: confirm GitHub Pages is live after the first push and confirm the scheduled task can run without changing files repeatedly.
+- Latest verification: `verify-system.ps1` passed, Pages status is `built`, live homepage returned HTTP 200, and Task Scheduler last result is `0`.
 
 ## Recommended Next Moves
 

@@ -25,6 +25,10 @@
 - The generator is deterministic and uses only local Python standard library code. It does not call paid APIs.
 - The lane intentionally does not trade, send outreach, scrape copyrighted content, create payment accounts, touch bank/wallet data, or claim guaranteed revenue.
 - Monetization is not connected by default. `config/config.local.json` can add a real store/support/affiliate destination later without committing secrets.
+- Verified 2026-06-02: GitHub Pages is built at `https://x26dotapp.github.io/daily-autodigital-shelf/`.
+- Verified 2026-06-02: Scheduled task `HUMANi Daily Autodigital Shelf` runs daily at 06:10 local time, last manual Task Scheduler run returned `0`, and next run was `2026-06-02 06:10`.
+- Verified 2026-06-02: Today's pack is `Micro Budget Reset` under `docs/packs/2026-06-02-micro-budget/`, including landing page, worksheet, checklist, cover SVG, manifest, and `seller-copy.md`.
+- Verified 2026-06-02: `verify-system.ps1` passed against local output, the live URL, and the scheduled task.
 
 ## Operator Rule
 
