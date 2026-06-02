@@ -92,6 +92,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "Writes store-ready listing copy",
             "archive.html",
             "topics/",
+            "offers/",
             "starter-bundle.html",
             "starter-archive.zip",
             "support.html",
@@ -134,10 +135,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "atom.xml", ["<feed xmlns=\"http://www.w3.org/2005/Atom\">", "<entry>", manifest["title"], "application/atom+xml"])
     require_file(DOCS / "catalog.json", 100)
     require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", "topic_urls", manifest["title"]])
-    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Support", "Policies", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
-    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "Topics", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download ZIP", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP", "Topics", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
-    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Support", "ItemList", "og:image", "twitter:card"])
+    require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Offers", "Support", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "preview_url", "price_hint", "topic_urls", manifest["title"]])
     require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Monetization destination", "Product checkout is not connected"])
     require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Machine-Readable Files", "status.json"])
@@ -163,6 +164,39 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"topics.json does not assign current manifest id: {manifest['id']}")
     topic_page = DOCS / "topics" / f"{today_topic['slug']}.html"
     require_contains(topic_page, [today_topic["label"], manifest["title"], "Product ZIP", "Listing copy", "CollectionPage"])
+    offers_index = str(status.get("offers_index", "offers/index.html")).strip("/")
+    offers_json_path = str(status.get("offers_json", "offers/offers.json")).strip("/")
+    require_contains(DOCS / offers_index, ["Offers", "CollectionPage", "Open offer", "Support", "Starter bundle"])
+    offers_json = read_json(DOCS / offers_json_path)
+    offer_rows = offers_json.get("offers", [])
+    if len(offer_rows) < 3:
+        fail(f"offers.json offer count is {len(offer_rows)}, expected at least 3")
+    today_offer = next(
+        (
+            offer
+            for offer in offer_rows
+            if any(item.get("id") == manifest["id"] for item in offer.get("items", []))
+        ),
+        None,
+    )
+    if not today_offer:
+        fail(f"offers.json does not assign current manifest id: {manifest['id']}")
+    offer_cta_needle = "Open product checkout" if status.get("store_connected") else "Support this collection"
+    offer_page = DOCS / str(today_offer.get("path", f"offers/{today_offer['slug']}.html")).strip("/")
+    require_contains(
+        offer_page,
+        [
+            today_offer["label"],
+            manifest["title"],
+            "Collection offer",
+            "Download starter bundle",
+            offer_cta_needle,
+            "Product checkout is not connected",
+            "CollectionPage",
+            "og:image",
+            "twitter:card",
+        ],
+    )
     policy_paths = [str(path).strip("/") for path in status.get("policy_pages", [])]
     expected_policy_paths = ["license.html", "privacy.html", "refund-policy.html", "terms.html"]
     for policy_path in expected_policy_paths:
@@ -195,6 +229,9 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "daily-autodigital-shelf-starter/privacy.html",
             "daily-autodigital-shelf-starter/refund-policy.html",
             "daily-autodigital-shelf-starter/support.html",
+            "daily-autodigital-shelf-starter/offers/index.html",
+            "daily-autodigital-shelf-starter/offers/offers.json",
+            f"daily-autodigital-shelf-starter/{str(today_offer.get('path')).strip('/')}",
             "daily-autodigital-shelf-starter/llms.txt",
             "daily-autodigital-shelf-starter/llms-full.txt",
             f"daily-autodigital-shelf-starter/{manifest['worksheet']}",
@@ -205,7 +242,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if name not in names:
                 fail(f"Starter bundle missing {name}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
 
@@ -233,6 +270,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             fail("Connected monetization destination is missing a public URL")
         require_contains(DOCS / "index.html", [destination_url])
         require_contains(DOCS / "support.html", [destination_url])
+        require_contains(offer_page, [destination_url])
         require_contains(DOCS / "llms.txt", [destination_url])
         require_contains(DOCS / "llms-full.txt", [destination_url])
         require_contains(pack_dir / "index.html", [destination_url])
@@ -264,6 +302,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail(f"status.json policy_page_count is {status.get('policy_page_count')}, expected at least 4")
     if not status.get("support_page_ready") or status.get("support_page") != "support.html":
         fail("status.json missing support_page_ready/support.html")
+    if not status.get("offer_pages_ready"):
+        fail("status.json reports offer_pages_ready=false")
+    if int(status.get("offer_page_count") or 0) < 3:
+        fail(f"status.json offer_page_count is {status.get('offer_page_count')}, expected at least 3")
+    if status.get("offers_index") != "offers/index.html" or status.get("offers_json") != "offers/offers.json":
+        fail("status.json missing offers index/json paths")
     if not status.get("ai_discovery_ready"):
         fail("status.json reports ai_discovery_ready=false")
     if status.get("llms_txt") != "llms.txt" or status.get("llms_full_txt") != "llms-full.txt":
@@ -290,7 +334,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "store_import_zip_bytes": import_zip_path.stat().st_size,
         "topic_page_count": int(status.get("topic_page_count") or 0),
         "policy_page_count": int(status.get("policy_page_count") or 0),
-        "files_checked": 33,
+        "files_checked": 36,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T07:31:51+00:00",
+  "generated_at": "2026-06-02T07:41:42+00:00",
   "today": "2026-06-02",
   "today_pack": "One-Page SOP Builder",
   "today_path": "packs/2026-06-02-one-page-sop/",
@@ -12,7 +12,7 @@
   "bundle_path": "bundles/starter-archive.zip",
   "bundle_page": "starter-bundle.html",
   "bundle_pack_count": 21,
-  "bundle_bytes": 304869,
+  "bundle_bytes": 323728,
   "pack_download_count": 21,
   "pack_download_bytes": 126854,
   "store_import_ready": true,
@@ -37,6 +37,17 @@
   ],
   "support_page_ready": true,
   "support_page": "support.html",
+  "offer_pages_ready": true,
+  "offer_page_count": 5,
+  "offers_index": "offers/index.html",
+  "offers_json": "offers/offers.json",
+  "offer_pages": [
+    "offers/small-business-ops.html",
+    "offers/home-admin.html",
+    "offers/low-energy-systems.html",
+    "offers/digital-product-prep.html",
+    "offers/cleanup-and-reset.html"
+  ],
   "ai_discovery_ready": true,
   "llms_txt": "llms.txt",
   "llms_full_txt": "llms-full.txt",

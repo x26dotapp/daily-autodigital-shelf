@@ -17,6 +17,7 @@ BUNDLES = DOCS / "bundles"
 DOWNLOADS = DOCS / "downloads"
 IMPORTS = DOCS / "imports"
 TOPICS = DOCS / "topics"
+OFFERS = DOCS / "offers"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_PUBLIC = ROOT / "config" / "config.public.json"
@@ -907,6 +908,8 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
         "terms.html",
         "llms.txt",
         "llms-full.txt",
+        "offers/index.html",
+        "offers/offers.json",
         "topics/index.html",
         "topics/topics.json",
         "catalog.csv",
@@ -930,6 +933,8 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
                 f"{pack_path}/seller-copy.md",
             ]
         )
+    for path in sorted(OFFERS.glob("*.html")):
+        rel_paths.append(path.relative_to(DOCS).as_posix())
 
     files: list[Path] = []
     seen: set[str] = set()
@@ -1524,6 +1529,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
         <a href="./starter-bundle.html">Starter bundle</a>
@@ -1672,6 +1678,7 @@ def render_topic_pages(config: dict[str, Any]) -> dict[str, Any]:
       <nav class="topnav" aria-label="Topics navigation">
         <a href="../">Home</a>
         <a href="../archive.html">Archive</a>
+        <a href="../offers/">Offers</a>
         <a href="../store-import.html">Import kit</a>
       </nav>
     </header>
@@ -1749,6 +1756,7 @@ def render_topic_pages(config: dict[str, Any]) -> dict[str, Any]:
       <nav class="topnav" aria-label="Topic navigation">
         <a href="../">Home</a>
         <a href="./">Topics</a>
+        <a href="../offers/{esc(slug)}.html">Offer</a>
         <a href="../archive.html">Archive</a>
       </nav>
     </header>
@@ -1777,6 +1785,274 @@ def render_topic_pages(config: dict[str, Any]) -> dict[str, Any]:
         "items": sum(len(items) for items in topics.values()),
         "index_path": "topics/index.html",
         "json_path": "topics/topics.json",
+    }
+
+
+def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
+    OFFERS.mkdir(parents=True, exist_ok=True)
+    manifests = read_manifests()
+    topics = topic_index(manifests, config)
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "").strip()
+    support_url = str(monetization.get("support_url") or "").strip()
+    destination_url = store_url or support_url
+    destination_type = "store" if store_url else ("support" if support_url else "none")
+    cta_label = "Open product checkout" if store_url else "Support this collection"
+    destination_note = (
+        "This collection has a connected product checkout."
+        if store_url
+        else (
+            "This collection uses a voluntary Square-hosted support path. Product checkout is not connected."
+            if support_url
+            else "No external store, support, or affiliate destination is connected yet."
+        )
+    )
+
+    offer_records = []
+    for slug, items in topics.items():
+        topic = TOPIC_DEFINITIONS[slug]
+        page_path = f"offers/{slug}.html"
+        offer_records.append(
+            {
+                "slug": slug,
+                "label": topic["label"],
+                "description": topic["description"],
+                "path": page_path,
+                "url": pack_url(config, page_path),
+                "count": len(items),
+                "support_url": destination_url,
+                "destination_type": destination_type,
+                "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
+                "topic_url": pack_url(config, f"topics/{slug}.html"),
+                "items": [
+                    {
+                        "id": item["id"],
+                        "title": item["title"],
+                        "summary": item["summary"],
+                        "url": pack_url(config, item["path"]),
+                        "download_url": pack_url(config, pack_download_path(item)),
+                    }
+                    for item in items
+                ],
+            }
+        )
+
+    (OFFERS / "offers.json").write_text(json.dumps({"offers": offer_records}, indent=2), encoding="utf-8")
+
+    first_cover = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    index_url = pack_url(config, "offers/")
+    index_cards = "\n".join(
+        f"""<article class="pack-card">
+          <span class="pack-date">{record["count"]} packs</span>
+          <h3>{esc(record["label"])}</h3>
+          <p>{esc(record["description"])}</p>
+          <a class="button primary" href="./{esc(record["slug"])}.html">Open offer</a>
+        </article>"""
+        for record in offer_records
+    )
+    if not index_cards:
+        index_cards = "<p>No offers generated yet.</p>"
+
+    index_data = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Daily Autodigital Shelf Offers",
+        "description": "Support-backed collection pages for generated printable pack bundles.",
+        "url": index_url,
+        "hasPart": [
+            {
+                "@type": "CollectionPage",
+                "name": record["label"],
+                "url": record["url"],
+            }
+            for record in offer_records
+        ],
+    }
+    index_html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offers | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Support-backed collection offers for generated Daily Autodigital Shelf digital packs.">
+  <link rel="canonical" href="{esc(index_url)}">
+{social_meta("Daily Autodigital Shelf Offers", "Support-backed collection offers for generated printable packs.", index_url, first_cover, "Daily Autodigital Shelf offers")}
+  <script type="application/ld+json">{json_for_script(index_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Offers navigation">
+        <a href="../">Home</a>
+        <a href="../support.html">Support</a>
+        <a href="../starter-bundle.html">Starter bundle</a>
+        <a href="../archive.html">Archive</a>
+        <a href="../terms.html">Policies</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Offers</p>
+            <h2>Collection pages for useful pack groups</h2>
+          </div>
+          <p>These pages turn the generated archive into clearer support-backed offers. Downloads remain public; support is voluntary unless a real store checkout is connected.</p>
+        </div>
+        <div class="pack-grid">
+          {index_cards}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+    (OFFERS / "index.html").write_text(index_html, encoding="utf-8")
+
+    for record in offer_records:
+        items = topics[record["slug"]]
+        page_url = record["url"]
+        image_url = pack_url(config, items[0]["cover"])
+        support_cta = (
+            f"""<a class="button primary" href="{esc(destination_url)}">{esc(cta_label)}</a>"""
+            if destination_url
+            else """<a class="button primary" href="../support.html">Support destination not connected</a>"""
+        )
+        rows = "\n".join(
+            f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="../{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="../{esc(pack_download_path(item))}">Download ZIP</a>
+            <a class="button" href="../{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+          </div>
+        </article>"""
+            for item in items
+        )
+        page_data: dict[str, Any] = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": f"{record['label']} Printable Pack Collection",
+            "description": record["description"],
+            "url": page_url,
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": config["site"]["name"],
+                "url": pack_url(config, ""),
+            },
+            "hasPart": [
+                {
+                    "@type": "CreativeWork",
+                    "name": item["title"],
+                    "description": item["summary"],
+                    "url": pack_url(config, item["path"]),
+                    "encoding": {
+                        "@type": "MediaObject",
+                        "contentUrl": pack_url(config, pack_download_path(item)),
+                        "encodingFormat": "application/zip",
+                    },
+                }
+                for item in items[:50]
+            ],
+        }
+        if destination_url:
+            page_data["potentialAction"] = {
+                "@type": "BuyAction" if store_url else "DonateAction",
+                "target": destination_url,
+                "name": cta_label,
+            }
+
+        html_content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(record["label"])} Offer | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="{esc(record["description"])}">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta(f"{record['label']} Printable Pack Collection", record["description"], page_url, image_url, f"{record['label']} offer")}
+  <script type="application/ld+json">{json_for_script(page_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Offer navigation">
+        <a href="../">Home</a>
+        <a href="./">Offers</a>
+        <a href="../support.html">Support</a>
+        <a href="../topics/{esc(record["slug"])}.html">Topic</a>
+        <a href="../starter-bundle.html">Starter bundle</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="label">Collection offer</p>
+          <h1>{esc(record["label"])} printable pack collection</h1>
+          <p>{esc(record["description"])}</p>
+          <div class="actions">
+            {support_cta}
+            <a class="button" href="../bundles/starter-archive.zip">Download starter bundle</a>
+            <a class="button" href="../topics/{esc(record["slug"])}.html">Browse topic</a>
+          </div>
+          <p class="fineprint">{esc(destination_note)} The pack downloads on this page remain public until store checkout is connected.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Included collection</p>
+              <h2>{record["count"]} packs</h2>
+            </div>
+            <span class="status">{esc(destination_type)}</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>What this offers</h3>
+              <p>A focused landing page for one pack group, with public downloads, listing copy, and one clear support action.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Included packs</p>
+            <h2>Download or inspect each file</h2>
+          </div>
+          <p>Every row has a public ZIP and listing-copy file. This keeps delivery independent from support while checkout is not connected.</p>
+        </div>
+        <div class="ledger">
+          {rows}
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config, "../")}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+        (OFFERS / f"{record['slug']}.html").write_text(html_content, encoding="utf-8")
+
+    return {
+        "ready": bool(offer_records),
+        "count": len(offer_records),
+        "index_path": "offers/index.html",
+        "json_path": "offers/offers.json",
+        "paths": [record["path"] for record in offer_records],
     }
 
 
@@ -1898,6 +2174,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
         <a href="./catalog.csv">Catalog CSV</a>
@@ -2066,6 +2343,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
+        <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
@@ -2125,7 +2403,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./offers/">Offers</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -2148,6 +2426,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <div class="actions">
               <a class="button primary" href="./{esc(bundle_zip_path)}">Download ZIP</a>
               <a class="button" href="./{esc(bundle_page_path)}">Bundle page</a>
+              <a class="button" href="./offers/">Offer pages</a>
               <a class="button" href="./support.html">Support page</a>
               {destination_cta}
             </div>
@@ -2430,6 +2709,7 @@ def render_archive(config: dict[str, Any]) -> None:
         <a href="./">Home</a>
         <a href="./topics/">Topics</a>
         <a href="./starter-bundle.html">Starter bundle</a>
+        <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
@@ -2444,7 +2724,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, <a href="./offers/">offer pages</a> make the collections easier to support, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -2544,6 +2824,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./">Home</a>
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
+        <a href="./offers/">Offers</a>
         <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./store-import.html">Import kit</a>
         <a href="./terms.html">Policies</a>
@@ -2647,6 +2928,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any]) -
             "",
             f"- Home: {base_url}",
             f"- Support page: {support_url}",
+            f"- Offers: {pack_url(config, 'offers/')}",
             f"- Archive: {pack_url(config, 'archive.html')}",
             f"- Starter bundle: {pack_url(config, 'starter-bundle.html')}",
             f"- Store import kit: {pack_url(config, 'store-import.html')}",
@@ -2698,6 +2980,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any]) -
             f"- Catalog JSON: {pack_url(config, 'catalog.json')}",
             f"- Catalog CSV: {pack_url(config, 'catalog.csv')}",
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
+            f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Store listings JSON: {pack_url(config, 'imports/store-listings.json')}",
             f"- Store listings CSV: {pack_url(config, 'imports/store-listings.csv')}",
             f"- JSON Feed: {pack_url(config, 'feed.json')}",
@@ -2721,6 +3004,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, ""),
         pack_url(config, "archive.html"),
         pack_url(config, "support.html"),
+        pack_url(config, "offers/"),
+        pack_url(config, "offers/offers.json"),
         pack_url(config, "topics/"),
         pack_url(config, "starter-bundle.html"),
         pack_url(config, "store-import.html"),
@@ -2738,6 +3023,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "llms.txt"),
         pack_url(config, "llms-full.txt"),
     ]
+    urls.extend(pack_url(config, f"offers/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
     rows = "\n".join(f"  <url><loc>{esc(url)}</loc></url>" for url in urls if url)
@@ -2816,6 +3102,7 @@ def write_status(
     topics: dict[str, Any],
     policies: dict[str, Any],
     support: dict[str, Any],
+    offers: dict[str, Any],
     ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
@@ -2868,6 +3155,11 @@ def write_status(
         "policy_pages": policies.get("paths", []),
         "support_page_ready": bool(support.get("page_path")),
         "support_page": support.get("page_path", "support.html"),
+        "offer_pages_ready": bool(offers.get("ready")),
+        "offer_page_count": int(offers.get("count", 0)),
+        "offers_index": offers.get("index_path", "offers/index.html"),
+        "offers_json": offers.get("json_path", "offers/offers.json"),
+        "offer_pages": offers.get("paths", []),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
         "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),
         "llms_full_txt": ai_discovery.get("llms_full_txt", "llms-full.txt"),
@@ -2929,6 +3221,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     topics = render_topic_pages(config)
     policies = render_policy_pages(config)
     support = render_support_page(config)
+    offers = render_offer_pages(config, support)
     ai_discovery = render_ai_discovery_files(config, support)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
@@ -2937,7 +3230,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, support, ai_discovery, discovery)
+    write_status(pack, config, bundle, downloads, feeds, import_kit, topics, policies, support, offers, ai_discovery, discovery)
     append_ledger(pack)
     return manifest
 

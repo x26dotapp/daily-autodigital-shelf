@@ -87,12 +87,15 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     status = read_json(DOCS / "status.json")
     catalog = read_json(DOCS / "catalog.json", {"items": []})
     topics = read_json(DOCS / "topics" / "topics.json", {"topics": []})
+    offers = read_json(DOCS / "offers" / "offers.json", {"offers": []})
     candidates: list[dict[str, str]] = []
 
     for rel_path in [
         "index.html",
         "archive.html",
         "support.html",
+        "offers/index.html",
+        "offers/offers.json",
         "starter-bundle.html",
         "store-import.html",
         "license.html",
@@ -128,6 +131,11 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         slug = str(topic.get("slug", "")).strip()
         if slug:
             add_candidate(candidates, config, f"topics/{slug}.html")
+
+    for offer in offers.get("offers", []):
+        path = str(offer.get("path", "")).strip("/")
+        if path:
+            add_candidate(candidates, config, path)
 
     deduped: list[dict[str, str]] = []
     seen: set[str] = set()
