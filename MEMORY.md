@@ -131,6 +131,30 @@
   `total_support_intent_clicks: 4`. This is discovery/conversion
   infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 template support attribution: Daily Shelf commit `24ec523` (`Add
+  template support attribution`) adds stable template-level support page and
+  intent URLs to `templates/templates.json`, template landing pages,
+  `status.json`, generated starter/collection bundles, verifier coverage, and
+  the CalmSprout IndexNow submitter. GitHub Pages run `26824392886` succeeded.
+  CalmSprout commit `436a80c` (`Measure Daily Shelf template support routes`)
+  deployed as Worker version `d7c26f5f-4b97-4181-ac94-340b315fab26`, renders
+  `/daily-shelf/templates/<template-slug>/support`, measures
+  `/daily-shelf/templates/<template-slug>/support/go` with
+  `utm_campaign=template_support` and `utm_content=template-<slug>`, and adds
+  template support pages to `https://www.calmsprout.com/sitemap.xml`. Live HTTP
+  QA verified GitHub Pages and CalmSprout `one-page-sop` template routes return
+  HTTP 200 and expose `/daily-shelf/templates/one-page-sop/support/go`; live
+  `/daily-shelf/templates/one-page-sop/support` returns HTTP 200 with the
+  Square CTA and `Product checkout is not connected` boundary. Browser QA found
+  no console warnings/errors and no horizontal overflow on the support page or
+  proxied template detail page. `verify-system.ps1` passed with
+  `files_checked: 52`, `template_page_count: 29`, `bundle_bytes: 626093`,
+  `support_connected: true`, and `store_connected: false`. IndexNow accepted 37
+  GitHub Pages URLs and 121 CalmSprout URLs with HTTP 200; follow-up dry runs
+  returned `submit_count: 0` for both hosts. No support redirect was triggered;
+  live metrics remain `total_support_intent_clicks: 4`. This is conversion
+  attribution infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
