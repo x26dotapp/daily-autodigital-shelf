@@ -10,6 +10,7 @@ Verified 2026-06-02:
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Branded entry: `https://www.calmsprout.com/daily-shelf`
+- Branded pay funnel: `https://www.calmsprout.com/daily-shelf/pay`
 - Repo: `https://github.com/x26dotapp/daily-autodigital-shelf`
 - Task: `HUMANi Daily Autodigital Shelf`, daily at 06:10 local time, last manual run result `0`
 - Watchdog task: `HUMANi Daily Autodigital Shelf Watchdog`, daily at 07:15 local time, last Task Scheduler run result `0`
@@ -20,7 +21,7 @@ Verified 2026-06-02:
 - Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 161,610 bytes and rows include topic fields plus policy pages
 - Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` live; the support and pay-what-you-can pages link to `https://gift.calmsprout.com` while stating that product checkout is not connected
 - Offer surfaces: `offers/index.html`, `offers/offers.json`, and 5 topic collection offer pages live; offer pages link the starter bundle, expose CollectionPage JSON-LD, route support CTAs to `https://gift.calmsprout.com`, and state that product checkout is not connected
-- CalmSprout bridge: `C:\scripts\CalmSprout` commits `f063a55` (`Add Daily Shelf bridge`), `d8fa6d9` (`Add Daily Shelf landing page`), and `8a689e1` (`Add CalmSprout IndexNow key`) deployed directly to Cloudflare. Latest Worker version is `61361a87-0bab-4cdc-b477-d332b254cf23`. Live `https://www.calmsprout.com/daily-shelf` is an indexable landing page; `/daily-shelf/offers` redirects to the offer index; `/daily-shelf/support` redirects to the public Square support page; `robots.txt`, `sitemap.xml`, and public IndexNow key file `a4f604db6d2046939ff6c7e3d29d341e.txt` are live; the `www.calmsprout.com` homepage includes a Daily Shelf banner.
+- CalmSprout bridge: `C:\scripts\CalmSprout` commits `f063a55` (`Add Daily Shelf bridge`), `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), and `8d4d298` (`Add Daily Shelf pay bridge`) deployed directly to Cloudflare. Latest Worker version is `9a63142c-4446-49d7-8187-75d939b65c03`. Live `https://www.calmsprout.com/daily-shelf` and `https://www.calmsprout.com/daily-shelf/pay` are indexable first-party pages; `/daily-shelf/offers` redirects to the offer index; `/daily-shelf/support` redirects to the public Square support page; `robots.txt`, `sitemap.xml`, and public IndexNow key file `a4f604db6d2046939ff6c7e3d29d341e.txt` are live; the `www.calmsprout.com` homepage includes a Daily Shelf banner with the pay route.
 - Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
 - Policy surfaces: `terms.html`, `privacy.html`, `license.html`, and `refund-policy.html` live; they are store-readiness pages and do not activate checkout or payout
 - Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
@@ -37,6 +38,7 @@ Verified 2026-06-02:
 - Latest verifier baseline: `files_checked: 37`, `bundle_bytes: 326576`, `pack_download_bytes: 126854`, `store_import_zip_bytes: 161610`, `support_connected: true`, `store_connected: false`
 - Pay-what-you-can proof: local browser QA loaded `pay-what-you-can.html`, found the generated support tiers and starter ZIP link, reported no console errors, and verified the hero support CTA navigated to `https://app.squareup.com/gift/MLZ021BP45QKH/order`.
 - CalmSprout discovery proof: public key `https://www.calmsprout.com/a4f604db6d2046939ff6c7e3d29d341e.txt` returned HTTP 200; IndexNow accepted 6 CalmSprout URLs with HTTP 202: homepage, `/daily-shelf`, `/daily-shelf/offers`, `/daily-shelf/support`, `robots.txt`, and `sitemap.xml`.
+- CalmSprout pay proof: live `https://www.calmsprout.com/daily-shelf/pay` returned HTTP 200 with the support tiers, starter ZIP link, and Square support CTA; browser QA found no console errors; IndexNow accepted 7 CalmSprout URLs including `/daily-shelf/pay` and `/daily-shelf/pay-what-you-can` with HTTP 200.
 
 ## Where To Start
 
