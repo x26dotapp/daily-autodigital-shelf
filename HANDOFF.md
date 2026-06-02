@@ -15,11 +15,13 @@ Verified 2026-06-02:
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
-- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 272,703 bytes
-- Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 152,453 bytes
+- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 282,576 bytes
+- Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 155,257 bytes and rows include topic fields
+- Topic surfaces: `topics/index.html`, 5 topic pages, and `topics/topics.json` live; seeded pack pages link related topics and topic URLs are in catalog/import outputs
 - Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
 - Catalog surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `sitemap.xml`, `robots.txt`
-- Discovery: IndexNow key file live; latest `tools/submit_indexnow.py --all` submitted 25 social-metadata URLs and received HTTP 200
+- Discovery: IndexNow key file live; latest `tools/submit_indexnow.py --all` submitted 37 topic/discovery URLs and received HTTP 200; follow-up dry run queued 0 URLs
+- Latest commit: `d631af4` (`Add generated topic pages`) pushed to `main`; GitHub Pages deployment succeeded
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: not connected; public site says `Status: Not connected`
 
@@ -43,6 +45,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\state`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\imports`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\docs\topics`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\generate_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\verify_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\submit_indexnow.py`
