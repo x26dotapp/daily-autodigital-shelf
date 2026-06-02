@@ -1,0 +1,23 @@
+{
+  "site": {
+    "name": "Daily Autodigital Shelf",
+    "tagline": "A quiet system that makes a new sellable pack every day.",
+    "base_url": "https://x26dotapp.github.io/daily-autodigital-shelf/"
+  },
+  "operator": {
+    "name": "x26dotapp",
+    "contact_label": "Contact path not connected",
+    "contact_url": ""
+  },
+  "monetization": {
+    "enabled": false,
+    "store_url": "",
+    "support_url": "",
+    "affiliate_disclosure": "Some links may become affiliate links after setup. No affiliate links are active right now."
+  },
+  "generation": {
+    "recent_pack_count": 7,
+    "default_price_hint": "$3 to $9 digital pack",
+    "daily_seed": "daily-autodigital-shelf"
+  }
+}

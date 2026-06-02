@@ -1,0 +1,14 @@
+{
+  "title": "Daily Autodigital Shelf",
+  "home_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/",
+  "feed_url": "https://x26dotapp.github.io/daily-autodigital-shelf/feed.json",
+  "items": [
+    {
+      "id": "daily-autodigital-shelf:2026-06-02-micro-budget",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-micro-budget/",
+      "title": "Micro Budget Reset",
+      "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+      "date_published": "2026-06-02"
+    }
+  ]
+}

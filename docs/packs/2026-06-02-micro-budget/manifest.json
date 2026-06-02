@@ -1,0 +1,12 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-02-micro-budget",
+  "date": "2026-06-02",
+  "date_label": "June 02, 2026",
+  "title": "Micro Budget Reset",
+  "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+  "buyer": "Solo households and freelancers who need a short money picture without a complex finance app.",
+  "path": "packs/2026-06-02-micro-budget/",
+  "worksheet": "packs/2026-06-02-micro-budget/printable.html",
+  "checklist": "packs/2026-06-02-micro-budget/checklist.html",
+  "cover": "packs/2026-06-02-micro-budget/cover.svg"
+}

@@ -1,0 +1,17 @@
+{
+    "projectId":  "daily-autodigital-shelf",
+    "protocolVersion":  1,
+    "lockState":  "unlocked",
+    "activeOperatorId":  "",
+    "activeSessionId":  "",
+    "claimedAt":  "",
+    "releasedAt":  "",
+    "lastRecoveryAt":  "",
+    "lastRecoveryBy":  "",
+    "lastRecoveredFromOperatorId":  "",
+    "staleAfterMinutes":  180,
+    "recoveryOperatorIds":  [
+                                "NYX-01"
+                            ],
+    "notes":  "Protocol bootstrap scaffold. Use hands project-lock to claim, release, and recover."
+}

@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-06-02T04:38:56+00:00",
+  "today": "2026-06-02",
+  "today_pack": "Micro Budget Reset",
+  "today_path": "packs/2026-06-02-micro-budget/",
+  "monetization_enabled": false,
+  "store_connected": false,
+  "support_connected": false,
+  "guardrails": [
+    "No live trading",
+    "No paid account creation",
+    "No outbound spam",
+    "No fake revenue claims",
+    "No secret values written"
+  ]
+}

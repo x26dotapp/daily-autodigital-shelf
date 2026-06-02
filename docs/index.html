@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Autodigital Shelf</title>
+  <meta name="description" content="A quiet system that makes a new sellable pack every day.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">Daily Autodigital Shelf</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#today">Today's pack</a>
+        <a href="#ledger">Automation ledger</a>
+        <a href="#setup">Monetization setup</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>A quiet system that makes a new sellable pack every day.</h1>
+          <p>This lane creates public, printable digital packs on a schedule. It keeps the money layer explicit, so there are no fake earnings claims and no hidden live-fund behavior.</p>
+          <div class="actions">
+            <a class="button primary" href="./packs/2026-06-02-micro-budget/">Open today's pack</a>
+            <a class="button" href="#setup">View setup status</a>
+          </div>
+          <div class="system-note">
+            <div class="signal">Generates one dated pack per run.</div>
+            <div class="signal">Publishes static files only.</div>
+            <div class="signal">Payment links stay off until connected.</div>
+          </div>
+        </div>
+
+        <aside class="shelf-panel" id="today">
+          <div class="panel-head">
+            <div>
+              <p class="label">Today's pack</p>
+              <h2>Micro Budget Reset</h2>
+            </div>
+            <span class="status">Generated</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>June 02, 2026</h3>
+              <p>A one-page reset for seeing near-term bills, small leaks, and the next cash decision.</p>
+              <p class="fineprint">Suggested market position: $3 to $9 digital pack. Actual checkout requires a connected store or support link.</p>
+              <div class="artifact-links">
+                <a class="button primary" href="./packs/2026-06-02-micro-budget/">Open today's pack</a>
+                <a class="button" href="./packs/2026-06-02-micro-budget/printable.html">Worksheet</a>
+                <a class="button" href="./packs/2026-06-02-micro-budget/cover.svg">Cover</a>
+              </div>
+            </div>
+            <div class="mini-cover">Micro Budget Reset</div>
+          </article>
+        </aside>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Recent shelf</p>
+            <h2>Latest generated packs</h2>
+          </div>
+          <p>Each pack is plain, reusable, and honest enough to be sold, given away, bundled, or used as a lead magnet once the external monetization account exists.</p>
+        </div>
+        <div class="pack-grid">
+          <article class="pack-card">
+          <span class="pack-date">June 02, 2026</span>
+          <h3>Micro Budget Reset</h3>
+          <p>A one-page reset for seeing near-term bills, small leaks, and the next cash decision.</p>
+          <a class="button" href="packs/2026-06-02-micro-budget/">Open pack</a>
+        </article>
+        </div>
+      </section>
+
+      <section id="ledger">
+        <div class="section-head">
+          <div>
+            <p class="label">Automation ledger</p>
+            <h2>Receipts, not promises</h2>
+          </div>
+          <p>The generator writes dated artifacts and status JSON. It records what was produced instead of claiming revenue.</p>
+        </div>
+        <div class="ledger">
+          <article class="ledger-row">
+          <strong>June 02, 2026</strong>
+          <p>Micro Budget Reset generated with worksheet, checklist, cover SVG, manifest, feed entry, and static page.</p>
+          <a class="button" href="packs/2026-06-02-micro-budget/">View receipt</a>
+        </article>
+        </div>
+      </section>
+
+      <section id="setup">
+        <div class="section-head">
+          <div>
+            <p class="label">Monetization setup</p>
+            <h2>Status: Not connected</h2>
+          </div>
+          <p>Money cannot appear without a real buyer, ad network, affiliate approval, store, support link, or payout account. This list keeps that boundary visible.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done">
+            <span class="setup-dot">1</span>
+            <div>
+              <strong>Daily generator installed</strong>
+              <p>Creates a new public pack and updates the static site.</p>
+            </div>
+          </article>
+          <article class="setup-item done">
+            <span class="setup-dot">2</span>
+            <div>
+              <strong>Public site files ready</strong>
+              <p>Static output lives in the GitHub Pages `docs/` root.</p>
+            </div>
+          </article>
+          <article class="setup-item ">
+            <span class="setup-dot">3</span>
+            <div>
+              <strong>Store, support, or affiliate link</strong>
+              <p>Current destination: #setup. Edit local config when a real payout path exists.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">4</span>
+            <div>
+              <strong>Payment/legal layer</strong>
+              <p>External platforms may require identity, tax, payout, approval, and threshold steps. This automation does not bypass those.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Some links may become affiliate links after setup. No affiliate links are active right now.</p>
+    </footer>
+  </div>
+</body>
+</html>
