@@ -43,6 +43,8 @@ The site also publishes:
 - `pay-what-you-can.html` as a generated support-first bundle funnel with suggested support tiers
 - `offers/index.html`, `offers/offers.json`, and topic-based offer pages that
   group related packs into support-backed collection surfaces
+- `bundles/*-collection.html` pages for focused collection bundle product
+  landings with download/support CTAs
 - `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and
   `imports/store-upload-kit.zip` for generic marketplace import workflows, including policy pages
 - `catalog.json` for programmatic product import

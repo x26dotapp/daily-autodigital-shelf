@@ -2090,6 +2090,10 @@ def collection_bundle_rel_path(slug: str) -> str:
     return f"bundles/{slug}-collection.zip"
 
 
+def collection_bundle_page_rel_path(slug: str) -> str:
+    return f"bundles/{slug}-collection.html"
+
+
 def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list[Path]:
     rel_paths = [
         "support.html",
@@ -2166,6 +2170,7 @@ def write_collection_bundle(
 ) -> dict[str, Any]:
     BUNDLES.mkdir(parents=True, exist_ok=True)
     bundle_rel_path = collection_bundle_rel_path(slug)
+    bundle_page_path = collection_bundle_page_rel_path(slug)
     bundle_path = DOCS / bundle_rel_path
     zip_root = f"daily-autodigital-shelf-{slug}-collection"
     latest_date = items[0]["date"] if items else ""
@@ -2181,6 +2186,9 @@ def write_collection_bundle(
         "latest_date": latest_date,
         "zip_path": bundle_rel_path,
         "url": pack_url(config, bundle_rel_path),
+        "page_path": bundle_page_path,
+        "page_url": pack_url(config, bundle_page_path),
+        "branded_page_url": branded_url(config, bundle_page_path),
         "offer_page": f"offers/{slug}.html",
         "topic_page": f"topics/{slug}.html",
         "support_intent_url": support_intent_url,
@@ -3515,6 +3523,9 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
                 "collection_bundle_url": collection_bundle["url"],
                 "collection_bundle_path": collection_bundle["path"],
                 "collection_bundle_bytes": collection_bundle["bytes"],
+                "collection_bundle_page_path": collection_bundle_page_rel_path(slug),
+                "collection_bundle_page_url": pack_url(config, collection_bundle_page_rel_path(slug)),
+                "collection_bundle_branded_page_url": branded_url(config, collection_bundle_page_rel_path(slug)),
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "topic_url": pack_url(config, f"topics/{slug}.html"),
                 "items": [
@@ -3539,7 +3550,10 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
           <span class="pack-date">{record["count"]} packs</span>
           <h3>{esc(record["label"])}</h3>
           <p>{esc(record["description"])}</p>
-          <a class="button primary" href="./{esc(record["slug"])}.html">Open offer</a>
+          <div class="actions">
+            <a class="button primary" href="./{esc(record["slug"])}.html">Open offer</a>
+            <a class="button" href="../{esc(record["collection_bundle_page_path"])}">Bundle page</a>
+          </div>
         </article>"""
         for record in offer_records
     )
@@ -3626,6 +3640,13 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
             if collection_bundle_path
             else ""
         )
+        collection_bundle_page_path = str(record.get("collection_bundle_page_path") or "").strip("/")
+        collection_bundle_page_url = str(record.get("collection_bundle_page_url") or pack_url(config, collection_bundle_page_path))
+        collection_bundle_page_cta = (
+            f"""<a class="button" href="../{esc(collection_bundle_page_path)}">Open bundle page</a>"""
+            if collection_bundle_page_path
+            else ""
+        )
         rows = "\n".join(
             f"""<article class="ledger-row">
           <strong>{esc(item["date_label"])}</strong>
@@ -3676,6 +3697,185 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
                 "name": cta_label,
             }
 
+        bundle_product_data: dict[str, Any] = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Product",
+                    "name": f"{record['label']} collection bundle",
+                    "description": record["description"],
+                    "url": collection_bundle_page_url,
+                    "image": image_url,
+                    "isRelatedTo": page_url,
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0.00",
+                        "priceCurrency": "USD",
+                        "availability": "https://schema.org/InStock",
+                        "url": collection_bundle_page_url,
+                        "itemCondition": "https://schema.org/NewCondition",
+                        "description": "Public collection bundle download. Product checkout is not connected.",
+                    },
+                    "encoding": {
+                        "@type": "MediaObject",
+                        "contentUrl": collection_bundle_url,
+                        "encodingFormat": "application/zip",
+                    },
+                    "potentialAction": [
+                        {
+                            "@type": "DownloadAction",
+                            "target": collection_bundle_url,
+                            "name": "Download collection ZIP",
+                        },
+                        {
+                            "@type": "DonateAction" if support_url else "ViewAction",
+                            "target": action_url or page_url,
+                            "name": cta_label if action_url else "Open collection offer",
+                        },
+                    ],
+                },
+                {
+                    "@type": "ItemList",
+                    "name": f"{record['label']} bundle contents",
+                    "numberOfItems": len(items),
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": index + 1,
+                            "name": item["title"],
+                            "url": pack_url(config, item["path"]),
+                        }
+                        for index, item in enumerate(items[:50])
+                    ],
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "Is this collection bundle a paid checkout?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "No. The collection ZIP is public while product checkout remains disconnected.",
+                            },
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How can someone support this collection?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Use the measured collection support action. It routes through CalmSprout before the external Square support page.",
+                            },
+                        },
+                    ],
+                },
+            ],
+        }
+        bundle_rows = "\n".join(
+            f"""<article class="ledger-row">
+          <strong>{esc(item["date_label"])}</strong>
+          <p><a href="../{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
+          <div class="row-actions">
+            <a class="button" href="../{esc(pack_download_page_path(item))}">Download page</a>
+            <a class="button" href="../{esc(template_page_path(item))}">Template</a>
+            <a class="button" href="../{esc(guide_page_path(item))}">Guide</a>
+          </div>
+        </article>"""
+            for item in items
+        )
+        bundle_kb = max(1, round(int(record.get("collection_bundle_bytes") or 0) / 1024))
+        bundle_page_html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(record["label"])} Bundle | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Download the public {esc(record["label"])} collection ZIP and optionally support the shelf.">
+  <link rel="canonical" href="{esc(collection_bundle_page_url)}">
+{social_meta(f"{record['label']} Collection Bundle", record["description"], collection_bundle_page_url, image_url, f"{record['label']} collection bundle")}
+  <script type="application/ld+json">{json_for_script(bundle_product_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Bundle navigation">
+        <a href="../">Home</a>
+        <a href="../offers/">Offers</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../commercial-use.html">Commercial use</a>
+        <a href="../support.html">Support</a>
+        <a href="../terms.html">Policies</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="label">Collection bundle</p>
+          <h1>{esc(record["label"])} collection bundle</h1>
+          <p>{esc(record["description"])}</p>
+          <div class="actions">
+            <a class="button primary" href="../{esc(collection_bundle_path)}">Download collection ZIP</a>
+            {support_cta}
+            <a class="button" href="../{esc(record["path"])}">Open collection offer</a>
+            <a class="button" href="../pricing.html">Pricing</a>
+            <a class="button" href="../commercial-use.html">Commercial use</a>
+          </div>
+          <p class="fineprint">Product checkout is not connected. The ZIP remains public and support is voluntary through the measured collection support path.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Bundle stats</p>
+              <h2>{record["count"]} packs</h2>
+            </div>
+            <span class="status">public</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>{bundle_kb} KB ZIP</h3>
+              <p>The bundle packages worksheet pages, checklists, covers, manifests, seller copy, template pages, guide pages, and individual downloads for this collection.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Bundle contents</p>
+            <h2>Included public pack files</h2>
+          </div>
+          <p>Each item remains publicly downloadable. This page is a higher-value collection landing surface, not proof of revenue.</p>
+        </div>
+        <div class="ledger">
+          {bundle_rows}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Boundary</p>
+            <h2>No checkout claim</h2>
+          </div>
+          <p>Support links route to the connected external Square support destination. Payment, payout, and store checkout are only complete when a real connected platform reports them.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config, "../")}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+        if collection_bundle_page_path:
+            (DOCS / collection_bundle_page_path).write_text(bundle_page_html, encoding="utf-8")
+
         html_content = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -3713,6 +3913,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
           <div class="actions">
             {support_cta}
             {collection_bundle_cta}
+            {collection_bundle_page_cta}
             <a class="button" href="../bundles/starter-archive.zip">Download starter bundle</a>
             <a class="button" href="../topics/{esc(record["slug"])}.html">Browse topic</a>
           </div>
@@ -3773,6 +3974,17 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
             for record in offer_records
             if record.get("collection_bundle_url")
         ],
+        "collection_bundle_page_paths": [
+            record["collection_bundle_page_path"]
+            for record in offer_records
+            if record.get("collection_bundle_page_path")
+        ],
+        "collection_bundle_page_urls": [
+            record["collection_bundle_page_url"]
+            for record in offer_records
+            if record.get("collection_bundle_page_url")
+        ],
+        "collection_bundle_page_count": len([record for record in offer_records if record.get("collection_bundle_page_path")]),
         "collection_bundle_count": len([record for record in offer_records if record.get("collection_bundle_path")]),
         "collection_bundle_bytes": sum(int(record.get("collection_bundle_bytes") or 0) for record in offer_records),
         "support_intent_urls": [
@@ -6024,6 +6236,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
     ]
     urls.extend(pack_url(config, f"offers/{slug}.html") for slug in topics)
     urls.extend(pack_url(config, collection_bundle_rel_path(slug)) for slug in topics)
+    urls.extend(pack_url(config, collection_bundle_page_rel_path(slug)) for slug in topics)
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topics)
     urls.extend(pack_url(config, f"use-cases/{slug}.html") for slug in USE_CASE_DEFINITIONS if slug in topics)
     urls.extend(record["url"] for record in template_records(config))
@@ -6236,6 +6449,9 @@ def write_status(
         "collection_bundle_paths": offers.get("collection_bundle_paths", []),
         "collection_bundle_urls": offers.get("collection_bundle_urls", []),
         "collection_bundle_bytes": int(offers.get("collection_bundle_bytes", 0)),
+        "collection_bundle_page_paths": offers.get("collection_bundle_page_paths", []),
+        "collection_bundle_page_urls": offers.get("collection_bundle_page_urls", []),
+        "collection_bundle_page_count": int(offers.get("collection_bundle_page_count", 0)),
         "collection_support_intent_urls": offers.get("support_intent_urls", []),
         "collection_support_intent_count": len(offers.get("support_intent_urls", [])),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),

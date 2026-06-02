@@ -179,6 +179,10 @@ def offer_routes() -> list[tuple[str, str]]:
             bundle_name = Path(bundle_path).name
             if bundle_path.startswith("bundles/") and bundle_name.endswith(".zip"):
                 routes.append((f"/daily-shelf/bundles/{bundle_name}", bundle_path))
+            bundle_page_path = str(offer.get("collection_bundle_page_path") or "").strip("/")
+            bundle_page_name = Path(bundle_page_path).name
+            if bundle_page_path.startswith("bundles/") and bundle_page_name.endswith(".html"):
+                routes.append((f"/daily-shelf/bundles/{bundle_page_name}", bundle_page_path))
     return routes
 
 

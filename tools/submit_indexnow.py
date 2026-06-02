@@ -173,6 +173,9 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         collection_bundle_path = str(offer.get("collection_bundle_path", "")).strip("/")
         if collection_bundle_path:
             add_candidate(candidates, config, collection_bundle_path)
+        collection_bundle_page_path = str(offer.get("collection_bundle_page_path", "")).strip("/")
+        if collection_bundle_page_path:
+            add_candidate(candidates, config, collection_bundle_page_path)
 
     for use_case in use_cases.get("items", []):
         path = str(use_case.get("path", "")).strip("/")
