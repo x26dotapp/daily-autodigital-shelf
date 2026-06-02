@@ -82,13 +82,15 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf/support-funnel.json`
 - `https://www.calmsprout.com/daily-shelf/support-funnel.xml`
 - `https://www.calmsprout.com/daily-shelf/support-funnel.csv`
+- `https://www.calmsprout.com/daily-shelf/support-metrics.json`
 - `https://www.calmsprout.com/daily-shelf/feed.xml`
 - `https://www.calmsprout.com/daily-shelf/starter.zip`
 - `https://www.calmsprout.com/sitemap.xml`
 - `https://www.calmsprout.com/a4f604db6d2046939ff6c7e3d29d341e.txt`
 
 This improves discovery and support conversion through an existing public
-domain. It does not make CalmSprout product checkout and does not prove revenue.
+domain. The support metrics route counts aggregate support-intent redirects only;
+it does not store visitor identity, make CalmSprout product checkout, or prove revenue.
 The daily run and GitHub fallback submit changed CalmSprout current-pack,
 data/feed/archive routes to IndexNow after a successful shelf publish.
 
