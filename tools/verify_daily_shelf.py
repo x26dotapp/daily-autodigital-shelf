@@ -266,14 +266,22 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("support-signal.json missing promoted target")
     if int(support_signal.get("total_support_intent_clicks") or 0) < 0:
         fail("support-signal.json has invalid total support-intent clicks")
+    if int(support_signal.get("total_download_interest") or 0) < 0:
+        fail("support-signal.json has invalid total download interest")
     require_contains(
         DOCS / support_signal_json,
         [
             "daily-shelf-support-signal",
             "revenue_boundary",
+            "download_revenue_boundary",
+            "download_source_url",
+            "total_download_interest",
             "top_products",
             "top_collections",
+            "top_download_products",
             "promoted",
+            "signal_score",
+            "download_interest",
             "support_intent_url",
         ],
     )
@@ -281,11 +289,11 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         DOCS / support_signal_page,
         [
             "Support Signal",
-            "Promote what shows support intent",
+            "Promote what shows support or download intent",
             "Top pack routes",
             "Top bundle routes",
             "Intent is not income",
-            "Aggregate support-intent",
+            "download interest",
             "does not prove payments or daily revenue",
             support_signal_json,
             "Dataset",
@@ -667,6 +675,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "sitemap.xml", [download_page_url, printable_url, checklist_url])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
+    require_file(ROOT / "tools" / "sync_download_metrics.py", 3000)
+    require_contains(ROOT / "tools" / "sync_download_metrics.py", ["download-metrics.json", "total_download_interest", "daily-shelf-download-metrics-snapshot"])
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
@@ -675,15 +685,15 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/packs/{slug}/printable.html", "/daily-shelf/packs/{slug}/checklist.html", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/bundles/{bundle_page_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/assets/support-card.svg", "/daily-shelf/support-signal.html", "/daily-shelf/support-signal.json", "/daily-shelf/support-signal", "/daily-shelf/pricing", "/daily-shelf/pricing.html", "/daily-shelf/pricing/support/go", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use.html", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor.html", "/daily-shelf/sponsor/support/go", "/daily-shelf/starter-bundle.html", "/daily-shelf/support.html", "/daily-shelf/license.html", "/daily-shelf/privacy.html", "/daily-shelf/terms.html", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/packs/{slug}/printable.html", "/daily-shelf/packs/{slug}/checklist.html", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/bundles/{bundle_page_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/assets/support-card.svg", "/daily-shelf/support-signal.html", "/daily-shelf/support-signal.json", "/daily-shelf/support-signal", "/daily-shelf/pricing", "/daily-shelf/pricing.html", "/daily-shelf/pricing/support/go", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use.html", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor.html", "/daily-shelf/sponsor/support/go", "/daily-shelf/starter-bundle.html", "/daily-shelf/support.html", "/daily-shelf/license.html", "/daily-shelf/privacy.html", "/daily-shelf/terms.html", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/download-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
-        ["tools\\sync_support_metrics.py", "Support metrics sync complete", "tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
+        ["tools\\sync_support_metrics.py", "tools\\sync_download_metrics.py", "Support metrics sync complete", "Download metrics sync complete", "tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
     )
     require_contains(
         ROOT / ".github" / "workflows" / "daily-shelf.yml",
-        ["Sync public support metrics", "tools/sync_support_metrics.py", "Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
+        ["Sync public support metrics", "tools/sync_support_metrics.py", "Sync public download metrics", "tools/sync_download_metrics.py", "Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
     )
     require_contains(
         ROOT / ".gitignore",
@@ -850,6 +860,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json missing branded support signal URLs")
     if not status.get("support_signal_source_url"):
         fail("status.json missing support_signal_source_url")
+    if status.get("support_signal_download_source_url") != "https://www.calmsprout.com/daily-shelf/download-metrics.json":
+        fail("status.json missing support_signal_download_source_url")
+    if int(status.get("support_signal_total_download_interest") or 0) < 0:
+        fail("status.json invalid support_signal_total_download_interest")
+    if int(status.get("support_signal_promoted_score") or 0) < 0:
+        fail("status.json invalid support_signal_promoted_score")
     if str(status.get("support_signal_promoted_title") or "") not in (DOCS / support_signal_page).read_text(encoding="utf-8"):
         fail("support-signal.html missing promoted title from status.json")
     if not status.get("pay_what_you_can_ready") or status.get("pay_what_you_can_page") != "pay-what-you-can.html":
@@ -937,13 +953,14 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "policy_page_count": int(status.get("policy_page_count") or 0),
         "sponsor_tier_count": int(status.get("sponsor_tier_count") or 0),
         "collection_bundle_page_count": int(status.get("collection_bundle_page_count") or 0),
-        "files_checked": 67,
+        "files_checked": 68,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
         "support_connected": bool(status.get("support_connected")),
         "support_signal_ready": bool(status.get("support_signal_ready")),
         "support_signal_total_intent_clicks": int(status.get("support_signal_total_intent_clicks") or 0),
+        "support_signal_total_download_interest": int(status.get("support_signal_total_download_interest") or 0),
     }
 
 

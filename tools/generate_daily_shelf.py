@@ -28,9 +28,11 @@ CONFIG_PUBLIC = ROOT / "config" / "config.public.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
 LEDGER = STATE / "ledger.jsonl"
 SUPPORT_METRICS_SNAPSHOT = STATE / "support-metrics-snapshot.json"
+DOWNLOAD_METRICS_SNAPSHOT = STATE / "download-metrics-snapshot.json"
 SUPPORT_SIGNAL_JSON_PATH = "support-signal.json"
 SUPPORT_SIGNAL_PAGE_PATH = "support-signal.html"
 DEFAULT_SUPPORT_METRICS_URL = "https://www.calmsprout.com/daily-shelf/support-metrics.json"
+DEFAULT_DOWNLOAD_METRICS_URL = "https://www.calmsprout.com/daily-shelf/download-metrics.json"
 
 
 PACKS: list[dict[str, Any]] = [
@@ -1159,6 +1161,17 @@ def support_metrics_source_url(config: dict[str, Any]) -> str:
     return DEFAULT_SUPPORT_METRICS_URL
 
 
+def download_metrics_source_url(config: dict[str, Any]) -> str:
+    monetization = config.get("monetization", {})
+    source_url = str(monetization.get("download_metrics_url") or "").strip()
+    if source_url:
+        return source_url
+    branded_base = str(config.get("site", {}).get("branded_base_url") or "").strip().rstrip("/")
+    if branded_base:
+        return f"{branded_base}/download-metrics.json"
+    return DEFAULT_DOWNLOAD_METRICS_URL
+
+
 def blank_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     return {
         "kind": "daily-shelf-support-metrics-snapshot",
@@ -1172,6 +1185,25 @@ def blank_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
         "by_day": {},
         "by_slug": {},
         "by_slug_day": {},
+        "recent": [],
+        "updated_at": None,
+    }
+
+
+def blank_download_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "kind": "daily-shelf-download-metrics-snapshot",
+        "source_url": download_metrics_source_url(config),
+        "fetched_at": None,
+        "sync_ok": False,
+        "storage_connected": False,
+        "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
+        "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
+        "total_download_interest": 0,
+        "by_day": {},
+        "by_slug": {},
+        "by_slug_day": {},
+        "by_kind": {},
         "recent": [],
         "updated_at": None,
     }
@@ -1193,11 +1225,30 @@ def load_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     return snapshot
 
 
+def load_download_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    if not DOWNLOAD_METRICS_SNAPSHOT.exists():
+        return blank_download_metrics_snapshot(config)
+    try:
+        raw = json.loads(DOWNLOAD_METRICS_SNAPSHOT.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return blank_download_metrics_snapshot(config)
+    snapshot = {**blank_download_metrics_snapshot(config), **raw}
+    snapshot["by_day"] = clean_count_map(snapshot.get("by_day"))
+    snapshot["by_slug"] = clean_count_map(snapshot.get("by_slug"))
+    snapshot["by_slug_day"] = clean_nested_count_map(snapshot.get("by_slug_day"))
+    snapshot["by_kind"] = clean_count_map(snapshot.get("by_kind"))
+    snapshot["total_download_interest"] = safe_count(snapshot.get("total_download_interest"))
+    snapshot["recent"] = snapshot.get("recent") if isinstance(snapshot.get("recent"), list) else []
+    return snapshot
+
+
 def sorted_signal_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return sorted(
         items,
         key=lambda item: (
+            safe_count(item.get("signal_score")),
             safe_count(item.get("support_intent_clicks")),
+            safe_count(item.get("download_interest")),
             str(item.get("date") or item.get("label") or ""),
         ),
         reverse=True,
@@ -2249,14 +2300,23 @@ def preferred_collection_label() -> str:
     return TOPIC_DEFINITIONS.get(PREFERRED_COLLECTION_SLUG, {}).get("label", "Small Business Ops")
 
 
-def product_signal_records(config: dict[str, Any], metrics: dict[str, Any], manifests: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def product_signal_records(
+    config: dict[str, Any],
+    metrics: dict[str, Any],
+    download_metrics: dict[str, Any],
+    manifests: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
     by_slug = clean_count_map(metrics.get("by_slug"))
     by_slug_day = clean_nested_count_map(metrics.get("by_slug_day"))
+    downloads_by_slug = clean_count_map(download_metrics.get("by_slug"))
+    downloads_by_slug_day = clean_nested_count_map(download_metrics.get("by_slug_day"))
     records: list[dict[str, Any]] = []
     for item in manifests:
         slug = manifest_pack_slug(item)
         if not slug:
             continue
+        support_clicks = by_slug.get(slug, 0)
+        download_interest = downloads_by_slug.get(slug, 0)
         branded_urls = branded_product_urls(config, item)
         records.append(
             {
@@ -2266,8 +2326,11 @@ def product_signal_records(config: dict[str, Any], metrics: dict[str, Any], mani
                 "summary": item.get("summary", ""),
                 "date": item.get("date", ""),
                 "date_label": item.get("date_label", ""),
-                "support_intent_clicks": by_slug.get(slug, 0),
+                "support_intent_clicks": support_clicks,
                 "support_intent_clicks_by_day": by_slug_day.get(slug, {}),
+                "download_interest": download_interest,
+                "download_interest_by_day": downloads_by_slug_day.get(slug, {}),
+                "signal_score": support_clicks * 5 + download_interest,
                 "public_url": pack_url(config, item.get("path", f"packs/{slug}/")),
                 "branded_url": branded_urls.get("branded_product_url") or pack_url(config, item.get("path", f"packs/{slug}/")),
                 "download_page_url": pack_url(config, pack_download_page_path(item)),
@@ -2278,12 +2341,16 @@ def product_signal_records(config: dict[str, Any], metrics: dict[str, Any], mani
     return sorted_signal_items(records)
 
 
-def collection_signal_records(config: dict[str, Any], metrics: dict[str, Any]) -> list[dict[str, Any]]:
+def collection_signal_records(config: dict[str, Any], metrics: dict[str, Any], download_metrics: dict[str, Any]) -> list[dict[str, Any]]:
     by_slug = clean_count_map(metrics.get("by_slug"))
     by_slug_day = clean_nested_count_map(metrics.get("by_slug_day"))
+    downloads_by_slug = clean_count_map(download_metrics.get("by_slug"))
+    downloads_by_slug_day = clean_nested_count_map(download_metrics.get("by_slug_day"))
     records: list[dict[str, Any]] = []
     for slug, topic in TOPIC_DEFINITIONS.items():
         metric_slug = f"collection-{slug}"
+        support_clicks = by_slug.get(metric_slug, 0)
+        download_interest = downloads_by_slug.get(metric_slug, 0)
         records.append(
             {
                 "type": "collection",
@@ -2292,8 +2359,11 @@ def collection_signal_records(config: dict[str, Any], metrics: dict[str, Any]) -
                 "title": f"{topic['label']} collection",
                 "label": topic["label"],
                 "summary": topic["description"],
-                "support_intent_clicks": by_slug.get(metric_slug, 0),
+                "support_intent_clicks": support_clicks,
                 "support_intent_clicks_by_day": by_slug_day.get(metric_slug, {}),
+                "download_interest": download_interest,
+                "download_interest_by_day": downloads_by_slug_day.get(metric_slug, {}),
+                "signal_score": support_clicks * 5 + download_interest,
                 "public_url": pack_url(config, collection_bundle_page_rel_path(slug)),
                 "branded_url": branded_url(config, collection_bundle_page_rel_path(slug)) or pack_url(config, collection_bundle_page_rel_path(slug)),
                 "download_url": pack_url(config, collection_bundle_rel_path(slug)),
@@ -2308,13 +2378,19 @@ def choose_support_signal_promotion(
     products: list[dict[str, Any]],
     collections: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    candidates = [item for item in products + collections if safe_count(item.get("support_intent_clicks")) > 0]
+    candidates = [item for item in products + collections if safe_count(item.get("signal_score")) > 0]
     if candidates:
         promoted = sorted_signal_items(candidates)[0]
+        if safe_count(promoted.get("support_intent_clicks")) > 0:
+            reason = "highest weighted signal from aggregate support intent and download interest"
+            mode = "support_and_download_interest"
+        else:
+            reason = "highest aggregate download interest while support intent is still sparse"
+            mode = "download_interest"
         return {
             **promoted,
-            "reason": "highest measured aggregate support-intent count",
-            "promotion_mode": "support_intent",
+            "reason": reason,
+            "promotion_mode": mode,
         }
 
     today_slug = str(today_pack.get("pack_slug") or "")
@@ -2333,6 +2409,8 @@ def support_signal_card_markup(signal: dict[str, Any], prefix: str = "./") -> st
     title = str(promoted.get("title") or "Support signal")
     summary = str(promoted.get("summary") or "")
     clicks = safe_count(promoted.get("support_intent_clicks"))
+    downloads = safe_count(promoted.get("download_interest"))
+    score = safe_count(promoted.get("signal_score"))
     public_url = str(promoted.get("public_url") or promoted.get("branded_url") or "")
     support_url = str(promoted.get("support_intent_url") or "")
     report_path = f"{prefix}{SUPPORT_SIGNAL_PAGE_PATH}"
@@ -2343,7 +2421,7 @@ def support_signal_card_markup(signal: dict[str, Any], prefix: str = "./") -> st
             <p class="label">Autonomous support signal</p>
             <h3>{esc(title)}</h3>
             <p>{esc(summary)}</p>
-            <p class="fineprint">{clicks} measured support-intent click{"s" if clicks != 1 else ""}. Clicks do not prove payments or daily revenue.</p>
+            <p class="fineprint">Score {score}: {clicks} support-intent click{"s" if clicks != 1 else ""} and {downloads} download-interest event{"s" if downloads != 1 else ""}. These signals do not prove payments or daily revenue.</p>
           </div>
           <div class="signal-actions">
             {public_cta}
@@ -2356,8 +2434,9 @@ def support_signal_card_markup(signal: dict[str, Any], prefix: str = "./") -> st
 def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) -> dict[str, Any]:
     manifests = read_manifests()
     metrics = load_support_metrics_snapshot(config)
-    products = product_signal_records(config, metrics, manifests)
-    collections = collection_signal_records(config, metrics)
+    download_metrics = load_download_metrics_snapshot(config)
+    products = product_signal_records(config, metrics, download_metrics, manifests)
+    collections = collection_signal_records(config, metrics, download_metrics)
     promoted = choose_support_signal_promotion(today_pack, products, collections)
     support_url = str(config["monetization"].get("support_url") or "").strip()
     store_url = str(config["monetization"].get("store_url") or "").strip()
@@ -2367,20 +2446,31 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
         "kind": "daily-shelf-support-signal",
         "generated_at": generated_at,
         "source_url": metrics.get("source_url") or support_metrics_source_url(config),
+        "download_source_url": download_metrics.get("source_url") or download_metrics_source_url(config),
         "snapshot_fetched_at": metrics.get("fetched_at"),
+        "download_snapshot_fetched_at": download_metrics.get("fetched_at"),
         "metrics_updated_at": metrics.get("updated_at"),
+        "download_metrics_updated_at": download_metrics.get("updated_at"),
         "metrics_sync_ok": bool(metrics.get("sync_ok")),
+        "download_metrics_sync_ok": bool(download_metrics.get("sync_ok")),
         "storage_connected": bool(metrics.get("storage_connected")),
+        "download_storage_connected": bool(download_metrics.get("storage_connected")),
         "support_connected": bool(support_url),
         "store_connected": bool(store_url),
         "monetization_destination_type": "store" if store_url else ("support" if support_url else "none"),
         "total_support_intent_clicks": safe_count(metrics.get("total_support_intent_clicks")),
+        "total_download_interest": safe_count(download_metrics.get("total_download_interest")),
         "revenue_boundary": metrics.get("revenue_boundary") or "Clicks do not prove payments or daily revenue.",
         "privacy": metrics.get("privacy") or "Aggregate support-intent counts only.",
+        "download_revenue_boundary": download_metrics.get("revenue_boundary") or "Download interest does not prove payments or daily revenue.",
+        "download_privacy": download_metrics.get("privacy") or "Aggregate download-interest counts only.",
         "promoted": promoted,
         "top_products": products[:7],
         "top_collections": collections[:5],
+        "top_download_products": sorted(products, key=lambda item: safe_count(item.get("download_interest")), reverse=True)[:7],
+        "top_download_collections": sorted(collections, key=lambda item: safe_count(item.get("download_interest")), reverse=True)[:5],
         "recent": metrics.get("recent", [])[:10],
+        "recent_download_interest": download_metrics.get("recent", [])[:10],
         "json_path": SUPPORT_SIGNAL_JSON_PATH,
         "page_path": SUPPORT_SIGNAL_PAGE_PATH,
         "json_url": pack_url(config, SUPPORT_SIGNAL_JSON_PATH),
@@ -2393,9 +2483,10 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
 
     top_product_rows = "\n".join(
         f"""<article class="ledger-row">
-          <strong>{esc(item["support_intent_clicks"])}</strong>
+          <strong>{esc(item["signal_score"])}</strong>
           <p><a href="{esc(item["public_url"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
+            <span class="status">{esc(item["support_intent_clicks"])} support / {esc(item["download_interest"])} download</span>
             <a class="button" href="{esc(item["download_page_url"])}">Download page</a>
             <a class="button" href="{esc(item["support_intent_url"])}">Support route</a>
           </div>
@@ -2407,9 +2498,10 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
 
     top_collection_rows = "\n".join(
         f"""<article class="ledger-row">
-          <strong>{esc(item["support_intent_clicks"])}</strong>
+          <strong>{esc(item["signal_score"])}</strong>
           <p><a href="{esc(item["public_url"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
+            <span class="status">{esc(item["support_intent_clicks"])} support / {esc(item["download_interest"])} download</span>
             <a class="button" href="{esc(item["download_url"])}">Bundle ZIP</a>
             <a class="button" href="{esc(item["support_intent_url"])}">Support route</a>
           </div>
@@ -2424,6 +2516,8 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
     promoted_title = str(promoted.get("title") or "Daily Shelf support signal")
     promoted_summary = str(promoted.get("summary") or "")
     promoted_clicks = safe_count(promoted.get("support_intent_clicks"))
+    promoted_downloads = safe_count(promoted.get("download_interest"))
+    promoted_score = safe_count(promoted.get("signal_score"))
     promoted_public_cta = f"""<a class="button primary" href="{esc(promoted_public_url)}">Open promoted item</a>""" if promoted_public_url else ""
     promoted_support_cta = f"""<a class="button" href="{esc(promoted_support_url)}">Support promoted path</a>""" if promoted_support_url else ""
     page_url = pack_url(config, SUPPORT_SIGNAL_PAGE_PATH)
@@ -2432,10 +2526,10 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
         "@context": "https://schema.org",
         "@type": "Dataset",
         "name": "Daily Autodigital Shelf support signal",
-        "description": "Aggregate support-intent signal used by the unattended Daily Autodigital Shelf publisher.",
+        "description": "Aggregate support and download-interest signal used by the unattended Daily Autodigital Shelf publisher.",
         "url": page_url,
-        "measurementTechnique": "Aggregate support-intent redirect counters",
-        "isBasedOn": str(signal["source_url"]),
+        "measurementTechnique": "Aggregate support-intent redirect counters and download-interest counters",
+        "isBasedOn": [str(signal["source_url"]), str(signal["download_source_url"])],
         "license": pack_url(config, "license.html"),
     }
     image_url = pack_url(config, manifests[0]["cover"]) if manifests else home_url
@@ -2445,9 +2539,9 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support Signal | {esc(config["site"]["name"])}</title>
-  <meta name="description" content="Aggregate support-intent signal for the unattended Daily Autodigital Shelf publisher.">
+  <meta name="description" content="Aggregate support and download-interest signal for the unattended Daily Autodigital Shelf publisher.">
   <link rel="canonical" href="{esc(page_url)}">
-{social_meta("Daily Autodigital Shelf Support Signal", "Aggregate support-intent signal for the unattended Daily Shelf publisher.", page_url, image_url, "Daily Autodigital Shelf support signal")}
+{social_meta("Daily Autodigital Shelf Support Signal", "Aggregate support and download-interest signal for the unattended Daily Shelf publisher.", page_url, image_url, "Daily Autodigital Shelf support signal")}
   <script type="application/ld+json">{json_for_script(structured_data)}</script>
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -2471,8 +2565,8 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
       <section class="hero support-hero">
         <div class="hero-copy">
           <p class="label">Autonomous conversion signal</p>
-          <h1>Promote what shows support intent.</h1>
-          <p>This report lets the unattended publisher react to aggregate support clicks. It never treats clicks as payments and never claims revenue before a verified payment exists.</p>
+          <h1>Promote what shows support or download intent.</h1>
+          <p>This report lets the unattended publisher react to aggregate support clicks and public download interest. It never treats either signal as payment and never claims revenue before a verified payment exists.</p>
           <div class="actions">
             {promoted_public_cta}
             {promoted_support_cta}
@@ -2491,8 +2585,9 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
           </div>
           <article class="artifact">
             <div>
-              <h3>{promoted_clicks} support-intent click{"s" if promoted_clicks != 1 else ""}</h3>
+              <h3>Score {promoted_score}</h3>
               <p>{esc(promoted_summary)}</p>
+              <p class="fineprint">{promoted_clicks} support-intent click{"s" if promoted_clicks != 1 else ""}; {promoted_downloads} download-interest event{"s" if promoted_downloads != 1 else ""}.</p>
               <p class="fineprint">Reason: {esc(str(promoted.get("reason") or ""))}.</p>
             </div>
           </article>
@@ -2504,7 +2599,7 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
             <p class="label">Product signal</p>
             <h2>Top pack routes</h2>
           </div>
-          <p>Counts are aggregate support-intent redirects by product slug. They are useful for promotion order, not revenue proof.</p>
+          <p>Scores weight support intent higher than download interest. They are useful for promotion order, not revenue proof.</p>
         </div>
         <div class="ledger">
           {top_product_rows}
@@ -2516,7 +2611,7 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
             <p class="label">Collection signal</p>
             <h2>Top bundle routes</h2>
           </div>
-          <p>Collection counts come from measured collection support routes and can promote the most interesting bundle page automatically.</p>
+          <p>Collection scores combine measured collection support routes and public bundle download interest.</p>
         </div>
         <div class="ledger">
           {top_collection_rows}
@@ -2534,8 +2629,8 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
           <article class="setup-item done">
             <span class="setup-dot">1</span>
             <div>
-              <strong>Metrics snapshot synced</strong>
-              <p>Source: {esc(str(signal["source_url"]))}. Last metrics update: {esc(str(signal.get("metrics_updated_at") or "none"))}.</p>
+              <strong>Metrics snapshots synced</strong>
+              <p>Support source: {esc(str(signal["source_url"]))}. Download source: {esc(str(signal["download_source_url"]))}.</p>
             </div>
           </article>
           <article class="setup-item done">
@@ -7087,12 +7182,17 @@ def write_status(
         "support_signal_branded_page_url": support_signal.get("branded_page_url", branded_url(config, SUPPORT_SIGNAL_PAGE_PATH)),
         "support_signal_branded_json_url": support_signal.get("branded_json_url", branded_url(config, SUPPORT_SIGNAL_JSON_PATH)),
         "support_signal_source_url": support_signal.get("source_url", support_metrics_source_url(config)),
+        "support_signal_download_source_url": support_signal.get("download_source_url", download_metrics_source_url(config)),
         "support_signal_metrics_sync_ok": bool(support_signal.get("metrics_sync_ok")),
+        "support_signal_download_metrics_sync_ok": bool(support_signal.get("download_metrics_sync_ok")),
         "support_signal_total_intent_clicks": safe_count(support_signal.get("total_support_intent_clicks")),
+        "support_signal_total_download_interest": safe_count(support_signal.get("total_download_interest")),
         "support_signal_promoted_type": (support_signal.get("promoted") or {}).get("type", ""),
         "support_signal_promoted_slug": (support_signal.get("promoted") or {}).get("slug", ""),
         "support_signal_promoted_title": (support_signal.get("promoted") or {}).get("title", ""),
         "support_signal_promotion_mode": (support_signal.get("promoted") or {}).get("promotion_mode", ""),
+        "support_signal_promoted_score": safe_count((support_signal.get("promoted") or {}).get("signal_score")),
+        "support_signal_promoted_download_interest": safe_count((support_signal.get("promoted") or {}).get("download_interest")),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
         "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),
         "llms_full_txt": ai_discovery.get("llms_full_txt", "llms-full.txt"),

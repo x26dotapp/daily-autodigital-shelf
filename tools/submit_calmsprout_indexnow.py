@@ -35,6 +35,7 @@ DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
     ("/daily-shelf/browse", "catalog.json"),
     ("/daily-shelf/product-sitemap.xml", "catalog.json"),
     ("/daily-shelf/support-metrics.json", "status.json"),
+    ("/daily-shelf/download-metrics.json", "status.json"),
     ("/daily-shelf/support-signal.json", "support-signal.json"),
     ("/sitemap.xml", "catalog.json"),
     ("/daily-shelf/status", "status.json"),
