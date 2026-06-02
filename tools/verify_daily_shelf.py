@@ -271,6 +271,11 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
+    require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
+    require_contains(
+        ROOT / "tools" / "submit_indexnow.py",
+        ["bundles/starter-archive.zip", "imports/store-upload-kit.zip", "today_download", "download_url"],
+    )
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",

@@ -98,7 +98,9 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "offers/index.html",
         "offers/offers.json",
         "starter-bundle.html",
+        "bundles/starter-archive.zip",
         "store-import.html",
+        "imports/store-upload-kit.zip",
         "license.html",
         "privacy.html",
         "refund-policy.html",
@@ -121,12 +123,18 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     today_path = str(status.get("today_path", "")).strip("/")
     if today_path:
         add_candidate(candidates, config, f"{today_path}/index.html")
+    today_download = str(status.get("today_download", "")).strip("/")
+    if today_download:
+        add_candidate(candidates, config, today_download)
 
     if include_all_packs:
         for item in catalog.get("items", []):
             path = str(item.get("url", "")).replace(site_base(config) + "/", "")
             if path:
                 add_candidate(candidates, config, path.rstrip("/") + "/index.html")
+            download_url = str(item.get("download_url", "")).replace(site_base(config) + "/", "")
+            if download_url:
+                add_candidate(candidates, config, download_url)
 
     for topic in topics.get("topics", []):
         slug = str(topic.get("slug", "")).strip()
