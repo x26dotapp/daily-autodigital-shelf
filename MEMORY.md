@@ -430,6 +430,34 @@
   `total_support_intent_clicks: 4`. This is artifact-level conversion
   infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 support-signal promotion loop: Daily Shelf commit `a7de28e` (`Add
+  support signal promotion loop`) syncs aggregate CalmSprout support-intent
+  metrics from `https://www.calmsprout.com/daily-shelf/support-metrics.json`,
+  stores a sanitized snapshot at `state/support-metrics-snapshot.json`, publishes
+  `docs/support-signal.html` and `docs/support-signal.json`, and promotes the
+  strongest aggregate support-interest target without storing IP, user-agent,
+  cookie, email, or payment data. The current promoted target is the
+  `Small Business Ops collection`, with `support_signal_total_intent_clicks: 4`.
+  The local runner and GitHub fallback workflow both sync the public metrics
+  before generation on a best-effort basis. GitHub Pages run `26835766934`
+  succeeded for `a7de28e`; `verify-system.ps1` passed with `pack_count: 29`,
+  `files_checked: 67`, `bundle_bytes: 923480`, `download_bytes: 7350`,
+  `store_import_zip_bytes: 475248`, `support_signal_ready: true`,
+  `support_connected: true`, and `store_connected: false`.
+
+- 2026-06-02 CalmSprout support-signal proxy: CalmSprout commit `198cdd1`
+  (`Proxy Daily Shelf support signal`) deployed as Worker version
+  `b1391c0a-5b35-4e63-9165-af4344048130`. Live routes
+  `https://www.calmsprout.com/daily-shelf/support-signal`,
+  `/daily-shelf/support-signal.html`, and
+  `/daily-shelf/support-signal.json` return HTTP 200 and are included in
+  `llms.txt` and `sitemap.xml`. Browser and Playwright QA at 1280x720 and
+  390x844 found no console warnings/errors and no horizontal overflow. IndexNow
+  accepted 273 GitHub Pages URLs and 418 CalmSprout URLs for the signal update.
+  No support redirect was triggered; metrics remain
+  `total_support_intent_clicks: 4`. This is autonomous conversion
+  optimization, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
