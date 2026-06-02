@@ -30,7 +30,7 @@ Verified 2026-06-02:
 - GitHub fallback publisher: `.github/workflows/daily-shelf.yml` is active. It runs daily after the local PC task/watchdog, can be run manually, generates/verifies, commits only on changed output, pushes to `main`, and submits IndexNow when it commits.
 - Fallback proof: manual run `26805969926` completed successfully on commit `5d6eec6` and logged `No generated changes to publish`
 - Determinism: generator normalizes text bytes inside ZIPs, fixes ZIP creator metadata, forces LF CSV output, and tracks `.gitattributes` so Windows and GitHub runners do not churn same-day artifacts
-- Latest functional infrastructure commit: `5d6eec6` (`Add support-backed offer pages`) pushed to `main`; GitHub Pages deployment `26805912605` succeeded
+- Latest functional infrastructure commit: `ed726d6` (`Add pay-what-you-can support funnel`) pushed to `main`; GitHub Pages deployment `26807581444` succeeded
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: public support destination connected; public site says `Status: Connected`, shows `Support this shelf`, and links to `https://gift.calmsprout.com`, which resolves to the Square-hosted CalmSprout gift/support page. Product checkout is not connected, `store_connected` is false, and daily revenue is not proven.
 - Direct deploy note: CalmSprout has local Git but no remote, so bridge changes were committed locally before direct Wrangler deploy. Keep future CalmSprout changes committed locally and record deployed Worker version IDs.

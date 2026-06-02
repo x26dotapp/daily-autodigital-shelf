@@ -13,11 +13,11 @@
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
 - Latest handoff update: pay-what-you-can funnel state recorded
-- Latest functional change: generated pay-what-you-can support funnel
+- Latest functional commit: `ed726d6` (`Add pay-what-you-can support funnel`)
 - Latest adjacent bridge commit: CalmSprout `f063a55` (`Add Daily Shelf bridge`)
 - Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`) and `8a689e1` (`Add CalmSprout IndexNow key`)
 - CalmSprout deploy: Cloudflare Worker version `61361a87-0bab-4cdc-b477-d332b254cf23`
-- Pages deployment: `26805912605` for support-backed offer pages
+- Pages deployment: `26807581444` for pay-what-you-can support funnel
 - Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
 - Verification: `verify-system.ps1` passed with `files_checked: 37`, `bundle_bytes: 326576`, `store_import_zip_bytes: 161610`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
 - Discovery: IndexNow accepted 21 changed URLs; dry run shows `submit_count: 0`
