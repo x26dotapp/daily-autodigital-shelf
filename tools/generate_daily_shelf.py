@@ -19,6 +19,7 @@ IMPORTS = DOCS / "imports"
 TOPICS = DOCS / "topics"
 OFFERS = DOCS / "offers"
 USE_CASES = DOCS / "use-cases"
+TEMPLATES = DOCS / "templates"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_PUBLIC = ROOT / "config" / "config.public.json"
@@ -1088,6 +1089,8 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
         "topics/topics.json",
         "use-cases/index.html",
         "use-cases/use-cases.json",
+        "templates/index.html",
+        "templates/templates.json",
         "catalog.csv",
         "catalog.json",
         "imports/store-listings.csv",
@@ -1112,6 +1115,8 @@ def bundle_file_paths(manifests: list[dict[str, Any]]) -> list[Path]:
     for path in sorted(OFFERS.glob("*.html")):
         rel_paths.append(path.relative_to(DOCS).as_posix())
     for path in sorted(USE_CASES.glob("*.html")):
+        rel_paths.append(path.relative_to(DOCS).as_posix())
+    for path in sorted(TEMPLATES.glob("*.html")):
         rel_paths.append(path.relative_to(DOCS).as_posix())
 
     files: list[Path] = []
@@ -1163,6 +1168,59 @@ def pack_download_path(item: dict[str, Any]) -> str:
 
 def pack_download_page_path(item: dict[str, Any]) -> str:
     return f"downloads/{pack_slug_from_manifest(item)}.html"
+
+
+def template_slug_for_item(item: dict[str, Any]) -> str:
+    slug = pack_slug_from_manifest(item)
+    return re.sub(r"^\d{4}-\d{2}-\d{2}-", "", slug)
+
+
+def template_page_path(item: dict[str, Any]) -> str:
+    return f"templates/{template_slug_for_item(item)}.html"
+
+
+def template_records(config: dict[str, Any]) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for item in read_manifests():
+        slug = template_slug_for_item(item)
+        if not slug or slug in seen:
+            continue
+        seen.add(slug)
+        path = f"templates/{slug}.html"
+        branded_urls = branded_product_urls(config, item)
+        topics = topic_records_for_item(item, config)
+        records.append(
+            {
+                "slug": slug,
+                "id": item["id"],
+                "date": item["date"],
+                "date_label": item["date_label"],
+                "title": item["title"],
+                "summary": item["summary"],
+                "buyer": item.get("buyer", ""),
+                "path": path,
+                "url": pack_url(config, path),
+                "branded_url": branded_url(config, path),
+                "pack_path": item["path"],
+                "pack_url": pack_url(config, item["path"]),
+                "download_page_path": pack_download_page_path(item),
+                "download_page_url": pack_url(config, pack_download_page_path(item)),
+                "download_path": pack_download_path(item),
+                "download_url": pack_url(config, pack_download_path(item)),
+                "seller_copy_path": item.get("seller_copy", ""),
+                "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "cover_path": item.get("cover", ""),
+                "cover_url": pack_url(config, item.get("cover", "")),
+                "support_page_url": branded_urls.get("branded_support_url") or pack_url(config, "support.html"),
+                "support_intent_url": branded_urls.get("branded_support_intent_url") or str(config["monetization"].get("support_url") or ""),
+                "starter_bundle_path": "bundles/starter-archive.zip",
+                "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
+                "topic_slugs": [topic["slug"] for topic in topics],
+                "topic_urls": [topic["url"] for topic in topics],
+            }
+        )
+    return records
 
 
 TOPIC_DEFINITIONS: dict[str, dict[str, Any]] = {
@@ -1916,6 +1974,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
         <a href="./use-cases/">Use cases</a>
+        <a href="./templates/">Templates</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./terms.html">Policies</a>
@@ -1998,6 +2057,8 @@ def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list
         f"topics/{slug}.html",
         "use-cases/use-cases.json",
         f"use-cases/{slug}.html",
+        "templates/index.html",
+        "templates/templates.json",
         "catalog.json",
         "catalog.csv",
     ]
@@ -2013,6 +2074,7 @@ def collection_bundle_file_paths(slug: str, items: list[dict[str, Any]]) -> list
                 f"{pack_path}/seller-copy.md",
                 pack_download_path(item),
                 pack_download_page_path(item),
+                template_page_path(item),
             ]
         )
 
@@ -2658,6 +2720,334 @@ def render_use_case_pages(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def render_template_pages(config: dict[str, Any]) -> dict[str, Any]:
+    TEMPLATES.mkdir(parents=True, exist_ok=True)
+    manifests = read_manifests()
+    records = template_records(config)
+    monetization = config["monetization"]
+    store_url = str(monetization.get("store_url") or "").strip()
+    support_url = str(monetization.get("support_url") or "").strip()
+    general_support_url = branded_url(config, "support") or pack_url(config, "support.html")
+    destination_note = (
+        "Product checkout is connected through the configured external store."
+        if store_url
+        else (
+            "Product checkout is not connected. Downloads remain public and support is voluntary through the connected support path."
+            if support_url
+            else "No external store, support, or affiliate destination is connected yet."
+        )
+    )
+
+    template_export = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Daily Autodigital Shelf Templates",
+        "description": "Evergreen template pages for the latest public Daily Autodigital Shelf digital pack in each template family.",
+        "url": pack_url(config, "templates/"),
+        "numberOfItems": len(records),
+        "checkoutBoundary": destination_note,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": record["title"],
+                "url": record["url"],
+            }
+            for index, record in enumerate(records)
+        ],
+        "items": records,
+    }
+    (TEMPLATES / "templates.json").write_text(json.dumps(template_export, indent=2), encoding="utf-8")
+
+    first_cover = pack_url(config, manifests[0]["cover"]) if manifests else pack_url(config, "")
+    index_url = pack_url(config, "templates/")
+    index_cards = "\n".join(
+        f"""<article class="pack-card">
+          <span class="pack-date">{esc(record["date_label"])}</span>
+          <h3>{esc(record["title"])} template</h3>
+          <p>{esc(record["summary"])}</p>
+          <div class="artifact-links">
+            <a class="button primary" href="./{esc(record["slug"])}.html">Open template</a>
+            <a class="button" href="../{esc(record["download_page_path"])}">Download page</a>
+          </div>
+        </article>"""
+        for record in records
+    )
+    if not index_cards:
+        index_cards = "<p>No templates generated yet.</p>"
+
+    index_data = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Daily Autodigital Shelf Templates",
+        "description": "Evergreen template landing pages for generated printable digital packs.",
+        "url": index_url,
+        "hasPart": [
+            {
+                "@type": "WebPage",
+                "name": f"{record['title']} template",
+                "url": record["url"],
+            }
+            for record in records
+        ],
+    }
+    index_html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Templates | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Evergreen template landing pages for Daily Autodigital Shelf printable digital packs.">
+  <link rel="canonical" href="{esc(index_url)}">
+{social_meta("Daily Autodigital Shelf Templates", "Evergreen template pages for generated printable digital packs.", index_url, first_cover, "Daily Autodigital Shelf templates")}
+  <script type="application/ld+json">{json_for_script(index_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Template navigation">
+        <a href="../">Home</a>
+        <a href="../archive.html">Archive</a>
+        <a href="../topics/">Topics</a>
+        <a href="../use-cases/">Use cases</a>
+        <a href="../offers/">Offers</a>
+        <a href="../support.html">Support</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Templates</p>
+            <h2>Evergreen landing pages for public digital packs</h2>
+          </div>
+          <p>Each template page keeps a stable URL while pointing to the newest dated pack, download page, ZIP, listing copy, and voluntary support route.</p>
+        </div>
+        <div class="pack-grid">
+          {index_cards}
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+"""
+    (TEMPLATES / "index.html").write_text(index_html, encoding="utf-8")
+
+    for record in records:
+        topic_links = " ".join(
+            f"""<a class="topic-link" href="../topics/{esc(slug)}.html">{esc(TOPIC_DEFINITIONS[slug]["label"])}</a>"""
+            for slug in record["topic_slugs"]
+            if slug in TOPIC_DEFINITIONS
+        )
+        offer_links = " ".join(
+            f"""<a class="button" href="../offers/{esc(slug)}.html">Open {esc(TOPIC_DEFINITIONS[slug]["label"])} offer</a>"""
+            for slug in record["topic_slugs"]
+            if slug in TOPIC_DEFINITIONS
+        )
+        offer_data: dict[str, Any] = {
+            "@type": "Offer",
+            "url": store_url or record["url"],
+            "availability": "https://schema.org/InStock",
+        }
+        if store_url:
+            offer_data["description"] = "External store checkout for this digital pack."
+        else:
+            offer_data.update(
+                {
+                    "price": "0.00",
+                    "priceCurrency": "USD",
+                    "description": "Public digital-pack download. Voluntary support is handled separately through Square.",
+                }
+            )
+        page_data = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": ["CreativeWork", "Product"],
+                    "name": f"{record['title']} template",
+                    "description": record["summary"],
+                    "url": record["url"],
+                    "image": record["cover_url"],
+                    "dateModified": record["date"],
+                    "audience": {
+                        "@type": "Audience",
+                        "audienceType": record["buyer"],
+                    },
+                    "encoding": {
+                        "@type": "MediaObject",
+                        "contentUrl": record["download_url"],
+                        "encodingFormat": "application/zip",
+                        "name": f"{record['title']} ZIP",
+                    },
+                    "offers": {
+                        **offer_data,
+                    },
+                    "potentialAction": [
+                        {
+                            "@type": "DownloadAction",
+                            "target": record["download_url"],
+                            "name": "Download ZIP",
+                        },
+                        {
+                            "@type": "DonateAction",
+                            "target": record["support_intent_url"] or general_support_url,
+                            "name": "Support this template",
+                        },
+                    ],
+                    "isPartOf": {
+                        "@type": "WebSite",
+                        "name": config["site"]["name"],
+                        "url": pack_url(config, ""),
+                    },
+                },
+                {
+                    "@type": "WebPage",
+                    "name": f"{record['title']} template landing page",
+                    "description": f"Download, inspect, and optionally support the latest {record['title']} template pack.",
+                    "url": record["url"],
+                },
+            ],
+        }
+        html_content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(record["title"])} Template | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="{esc(record["summary"])} Download the public template ZIP, inspect listing copy, or support the shelf.">
+  <link rel="canonical" href="{esc(record["url"])}">
+{social_meta(f"{record['title']} Template", record["summary"], record["url"], record["cover_url"], f"{record['title']} template")}
+  <script type="application/ld+json">{json_for_script(page_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Template page navigation">
+        <a href="../">Home</a>
+        <a href="./">Templates</a>
+        <a href="../archive.html">Archive</a>
+        <a href="../use-cases/">Use cases</a>
+        <a href="../support.html">Support</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="label">Template</p>
+          <h1>{esc(record["title"])} template</h1>
+          <p>{esc(record["summary"])}</p>
+          <div class="actions">
+            <a class="button primary" href="../{esc(record["download_page_path"])}">Download page</a>
+            <a class="button" href="../{esc(record["download_path"])}">Download ZIP</a>
+            <a class="button" href="../{esc(record["pack_path"])}">Open latest pack</a>
+            <a class="button" href="../{esc(record["seller_copy_path"])}">Listing copy</a>
+            <a class="button" href="{esc(record["support_intent_url"] or general_support_url)}">Support this template</a>
+          </div>
+          <p class="fineprint">{esc(destination_note)} This page is a stable discovery surface, not proof of revenue.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Latest version</p>
+              <h2>{esc(record["date_label"])}</h2>
+            </div>
+            <span class="status">Template</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>Who this helps</h3>
+              <p>{esc(record["buyer"])}</p>
+              <p class="topic-links">{topic_links}</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Unattended delivery</p>
+            <h2>What this page connects</h2>
+          </div>
+          <p>The stable template URL points to the latest dated pack page, public download page, ZIP file, listing copy, topic pages, collection offers, and starter bundle.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done">
+            <span class="setup-dot">1</span>
+            <div>
+              <strong>Inspect the pack</strong>
+              <p><a href="../{esc(record["pack_path"])}">Open the latest generated pack page</a>.</p>
+            </div>
+          </article>
+          <article class="setup-item done">
+            <span class="setup-dot">2</span>
+            <div>
+              <strong>Download the file</strong>
+              <p><a href="../{esc(record["download_page_path"])}">Download page</a> or <a href="../{esc(record["download_path"])}">Download ZIP</a>.</p>
+            </div>
+          </article>
+          <article class="setup-item done">
+            <span class="setup-dot">3</span>
+            <div>
+              <strong>Use or list it</strong>
+              <p><a href="../{esc(record["seller_copy_path"])}">Listing copy</a> and the <a href="../store-import.html">store import kit</a> are ready for a future checkout platform.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">4</span>
+            <div>
+              <strong>Revenue boundary</strong>
+              <p>Product checkout is not connected. Support is voluntary and routed through CalmSprout when selected.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Related offer paths</p>
+            <h2>Bundles and collections</h2>
+          </div>
+          <p>These links make the template easier to discover and support without requiring manual fulfillment.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../{esc(record["starter_bundle_path"])}">Download starter bundle</a>
+          <a class="button" href="../templates/templates.json">Templates JSON</a>
+          <a class="button" href="{esc(record["support_page_url"])}">Open support page</a>
+          {offer_links}
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config, "../")}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+        (TEMPLATES / f"{record['slug']}.html").write_text(html_content, encoding="utf-8")
+
+    return {
+        "ready": bool(records),
+        "count": len(records),
+        "index_path": "templates/index.html",
+        "json_path": "templates/templates.json",
+        "paths": [record["path"] for record in records],
+        "branded_urls": [record["branded_url"] for record in records if record.get("branded_url")],
+    }
+
+
 def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[str, Any]:
     OFFERS.mkdir(parents=True, exist_ok=True)
     manifests = read_manifests()
@@ -3089,6 +3479,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
         <a href="./use-cases/">Use cases</a>
+        <a href="./templates/">Templates</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
@@ -3114,6 +3505,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
               <a class="button primary" href="./{esc(bundle_rel_path)}">Download ZIP</a>
               <a class="button" href="./pay-what-you-can.html">Support the bundle</a>
               <a class="button" href="./use-cases/">Browse use cases</a>
+              <a class="button" href="./templates/">Browse templates</a>
               <a class="button" href="./catalog.csv">Open catalog CSV</a>
             </div>
           </div>
@@ -3262,6 +3654,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
         <a href="./archive.html">Archive</a>
         <a href="./topics/">Topics</a>
         <a href="./use-cases/">Use cases</a>
+        <a href="./templates/">Templates</a>
         <a href="./{esc(bundle_page_path)}">Starter bundle</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
@@ -3282,6 +3675,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <a class="button primary" href="./{esc(today_path)}">Open today's pack</a>
             <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
             <a class="button" href="./use-cases/">Browse use cases</a>
+            <a class="button" href="./templates/">Browse templates</a>
             <a class="button" href="./{esc(bundle_page_path)}">Open starter bundle</a>
             <a class="button" href="./store-import.html">Open import kit</a>
             <a class="button" href="#setup">View setup status</a>
@@ -3326,7 +3720,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./support.html">Support</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./support.html">Support</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -3352,6 +3746,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
               <a class="button" href="./pay-what-you-can.html">Pay what you can</a>
               <a class="button" href="./offers/">Offer pages</a>
               <a class="button" href="./use-cases/">Use cases</a>
+              <a class="button" href="./templates/">Templates</a>
               <a class="button" href="./support.html">Support page</a>
               {destination_cta}
             </div>
@@ -4007,6 +4402,7 @@ def render_archive(config: dict[str, Any]) -> None:
         <a href="./">Home</a>
         <a href="./topics/">Topics</a>
         <a href="./use-cases/">Use cases</a>
+        <a href="./templates/">Templates</a>
         <a href="./starter-bundle.html">Starter bundle</a>
         <a href="./offers/">Offers</a>
         <a href="./support.html">Support</a>
@@ -4023,7 +4419,7 @@ def render_archive(config: dict[str, Any]) -> None:
             <p class="label">Pack archive</p>
             <h2>Generated digital packs</h2>
           </div>
-          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, <a href="./use-cases/">buyer-intent use-case pages</a> make the archive easier to discover, <a href="./offers/">offer pages</a> make the collections easier to support, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
+          <p>Each row has a public pack page, direct product ZIP, and store-ready listing copy. Topic pages group packs by use case, <a href="./use-cases/">buyer-intent use-case pages</a> make the archive easier to discover, <a href="./templates/">template pages</a> provide stable non-dated product URLs, <a href="./offers/">offer pages</a> make the collections easier to support, the <a href="./starter-bundle.html">starter bundle</a> packages the archive as one ZIP, the <a href="./store-import.html">import kit</a> packages marketplace listing metadata, and <a href="./terms.html">policy pages</a> prepare the shelf for future store review. Payment links remain off until a real store or support destination is connected.</p>
         </div>
         <div class="ledger">
           {rows}
@@ -4455,6 +4851,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Pay what you can bundle: {pay_url}",
             f"- Offers: {pack_url(config, 'offers/')}",
             f"- Use cases: {pack_url(config, 'use-cases/')}",
+            f"- Templates: {pack_url(config, 'templates/')}",
             f"- Archive: {pack_url(config, 'archive.html')}",
             f"- Starter bundle: {pack_url(config, 'starter-bundle.html')}",
             f"- Store import kit: {pack_url(config, 'store-import.html')}",
@@ -4523,6 +4920,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
             f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Use Cases JSON: {pack_url(config, 'use-cases/use-cases.json')}",
+            f"- Templates JSON: {pack_url(config, 'templates/templates.json')}",
             f"- Store listings JSON: {pack_url(config, 'imports/store-listings.json')}",
             f"- Store listings CSV: {pack_url(config, 'imports/store-listings.csv')}",
             f"- JSON Feed: {pack_url(config, 'feed.json')}",
@@ -4553,6 +4951,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "topics/"),
         pack_url(config, "use-cases/"),
         pack_url(config, "use-cases/use-cases.json"),
+        pack_url(config, "templates/"),
+        pack_url(config, "templates/templates.json"),
         pack_url(config, "starter-bundle.html"),
         pack_url(config, "store-import.html"),
         pack_url(config, "license.html"),
@@ -4579,6 +4979,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
     urls.extend(pack_url(config, collection_bundle_rel_path(slug)) for slug in topics)
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topics)
     urls.extend(pack_url(config, f"use-cases/{slug}.html") for slug in USE_CASE_DEFINITIONS if slug in topics)
+    urls.extend(record["url"] for record in template_records(config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
     urls.extend(pack_url(config, pack_download_page_path(item)) for item in read_manifests()[:80])
     rows = "\n".join(f"  <url><loc>{esc(url)}</loc></url>" for url in urls if url)
@@ -4658,6 +5059,7 @@ def write_status(
     import_kit: dict[str, Any],
     topics: dict[str, Any],
     use_cases: dict[str, Any],
+    templates: dict[str, Any],
     policies: dict[str, Any],
     support: dict[str, Any],
     pay_page: dict[str, Any],
@@ -4731,6 +5133,12 @@ def write_status(
         "use_cases_json": use_cases.get("json_path", "use-cases/use-cases.json"),
         "use_case_pages": use_cases.get("paths", []),
         "use_case_branded_urls": use_cases.get("branded_urls", []),
+        "template_pages_ready": bool(templates.get("ready")),
+        "template_page_count": int(templates.get("count", 0)),
+        "templates_index": templates.get("index_path", "templates/index.html"),
+        "templates_json": templates.get("json_path", "templates/templates.json"),
+        "template_pages": templates.get("paths", []),
+        "template_branded_urls": templates.get("branded_urls", []),
         "policy_pages_ready": bool(policies.get("count")),
         "policy_page_count": int(policies.get("count", 0)),
         "policy_pages": policies.get("paths", []),
@@ -4816,6 +5224,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_archive(config)
     topics = render_topic_pages(config)
     use_cases = render_use_case_pages(config)
+    templates = render_template_pages(config)
     policies = render_policy_pages(config)
     support = render_support_page(config)
     pay_page = render_pay_what_you_can_page(config, support)
@@ -4839,6 +5248,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         import_kit,
         topics,
         use_cases,
+        templates,
         policies,
         support,
         pay_page,

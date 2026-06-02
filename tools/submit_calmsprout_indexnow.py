@@ -45,6 +45,8 @@ DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
     ("/daily-shelf/offers/offers.json", "offers/offers.json"),
     ("/daily-shelf/use-cases.json", "use-cases/use-cases.json"),
     ("/daily-shelf/use-cases/use-cases.json", "use-cases/use-cases.json"),
+    ("/daily-shelf/templates.json", "templates/templates.json"),
+    ("/daily-shelf/templates/templates.json", "templates/templates.json"),
     ("/daily-shelf/product-feed.json", "product-feed.json"),
     ("/daily-shelf/product-feed.xml", "product-feed.xml"),
     ("/daily-shelf/product-feed.csv", "product-feed.csv"),
@@ -65,6 +67,7 @@ DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
 STATIC_ROUTE_SOURCES: list[tuple[str, str]] = [
     ("/daily-shelf/offers", "offers/index.html"),
     ("/daily-shelf/use-cases/", "use-cases/index.html"),
+    ("/daily-shelf/templates/", "templates/index.html"),
     ("/daily-shelf/pay", "pay-what-you-can.html"),
     ("/daily-shelf/pay-what-you-can", "pay-what-you-can.html"),
     ("/daily-shelf/bundle", "bundles/starter-archive.zip"),
@@ -172,6 +175,18 @@ def use_case_routes() -> list[tuple[str, str]]:
     return routes
 
 
+def template_routes() -> list[tuple[str, str]]:
+    templates = read_json(DOCS / "templates" / "templates.json", fallback={"items": []})
+    routes: list[tuple[str, str]] = []
+    for template in templates.get("items", []):
+        if isinstance(template, dict):
+            slug = clean_pack_slug(str(template.get("slug") or ""))
+            path = str(template.get("path") or "").strip("/")
+            if slug and path.startswith("templates/") and path.endswith(".html"):
+                routes.append((f"/daily-shelf/templates/{slug}.html", path))
+    return routes
+
+
 def file_signature(path: Path) -> str:
     if not path.exists():
         return "missing"
@@ -208,6 +223,8 @@ def collect_candidates(include_static: bool) -> list[dict[str, str]]:
     for route_path, source_rel_path in offer_routes():
         add_candidate(candidates, route_path, source_rel_path)
     for route_path, source_rel_path in use_case_routes():
+        add_candidate(candidates, route_path, source_rel_path)
+    for route_path, source_rel_path in template_routes():
         add_candidate(candidates, route_path, source_rel_path)
     if include_static:
         for route_path, source_rel_path in STATIC_ROUTE_SOURCES:

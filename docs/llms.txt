@@ -9,6 +9,7 @@
 - Pay what you can bundle: https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html
 - Offers: https://x26dotapp.github.io/daily-autodigital-shelf/offers/
 - Use cases: https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/
+- Templates: https://x26dotapp.github.io/daily-autodigital-shelf/templates/
 - Archive: https://x26dotapp.github.io/daily-autodigital-shelf/archive.html
 - Starter bundle: https://x26dotapp.github.io/daily-autodigital-shelf/starter-bundle.html
 - Store import kit: https://x26dotapp.github.io/daily-autodigital-shelf/store-import.html

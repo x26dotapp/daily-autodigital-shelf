@@ -1,0 +1,1197 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Daily Autodigital Shelf Templates",
+  "description": "Evergreen template pages for the latest public Daily Autodigital Shelf digital pack in each template family.",
+  "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/",
+  "numberOfItems": 29,
+  "checkoutBoundary": "Product checkout is not connected. Downloads remain public and support is voluntary through the connected support path.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "One-Page SOP Builder",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/one-page-sop.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Listing Photo Checklist",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/listing-photo-checklist.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Client Intake Lite",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/client-intake-lite.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Appointment Prep Card",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/appointment-prep.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Downloads Folder Reset",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/download-folder-reset.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Invoice Follow-Up Mini Kit",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/invoice-followup.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Simple Content Calendar",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/simple-content-calendar.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Subscription Audit Sheet",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/subscription-audit.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Honest Follow-Up Draft Kit",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/offer-followup.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Digital Declutter Sprint",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/digital-declutter.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "Micro Budget Reset",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/micro-budget.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "Tiny Home Inventory Pack",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/home-inventory.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "Low-Energy Week Planner",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/low-energy-week.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "name": "Receipt Runner Ledger Pack",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/receipt-runner.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "name": "Calm Launch One-Page Kit",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/calm-launch.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "name": "Landing Page Copy Blocks",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/landing-page-copy.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "name": "Renewal Reminder Sheet",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/renewal-reminder.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "name": "Link-in-Bio Audit",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/link-in-bio-audit.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "name": "Focus Menu Builder",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/focus-menu.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "name": "Store Import Prep Sheet",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/store-import-prep.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "name": "Two-Hour Workblock Planner",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/two-hour-workblock.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "name": "Simple Order Form Draft",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/simple-order-form.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "name": "Daily Proof Log",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/daily-proof-log.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "name": "Project Rescue Map",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/project-rescue-map.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "name": "Email Triage Sprint",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/email-triage.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "name": "Decision Parking Lot",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/decision-parking-lot.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "name": "Tiny Launch Checklist",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/tiny-launch-checklist.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "name": "Micro Offer Pricing Sheet",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/micro-offer-pricing.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
+      "name": "Weekly Reset Board",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/weekly-reset.html"
+    }
+  ],
+  "items": [
+    {
+      "slug": "one-page-sop",
+      "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
+      "date": "2026-06-02",
+      "date_label": "June 02, 2026",
+      "title": "One-Page SOP Builder",
+      "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
+      "buyer": "Small teams and solo operators who need process notes without a full operations manual.",
+      "path": "templates/one-page-sop.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/one-page-sop.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/one-page-sop.html",
+      "pack_path": "packs/2026-06-02-one-page-sop/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
+      "download_page_path": "downloads/2026-06-02-one-page-sop.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
+      "download_path": "downloads/2026-06-02-one-page-sop.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.zip",
+      "seller_copy_path": "packs/2026-06-02-one-page-sop/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/seller-copy.md",
+      "cover_path": "packs/2026-06-02-one-page-sop/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "listing-photo-checklist",
+      "id": "daily-autodigital-shelf:2026-06-01-listing-photo-checklist",
+      "date": "2026-06-01",
+      "date_label": "June 01, 2026",
+      "title": "Listing Photo Checklist",
+      "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+      "buyer": "People preparing simple listings who need better photos without hiring a photographer.",
+      "path": "templates/listing-photo-checklist.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/listing-photo-checklist.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/listing-photo-checklist.html",
+      "pack_path": "packs/2026-06-01-listing-photo-checklist/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/",
+      "download_page_path": "downloads/2026-06-01-listing-photo-checklist.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.html",
+      "download_path": "downloads/2026-06-01-listing-photo-checklist.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.zip",
+      "seller_copy_path": "packs/2026-06-01-listing-photo-checklist/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/seller-copy.md",
+      "cover_path": "packs/2026-06-01-listing-photo-checklist/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "client-intake-lite",
+      "id": "daily-autodigital-shelf:2026-05-31-client-intake-lite",
+      "date": "2026-05-31",
+      "date_label": "May 31, 2026",
+      "title": "Client Intake Lite",
+      "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+      "buyer": "Service providers who need a repeatable first-call intake without a heavy CRM.",
+      "path": "templates/client-intake-lite.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/client-intake-lite.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/client-intake-lite.html",
+      "pack_path": "packs/2026-05-31-client-intake-lite/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/",
+      "download_page_path": "downloads/2026-05-31-client-intake-lite.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
+      "download_path": "downloads/2026-05-31-client-intake-lite.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.zip",
+      "seller_copy_path": "packs/2026-05-31-client-intake-lite/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/seller-copy.md",
+      "cover_path": "packs/2026-05-31-client-intake-lite/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "home-admin",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "appointment-prep",
+      "id": "daily-autodigital-shelf:2026-05-30-appointment-prep",
+      "date": "2026-05-30",
+      "date_label": "May 30, 2026",
+      "title": "Appointment Prep Card",
+      "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
+      "buyer": "People who forget key questions or documents when appointments get stressful.",
+      "path": "templates/appointment-prep.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/appointment-prep.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/appointment-prep.html",
+      "pack_path": "packs/2026-05-30-appointment-prep/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/",
+      "download_page_path": "downloads/2026-05-30-appointment-prep.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
+      "download_path": "downloads/2026-05-30-appointment-prep.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.zip",
+      "seller_copy_path": "packs/2026-05-30-appointment-prep/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/seller-copy.md",
+      "cover_path": "packs/2026-05-30-appointment-prep/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "home-admin",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "download-folder-reset",
+      "id": "daily-autodigital-shelf:2026-05-29-download-folder-reset",
+      "date": "2026-05-29",
+      "date_label": "May 29, 2026",
+      "title": "Downloads Folder Reset",
+      "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+      "buyer": "People whose downloads folder has become a source of friction and lost files.",
+      "path": "templates/download-folder-reset.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/download-folder-reset.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/download-folder-reset.html",
+      "pack_path": "packs/2026-05-29-download-folder-reset/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/",
+      "download_page_path": "downloads/2026-05-29-download-folder-reset.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
+      "download_path": "downloads/2026-05-29-download-folder-reset.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.zip",
+      "seller_copy_path": "packs/2026-05-29-download-folder-reset/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/seller-copy.md",
+      "cover_path": "packs/2026-05-29-download-folder-reset/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "invoice-followup",
+      "id": "daily-autodigital-shelf:2026-05-28-invoice-followup",
+      "date": "2026-05-28",
+      "date_label": "May 28, 2026",
+      "title": "Invoice Follow-Up Mini Kit",
+      "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+      "buyer": "Freelancers and service providers who need a polite payment follow-up without pressure tricks.",
+      "path": "templates/invoice-followup.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/invoice-followup.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/invoice-followup.html",
+      "pack_path": "packs/2026-05-28-invoice-followup/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
+      "download_page_path": "downloads/2026-05-28-invoice-followup.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
+      "download_path": "downloads/2026-05-28-invoice-followup.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.zip",
+      "seller_copy_path": "packs/2026-05-28-invoice-followup/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/seller-copy.md",
+      "cover_path": "packs/2026-05-28-invoice-followup/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "low-energy-systems",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "simple-content-calendar",
+      "id": "daily-autodigital-shelf:2026-05-27-simple-content-calendar",
+      "date": "2026-05-27",
+      "date_label": "May 27, 2026",
+      "title": "Simple Content Calendar",
+      "summary": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+      "buyer": "People who need a content plan that does not become a second full-time job.",
+      "path": "templates/simple-content-calendar.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/simple-content-calendar.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/simple-content-calendar.html",
+      "pack_path": "packs/2026-05-27-simple-content-calendar/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/",
+      "download_page_path": "downloads/2026-05-27-simple-content-calendar.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
+      "download_path": "downloads/2026-05-27-simple-content-calendar.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.zip",
+      "seller_copy_path": "packs/2026-05-27-simple-content-calendar/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/seller-copy.md",
+      "cover_path": "packs/2026-05-27-simple-content-calendar/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "low-energy-systems",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "subscription-audit",
+      "id": "daily-autodigital-shelf:2026-05-26-subscription-audit",
+      "date": "2026-05-26",
+      "date_label": "May 26, 2026",
+      "title": "Subscription Audit Sheet",
+      "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+      "buyer": "Households and freelancers who need a clearer view of subscriptions without a finance app.",
+      "path": "templates/subscription-audit.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/subscription-audit.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/subscription-audit.html",
+      "pack_path": "packs/2026-05-26-subscription-audit/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/",
+      "download_page_path": "downloads/2026-05-26-subscription-audit.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.html",
+      "download_path": "downloads/2026-05-26-subscription-audit.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.zip",
+      "seller_copy_path": "packs/2026-05-26-subscription-audit/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/seller-copy.md",
+      "cover_path": "packs/2026-05-26-subscription-audit/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "offer-followup",
+      "id": "daily-autodigital-shelf:2026-05-25-offer-followup",
+      "date": "2026-05-25",
+      "date_label": "May 25, 2026",
+      "title": "Honest Follow-Up Draft Kit",
+      "summary": "A non-spam template sheet for following up with one real person or lead.",
+      "buyer": "Service providers who need a clear follow-up without manipulation, fake urgency, or bulk blasting.",
+      "path": "templates/offer-followup.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/offer-followup.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/offer-followup.html",
+      "pack_path": "packs/2026-05-25-offer-followup/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/",
+      "download_page_path": "downloads/2026-05-25-offer-followup.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.html",
+      "download_path": "downloads/2026-05-25-offer-followup.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.zip",
+      "seller_copy_path": "packs/2026-05-25-offer-followup/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/seller-copy.md",
+      "cover_path": "packs/2026-05-25-offer-followup/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "digital-declutter",
+      "id": "daily-autodigital-shelf:2026-05-24-digital-declutter",
+      "date": "2026-05-24",
+      "date_label": "May 24, 2026",
+      "title": "Digital Declutter Sprint",
+      "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+      "buyer": "People whose digital mess blocks useful work but who cannot handle a full cleanup marathon.",
+      "path": "templates/digital-declutter.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/digital-declutter.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/digital-declutter.html",
+      "pack_path": "packs/2026-05-24-digital-declutter/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+      "download_page_path": "downloads/2026-05-24-digital-declutter.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
+      "download_path": "downloads/2026-05-24-digital-declutter.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.zip",
+      "seller_copy_path": "packs/2026-05-24-digital-declutter/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/seller-copy.md",
+      "cover_path": "packs/2026-05-24-digital-declutter/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "low-energy-systems",
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "micro-budget",
+      "id": "daily-autodigital-shelf:2026-05-23-micro-budget",
+      "date": "2026-05-23",
+      "date_label": "May 23, 2026",
+      "title": "Micro Budget Reset",
+      "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+      "buyer": "Solo households and freelancers who need a short money picture without a complex finance app.",
+      "path": "templates/micro-budget.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/micro-budget.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/micro-budget.html",
+      "pack_path": "packs/2026-05-23-micro-budget/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/",
+      "download_page_path": "downloads/2026-05-23-micro-budget.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
+      "download_path": "downloads/2026-05-23-micro-budget.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.zip",
+      "seller_copy_path": "packs/2026-05-23-micro-budget/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/seller-copy.md",
+      "cover_path": "packs/2026-05-23-micro-budget/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "home-inventory",
+      "id": "daily-autodigital-shelf:2026-05-22-home-inventory",
+      "date": "2026-05-22",
+      "date_label": "May 22, 2026",
+      "title": "Tiny Home Inventory Pack",
+      "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+      "buyer": "People who need a simple physical inventory without a full spreadsheet system.",
+      "path": "templates/home-inventory.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/home-inventory.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/home-inventory.html",
+      "pack_path": "packs/2026-05-22-home-inventory/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/",
+      "download_page_path": "downloads/2026-05-22-home-inventory.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.html",
+      "download_path": "downloads/2026-05-22-home-inventory.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.zip",
+      "seller_copy_path": "packs/2026-05-22-home-inventory/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/seller-copy.md",
+      "cover_path": "packs/2026-05-22-home-inventory/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "low-energy-week",
+      "id": "daily-autodigital-shelf:2026-05-21-low-energy-week",
+      "date": "2026-05-21",
+      "date_label": "May 21, 2026",
+      "title": "Low-Energy Week Planner",
+      "summary": "A gentle planning sheet for weeks where consistency matters more than intensity.",
+      "buyer": "Disabled and neurodivergent workers who need low-friction planning without motivational noise.",
+      "path": "templates/low-energy-week.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/low-energy-week.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/low-energy-week.html",
+      "pack_path": "packs/2026-05-21-low-energy-week/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/",
+      "download_page_path": "downloads/2026-05-21-low-energy-week.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.html",
+      "download_path": "downloads/2026-05-21-low-energy-week.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.zip",
+      "seller_copy_path": "packs/2026-05-21-low-energy-week/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/seller-copy.md",
+      "cover_path": "packs/2026-05-21-low-energy-week/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "low-energy-systems",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "receipt-runner",
+      "id": "daily-autodigital-shelf:2026-05-20-receipt-runner",
+      "date": "2026-05-20",
+      "date_label": "May 20, 2026",
+      "title": "Receipt Runner Ledger Pack",
+      "summary": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
+      "buyer": "People who lose progress in scattered notes and need a visible record of what changed.",
+      "path": "templates/receipt-runner.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/receipt-runner.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/receipt-runner.html",
+      "pack_path": "packs/2026-05-20-receipt-runner/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/",
+      "download_page_path": "downloads/2026-05-20-receipt-runner.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
+      "download_path": "downloads/2026-05-20-receipt-runner.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.zip",
+      "seller_copy_path": "packs/2026-05-20-receipt-runner/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/seller-copy.md",
+      "cover_path": "packs/2026-05-20-receipt-runner/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "calm-launch",
+      "id": "daily-autodigital-shelf:2026-05-19-calm-launch",
+      "date": "2026-05-19",
+      "date_label": "May 19, 2026",
+      "title": "Calm Launch One-Page Kit",
+      "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+      "buyer": "Creators, solo operators, and small service shops with an idea that keeps staying unfinished.",
+      "path": "templates/calm-launch.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/calm-launch.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/calm-launch.html",
+      "pack_path": "packs/2026-05-19-calm-launch/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/",
+      "download_page_path": "downloads/2026-05-19-calm-launch.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
+      "download_path": "downloads/2026-05-19-calm-launch.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.zip",
+      "seller_copy_path": "packs/2026-05-19-calm-launch/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/seller-copy.md",
+      "cover_path": "packs/2026-05-19-calm-launch/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "low-energy-systems",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "landing-page-copy",
+      "id": "daily-autodigital-shelf:2026-05-18-landing-page-copy",
+      "date": "2026-05-18",
+      "date_label": "May 18, 2026",
+      "title": "Landing Page Copy Blocks",
+      "summary": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
+      "buyer": "Small operators who need usable page copy before a designer or builder gets involved.",
+      "path": "templates/landing-page-copy.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/landing-page-copy.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/landing-page-copy.html",
+      "pack_path": "packs/2026-05-18-landing-page-copy/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/",
+      "download_page_path": "downloads/2026-05-18-landing-page-copy.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.html",
+      "download_path": "downloads/2026-05-18-landing-page-copy.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.zip",
+      "seller_copy_path": "packs/2026-05-18-landing-page-copy/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/seller-copy.md",
+      "cover_path": "packs/2026-05-18-landing-page-copy/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "renewal-reminder",
+      "id": "daily-autodigital-shelf:2026-05-17-renewal-reminder",
+      "date": "2026-05-17",
+      "date_label": "May 17, 2026",
+      "title": "Renewal Reminder Sheet",
+      "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+      "buyer": "People who need renewal dates visible before they become urgent surprises.",
+      "path": "templates/renewal-reminder.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/renewal-reminder.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/renewal-reminder.html",
+      "pack_path": "packs/2026-05-17-renewal-reminder/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/",
+      "download_page_path": "downloads/2026-05-17-renewal-reminder.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
+      "download_path": "downloads/2026-05-17-renewal-reminder.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.zip",
+      "seller_copy_path": "packs/2026-05-17-renewal-reminder/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/seller-copy.md",
+      "cover_path": "packs/2026-05-17-renewal-reminder/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "home-admin",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "link-in-bio-audit",
+      "id": "daily-autodigital-shelf:2026-05-16-link-in-bio-audit",
+      "date": "2026-05-16",
+      "date_label": "May 16, 2026",
+      "title": "Link-in-Bio Audit",
+      "summary": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
+      "buyer": "Creators and small sellers whose public links do not clearly route visitors.",
+      "path": "templates/link-in-bio-audit.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/link-in-bio-audit.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/link-in-bio-audit.html",
+      "pack_path": "packs/2026-05-16-link-in-bio-audit/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/",
+      "download_page_path": "downloads/2026-05-16-link-in-bio-audit.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.html",
+      "download_path": "downloads/2026-05-16-link-in-bio-audit.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.zip",
+      "seller_copy_path": "packs/2026-05-16-link-in-bio-audit/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/seller-copy.md",
+      "cover_path": "packs/2026-05-16-link-in-bio-audit/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "focus-menu",
+      "id": "daily-autodigital-shelf:2026-05-15-focus-menu",
+      "date": "2026-05-15",
+      "date_label": "May 15, 2026",
+      "title": "Focus Menu Builder",
+      "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+      "buyer": "People who need usable work choices that adapt to uneven energy.",
+      "path": "templates/focus-menu.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/focus-menu.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/focus-menu.html",
+      "pack_path": "packs/2026-05-15-focus-menu/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/",
+      "download_page_path": "downloads/2026-05-15-focus-menu.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.html",
+      "download_path": "downloads/2026-05-15-focus-menu.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.zip",
+      "seller_copy_path": "packs/2026-05-15-focus-menu/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/seller-copy.md",
+      "cover_path": "packs/2026-05-15-focus-menu/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "low-energy-systems",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "store-import-prep",
+      "id": "daily-autodigital-shelf:2026-05-14-store-import-prep",
+      "date": "2026-05-14",
+      "date_label": "May 14, 2026",
+      "title": "Store Import Prep Sheet",
+      "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+      "buyer": "Digital sellers preparing listings for Payhip, Gumroad, Etsy-style shops, or similar platforms.",
+      "path": "templates/store-import-prep.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/store-import-prep.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/store-import-prep.html",
+      "pack_path": "packs/2026-05-14-store-import-prep/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/",
+      "download_page_path": "downloads/2026-05-14-store-import-prep.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.html",
+      "download_path": "downloads/2026-05-14-store-import-prep.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.zip",
+      "seller_copy_path": "packs/2026-05-14-store-import-prep/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/seller-copy.md",
+      "cover_path": "packs/2026-05-14-store-import-prep/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "two-hour-workblock",
+      "id": "daily-autodigital-shelf:2026-05-13-two-hour-workblock",
+      "date": "2026-05-13",
+      "date_label": "May 13, 2026",
+      "title": "Two-Hour Workblock Planner",
+      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+      "buyer": "People who need a bounded work session that does not expand into the whole day.",
+      "path": "templates/two-hour-workblock.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/two-hour-workblock.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/two-hour-workblock.html",
+      "pack_path": "packs/2026-05-13-two-hour-workblock/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/",
+      "download_page_path": "downloads/2026-05-13-two-hour-workblock.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.html",
+      "download_path": "downloads/2026-05-13-two-hour-workblock.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.zip",
+      "seller_copy_path": "packs/2026-05-13-two-hour-workblock/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/seller-copy.md",
+      "cover_path": "packs/2026-05-13-two-hour-workblock/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "low-energy-systems",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "simple-order-form",
+      "id": "daily-autodigital-shelf:2026-05-12-simple-order-form",
+      "date": "2026-05-12",
+      "date_label": "May 12, 2026",
+      "title": "Simple Order Form Draft",
+      "summary": "A draft sheet for designing a small order or request form before building it online.",
+      "buyer": "Small sellers and service providers who need a clear order form before platform setup.",
+      "path": "templates/simple-order-form.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/simple-order-form.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/simple-order-form.html",
+      "pack_path": "packs/2026-05-12-simple-order-form/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
+      "download_page_path": "downloads/2026-05-12-simple-order-form.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.html",
+      "download_path": "downloads/2026-05-12-simple-order-form.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-12-simple-order-form.zip",
+      "seller_copy_path": "packs/2026-05-12-simple-order-form/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/seller-copy.md",
+      "cover_path": "packs/2026-05-12-simple-order-form/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-12-simple-order-form/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "daily-proof-log",
+      "id": "daily-autodigital-shelf:2026-05-11-daily-proof-log",
+      "date": "2026-05-11",
+      "date_label": "May 11, 2026",
+      "title": "Daily Proof Log",
+      "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+      "buyer": "Solo workers who need evidence of progress for themselves, clients, or future handoff.",
+      "path": "templates/daily-proof-log.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/daily-proof-log.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/daily-proof-log.html",
+      "pack_path": "packs/2026-05-11-daily-proof-log/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
+      "download_page_path": "downloads/2026-05-11-daily-proof-log.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.html",
+      "download_path": "downloads/2026-05-11-daily-proof-log.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-11-daily-proof-log.zip",
+      "seller_copy_path": "packs/2026-05-11-daily-proof-log/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/seller-copy.md",
+      "cover_path": "packs/2026-05-11-daily-proof-log/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-11-daily-proof-log/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "home-admin",
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "project-rescue-map",
+      "id": "daily-autodigital-shelf:2026-05-10-project-rescue-map",
+      "date": "2026-05-10",
+      "date_label": "May 10, 2026",
+      "title": "Project Rescue Map",
+      "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+      "buyer": "Builders and operators who need to recover a project without starting over.",
+      "path": "templates/project-rescue-map.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/project-rescue-map.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/project-rescue-map.html",
+      "pack_path": "packs/2026-05-10-project-rescue-map/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
+      "download_page_path": "downloads/2026-05-10-project-rescue-map.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.html",
+      "download_path": "downloads/2026-05-10-project-rescue-map.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-10-project-rescue-map.zip",
+      "seller_copy_path": "packs/2026-05-10-project-rescue-map/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/seller-copy.md",
+      "cover_path": "packs/2026-05-10-project-rescue-map/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-10-project-rescue-map/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "email-triage",
+      "id": "daily-autodigital-shelf:2026-05-09-email-triage",
+      "date": "2026-05-09",
+      "date_label": "May 09, 2026",
+      "title": "Email Triage Sprint",
+      "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+      "buyer": "People who avoid inboxes because every message feels equally urgent.",
+      "path": "templates/email-triage.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/email-triage.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/email-triage.html",
+      "pack_path": "packs/2026-05-09-email-triage/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
+      "download_page_path": "downloads/2026-05-09-email-triage.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.html",
+      "download_path": "downloads/2026-05-09-email-triage.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-09-email-triage.zip",
+      "seller_copy_path": "packs/2026-05-09-email-triage/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/seller-copy.md",
+      "cover_path": "packs/2026-05-09-email-triage/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-09-email-triage/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    },
+    {
+      "slug": "decision-parking-lot",
+      "id": "daily-autodigital-shelf:2026-05-08-decision-parking-lot",
+      "date": "2026-05-08",
+      "date_label": "May 08, 2026",
+      "title": "Decision Parking Lot",
+      "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+      "buyer": "People who get pulled away by unresolved choices and need a simple holding place.",
+      "path": "templates/decision-parking-lot.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/decision-parking-lot.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/decision-parking-lot.html",
+      "pack_path": "packs/2026-05-08-decision-parking-lot/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/",
+      "download_page_path": "downloads/2026-05-08-decision-parking-lot.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.html",
+      "download_path": "downloads/2026-05-08-decision-parking-lot.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-08-decision-parking-lot.zip",
+      "seller_copy_path": "packs/2026-05-08-decision-parking-lot/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/seller-copy.md",
+      "cover_path": "packs/2026-05-08-decision-parking-lot/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-08-decision-parking-lot/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "tiny-launch-checklist",
+      "id": "daily-autodigital-shelf:2026-05-07-tiny-launch-checklist",
+      "date": "2026-05-07",
+      "date_label": "May 07, 2026",
+      "title": "Tiny Launch Checklist",
+      "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+      "buyer": "People with useful work stuck in draft mode who need a small publish path.",
+      "path": "templates/tiny-launch-checklist.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/tiny-launch-checklist.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/tiny-launch-checklist.html",
+      "pack_path": "packs/2026-05-07-tiny-launch-checklist/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
+      "download_page_path": "downloads/2026-05-07-tiny-launch-checklist.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
+      "download_path": "downloads/2026-05-07-tiny-launch-checklist.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-07-tiny-launch-checklist.zip",
+      "seller_copy_path": "packs/2026-05-07-tiny-launch-checklist/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/seller-copy.md",
+      "cover_path": "packs/2026-05-07-tiny-launch-checklist/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-07-tiny-launch-checklist/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "micro-offer-pricing",
+      "id": "daily-autodigital-shelf:2026-05-06-micro-offer-pricing",
+      "date": "2026-05-06",
+      "date_label": "May 06, 2026",
+      "title": "Micro Offer Pricing Sheet",
+      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+      "buyer": "Creators and service providers turning a small repeatable outcome into an offer.",
+      "path": "templates/micro-offer-pricing.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/micro-offer-pricing.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/micro-offer-pricing.html",
+      "pack_path": "packs/2026-05-06-micro-offer-pricing/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
+      "download_page_path": "downloads/2026-05-06-micro-offer-pricing.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.html",
+      "download_path": "downloads/2026-05-06-micro-offer-pricing.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-06-micro-offer-pricing.zip",
+      "seller_copy_path": "packs/2026-05-06-micro-offer-pricing/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/seller-copy.md",
+      "cover_path": "packs/2026-05-06-micro-offer-pricing/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-06-micro-offer-pricing/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "small-business-ops",
+        "digital-product-prep"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html"
+      ]
+    },
+    {
+      "slug": "weekly-reset",
+      "id": "daily-autodigital-shelf:2026-05-05-weekly-reset",
+      "date": "2026-05-05",
+      "date_label": "May 05, 2026",
+      "title": "Weekly Reset Board",
+      "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+      "buyer": "Busy households and solo workers who need one visible weekly reset page.",
+      "path": "templates/weekly-reset.html",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/templates/weekly-reset.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/templates/weekly-reset.html",
+      "pack_path": "packs/2026-05-05-weekly-reset/",
+      "pack_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
+      "download_page_path": "downloads/2026-05-05-weekly-reset.html",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.html",
+      "download_path": "downloads/2026-05-05-weekly-reset.zip",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-05-weekly-reset.zip",
+      "seller_copy_path": "packs/2026-05-05-weekly-reset/seller-copy.md",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/seller-copy.md",
+      "cover_path": "packs/2026-05-05-weekly-reset/cover.svg",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/cover.svg",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-05-weekly-reset/support/go",
+      "starter_bundle_path": "bundles/starter-archive.zip",
+      "starter_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/starter-archive.zip",
+      "topic_slugs": [
+        "home-admin",
+        "digital-product-prep",
+        "cleanup-and-reset"
+      ],
+      "topic_urls": [
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
+        "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html"
+      ]
+    }
+  ]
+}
