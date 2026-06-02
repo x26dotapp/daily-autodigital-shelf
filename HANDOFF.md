@@ -13,9 +13,10 @@ Verified 2026-06-02:
 - Task: `HUMANi Daily Autodigital Shelf`, daily at 06:10 local time, last manual run result `0`
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
-- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; ZIP verified at 116,613 bytes
+- Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
+- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 118,021 bytes
 - Catalog surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `sitemap.xml`, `robots.txt`
-- Discovery: IndexNow key file live; `tools/submit_indexnow.py --all --force` submitted 28 URLs and received HTTP 202
+- Discovery: IndexNow key file live; latest `tools/submit_indexnow.py --all` submitted 26 refreshed URLs and received HTTP 200
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: not connected; public site says `Status: Not connected`
 
