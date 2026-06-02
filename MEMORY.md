@@ -73,6 +73,7 @@
 - Verified 2026-06-02: `verify-system.ps1` passed with `files_checked: 37`, `bundle_bytes: 326576`, `store_import_zip_bytes: 161610`, `support_connected: true`, and `store_connected: false`; GitHub Pages deployments for the pay funnel and handoff commits completed successfully.
 - Verified 2026-06-02: CalmSprout Worker commit `49b00c2` deployed LLM discovery routes as version `7d733d3e-4db2-4268-a618-9f1c33fbb90c`; live `/llms.txt`, `/llms-full.txt`, and `/daily-shelf/llms.txt` returned HTTP 200 text files with the branded pay route, Square support path, and checkout boundary.
 - Verified 2026-06-02: CalmSprout Worker commit `9401218` deployed bridge aliases as version `c3a3f5b4-551b-4074-95e9-a0264ff88f1c`; live `/daily-shelf/today` and `/daily-shelf/bundle` returned HTTP 200 first-party pages, `/daily-shelf/status` resolved to public `status.json` with `store_connected: false`, browser QA found no console issues, and IndexNow accepted 13 CalmSprout bridge/discovery URLs with HTTP 200.
+- Added 2026-06-02: Commit `e50f94e` (`Add support monetization metadata`) adds `support_page_url`, `pay_what_you_can_url`, `monetization_destination_type`, `monetization_destination_url`, `store_connected`, and `support_connected` to catalog/import JSON and CSV, adds public support/pay URLs to `status.json`, and adds support-mode `DonateAction` JSON-LD to generated pack pages. Pages run `26808927786` succeeded; live metadata checks passed; IndexNow accepted 8 changed shelf URLs with HTTP 200; `store_connected` remains false.
 
 ## Operator Rule
 
