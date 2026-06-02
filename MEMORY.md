@@ -344,6 +344,25 @@
   `total_support_intent_clicks: 4`. This is higher-value conversion
   infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 CalmSprout homepage bundle promotion: CalmSprout commit `0f38441`
+  (`Promote Daily Shelf bundle page`) adds a direct
+  `/daily-shelf/bundles/small-business-ops-collection.html` link to the
+  homepage Daily Shelf banner, dynamic `/daily-shelf` landing,
+  `/daily-shelf/pay`, `/daily-shelf/support`, root sitemap, `llms.txt`, and
+  `llms-full.txt`. Cloudflare Worker version
+  `d0f5beb5-a772-4e18-8228-a7f0d839ae75` is live. `node --check
+  src/worker.js`, `npm test`, `npm run build`, and `npx wrangler deploy
+  --dry-run` passed before deploy. Live HTTP QA verified homepage,
+  `/daily-shelf`, `/daily-shelf/pay`, `/daily-shelf/support`, root sitemap,
+  LLM discovery files, and the small-business bundle page return HTTP 200 and
+  expose the route where expected. Browser QA at 1280x720 and 390x844 found the
+  new link visible on the entry pages with no console errors and no horizontal
+  overflow. IndexNow accepted 356 forced CalmSprout URLs; follow-up dry run
+  returned `submit_count: 0`. No support redirect was triggered; live metrics
+  remain `total_support_intent_clicks: 4`, `support_connected: true`, and
+  `store_connected: false`. This is conversion-path infrastructure, not payment
+  or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
