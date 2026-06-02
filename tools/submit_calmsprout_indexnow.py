@@ -27,6 +27,10 @@ USER_AGENT = "daily-autodigital-shelf-calmsprout-indexnow/1.0"
 
 
 DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
+    ("/daily-shelf", "status.json"),
+    ("/daily-shelf/today", "status.json"),
+    ("/daily-shelf/today.zip", "status.json"),
+    ("/daily-shelf/current.zip", "status.json"),
     ("/daily-shelf/status", "status.json"),
     ("/daily-shelf/status.json", "status.json"),
     ("/daily-shelf/catalog", "catalog.json"),
@@ -44,8 +48,6 @@ DYNAMIC_ROUTE_SOURCES: list[tuple[str, str]] = [
 ]
 
 STATIC_ROUTE_SOURCES: list[tuple[str, str]] = [
-    ("/daily-shelf", "status.json"),
-    ("/daily-shelf/today", "status.json"),
     ("/daily-shelf/offers", "offers/index.html"),
     ("/daily-shelf/pay", "pay-what-you-can.html"),
     ("/daily-shelf/pay-what-you-can", "pay-what-you-can.html"),

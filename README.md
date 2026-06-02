@@ -68,6 +68,7 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf/offers`
 - `https://www.calmsprout.com/daily-shelf/support`
 - `https://www.calmsprout.com/daily-shelf/status`
+- `https://www.calmsprout.com/daily-shelf/today.zip`
 - `https://www.calmsprout.com/daily-shelf/catalog.json`
 - `https://www.calmsprout.com/daily-shelf/feed.xml`
 - `https://www.calmsprout.com/daily-shelf/starter.zip`
@@ -76,8 +77,8 @@ for this shelf:
 
 This improves discovery and support conversion through an existing public
 domain. It does not make CalmSprout product checkout and does not prove revenue.
-The daily run and GitHub fallback submit changed CalmSprout data/feed/archive
-routes to IndexNow after a successful shelf publish.
+The daily run and GitHub fallback submit changed CalmSprout current-pack,
+data/feed/archive routes to IndexNow after a successful shelf publish.
 
 ## Current Guardrail
 
