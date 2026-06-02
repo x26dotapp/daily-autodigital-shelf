@@ -1,0 +1,1232 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Daily Autodigital Shelf Support Funnel Feed",
+  "url": "https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json",
+  "dateModified": "2026-06-02",
+  "numberOfItems": 21,
+  "supportConnected": true,
+  "checkoutBoundary": "Product checkout is not connected. Downloads remain public and support is voluntary.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-06-02-one-page-sop",
+        "name": "One-Page SOP Builder",
+        "description": "A worksheet for documenting one repeatable task so someone else can follow it.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-06-01-listing-photo-checklist",
+        "name": "Listing Photo Checklist",
+        "description": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-31-client-intake-lite",
+        "name": "Client Intake Lite",
+        "description": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-30-appointment-prep",
+        "name": "Appointment Prep Card",
+        "description": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-29-download-folder-reset",
+        "name": "Downloads Folder Reset",
+        "description": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-28-invoice-followup",
+        "name": "Invoice Follow-Up Mini Kit",
+        "description": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-27-simple-content-calendar",
+        "name": "Simple Content Calendar",
+        "description": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-26-subscription-audit",
+        "name": "Subscription Audit Sheet",
+        "description": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-25-offer-followup",
+        "name": "Honest Follow-Up Draft Kit",
+        "description": "A non-spam template sheet for following up with one real person or lead.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-24-digital-declutter",
+        "name": "Digital Declutter Sprint",
+        "description": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-23-micro-budget",
+        "name": "Micro Budget Reset",
+        "description": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-22-home-inventory",
+        "name": "Tiny Home Inventory Pack",
+        "description": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-21-low-energy-week",
+        "name": "Low-Energy Week Planner",
+        "description": "A gentle planning sheet for weeks where consistency matters more than intensity.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-20-receipt-runner",
+        "name": "Receipt Runner Ledger Pack",
+        "description": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-19-calm-launch",
+        "name": "Calm Launch One-Page Kit",
+        "description": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-18-landing-page-copy",
+        "name": "Landing Page Copy Blocks",
+        "description": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-17-renewal-reminder",
+        "name": "Renewal Reminder Sheet",
+        "description": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-16-link-in-bio-audit",
+        "name": "Link-in-Bio Audit",
+        "description": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-15-focus-menu",
+        "name": "Focus Menu Builder",
+        "description": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-14-store-import-prep",
+        "name": "Store Import Prep Sheet",
+        "description": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-05-13-two-hour-workblock",
+        "name": "Two-Hour Workblock Planner",
+        "description": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+        "url": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock",
+        "isAccessibleForFree": true,
+        "potentialAction": [
+          {
+            "@type": "DownloadAction",
+            "target": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.html",
+            "name": "Download public pack"
+          },
+          {
+            "@type": "DonateAction",
+            "target": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support/go",
+            "name": "Support this pack",
+            "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+          }
+        ],
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/",
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support"
+        ]
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
+      "date": "2026-06-02",
+      "title": "One-Page SOP Builder",
+      "description": "A worksheet for documenting one repeatable task so someone else can follow it.",
+      "buyer": "Small teams and solo operators who need process notes without a full operations manual.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-02-one-page-sop",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-06-01-listing-photo-checklist",
+      "date": "2026-06-01",
+      "title": "Listing Photo Checklist",
+      "description": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+      "buyer": "People preparing simple listings who need better photos without hiring a photographer.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-01-listing-photo-checklist/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-01-listing-photo-checklist.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-01-listing-photo-checklist/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-01-listing-photo-checklist",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-31-client-intake-lite",
+      "date": "2026-05-31",
+      "title": "Client Intake Lite",
+      "description": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+      "buyer": "Service providers who need a repeatable first-call intake without a heavy CRM.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-31-client-intake-lite/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-31-client-intake-lite.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-31-client-intake-lite/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-31-client-intake-lite",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-30-appointment-prep",
+      "date": "2026-05-30",
+      "title": "Appointment Prep Card",
+      "description": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
+      "buyer": "People who forget key questions or documents when appointments get stressful.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-30-appointment-prep/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-30-appointment-prep.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-30-appointment-prep/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-30-appointment-prep",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-29-download-folder-reset",
+      "date": "2026-05-29",
+      "title": "Downloads Folder Reset",
+      "description": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+      "buyer": "People whose downloads folder has become a source of friction and lost files.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-29-download-folder-reset/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-29-download-folder-reset.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-29-download-folder-reset/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-29-download-folder-reset",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-28-invoice-followup",
+      "date": "2026-05-28",
+      "title": "Invoice Follow-Up Mini Kit",
+      "description": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+      "buyer": "Freelancers and service providers who need a polite payment follow-up without pressure tricks.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-28-invoice-followup",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-27-simple-content-calendar",
+      "date": "2026-05-27",
+      "title": "Simple Content Calendar",
+      "description": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+      "buyer": "People who need a content plan that does not become a second full-time job.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-27-simple-content-calendar/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-27-simple-content-calendar.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-27-simple-content-calendar/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-27-simple-content-calendar",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-26-subscription-audit",
+      "date": "2026-05-26",
+      "title": "Subscription Audit Sheet",
+      "description": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+      "buyer": "Households and freelancers who need a clearer view of subscriptions without a finance app.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-26-subscription-audit/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-26-subscription-audit.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-26-subscription-audit/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-26-subscription-audit",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-25-offer-followup",
+      "date": "2026-05-25",
+      "title": "Honest Follow-Up Draft Kit",
+      "description": "A non-spam template sheet for following up with one real person or lead.",
+      "buyer": "Service providers who need a clear follow-up without manipulation, fake urgency, or bulk blasting.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-25-offer-followup/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-25-offer-followup.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-25-offer-followup/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-25-offer-followup",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-24-digital-declutter",
+      "date": "2026-05-24",
+      "title": "Digital Declutter Sprint",
+      "description": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+      "buyer": "People whose digital mess blocks useful work but who cannot handle a full cleanup marathon.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-24-digital-declutter/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-24-digital-declutter.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-24-digital-declutter/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-24-digital-declutter",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-23-micro-budget",
+      "date": "2026-05-23",
+      "title": "Micro Budget Reset",
+      "description": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+      "buyer": "Solo households and freelancers who need a short money picture without a complex finance app.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-23-micro-budget/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-23-micro-budget.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-23-micro-budget/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-23-micro-budget",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-22-home-inventory",
+      "date": "2026-05-22",
+      "title": "Tiny Home Inventory Pack",
+      "description": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+      "buyer": "People who need a simple physical inventory without a full spreadsheet system.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-22-home-inventory/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-22-home-inventory.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-22-home-inventory/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-22-home-inventory",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-21-low-energy-week",
+      "date": "2026-05-21",
+      "title": "Low-Energy Week Planner",
+      "description": "A gentle planning sheet for weeks where consistency matters more than intensity.",
+      "buyer": "Disabled and neurodivergent workers who need low-friction planning without motivational noise.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-21-low-energy-week/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-21-low-energy-week.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-21-low-energy-week/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-21-low-energy-week",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-20-receipt-runner",
+      "date": "2026-05-20",
+      "title": "Receipt Runner Ledger Pack",
+      "description": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
+      "buyer": "People who lose progress in scattered notes and need a visible record of what changed.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-20-receipt-runner/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-20-receipt-runner.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-20-receipt-runner/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-20-receipt-runner",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-19-calm-launch",
+      "date": "2026-05-19",
+      "title": "Calm Launch One-Page Kit",
+      "description": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+      "buyer": "Creators, solo operators, and small service shops with an idea that keeps staying unfinished.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-19-calm-launch/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-19-calm-launch.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-19-calm-launch/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-19-calm-launch",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-18-landing-page-copy",
+      "date": "2026-05-18",
+      "title": "Landing Page Copy Blocks",
+      "description": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
+      "buyer": "Small operators who need usable page copy before a designer or builder gets involved.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-18-landing-page-copy/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-18-landing-page-copy.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-18-landing-page-copy/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-18-landing-page-copy",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-17-renewal-reminder",
+      "date": "2026-05-17",
+      "title": "Renewal Reminder Sheet",
+      "description": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+      "buyer": "People who need renewal dates visible before they become urgent surprises.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-17-renewal-reminder/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-17-renewal-reminder.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-17-renewal-reminder/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-17-renewal-reminder",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-16-link-in-bio-audit",
+      "date": "2026-05-16",
+      "title": "Link-in-Bio Audit",
+      "description": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
+      "buyer": "Creators and small sellers whose public links do not clearly route visitors.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-16-link-in-bio-audit/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-16-link-in-bio-audit.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-16-link-in-bio-audit/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-16-link-in-bio-audit",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-15-focus-menu",
+      "date": "2026-05-15",
+      "title": "Focus Menu Builder",
+      "description": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+      "buyer": "People who need usable work choices that adapt to uneven energy.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-15-focus-menu/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-15-focus-menu.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-15-focus-menu/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-15-focus-menu",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-14-store-import-prep",
+      "date": "2026-05-14",
+      "title": "Store Import Prep Sheet",
+      "description": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+      "buyer": "Digital sellers preparing listings for Payhip, Gumroad, Etsy-style shops, or similar platforms.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-14-store-import-prep/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-14-store-import-prep.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-14-store-import-prep/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-14-store-import-prep",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    },
+    {
+      "id": "daily-autodigital-shelf:2026-05-13-two-hour-workblock",
+      "date": "2026-05-13",
+      "title": "Two-Hour Workblock Planner",
+      "description": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+      "buyer": "People who need a bounded work session that does not expand into the whole day.",
+      "product_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-13-two-hour-workblock.zip",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-13-two-hour-workblock/support/go",
+      "public_support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "external_support_destination": "https://gift.calmsprout.com",
+      "utm_source": "calmsprout",
+      "utm_medium": "daily_shelf",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-13-two-hour-workblock",
+      "suggested_support_tiers": "$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.",
+      "support_connected": true,
+      "store_connected": false,
+      "fulfillment": "public digital download with voluntary external support",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary."
+    }
+  ]
+}

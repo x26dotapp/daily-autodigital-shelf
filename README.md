@@ -48,6 +48,7 @@ The site also publishes:
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows
 - `product-feed.json`, `product-feed.xml`, and `product-feed.csv` for machine-readable public product/download/support metadata
+- `support-funnel.json`, `support-funnel.xml`, and `support-funnel.csv` for machine-readable download-to-support conversion metadata
 - `feed.json`, `feed.xml`, `atom.xml`, `llms.txt`, `llms-full.txt`,
   `sitemap.xml`, and `robots.txt` for search/AI discoverability
 - an IndexNow key file so changed URLs can be submitted to participating search engines
@@ -78,6 +79,9 @@ for this shelf:
 - `https://www.calmsprout.com/daily-shelf/product-feed.json`
 - `https://www.calmsprout.com/daily-shelf/product-feed.xml`
 - `https://www.calmsprout.com/daily-shelf/product-feed.csv`
+- `https://www.calmsprout.com/daily-shelf/support-funnel.json`
+- `https://www.calmsprout.com/daily-shelf/support-funnel.xml`
+- `https://www.calmsprout.com/daily-shelf/support-funnel.csv`
 - `https://www.calmsprout.com/daily-shelf/feed.xml`
 - `https://www.calmsprout.com/daily-shelf/starter.zip`
 - `https://www.calmsprout.com/sitemap.xml`

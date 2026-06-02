@@ -15,6 +15,9 @@
 - Product Feed JSON: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json
 - Product Feed XML: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.xml
 - Product Feed CSV: https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.csv
+- Support Funnel JSON: https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json
+- Support Funnel XML: https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.xml
+- Support Funnel CSV: https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.csv
 - RSS: https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml
 - Atom: https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml
 

@@ -112,6 +112,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "catalog.csv",
             "catalog.json",
             "product-feed.json",
+            "support-funnel.json",
             download_page_rel,
         ],
     )
@@ -180,14 +181,20 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "product-feed.json", [manifest["title"], "download_page_url", "branded_support_intent_url", "Product checkout is not connected", "DonateAction", "Offer"])
     require_contains(DOCS / "product-feed.xml", ["<productFeed>", "<product>", manifest["title"], "<downloadPageUrl>", "<brandedSupportIntentUrl>", "Product checkout is not connected"])
     require_contains(DOCS / "product-feed.csv", ["download_page_url", "branded_support_intent_url", "checkout_boundary", manifest["title"]])
+    support_funnel = read_json(DOCS / "support-funnel.json")
+    if int(support_funnel.get("numberOfItems") or 0) < min_pack_count:
+        fail(f"support-funnel.json item count is {support_funnel.get('numberOfItems')}, expected at least {min_pack_count}")
+    require_contains(DOCS / "support-funnel.json", [manifest["title"], "DownloadAction", "DonateAction", "branded_support_intent_url", "utm_campaign", "product_support", "suggested_support_tiers", "Product checkout is not connected"])
+    require_contains(DOCS / "support-funnel.xml", ["<supportFunnelFeed>", "<supportFunnel>", manifest["title"], "<brandedSupportIntentUrl>", "<utmCampaign>product_support</utmCampaign>", "Product checkout is not connected"])
+    require_contains(DOCS / "support-funnel.csv", ["branded_support_intent_url", "utm_campaign", "suggested_support_tiers", "checkout_boundary", manifest["title"]])
     require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Topics", "Offers", "Support", "Policies", "Import kit", "Catalog CSV", "Download page", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Download page", "Topics", "Offers", "Support", "Policies", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "support.html", ["Support this shelf", "Download starter bundle", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "pay-what-you-can.html", ["Pay what you can", "Download starter ZIP", "Suggested support", "Simple levels", "This is not product checkout", "WebPage", "og:image", "twitter:card"])
     require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Offers", "Support", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "download_page_url", "preview_url", "price_hint", "support_page_url", "pay_what_you_can_url", "branded_product_url", "branded_support_url", "branded_support_intent_url", "monetization_destination_url", "topic_urls", manifest["title"]])
-    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Product checkout is not connected"])
-    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Machine-Readable Files", "status.json"])
+    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Product checkout is not connected"])
+    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Machine-Readable Files", "status.json"])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
     if len(import_json.get("items", [])) < min_pack_count:
         fail(f"store-listings.json item count is {len(import_json.get('items', []))}, expected at least {min_pack_count}")
@@ -261,6 +268,9 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         for suffix in ["product-feed.json", "product-feed.xml", "product-feed.csv"]:
             if not any(name.endswith(suffix) for name in names):
                 fail(f"Store import kit ZIP missing {suffix}")
+        for suffix in ["support-funnel.json", "support-funnel.xml", "support-funnel.csv"]:
+            if not any(name.endswith(suffix) for name in names):
+                fail(f"Store import kit ZIP missing {suffix}")
     bundle_path = DOCS / "bundles" / "starter-archive.zip"
     require_file(bundle_path, max(12000, min_pack_count * 900))
     with zipfile.ZipFile(bundle_path) as bundle:
@@ -297,19 +307,19 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if needle not in starter_support_text:
                 fail(f"Starter bundle SUPPORT.txt missing {needle}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "llms.txt", "llms-full.txt"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", "offers/", "offers/offers.json", "topics/", "topics/topics.json", "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "sitemap.xml", [download_page_url])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
-        ["bundles/starter-archive.zip", "imports/store-upload-kit.zip", "product-feed.json", "product-feed.xml", "product-feed.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
+        ["bundles/starter-archive.zip", "imports/store-upload-kit.zip", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "download_url", "download_page_url"],
     )
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
@@ -415,6 +425,12 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json missing product feed paths")
     if int(status.get("product_feed_count") or 0) < min_pack_count:
         fail(f"status.json product_feed_count is {status.get('product_feed_count')}, expected at least {min_pack_count}")
+    if not status.get("support_funnel_ready"):
+        fail("status.json reports support_funnel_ready=false")
+    if status.get("support_funnel_json") != "support-funnel.json" or status.get("support_funnel_xml") != "support-funnel.xml" or status.get("support_funnel_csv") != "support-funnel.csv":
+        fail("status.json missing support funnel feed paths")
+    if int(status.get("support_funnel_count") or 0) < min_pack_count:
+        fail(f"status.json support_funnel_count is {status.get('support_funnel_count')}, expected at least {min_pack_count}")
     if not status.get("store_import_ready"):
         fail("status.json reports store_import_ready=false")
     if int(status.get("store_import_count") or 0) < min_pack_count:
@@ -471,7 +487,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "store_import_zip_bytes": import_zip_path.stat().st_size,
         "topic_page_count": int(status.get("topic_page_count") or 0),
         "policy_page_count": int(status.get("policy_page_count") or 0),
-        "files_checked": 43,
+        "files_checked": 46,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),

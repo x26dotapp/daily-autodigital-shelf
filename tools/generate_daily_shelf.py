@@ -1764,6 +1764,9 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
             "product-feed.json",
             "product-feed.xml",
             "product-feed.csv",
+            "support-funnel.json",
+            "support-funnel.xml",
+            "support-funnel.csv",
             *policy_paths,
         ]:
             source = DOCS / rel_path
@@ -2638,6 +2641,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
   <link rel="alternate" type="application/feed+json" title="{esc(config["site"]["name"])} feed" href="./feed.json">
   <link rel="alternate" type="application/rss+xml" title="{esc(config["site"]["name"])} RSS" href="./feed.xml">
   <link rel="alternate" type="application/atom+xml" title="{esc(config["site"]["name"])} Atom" href="./atom.xml">
+  <link rel="alternate" type="application/json" title="{esc(config["site"]["name"])} support funnel feed" href="./support-funnel.json">
   <link rel="alternate" type="text/plain" title="{esc(config["site"]["name"])} AI summary" href="./llms.txt">
   <link rel="sitemap" type="application/xml" href="./sitemap.xml">
 {social_meta(config["site"]["name"], config["site"]["tagline"], home_url, today_cover_url, f"{today_pack['title']} cover")}
@@ -2718,7 +2722,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./offers/">Offers</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a> · <a href="./product-feed.json">Product feed</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> · <a href="./topics/">Topics</a> · <a href="./offers/">Offers</a> · <a href="./{esc(bundle_page_path)}">Starter bundle</a> · <a href="./support.html">Support</a> · <a href="./store-import.html">Import kit</a> · <a href="./terms.html">Policies</a> · <a href="./catalog.csv">Catalog CSV</a> · <a href="./catalog.json">Catalog JSON</a> · <a href="./product-feed.json">Product feed</a> · <a href="./support-funnel.json">Support funnel feed</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -3147,6 +3151,184 @@ def render_product_feed(config: dict[str, Any]) -> dict[str, Any]:
         "fulfillment",
         "checkout_boundary",
         "tags",
+    ]
+    with (DOCS / csv_rel_path).open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+    return {
+        "ready": True,
+        "json_path": json_rel_path,
+        "xml_path": xml_rel_path,
+        "csv_path": csv_rel_path,
+        "count": len(rows),
+    }
+
+
+def render_support_funnel_feed(config: dict[str, Any]) -> dict[str, Any]:
+    manifests = read_manifests()
+    monetization = config["monetization"]
+    store_connected = bool(str(monetization.get("store_url") or ""))
+    support_url = str(monetization.get("support_url") or "").strip()
+    support_connected = bool(support_url)
+    checkout_boundary = (
+        "Product checkout is connected through the configured external store."
+        if store_connected
+        else "Product checkout is not connected. Downloads remain public and support is voluntary."
+    )
+    tier_summary = " | ".join(
+        f"{tier['amount']} {tier['label']}: {tier['description']}"
+        for tier in support_tiers(config)
+    )
+    generated_from = manifests[0]["date"] if manifests else "2026-01-01"
+    rows: list[dict[str, Any]] = []
+    for item in manifests:
+        branded_urls = branded_product_urls(config, item)
+        slug = pack_slug_from_manifest(item)
+        rows.append(
+            {
+                "id": item["id"],
+                "date": item["date"],
+                "title": item["title"],
+                "description": item["summary"],
+                "buyer": item.get("buyer", ""),
+                "product_url": pack_url(config, item["path"]),
+                "download_page_url": pack_url(config, pack_download_page_path(item)),
+                "download_url": pack_url(config, pack_download_path(item)),
+                "branded_product_url": branded_urls["branded_product_url"],
+                "branded_support_url": branded_urls["branded_support_url"],
+                "branded_support_intent_url": branded_urls["branded_support_intent_url"],
+                "public_support_page_url": pack_url(config, "support.html"),
+                "pay_what_you_can_url": pack_url(config, "pay-what-you-can.html"),
+                "external_support_destination": support_url,
+                "utm_source": "calmsprout",
+                "utm_medium": "daily_shelf",
+                "utm_campaign": "product_support",
+                "utm_content": slug,
+                "suggested_support_tiers": tier_summary,
+                "support_connected": support_connected,
+                "store_connected": store_connected,
+                "fulfillment": "public digital download with voluntary external support",
+                "checkout_boundary": checkout_boundary,
+            }
+        )
+
+    json_rel_path = "support-funnel.json"
+    xml_rel_path = "support-funnel.xml"
+    csv_rel_path = "support-funnel.csv"
+    feed_url = pack_url(config, json_rel_path)
+    feed = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": f"{config['site']['name']} Support Funnel Feed",
+        "url": feed_url,
+        "dateModified": generated_from,
+        "numberOfItems": len(rows),
+        "supportConnected": support_connected,
+        "checkoutBoundary": checkout_boundary,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": ["CreativeWork", "Product"],
+                    "identifier": row["id"],
+                    "name": row["title"],
+                    "description": row["description"],
+                    "url": row["branded_product_url"],
+                    "isAccessibleForFree": True,
+                    "potentialAction": [
+                        {
+                            "@type": "DownloadAction",
+                            "target": row["download_page_url"],
+                            "name": "Download public pack",
+                        },
+                        {
+                            "@type": "DonateAction",
+                            "target": row["branded_support_intent_url"],
+                            "name": "Support this pack",
+                            "description": checkout_boundary,
+                        },
+                    ],
+                    "sameAs": [
+                        row["product_url"],
+                        row["download_page_url"],
+                        row["branded_support_url"],
+                    ],
+                },
+            }
+            for index, row in enumerate(rows)
+        ],
+        "items": rows,
+    }
+    (DOCS / json_rel_path).write_text(json.dumps(feed, indent=2), encoding="utf-8")
+
+    xml_rows = "\n".join(
+        f"""  <supportFunnel>
+    <id>{esc(row["id"])}</id>
+    <date>{esc(row["date"])}</date>
+    <title>{esc(row["title"])}</title>
+    <description>{esc(row["description"])}</description>
+    <buyer>{esc(row["buyer"])}</buyer>
+    <productUrl>{esc(row["product_url"])}</productUrl>
+    <downloadPageUrl>{esc(row["download_page_url"])}</downloadPageUrl>
+    <downloadUrl>{esc(row["download_url"])}</downloadUrl>
+    <brandedProductUrl>{esc(row["branded_product_url"])}</brandedProductUrl>
+    <brandedSupportUrl>{esc(row["branded_support_url"])}</brandedSupportUrl>
+    <brandedSupportIntentUrl>{esc(row["branded_support_intent_url"])}</brandedSupportIntentUrl>
+    <publicSupportPageUrl>{esc(row["public_support_page_url"])}</publicSupportPageUrl>
+    <payWhatYouCanUrl>{esc(row["pay_what_you_can_url"])}</payWhatYouCanUrl>
+    <externalSupportDestination>{esc(row["external_support_destination"])}</externalSupportDestination>
+    <utmSource>{esc(row["utm_source"])}</utmSource>
+    <utmMedium>{esc(row["utm_medium"])}</utmMedium>
+    <utmCampaign>{esc(row["utm_campaign"])}</utmCampaign>
+    <utmContent>{esc(row["utm_content"])}</utmContent>
+    <suggestedSupportTiers>{esc(row["suggested_support_tiers"])}</suggestedSupportTiers>
+    <supportConnected>{str(row["support_connected"]).lower()}</supportConnected>
+    <storeConnected>{str(row["store_connected"]).lower()}</storeConnected>
+    <fulfillment>{esc(row["fulfillment"])}</fulfillment>
+    <checkoutBoundary>{esc(row["checkout_boundary"])}</checkoutBoundary>
+  </supportFunnel>"""
+        for row in rows
+    )
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<supportFunnelFeed>
+  <name>{esc(config["site"]["name"])} Support Funnel Feed</name>
+  <url>{esc(feed_url)}</url>
+  <dateModified>{esc(generated_from)}</dateModified>
+  <numberOfItems>{len(rows)}</numberOfItems>
+  <supportConnected>{str(support_connected).lower()}</supportConnected>
+  <checkoutBoundary>{esc(checkout_boundary)}</checkoutBoundary>
+{xml_rows}
+</supportFunnelFeed>
+"""
+    (DOCS / xml_rel_path).write_text(xml, encoding="utf-8")
+
+    fieldnames = [
+        "id",
+        "date",
+        "title",
+        "description",
+        "buyer",
+        "product_url",
+        "download_page_url",
+        "download_url",
+        "branded_product_url",
+        "branded_support_url",
+        "branded_support_intent_url",
+        "public_support_page_url",
+        "pay_what_you_can_url",
+        "external_support_destination",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "suggested_support_tiers",
+        "support_connected",
+        "store_connected",
+        "fulfillment",
+        "checkout_boundary",
     ]
     with (DOCS / csv_rel_path).open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
@@ -3673,6 +3855,9 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Product Feed JSON: {pack_url(config, 'product-feed.json')}",
             f"- Product Feed XML: {pack_url(config, 'product-feed.xml')}",
             f"- Product Feed CSV: {pack_url(config, 'product-feed.csv')}",
+            f"- Support Funnel JSON: {pack_url(config, 'support-funnel.json')}",
+            f"- Support Funnel XML: {pack_url(config, 'support-funnel.xml')}",
+            f"- Support Funnel CSV: {pack_url(config, 'support-funnel.csv')}",
             f"- RSS: {pack_url(config, 'feed.xml')}",
             f"- Atom: {pack_url(config, 'atom.xml')}",
             "",
@@ -3725,6 +3910,9 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             f"- Product Feed JSON: {pack_url(config, 'product-feed.json')}",
             f"- Product Feed XML: {pack_url(config, 'product-feed.xml')}",
             f"- Product Feed CSV: {pack_url(config, 'product-feed.csv')}",
+            f"- Support Funnel JSON: {pack_url(config, 'support-funnel.json')}",
+            f"- Support Funnel XML: {pack_url(config, 'support-funnel.xml')}",
+            f"- Support Funnel CSV: {pack_url(config, 'support-funnel.csv')}",
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
             f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Store listings JSON: {pack_url(config, 'imports/store-listings.json')}",
@@ -3764,6 +3952,9 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, "product-feed.json"),
         pack_url(config, "product-feed.xml"),
         pack_url(config, "product-feed.csv"),
+        pack_url(config, "support-funnel.json"),
+        pack_url(config, "support-funnel.xml"),
+        pack_url(config, "support-funnel.csv"),
         pack_url(config, "topics/topics.json"),
         pack_url(config, "imports/store-listings.csv"),
         pack_url(config, "imports/store-listings.json"),
@@ -3850,6 +4041,7 @@ def write_status(
     downloads: dict[str, Any],
     feeds: dict[str, Any],
     product_feed: dict[str, Any],
+    support_funnel: dict[str, Any],
     import_kit: dict[str, Any],
     topics: dict[str, Any],
     policies: dict[str, Any],
@@ -3894,6 +4086,11 @@ def write_status(
         "product_feed_xml": product_feed.get("xml_path", "product-feed.xml"),
         "product_feed_csv": product_feed.get("csv_path", "product-feed.csv"),
         "product_feed_count": int(product_feed.get("count", 0)),
+        "support_funnel_ready": bool(support_funnel.get("ready")),
+        "support_funnel_json": support_funnel.get("json_path", "support-funnel.json"),
+        "support_funnel_xml": support_funnel.get("xml_path", "support-funnel.xml"),
+        "support_funnel_csv": support_funnel.get("csv_path", "support-funnel.csv"),
+        "support_funnel_count": int(support_funnel.get("count", 0)),
         "bundle_ready": bool(bundle.get("pack_count")),
         "bundle_path": bundle.get("zip_path", "bundles/starter-archive.zip"),
         "bundle_page": bundle.get("page_path", "starter-bundle.html"),
@@ -3988,6 +4185,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     feeds = render_feed(config)
     render_catalog(config)
     product_feed = render_product_feed(config)
+    support_funnel = render_support_funnel_feed(config)
     render_archive(config)
     topics = render_topic_pages(config)
     policies = render_policy_pages(config)
@@ -4009,6 +4207,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         downloads,
         feeds,
         product_feed,
+        support_funnel,
         import_kit,
         topics,
         policies,
