@@ -2402,6 +2402,10 @@ def choose_support_signal_promotion(
     }
 
 
+def signal_promotion_url(item: dict[str, Any]) -> str:
+    return str(item.get("promotion_url") or item.get("branded_url") or item.get("public_url") or "")
+
+
 def support_signal_card_markup(signal: dict[str, Any], prefix: str = "./") -> str:
     promoted = signal.get("promoted") if isinstance(signal.get("promoted"), dict) else {}
     if not promoted:
@@ -2411,7 +2415,7 @@ def support_signal_card_markup(signal: dict[str, Any], prefix: str = "./") -> st
     clicks = safe_count(promoted.get("support_intent_clicks"))
     downloads = safe_count(promoted.get("download_interest"))
     score = safe_count(promoted.get("signal_score"))
-    public_url = str(promoted.get("public_url") or promoted.get("branded_url") or "")
+    public_url = signal_promotion_url(promoted)
     support_url = str(promoted.get("support_intent_url") or "")
     report_path = f"{prefix}{SUPPORT_SIGNAL_PAGE_PATH}"
     public_cta = f"""<a class="button primary" href="{esc(public_url)}">Open promoted item</a>""" if public_url else ""
@@ -2438,6 +2442,8 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
     products = product_signal_records(config, metrics, download_metrics, manifests)
     collections = collection_signal_records(config, metrics, download_metrics)
     promoted = choose_support_signal_promotion(today_pack, products, collections)
+    if promoted:
+        promoted = {**promoted, "promotion_url": signal_promotion_url(promoted)}
     support_url = str(config["monetization"].get("support_url") or "").strip()
     store_url = str(config["monetization"].get("store_url") or "").strip()
     generated_at = dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat()
@@ -2511,7 +2517,7 @@ def render_support_signal(config: dict[str, Any], today_pack: dict[str, Any]) ->
     if not top_collection_rows:
         top_collection_rows = "<p>No collection signal records generated yet.</p>"
 
-    promoted_public_url = str(promoted.get("public_url") or promoted.get("branded_url") or "")
+    promoted_public_url = signal_promotion_url(promoted)
     promoted_support_url = str(promoted.get("support_intent_url") or "")
     promoted_title = str(promoted.get("title") or "Daily Shelf support signal")
     promoted_summary = str(promoted.get("summary") or "")
@@ -7190,6 +7196,9 @@ def write_status(
         "support_signal_promoted_type": (support_signal.get("promoted") or {}).get("type", ""),
         "support_signal_promoted_slug": (support_signal.get("promoted") or {}).get("slug", ""),
         "support_signal_promoted_title": (support_signal.get("promoted") or {}).get("title", ""),
+        "support_signal_promoted_url": signal_promotion_url(support_signal.get("promoted") or {}),
+        "support_signal_promoted_public_url": (support_signal.get("promoted") or {}).get("public_url", ""),
+        "support_signal_promoted_branded_url": (support_signal.get("promoted") or {}).get("branded_url", ""),
         "support_signal_promotion_mode": (support_signal.get("promoted") or {}).get("promotion_mode", ""),
         "support_signal_promoted_score": safe_count((support_signal.get("promoted") or {}).get("signal_score")),
         "support_signal_promoted_download_interest": safe_count((support_signal.get("promoted") or {}).get("download_interest")),

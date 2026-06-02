@@ -97,6 +97,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     template_support_intent_url = f"{template_support_url}/go"
     preferred_collection_bundle_page = "bundles/small-business-ops-collection.html"
     preferred_collection_bundle_page_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{preferred_collection_bundle_page}"
+    preferred_collection_bundle_branded_page_url = f"https://www.calmsprout.com/daily-shelf/{preferred_collection_bundle_page}"
     support_card_path = "assets/support-card.svg"
     support_card_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{support_card_path}"
     support_signal_page = "support-signal.html"
@@ -280,6 +281,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "top_collections",
             "top_download_products",
             "promoted",
+            "promotion_url",
             "signal_score",
             "download_interest",
             "support_intent_url",
@@ -866,8 +868,22 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json invalid support_signal_total_download_interest")
     if int(status.get("support_signal_promoted_score") or 0) < 0:
         fail("status.json invalid support_signal_promoted_score")
-    if str(status.get("support_signal_promoted_title") or "") not in (DOCS / support_signal_page).read_text(encoding="utf-8"):
+    promoted_signal_url = str(status.get("support_signal_promoted_url") or "")
+    promoted_branded_url = str(status.get("support_signal_promoted_branded_url") or "")
+    promoted_public_url = str(status.get("support_signal_promoted_public_url") or "")
+    if not promoted_signal_url.startswith("https://www.calmsprout.com/daily-shelf/"):
+        fail("status.json support_signal_promoted_url should prefer the branded CalmSprout route")
+    if promoted_branded_url and promoted_signal_url != promoted_branded_url:
+        fail("status.json support_signal_promoted_url does not match branded URL")
+    if promoted_public_url == promoted_signal_url:
+        fail("status.json support_signal_promoted_url fell back to the public URL")
+    if status.get("support_signal_promoted_slug") == "small-business-ops" and promoted_signal_url != preferred_collection_bundle_branded_page_url:
+        fail("status.json support_signal_promoted_url missing preferred branded bundle page")
+    support_signal_html = (DOCS / support_signal_page).read_text(encoding="utf-8")
+    if str(status.get("support_signal_promoted_title") or "") not in support_signal_html:
         fail("support-signal.html missing promoted title from status.json")
+    if promoted_signal_url not in support_signal_html:
+        fail("support-signal.html missing branded promoted URL")
     if not status.get("pay_what_you_can_ready") or status.get("pay_what_you_can_page") != "pay-what-you-can.html":
         fail("status.json missing pay_what_you_can_ready/pay-what-you-can.html")
     if status.get("pay_what_you_can_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html":
