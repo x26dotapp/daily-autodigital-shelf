@@ -25,11 +25,13 @@ Each generated pack includes:
 - cover SVG
 - manifest JSON
 - `seller-copy.md` for store listing copy
+- direct per-pack download ZIP under `docs/downloads/`
 - inclusion in the generated starter bundle ZIP
 
 The site also publishes:
 
 - `archive.html` for all generated packs
+- `downloads/*.zip` for one-file individual product upload
 - `starter-bundle.html` and `bundles/starter-archive.zip` for one-file product upload
 - `catalog.json` for programmatic product import
 - `catalog.csv` for spreadsheet/store import workflows

@@ -82,20 +82,30 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "archive.html",
             "starter-bundle.html",
             "starter-archive.zip",
+            "Download ZIP",
             "catalog.csv",
             "catalog.json",
         ],
     )
-    require_contains(pack_dir / "index.html", [manifest["title"], "Store link not connected"])
+    require_contains(pack_dir / "index.html", [manifest["title"], "Store link not connected", "Download pack ZIP"])
     require_file(pack_dir / "printable.html", 800)
     require_file(pack_dir / "checklist.html", 800)
     require_file(pack_dir / "cover.svg", 800)
     require_contains(pack_dir / "seller-copy.md", ["Store-Ready Listing Copy", "Price Hint", "Safety Note"])
+    download_path = DOCS / manifest.get("download", f"downloads/{Path(pack_path).parts[-1]}.zip")
+    require_file(download_path, 2500)
+    with zipfile.ZipFile(download_path) as pack_zip:
+        names = pack_zip.namelist()
+        if any(name.startswith("/") or ".." in Path(name).parts for name in names):
+            fail("Pack ZIP contains unsafe archive paths")
+        for suffix in ["README.txt", "printable.html", "checklist.html", "cover.svg", "seller-copy.md", "manifest.json"]:
+            if not any(name.endswith(suffix) for name in names):
+                fail(f"Pack ZIP missing {suffix}")
     require_file(DOCS / "feed.json", 100)
     require_file(DOCS / "catalog.json", 100)
-    require_contains(DOCS / "catalog.csv", ["seller_copy_url", "starter_bundle_url", manifest["title"]])
-    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Catalog CSV"])
-    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip"])
+    require_contains(DOCS / "catalog.csv", ["seller_copy_url", "download_url", "starter_bundle_url", manifest["title"]])
+    require_contains(DOCS / "archive.html", ["Pack archive", manifest["title"], "Starter bundle", "Catalog CSV", "Download ZIP"])
+    require_contains(DOCS / "starter-bundle.html", ["Starter bundle", "Download ZIP", "starter-archive.zip", "Pack ZIP"])
     bundle_path = DOCS / "bundles" / "starter-archive.zip"
     require_file(bundle_path, max(12000, min_pack_count * 900))
     with zipfile.ZipFile(bundle_path) as bundle:
@@ -140,6 +150,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         fail("status.json reports bundle_ready=false")
     if int(status.get("bundle_pack_count") or 0) < min_pack_count:
         fail(f"status.json bundle_pack_count is {status.get('bundle_pack_count')}, expected at least {min_pack_count}")
+    if int(status.get("pack_download_count") or 0) < min_pack_count:
+        fail(f"status.json pack_download_count is {status.get('pack_download_count')}, expected at least {min_pack_count}")
+    if status.get("today_download") != manifest.get("download"):
+        fail(f"status.json today_download is {status.get('today_download')}, expected {manifest.get('download')}")
     if not status.get("indexnow_enabled"):
         fail("status.json reports indexnow_enabled=false")
     indexnow_key_file = str(status.get("indexnow_key_file", ""))
@@ -158,7 +172,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "path": pack_path,
         "pack_count": pack_count,
         "bundle_bytes": bundle_path.stat().st_size,
-        "files_checked": 16,
+        "download_bytes": download_path.stat().st_size,
+        "files_checked": 17,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),

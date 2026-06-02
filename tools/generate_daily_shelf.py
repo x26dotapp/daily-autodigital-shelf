@@ -14,6 +14,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 BUNDLES = DOCS / "bundles"
+DOWNLOADS = DOCS / "downloads"
 STATE = ROOT / "state"
 CONFIG_EXAMPLE = ROOT / "config" / "config.example.json"
 CONFIG_LOCAL = ROOT / "config" / "config.local.json"
@@ -716,6 +717,7 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
       <div class="actions">
         <a class="button primary" href="./printable.html">Open worksheet</a>
         <a class="button" href="./checklist.html">Open checklist</a>
+        <a class="button" href="../../downloads/{esc(pack["pack_slug"])}.zip">Download pack ZIP</a>
         <a class="button" href="{esc(buy_href)}">{esc(buy_label)}</a>
       </div>
       <h2>Who This Helps</h2>
@@ -892,6 +894,72 @@ def write_zip_entry(bundle: zipfile.ZipFile, arcname: str, data: bytes) -> None:
     bundle.writestr(info, data)
 
 
+def pack_slug_from_manifest(item: dict[str, Any]) -> str:
+    return str(item["path"]).strip("/").split("/")[-1]
+
+
+def pack_download_path(item: dict[str, Any]) -> str:
+    return str(item.get("download") or f"downloads/{pack_slug_from_manifest(item)}.zip")
+
+
+def render_pack_downloads() -> dict[str, Any]:
+    manifests = read_manifests()
+    DOWNLOADS.mkdir(parents=True, exist_ok=True)
+    outputs = []
+
+    for item in manifests:
+        slug = pack_slug_from_manifest(item)
+        zip_rel_path = pack_download_path(item)
+        if item.get("download") != zip_rel_path:
+            item["download"] = zip_rel_path
+            manifest_path = DOCS / item["path"] / "manifest.json"
+            manifest_path.write_text(json.dumps(item, indent=2), encoding="utf-8")
+        zip_path = DOCS / zip_rel_path
+        zip_root = f"daily-autodigital-shelf-{slug}"
+        readme = "\n".join(
+            [
+                item["title"],
+                "",
+                f"Date: {item['date']}",
+                f"Summary: {item['summary']}",
+                f"Buyer: {item.get('buyer', '')}",
+                "",
+                "Included files: pack page, printable worksheet, checklist, cover SVG, manifest JSON, and seller-copy markdown.",
+                "This ZIP is generated for digital-product upload workflows. It contains no payment credentials or guaranteed-income claims.",
+            ]
+        )
+        with zipfile.ZipFile(zip_path, "w") as bundle:
+            write_zip_entry(bundle, f"{zip_root}/README.txt", readme.encode("utf-8"))
+            for rel_path in [
+                item["path"] + "index.html",
+                item["worksheet"],
+                item["checklist"],
+                item["cover"],
+                item["path"] + "manifest.json",
+                item.get("seller_copy", ""),
+            ]:
+                if not rel_path:
+                    continue
+                source = DOCS / rel_path
+                if source.exists():
+                    write_zip_entry(bundle, f"{zip_root}/{source.relative_to(DOCS).as_posix()}", source.read_bytes())
+
+        outputs.append(
+            {
+                "id": item["id"],
+                "title": item["title"],
+                "path": zip_rel_path,
+                "bytes": zip_path.stat().st_size,
+            }
+        )
+
+    return {
+        "count": len(outputs),
+        "bytes": sum(item["bytes"] for item in outputs),
+        "downloads": outputs,
+    }
+
+
 def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
     manifests = read_manifests()
     BUNDLES.mkdir(parents=True, exist_ok=True)
@@ -920,6 +988,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
                 "checklist": item["checklist"],
                 "cover": item["cover"],
                 "seller_copy": item.get("seller_copy", ""),
+                "download": pack_download_path(item),
             }
             for item in manifests
         ],
@@ -957,7 +1026,10 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
         f"""<article class="ledger-row">
           <strong>{esc(item["date_label"])}</strong>
           <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
-          <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+          <div class="row-actions">
+            <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
+            <a class="button" href="./{esc(pack_download_path(item))}">Pack ZIP</a>
+          </div>
         </article>"""
         for item in manifests
     )
@@ -1164,6 +1236,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
                 <a class="button" href="./{esc(today_path)}printable.html">Worksheet</a>
                 <a class="button" href="./{esc(today_path)}cover.svg">Cover</a>
                 <a class="button" href="./{esc(today_path)}seller-copy.md">Seller copy</a>
+                <a class="button" href="./downloads/{esc(today_pack["pack_slug"])}.zip">Download ZIP</a>
               </div>
             </div>
             <div class="mini-cover">{esc(today_pack["title"])}</div>
@@ -1311,6 +1384,7 @@ def render_catalog(config: dict[str, Any]) -> None:
                 "checklist_url": pack_url(config, item["checklist"]),
                 "cover_url": pack_url(config, item["cover"]),
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
+                "download_url": pack_url(config, pack_download_path(item)),
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "tags": "printable planner,digital download,worksheet,low maintenance",
                 "monetization_enabled": bool(config["monetization"].get("enabled")),
@@ -1335,6 +1409,7 @@ def render_catalog(config: dict[str, Any]) -> None:
         "checklist_url",
         "cover_url",
         "seller_copy_url",
+        "download_url",
         "starter_bundle_url",
         "tags",
         "monetization_enabled",
@@ -1351,7 +1426,10 @@ def render_archive(config: dict[str, Any]) -> None:
         f"""<article class="ledger-row">
           <strong>{esc(item["date_label"])}</strong>
           <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
-          <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Seller copy</a>
+          <div class="row-actions">
+            <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Seller copy</a>
+            <a class="button" href="./{esc(pack_download_path(item))}">Download ZIP</a>
+          </div>
         </article>"""
         for item in manifests
     )
@@ -1482,6 +1560,7 @@ def write_status(
     pack: dict[str, Any],
     config: dict[str, Any],
     bundle: dict[str, Any],
+    downloads: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
     status_path = DOCS / "status.json"
@@ -1499,11 +1578,14 @@ def write_status(
         "today": pack["date"],
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
+        "today_download": f"downloads/{pack['pack_slug']}.zip",
         "bundle_ready": bool(bundle.get("pack_count")),
         "bundle_path": bundle.get("zip_path", "bundles/starter-archive.zip"),
         "bundle_page": bundle.get("page_path", "starter-bundle.html"),
         "bundle_pack_count": int(bundle.get("pack_count", 0)),
         "bundle_bytes": int(bundle.get("bytes", 0)),
+        "pack_download_count": int(downloads.get("count", 0)),
+        "pack_download_bytes": int(downloads.get("bytes", 0)),
         "indexnow_enabled": bool(discovery.get("enabled")),
         "indexnow_key_file": discovery.get("key_file", ""),
         "indexnow_key_location": discovery.get("key_location", ""),
@@ -1543,6 +1625,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         "checklist": f"{path}checklist.html",
         "cover": f"{path}cover.svg",
         "seller_copy": f"{path}seller-copy.md",
+        "download": f"downloads/{pack['pack_slug']}.zip",
     }
 
     render_cover_svg(pack, pack_dir / "cover.svg")
@@ -1552,6 +1635,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_seller_copy(pack, config, pack_dir / "seller-copy.md")
     (pack_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
+    downloads = render_pack_downloads()
     render_feed(config)
     render_catalog(config)
     render_archive(config)
@@ -1561,7 +1645,7 @@ def generate(day: dt.date) -> dict[str, Any]:
     render_robots(config)
     discovery = render_indexnow_key(config)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-    write_status(pack, config, bundle, discovery)
+    write_status(pack, config, bundle, downloads, discovery)
     append_ledger(pack)
     return manifest
 
