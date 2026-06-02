@@ -175,6 +175,30 @@
   `total_support_intent_clicks: 4`. This is discovery/conversion
   infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 Daily Shelf guide pages: Daily Shelf commit `0ce22b6` (`Add Daily
+  Shelf guide pages`) generates `docs/guides/` with 29 stable how-to guide
+  pages plus `guides/guides.json`, and wires guide URLs into `status.json`,
+  `sitemap.xml`, starter/collection bundles, store import kit, LLM discovery,
+  verifier coverage, and both IndexNow submitters. GitHub Pages run
+  `26826182871` succeeded. CalmSprout commit `8cc6ca3` (`Proxy Daily Shelf
+  guide pages`) deployed as Worker version
+  `5ef35b32-4cca-469a-9056-f53ce2a348d4`, proxies `/daily-shelf/guides/`,
+  `/daily-shelf/guides/<template-slug>.html`, `/daily-shelf/guides.json`, and
+  `/daily-shelf/guides/guides.json`, and includes guide URLs in
+  `https://www.calmsprout.com/sitemap.xml`. Live HTTP QA verified GitHub Pages
+  and CalmSprout guide routes return HTTP 200; CalmSprout guide JSON returns
+  `@type: ItemList` with 29 items; the `one-page-sop` guide contains
+  `HowTo`/`FAQPage` JSON-LD, download/template/support links, and the
+  `Product checkout is not connected` boundary. Browser QA found no console
+  errors and no horizontal overflow. `verify-system.ps1` passed with
+  `files_checked: 55`, `guide_page_count: 29`, `bundle_bytes: 863286`,
+  `store_import_zip_bytes: 445994`, `support_connected: true`, and
+  `store_connected: false`. IndexNow accepted 46 GitHub Pages URLs and 335
+  CalmSprout URLs with HTTP 200; follow-up dry runs returned `submit_count: 0`
+  for both hosts. No support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is search/discovery infrastructure,
+  not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
