@@ -199,6 +199,32 @@
   `total_support_intent_clicks: 4`. This is search/discovery infrastructure,
   not payment or daily revenue proof.
 
+- 2026-06-02 sponsor support pages: Daily Shelf commit `8516a4b` (`Add Daily
+  Shelf sponsor support pages`) generates `sponsor.html`, `commercial-use.html`,
+  and `sponsor-kit.json`, and wires them into `status.json`, `sitemap.xml`,
+  starter/collection bundles, store import kit, LLM discovery, verifier
+  coverage, and both IndexNow submitters. GitHub Pages run `26827270859`
+  succeeded. CalmSprout commit `e17752e` (`Proxy Daily Shelf sponsor pages`)
+  deployed as Worker version `4da9f662-7e37-4416-890f-7f7c230966d2`, proxies
+  `/daily-shelf/sponsor`, `/daily-shelf/commercial-use`, and
+  `/daily-shelf/sponsor-kit.json`, and includes those URLs in
+  `https://www.calmsprout.com/sitemap.xml`. Live HTTP QA verified GitHub Pages
+  and CalmSprout sponsor/commercial routes return HTTP 200 with the measured
+  `/daily-shelf/support/go` support path, `FAQPage`/`DonateAction` schema, and
+  the `Product checkout is not connected` boundary. CalmSprout sponsor-kit JSON
+  returns `@type: ItemList`, 5 support tiers, `support_connected: true`,
+  `store_connected: false`, and `support_intent_url:
+  https://www.calmsprout.com/daily-shelf/support/go`. Browser QA found no
+  console errors and no horizontal overflow on the branded sponsor page.
+  `verify-system.ps1` passed with `files_checked: 58`,
+  `sponsor_tier_count: 5`, `bundle_bytes: 876212`,
+  `store_import_zip_bytes: 452552`, `support_connected: true`, and
+  `store_connected: false`. IndexNow accepted 20 GitHub Pages URLs and 338
+  CalmSprout URLs with HTTP 200; follow-up dry runs returned `submit_count: 0`
+  for both hosts. No support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is buyer-intent support
+  infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
