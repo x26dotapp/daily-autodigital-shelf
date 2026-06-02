@@ -311,6 +311,17 @@
   `store_connected: false`. This is conversion-path infrastructure, not payment
   or daily revenue proof.
 
+- 2026-06-02 unattended publishing schedule QA: Windows Scheduled Tasks
+  `HUMANi Daily Autodigital Shelf` and
+  `HUMANi Daily Autodigital Shelf Watchdog` are registered, `Ready`, and point
+  at `C:\GitHub\x26dotapp\daily-autodigital-shelf\run-daily.ps1` and
+  `watchdog.ps1`. Both ran successfully on 2026-06-02 with `LastTaskResult: 0`;
+  next runs are 2026-06-03 6:10am and 7:15am America/New_York. Current
+  `verify-system.ps1` passed with `pack_count: 29`, `files_checked: 58`,
+  `support_connected: true`, `store_connected: false`, and confirmed the GitHub
+  fallback workflow plus CalmSprout IndexNow automation. The watchdog status
+  file reports `status: ok`, `failures: 0`, and `repair_attempts: 0`.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
