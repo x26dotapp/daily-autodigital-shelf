@@ -52,8 +52,15 @@ function Ensure-DailyTask {
 }
 
 function Invoke-Verify {
-    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $verifyScript
-    return $LASTEXITCODE
+    $output = & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $verifyScript 2>&1
+    $exitCode = $LASTEXITCODE
+    foreach ($line in $output) {
+        Add-Content -Path $logPath -Value ('{0} verify-system: {1}' -f (Get-Date).ToString('s'), $line) -Encoding UTF8
+    }
+    if ($null -eq $exitCode) {
+        return 0
+    }
+    return [int]$exitCode
 }
 
 Set-Location $root

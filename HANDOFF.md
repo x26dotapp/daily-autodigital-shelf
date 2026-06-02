@@ -11,6 +11,7 @@ Verified 2026-06-02:
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Repo: `https://github.com/x26dotapp/daily-autodigital-shelf`
 - Task: `HUMANi Daily Autodigital Shelf`, daily at 06:10 local time, last manual run result `0`
+- Watchdog task: `HUMANi Daily Autodigital Shelf Watchdog`, daily at 07:15 local time, last Task Scheduler run result `0`
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
@@ -45,5 +46,7 @@ Verified 2026-06-02:
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\verify_daily_shelf.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\tools\submit_indexnow.py`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\run-daily.ps1`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\watchdog.ps1`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\verify-system.ps1`
 - `C:\GitHub\x26dotapp\daily-autodigital-shelf\install-scheduled-task.ps1`
+- `C:\GitHub\x26dotapp\daily-autodigital-shelf\install-watchdog-task.ps1`
