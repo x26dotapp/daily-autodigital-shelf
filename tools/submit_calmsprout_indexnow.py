@@ -94,7 +94,7 @@ def pack_slug_from_item(item: dict[str, Any]) -> str:
     item_id = str(item.get("id") or "")
     if ":" in item_id:
         candidates.append(item_id.rsplit(":", 1)[-1])
-    for key in ("url", "download_url"):
+    for key in ("url", "download_url", "download_page_url"):
         try:
             parsed = urllib.parse.urlparse(str(item.get(key) or ""))
         except ValueError:
@@ -124,6 +124,7 @@ def catalog_product_routes() -> list[tuple[str, str]]:
             if slug:
                 routes.append((f"/daily-shelf/packs/{slug}/", f"packs/{slug}/index.html"))
                 routes.append((f"/daily-shelf/downloads/{slug}.zip", f"downloads/{slug}.zip"))
+                routes.append((f"/daily-shelf/downloads/{slug}.html", f"downloads/{slug}.html"))
                 routes.append((f"/daily-shelf/products/{slug}", "catalog.json"))
                 routes.append((f"/daily-shelf/products/{slug}/support", "catalog.json"))
     return routes

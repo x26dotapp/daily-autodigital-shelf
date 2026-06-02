@@ -17,7 +17,7 @@
 
 ## Current State
 
-- Latest pack: [One-Page SOP Builder](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/) - A worksheet for documenting one repeatable task so someone else can follow it.
+- Latest pack: [One-Page SOP Builder](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/) - A worksheet for documenting one repeatable task so someone else can follow it. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html
 - Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop
 - Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support
 - Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support/go

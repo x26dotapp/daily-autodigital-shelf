@@ -126,6 +126,9 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
     today_download = str(status.get("today_download", "")).strip("/")
     if today_download:
         add_candidate(candidates, config, today_download)
+    today_download_page = str(status.get("today_download_page", "")).strip("/")
+    if today_download_page:
+        add_candidate(candidates, config, today_download_page)
 
     if include_all_packs:
         for item in catalog.get("items", []):
@@ -135,6 +138,9 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
             download_url = str(item.get("download_url", "")).replace(site_base(config) + "/", "")
             if download_url:
                 add_candidate(candidates, config, download_url)
+            download_page_url = str(item.get("download_page_url", "")).replace(site_base(config) + "/", "")
+            if download_page_url:
+                add_candidate(candidates, config, download_page_url)
 
     for topic in topics.get("topics", []):
         slug = str(topic.get("slug", "")).strip()

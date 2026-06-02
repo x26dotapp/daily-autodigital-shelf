@@ -689,6 +689,7 @@ def pack_support_card_text(item: dict[str, Any], config: dict[str, Any]) -> str:
             f"{item['title']} - Support Card",
             "",
             f"Pack page: {pack_url(config, str(item['path']))}",
+            f"Download page: {pack_url(config, pack_download_page_path(item))}",
             f"Pack ZIP: {pack_url(config, pack_download_path(item))}",
             f"Product support page: {support_page_url}",
             f"Support this pack: {support_intent_url}",
@@ -895,7 +896,7 @@ def render_pack_page(pack: dict[str, Any], config: dict[str, Any], out_path: Pat
       <div class="actions">
         <a class="button primary" href="./printable.html">Open worksheet</a>
         <a class="button" href="./checklist.html">Open checklist</a>
-        <a class="button" href="../../downloads/{esc(pack["pack_slug"])}.zip">Download pack ZIP</a>
+        <a class="button" href="../../downloads/{esc(pack["pack_slug"])}.html">Download pack</a>
         <a class="button" href="{esc(buy_href)}">{esc(buy_label)}</a>
       </div>
       <h2>Who This Helps</h2>
@@ -1148,6 +1149,10 @@ def pack_download_path(item: dict[str, Any]) -> str:
     return str(item.get("download") or f"downloads/{pack_slug_from_manifest(item)}.zip")
 
 
+def pack_download_page_path(item: dict[str, Any]) -> str:
+    return f"downloads/{pack_slug_from_manifest(item)}.html"
+
+
 TOPIC_DEFINITIONS: dict[str, dict[str, Any]] = {
     "small-business-ops": {
         "label": "Small Business Ops",
@@ -1275,10 +1280,107 @@ def render_pack_downloads(config: dict[str, Any]) -> dict[str, Any]:
     for item in manifests:
         slug = pack_slug_from_manifest(item)
         zip_rel_path = pack_download_path(item)
+        download_page_rel_path = pack_download_page_path(item)
         if item.get("download") != zip_rel_path:
             item["download"] = zip_rel_path
             manifest_path = DOCS / item["path"] / "manifest.json"
             manifest_path.write_text(json.dumps(item, indent=2), encoding="utf-8")
+        download_page_url = pack_url(config, download_page_rel_path)
+        zip_url = pack_url(config, zip_rel_path)
+        pack_page_url = pack_url(config, str(item["path"]))
+        branded_urls = branded_product_urls(config, item)
+        support_intent_url = branded_urls.get("branded_support_intent_url") or str(config["monetization"].get("support_url") or "")
+        support_page_url = branded_urls.get("branded_support_url") or pack_url(config, "support.html")
+        cover_url = pack_url(config, str(item["cover"]))
+        structured_data = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": f"{item['title']} download page",
+            "description": f"Download the public {item['title']} pack ZIP and optionally support the shelf.",
+            "url": download_page_url,
+            "about": {
+                "@type": "CreativeWork",
+                "name": item["title"],
+                "url": pack_page_url,
+            },
+            "potentialAction": [
+                {
+                    "@type": "DownloadAction",
+                    "target": zip_url,
+                    "name": "Download pack ZIP",
+                },
+                {
+                    "@type": "DonateAction",
+                    "target": support_intent_url,
+                    "name": "Support this pack",
+                },
+            ],
+        }
+        download_page = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(item["title"])} Download | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Download the public {esc(item["title"])} pack ZIP and optionally support the shelf.">
+  <link rel="canonical" href="{esc(download_page_url)}">
+{social_meta(f"{item['title']} Download", item["summary"], download_page_url, cover_url, f"{item['title']} cover")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="../">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Download navigation">
+        <a href="../{esc(item["path"])}">Pack page</a>
+        <a href="../support.html">Support</a>
+        <a href="../pay-what-you-can.html">Pay what you can</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="label">Public download</p>
+          <h1>{esc(item["title"])}</h1>
+          <p>{esc(item["summary"])}</p>
+          <div class="actions">
+            <a class="button primary" href="./{esc(slug)}.zip">Download ZIP</a>
+            <a class="button" href="{esc(support_intent_url)}">Support this pack</a>
+            <a class="button" href="../{esc(item["path"])}">Open pack page</a>
+          </div>
+          <p class="fineprint">Support is voluntary. Product checkout is not connected. The pack download remains public.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Support route</p>
+              <h2>Pack attribution</h2>
+            </div>
+            <span class="status">support</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>Where support goes</h3>
+              <p>The support action routes through the product-specific CalmSprout support page before reaching the external Square support destination.</p>
+              <p><a href="{esc(support_page_url)}">Open support page</a></p>
+            </div>
+          </article>
+        </aside>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(config["monetization"].get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config, "../")}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+        (DOCS / download_page_rel_path).write_text(download_page, encoding="utf-8")
         zip_path = DOCS / zip_rel_path
         zip_root = f"daily-autodigital-shelf-{slug}"
         readme = "\n".join(
@@ -1316,12 +1418,14 @@ def render_pack_downloads(config: dict[str, Any]) -> dict[str, Any]:
                 "id": item["id"],
                 "title": item["title"],
                 "path": zip_rel_path,
+                "download_page": download_page_rel_path,
                 "bytes": zip_path.stat().st_size,
             }
         )
 
     return {
         "count": len(outputs),
+        "page_count": len(outputs),
         "bytes": sum(item["bytes"] for item in outputs),
         "downloads": outputs,
     }
@@ -1359,6 +1463,7 @@ def marketplace_rows(config: dict[str, Any]) -> list[dict[str, Any]]:
                 "price_hint": config["generation"].get("default_price_hint", "$3 to $9 digital pack"),
                 "currency": "USD",
                 "download_url": pack_url(config, pack_download_path(item)),
+                "download_page_url": pack_url(config, pack_download_page_path(item)),
                 "preview_url": pack_url(config, item["path"]),
                 "worksheet_url": pack_url(config, item["worksheet"]),
                 "checklist_url": pack_url(config, item["checklist"]),
@@ -1607,6 +1712,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
         "price_hint",
         "currency",
         "download_url",
+        "download_page_url",
         "preview_url",
         "worksheet_url",
         "checklist_url",
@@ -1667,6 +1773,7 @@ def render_store_import_kit(config: dict[str, Any]) -> dict[str, Any]:
           <strong>{esc(row["sku"])}</strong>
           <p><a href="{esc(row["preview_url"])}">{esc(row["title"])}</a><br>{esc(row["subtitle"])}</p>
           <div class="row-actions">
+            <a class="button" href="{esc(row["download_page_url"])}">Download page</a>
             <a class="button" href="{esc(row["download_url"])}">Product ZIP</a>
             <a class="button" href="{esc(row["seller_copy_url"])}">Listing copy</a>
           </div>
@@ -1902,7 +2009,7 @@ def render_topic_pages(config: dict[str, Any]) -> dict[str, Any]:
           <strong>{esc(item["date_label"])}</strong>
           <p><a href="../{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
-            <a class="button" href="../{esc(pack_download_path(item))}">Product ZIP</a>
+            <a class="button" href="../{esc(pack_download_page_path(item))}">Download page</a>
             <a class="button" href="../{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
           </div>
         </article>"""
@@ -2121,7 +2228,7 @@ def render_offer_pages(config: dict[str, Any], support: dict[str, Any]) -> dict[
           <strong>{esc(item["date_label"])}</strong>
           <p><a href="../{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
-            <a class="button" href="../{esc(pack_download_path(item))}">Download ZIP</a>
+            <a class="button" href="../{esc(pack_download_page_path(item))}">Download page</a>
             <a class="button" href="../{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
           </div>
         </article>"""
@@ -2319,7 +2426,7 @@ def render_bundle(config: dict[str, Any]) -> dict[str, Any]:
           <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
             <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
-            <a class="button" href="./{esc(pack_download_path(item))}">Pack ZIP</a>
+            <a class="button" href="./{esc(pack_download_page_path(item))}">Download page</a>
           </div>
         </article>"""
         for item in manifests
@@ -2588,7 +2695,7 @@ def render_index(today_pack: dict[str, Any], config: dict[str, Any], bundle: dic
                 <a class="button" href="./{esc(today_path)}printable.html">Worksheet</a>
                 <a class="button" href="./{esc(today_path)}cover.svg">Cover</a>
                 <a class="button" href="./{esc(today_path)}seller-copy.md">Seller copy</a>
-                <a class="button" href="./downloads/{esc(today_pack["pack_slug"])}.zip">Download ZIP</a>
+                <a class="button" href="./downloads/{esc(today_pack["pack_slug"])}.html">Download pack</a>
               </div>
             </div>
             <div class="mini-cover">{esc(today_pack["title"])}</div>
@@ -2822,6 +2929,7 @@ def render_catalog(config: dict[str, Any]) -> None:
                 "cover_url": pack_url(config, item["cover"]),
                 "seller_copy_url": pack_url(config, item.get("seller_copy", "")),
                 "download_url": pack_url(config, pack_download_path(item)),
+                "download_page_url": pack_url(config, pack_download_page_path(item)),
                 "starter_bundle_url": pack_url(config, "bundles/starter-archive.zip"),
                 "support_page_url": support_page_url,
                 "pay_what_you_can_url": pay_what_you_can_url,
@@ -2855,6 +2963,7 @@ def render_catalog(config: dict[str, Any]) -> None:
         "cover_url",
         "seller_copy_url",
         "download_url",
+        "download_page_url",
         "starter_bundle_url",
         "support_page_url",
         "pay_what_you_can_url",
@@ -2883,7 +2992,7 @@ def render_archive(config: dict[str, Any]) -> None:
           <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
             <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Seller copy</a>
-            <a class="button" href="./{esc(pack_download_path(item))}">Download ZIP</a>
+            <a class="button" href="./{esc(pack_download_page_path(item))}">Download page</a>
           </div>
         </article>"""
         for item in manifests
@@ -3016,7 +3125,7 @@ def render_support_page(config: dict[str, Any]) -> dict[str, Any]:
           <strong>{esc(item["date_label"])}</strong>
           <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
-            <a class="button" href="./{esc(pack_download_path(item))}">Download ZIP</a>
+            <a class="button" href="./{esc(pack_download_page_path(item))}">Download page</a>
             <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
           </div>
         </article>"""
@@ -3190,7 +3299,7 @@ def render_pay_what_you_can_page(config: dict[str, Any], support: dict[str, Any]
           <strong>{esc(item["date_label"])}</strong>
           <p><a href="./{esc(item["path"])}">{esc(item["title"])}</a><br>{esc(item["summary"])}</p>
           <div class="row-actions">
-            <a class="button" href="./{esc(pack_download_path(item))}">Pack ZIP</a>
+            <a class="button" href="./{esc(pack_download_page_path(item))}">Download page</a>
             <a class="button" href="./{esc(item.get("seller_copy", item["path"]))}">Listing copy</a>
           </div>
         </article>"""
@@ -3342,7 +3451,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
     latest = manifests[0] if manifests else None
     latest_branded_urls = branded_product_urls(config, latest) if latest else {}
     latest_line = (
-        f"- Latest pack: [{latest['title']}]({pack_url(config, latest['path'])}) - {latest['summary']}"
+        f"- Latest pack: [{latest['title']}]({pack_url(config, latest['path'])}) - {latest['summary']} Download page: {pack_url(config, pack_download_page_path(latest))}"
         if latest
         else "- Latest pack: none generated yet"
     )
@@ -3356,7 +3465,7 @@ def render_ai_discovery_files(config: dict[str, Any], support: dict[str, Any], p
             ]
         )
     pack_lines = "\n".join(
-        f"- [{item['title']}]({pack_url(config, item['path'])}) - {item['summary']} Download: {pack_url(config, pack_download_path(item))}"
+        f"- [{item['title']}]({pack_url(config, item['path'])}) - {item['summary']} Download page: {pack_url(config, pack_download_page_path(item))} ZIP: {pack_url(config, pack_download_path(item))}"
         for item in manifests
     )
     if not pack_lines:
@@ -3480,6 +3589,7 @@ def render_sitemap(config: dict[str, Any]) -> None:
     urls.extend(pack_url(config, f"offers/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, f"topics/{slug}.html") for slug in topic_index(read_manifests(), config))
     urls.extend(pack_url(config, item["path"]) for item in read_manifests()[:80])
+    urls.extend(pack_url(config, pack_download_page_path(item)) for item in read_manifests()[:80])
     rows = "\n".join(f"  <url><loc>{esc(url)}</loc></url>" for url in urls if url)
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -3583,6 +3693,7 @@ def write_status(
         "today_pack": pack["title"],
         "today_path": f"packs/{pack['pack_slug']}/",
         "today_download": f"downloads/{pack['pack_slug']}.zip",
+        "today_download_page": f"downloads/{pack['pack_slug']}.html",
         "today_branded_product_url": today_branded_urls["branded_product_url"],
         "today_branded_support_url": today_branded_urls["branded_support_url"],
         "today_branded_support_intent_url": today_branded_urls["branded_support_intent_url"],
@@ -3596,6 +3707,7 @@ def write_status(
         "bundle_pack_count": int(bundle.get("pack_count", 0)),
         "bundle_bytes": int(bundle.get("bytes", 0)),
         "pack_download_count": int(downloads.get("count", 0)),
+        "pack_download_page_count": int(downloads.get("page_count", 0)),
         "pack_download_bytes": int(downloads.get("bytes", 0)),
         "store_import_ready": bool(import_kit.get("count")),
         "store_import_count": int(import_kit.get("count", 0)),
