@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revenue Proof | Daily Autodigital Shelf</title>
+  <meta name="description" content="Sanitized revenue-proof ledger for Daily Autodigital Shelf. It reports local receipt-export evidence without exposing raw payment data.">
+  <link rel="canonical" href="https://x26dotapp.github.io/daily-autodigital-shelf/revenue-proof.html">
+  <meta property="og:title" content="Revenue Proof | Daily Autodigital Shelf">
+  <meta property="og:description" content="Sanitized receipt evidence without fake revenue claims.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://x26dotapp.github.io/daily-autodigital-shelf/revenue-proof.html">
+  <meta property="og:image" content="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/cover.svg">
+  <meta property="og:image:alt" content="Daily Autodigital Shelf revenue proof">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Revenue Proof | Daily Autodigital Shelf">
+  <meta name="twitter:description" content="Sanitized receipt evidence without fake revenue claims.">
+  <meta name="twitter:image" content="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/cover.svg">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Revenue Proof | Daily Autodigital Shelf", "description": "Public revenue-proof ledger boundary for Daily Autodigital Shelf.", "url": "https://x26dotapp.github.io/daily-autodigital-shelf/revenue-proof.html", "isPartOf": {"@type": "WebSite", "name": "Daily Autodigital Shelf", "url": "https://x26dotapp.github.io/daily-autodigital-shelf/"}}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">Daily Autodigital Shelf</span>
+      </a>
+      <nav class="topnav" aria-label="Revenue proof navigation">
+        <a href="./">Home</a>
+        <a href="./support.html">Support</a>
+        <a href="./support-signal.html">Support signal</a>
+        <a href="./checkout-readiness.html">Checkout readiness</a>
+        <a href="./status.json">Status JSON</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Revenue proof</p>
+          <h1>No daily revenue proof yet.</h1>
+          <p>This page is the public receipt boundary for the unattended shelf. It reports sanitized local payment-export evidence when it exists and keeps revenue at zero when it does not.</p>
+          <div class="actions">
+            <a class="button primary" href="./support.html">Open support page</a>
+            <a class="button" href="./revenue-proof.json">Read JSON</a>
+            <a class="button" href="./checkout-readiness.html">Checkout readiness</a>
+            <a class="button" href="./support-signal.html">Support signal</a>
+          </div>
+          <p class="fineprint">This page does not create checkout, collect payment credentials, expose raw payment exports, or guarantee future daily revenue.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Current proof</p>
+              <h2>No accepted revenue evidence</h2>
+            </div>
+            <span class="status">unproved</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>$0.00 today</h3>
+              <p>0 accepted receipt rows for 2026-06-02.</p>
+              <p class="fineprint">$0.00 total accepted local receipt evidence. Provider API verified: no.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Accepted evidence</p>
+            <h2>Sanitized receipt ledger</h2>
+          </div>
+          <p>The monitor accepts positive USD rows with paid, completed, succeeded, settled, captured, or approved status. It publishes totals and hashed receipt IDs only.</p>
+        </div>
+        <p class="fineprint">Source: state/revenue-proofs/inbox. Supported files: 0. Candidate rows: 0. Accepted rows: 0. Rejected rows: 0.</p>
+        <div class="ledger">
+          <article class="ledger-row">
+          <strong>No accepted receipt rows</strong>
+          <p>The watched folder has not produced any accepted USD paid/settled receipt evidence for this shelf.</p>
+          <p class="fineprint">This is the correct state until a real platform export exists.</p>
+        </article>
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Revenue boundary</p>
+            <h2>What this does not do</h2>
+          </div>
+          <p>This proof monitor is separate from checkout readiness and support-interest metrics. Receipt evidence does not turn downloads into paid products and does not change store_connected.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done"><span class="setup-dot">1</span><div><strong>Raw exports stay local</strong><p>Payment export files in state/revenue-proofs/inbox are ignored by git.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">2</span><div><strong>Checkout still has its own gate</strong><p>Product checkout remains disconnected unless checkout-readiness and status.json say otherwise.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">3</span><div><strong>Revenue is not guaranteed</strong><p>Accepted local receipt evidence can record a payment after it exists; it cannot create buyers.</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>Support links route to a Square-hosted CalmSprout gift-card/support page. Product checkout is not connected yet; pack downloads remain public until a store is connected.</p>
+      <p><a href="./license.html">License</a> <a href="./terms.html">Terms</a> <a href="./privacy.html">Privacy</a> <a href="./refund-policy.html">Refund</a></p>
+    </footer>
+  </div>
+</body>
+</html>

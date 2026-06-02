@@ -104,6 +104,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     support_signal_json = "support-signal.json"
     checkout_readiness_page = "checkout-readiness.html"
     checkout_readiness_json = "checkout-readiness.json"
+    revenue_proof_page = "revenue-proof.html"
+    revenue_proof_json = "revenue-proof.json"
     support_signal_page_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{support_signal_page}"
     support_signal_json_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{support_signal_json}"
     support_signal_branded_page_url = "https://www.calmsprout.com/daily-shelf/support-signal.html"
@@ -112,6 +114,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     checkout_readiness_json_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{checkout_readiness_json}"
     checkout_readiness_branded_page_url = "https://www.calmsprout.com/daily-shelf/checkout-readiness.html"
     checkout_readiness_branded_json_url = "https://www.calmsprout.com/daily-shelf/checkout-readiness.json"
+    revenue_proof_page_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{revenue_proof_page}"
+    revenue_proof_json_url = f"https://x26dotapp.github.io/daily-autodigital-shelf/{revenue_proof_json}"
+    revenue_proof_branded_page_url = "https://www.calmsprout.com/daily-shelf/revenue-proof.html"
+    revenue_proof_branded_json_url = "https://www.calmsprout.com/daily-shelf/revenue-proof.json"
     for key in ["path", "worksheet", "checklist", "cover", "seller_copy"]:
         if not manifest.get(key):
             fail(f"manifest missing {key}")
@@ -179,6 +185,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             support_signal_json,
             checkout_readiness_page,
             checkout_readiness_json,
+            revenue_proof_page,
+            revenue_proof_json,
             "store-import.html",
             "terms.html",
             "Download ZIP",
@@ -331,8 +339,8 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
     require_contains(DOCS / "sponsor-kit.json", ["Daily Autodigital Shelf Sponsor Kit", "Commercial-use supporter", "Product checkout is not connected", "pricing_support_intent_url", "sponsor_support_intent_url", "commercial_support_intent_url"])
     require_contains(DOCS / "store-import.html", ["Store import kit", "Download import kit", "Marketplace queue", "topic_urls", "Policy pages", "license, terms, privacy, and refund", manifest["title"], "Commercial use", "Sponsor kit", "Offers", "Support", "Support signal", "ItemList", "og:image", "twitter:card"])
     require_contains(DOCS / "imports" / "store-listings.csv", ["download_url", "download_page_url", "preview_url", "price_hint", "support_page_url", "pay_what_you_can_url", "branded_product_url", "branded_support_url", "branded_support_intent_url", "monetization_destination_url", "topic_urls", manifest["title"]])
-    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Sponsor page", "Commercial use page", "Sponsor Kit JSON", "Support card SVG", support_card_url, support_signal_page_url, support_signal_json_url, checkout_readiness_page_url, checkout_readiness_json_url, preferred_collection_bundle_page_url, "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Support Signal JSON", "Checkout Readiness JSON", "Templates", "Guides", "Product checkout is not connected"])
-    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Support Signal JSON", "Checkout Readiness JSON", "Sponsor Kit JSON", "Support card SVG", support_card_url, support_signal_page_url, checkout_readiness_json_url, "Use Cases JSON", "Templates JSON", "Guides JSON", preferred_collection_bundle_page_url, "Machine-Readable Files", "status.json"])
+    require_contains(DOCS / "llms.txt", ["Daily Autodigital Shelf", "Support page", "Sponsor page", "Commercial use page", "Sponsor Kit JSON", "Support card SVG", support_card_url, support_signal_page_url, support_signal_json_url, checkout_readiness_page_url, checkout_readiness_json_url, revenue_proof_page_url, revenue_proof_json_url, preferred_collection_bundle_page_url, "Monetization destination", "Branded support intent redirect", "Download page", "Product Feed JSON", "Support Funnel JSON", "Support Signal JSON", "Checkout Readiness JSON", "Revenue Proof JSON", "Templates", "Guides", "Product checkout is not connected"])
+    require_contains(DOCS / "llms-full.txt", ["Daily Autodigital Shelf Full Context", "Generated Packs", manifest["title"], "Download page", "Product Feed JSON", "Support Funnel JSON", "Support Signal JSON", "Checkout Readiness JSON", "Revenue Proof JSON", "Sponsor Kit JSON", "Support card SVG", support_card_url, support_signal_page_url, checkout_readiness_json_url, revenue_proof_json_url, "Use Cases JSON", "Templates JSON", "Guides JSON", preferred_collection_bundle_page_url, "Machine-Readable Files", "status.json"])
     import_json = read_json(DOCS / "imports" / "store-listings.json")
     if len(import_json.get("items", [])) < min_pack_count:
         fail(f"store-listings.json item count is {len(import_json.get('items', []))}, expected at least {min_pack_count}")
@@ -681,34 +689,35 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             if needle not in collection_card_text:
                 fail(f"Collection bundle support-card.svg missing {needle}")
     require_file(DOCS / "sitemap.xml", 100)
-    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", support_signal_page, support_signal_json, checkout_readiness_page, checkout_readiness_json, "pricing.html", support_card_path, "commercial-use.html", "sponsor.html", "sponsor-kit.json", "offers/", "offers/offers.json", today_collection_bundle_path, today_collection_bundle_page_path, "topics/", "topics/topics.json", "use-cases/", "use-cases/use-cases.json", today_use_case_path, "templates/", "templates/templates.json", today_template_path, "guides/", "guides/guides.json", today_guide_path, "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
+    require_contains(DOCS / "sitemap.xml", ["starter-bundle.html", "support.html", "pay-what-you-can.html", support_signal_page, support_signal_json, checkout_readiness_page, checkout_readiness_json, revenue_proof_page, revenue_proof_json, "pricing.html", support_card_path, "commercial-use.html", "sponsor.html", "sponsor-kit.json", "offers/", "offers/offers.json", today_collection_bundle_path, today_collection_bundle_page_path, "topics/", "topics/topics.json", "use-cases/", "use-cases/use-cases.json", today_use_case_path, "templates/", "templates/templates.json", today_template_path, "guides/", "guides/guides.json", today_guide_path, "terms.html", "privacy.html", "license.html", "refund-policy.html", "feed.xml", "atom.xml", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "llms.txt", "llms-full.txt"])
     require_contains(DOCS / "sitemap.xml", [download_page_url, printable_url, checklist_url])
     require_contains(DOCS / "robots.txt", ["User-agent: *", "Sitemap:"])
     require_file(DOCS / ".nojekyll", 0)
     require_file(ROOT / "tools" / "sync_download_metrics.py", 3000)
     require_contains(ROOT / "tools" / "sync_download_metrics.py", ["download-metrics.json", "total_download_interest", "daily-shelf-download-metrics-snapshot"])
     require_contains(ROOT / "tools" / "sync_checkout_readiness.py", ["checkout-readiness-snapshot.json", "counter_route_skipped", "daily-shelf-checkout-readiness-snapshot"])
+    require_contains(ROOT / "tools" / "sync_revenue_proofs.py", ["revenue-proof-snapshot.json", "actual_daily_revenue_proven", "daily-shelf-revenue-proof-snapshot"])
     require_file(ROOT / "tools" / "submit_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_indexnow.py",
-        ["bundles/starter-archive.zip", support_card_path, support_signal_page, support_signal_json, checkout_readiness_page, checkout_readiness_json, "collection_bundle_path", "collection_bundle_page_path", "imports/store-upload-kit.zip", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "use-cases/index.html", "use-cases/use-cases.json", "templates/index.html", "templates/templates.json", "guides/index.html", "guides/guides.json", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "printable.html", "checklist.html", "download_url", "download_page_url"],
+        ["bundles/starter-archive.zip", support_card_path, support_signal_page, support_signal_json, checkout_readiness_page, checkout_readiness_json, revenue_proof_page, revenue_proof_json, "collection_bundle_path", "collection_bundle_page_path", "imports/store-upload-kit.zip", "commercial-use.html", "sponsor.html", "sponsor-kit.json", "use-cases/index.html", "use-cases/use-cases.json", "templates/index.html", "templates/templates.json", "guides/index.html", "guides/guides.json", "product-feed.json", "product-feed.xml", "product-feed.csv", "support-funnel.json", "support-funnel.xml", "support-funnel.csv", "today_download", "today_download_page", "printable.html", "checklist.html", "download_url", "download_page_url"],
     )
     require_file(ROOT / "tools" / "submit_calmsprout_indexnow.py", 4000)
     require_contains(
         ROOT / "tools" / "submit_calmsprout_indexnow.py",
-        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/packs/{slug}/printable.html", "/daily-shelf/packs/{slug}/checklist.html", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/bundles/{bundle_page_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/assets/support-card.svg", "/daily-shelf/support-signal.html", "/daily-shelf/support-signal.json", "/daily-shelf/support-signal", "/daily-shelf/checkout-readiness", "/daily-shelf/checkout-readiness.html", "/daily-shelf/checkout-readiness.json", "/daily-shelf/pricing", "/daily-shelf/pricing.html", "/daily-shelf/pricing/support/go", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use.html", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor.html", "/daily-shelf/sponsor/support/go", "/daily-shelf/starter-bundle.html", "/daily-shelf/support.html", "/daily-shelf/license.html", "/daily-shelf/privacy.html", "/daily-shelf/terms.html", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/download-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
+        ["/daily-shelf/today.zip", "/daily-shelf/current.zip", "/daily-shelf/packs/{slug}/", "/daily-shelf/packs/{slug}/printable.html", "/daily-shelf/packs/{slug}/checklist.html", "/daily-shelf/downloads/{slug}.zip", "/daily-shelf/downloads/{slug}.html", "/daily-shelf/bundles/{bundle_name}", "/daily-shelf/bundles/{bundle_page_name}", "/daily-shelf/products", "/daily-shelf/products/", "/daily-shelf/offers.json", "/daily-shelf/offers/{slug}", "/daily-shelf/offers/{slug}/support/go", "/daily-shelf/use-cases", "/daily-shelf/use-cases/{slug}.html", "/daily-shelf/use-cases/use-cases.json", "/daily-shelf/templates", "/daily-shelf/templates/{slug}.html", "/daily-shelf/templates/{slug}/support", "/daily-shelf/templates/{slug}/support/go", "/daily-shelf/templates/templates.json", "/daily-shelf/guides", "/daily-shelf/guides/{slug}.html", "/daily-shelf/guides/guides.json", "/daily-shelf/assets/support-card.svg", "/daily-shelf/support-signal.html", "/daily-shelf/support-signal.json", "/daily-shelf/support-signal", "/daily-shelf/checkout-readiness", "/daily-shelf/checkout-readiness.html", "/daily-shelf/checkout-readiness.json", "/daily-shelf/revenue-proof", "/daily-shelf/revenue-proof.html", "/daily-shelf/revenue-proof.json", "/daily-shelf/pricing", "/daily-shelf/pricing.html", "/daily-shelf/pricing/support/go", "/daily-shelf/commercial-use", "/daily-shelf/commercial-use.html", "/daily-shelf/commercial-use/support/go", "/daily-shelf/sponsor", "/daily-shelf/sponsor.html", "/daily-shelf/sponsor/support/go", "/daily-shelf/starter-bundle.html", "/daily-shelf/support.html", "/daily-shelf/license.html", "/daily-shelf/privacy.html", "/daily-shelf/terms.html", "/daily-shelf/sponsor-kit.json", "/daily-shelf/product-feed.json", "/daily-shelf/product-feed.xml", "/daily-shelf/product-feed.csv", "/daily-shelf/support-funnel.json", "/daily-shelf/support-funnel.xml", "/daily-shelf/support-funnel.csv", "/daily-shelf/support-metrics.json", "/daily-shelf/download-metrics.json", "/daily-shelf/support/go", "/daily-shelf/products/{slug}/support", "/daily-shelf/product-sitemap.xml"],
     )
     require_contains(
         ROOT / "run-daily.ps1",
-        ["tools\\sync_support_metrics.py", "tools\\sync_download_metrics.py", "tools\\sync_checkout_readiness.py", "Support metrics sync complete", "Download metrics sync complete", "Checkout readiness sync complete", "tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
+        ["tools\\sync_support_metrics.py", "tools\\sync_download_metrics.py", "tools\\sync_checkout_readiness.py", "tools\\sync_revenue_proofs.py", "Support metrics sync complete", "Download metrics sync complete", "Checkout readiness sync complete", "Revenue proof sync complete", "tools\\submit_calmsprout_indexnow.py", "CalmSprout IndexNow submission complete"],
     )
     require_contains(
         ROOT / ".github" / "workflows" / "daily-shelf.yml",
-        ["Sync public support metrics", "tools/sync_support_metrics.py", "Sync public download metrics", "tools/sync_download_metrics.py", "Sync public checkout readiness", "tools/sync_checkout_readiness.py", "Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
+        ["Sync public support metrics", "tools/sync_support_metrics.py", "Sync public download metrics", "tools/sync_download_metrics.py", "Sync public checkout readiness", "tools/sync_checkout_readiness.py", "Sync revenue proof evidence", "tools/sync_revenue_proofs.py", "Submit changed CalmSprout URLs to IndexNow", "tools/submit_calmsprout_indexnow.py"],
     )
     require_contains(
         ROOT / ".gitignore",
-        ["state/calmsprout-indexnow-state.json"],
+        ["state/calmsprout-indexnow-state.json", "state/revenue-proofs/inbox/*"],
     )
 
     catalog = read_json(DOCS / "catalog.json")
@@ -969,6 +978,50 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
             "not linked as checkout",
         ],
     )
+    revenue_snapshot = read_json(STATE / "revenue-proof-snapshot.json")
+    revenue_proof = read_json(DOCS / revenue_proof_json)
+    if revenue_snapshot.get("kind") != "daily-shelf-revenue-proof-snapshot":
+        fail("revenue-proof snapshot has wrong kind")
+    if revenue_snapshot.get("today") != day:
+        fail(f"revenue-proof snapshot today is {revenue_snapshot.get('today')}, expected {day}")
+    if revenue_proof.get("kind") != "daily-shelf-revenue-proof":
+        fail("revenue-proof.json has wrong kind")
+    if revenue_proof.get("page_path") != revenue_proof_page or revenue_proof.get("json_path") != revenue_proof_json:
+        fail("revenue-proof.json missing page/json paths")
+    if revenue_proof.get("page_url") != revenue_proof_page_url or revenue_proof.get("json_url") != revenue_proof_json_url:
+        fail("revenue-proof.json missing public page/json URLs")
+    if revenue_proof.get("branded_page_url") != revenue_proof_branded_page_url or revenue_proof.get("branded_json_url") != revenue_proof_branded_json_url:
+        fail("revenue-proof.json missing branded page/json URLs")
+    if int(revenue_proof.get("accepted_receipt_count") or 0) != int(status.get("revenue_proof_accepted_receipt_count") or 0):
+        fail("revenue proof accepted receipt count mismatch")
+    if int(revenue_proof.get("today_revenue_cents") or 0) != int(status.get("revenue_proof_today_revenue_cents") or 0):
+        fail("revenue proof today cents mismatch")
+    if bool(revenue_proof.get("actual_daily_revenue_proven")) != bool(status.get("actual_daily_revenue_proven")):
+        fail("revenue proof daily proof state mismatch")
+    if int(revenue_proof.get("today_revenue_cents") or 0) <= 0 and revenue_proof.get("actual_daily_revenue_proven"):
+        fail("revenue-proof.json claims daily revenue without positive today cents")
+    if int(revenue_proof.get("accepted_receipt_count") or 0) <= 0 and revenue_proof.get("any_revenue_proven"):
+        fail("revenue-proof.json claims revenue without accepted receipts")
+    if not status.get("revenue_proof_ready"):
+        fail("status.json reports revenue_proof_ready=false")
+    if status.get("revenue_proof_page") != revenue_proof_page or status.get("revenue_proof_json") != revenue_proof_json:
+        fail("status.json missing revenue proof paths")
+    if status.get("revenue_proof_page_url") != revenue_proof_page_url or status.get("revenue_proof_json_url") != revenue_proof_json_url:
+        fail("status.json missing revenue proof URLs")
+    if status.get("revenue_proof_branded_page_url") != revenue_proof_branded_page_url or status.get("revenue_proof_branded_json_url") != revenue_proof_branded_json_url:
+        fail("status.json missing branded revenue proof URLs")
+    require_contains(
+        DOCS / revenue_proof_page,
+        [
+            "Revenue Proof",
+            "Sanitized receipt ledger",
+            "Revenue boundary",
+            "Raw exports stay local",
+            "Checkout still has its own gate",
+            "does not create checkout",
+            revenue_proof_json,
+        ],
+    )
     if not status.get("pay_what_you_can_ready") or status.get("pay_what_you_can_page") != "pay-what-you-can.html":
         fail("status.json missing pay_what_you_can_ready/pay-what-you-can.html")
     if status.get("pay_what_you_can_url") != "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html":
@@ -1054,7 +1107,7 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "policy_page_count": int(status.get("policy_page_count") or 0),
         "sponsor_tier_count": int(status.get("sponsor_tier_count") or 0),
         "collection_bundle_page_count": int(status.get("collection_bundle_page_count") or 0),
-        "files_checked": 72,
+        "files_checked": 74,
         "indexnow_enabled": True,
         "monetization_enabled": bool(status.get("monetization_enabled")),
         "store_connected": bool(status.get("store_connected")),
@@ -1069,6 +1122,10 @@ def verify_local(day: str, min_pack_count: int = 1) -> dict[str, Any]:
         "checkout_monitor_checked_url_count": int(status.get("checkout_monitor_checked_url_count") or 0),
         "checkout_monitor_reachable_url_count": int(status.get("checkout_monitor_reachable_url_count") or 0),
         "checkout_monitor_verified_product_checkout_count": int(status.get("checkout_monitor_verified_product_checkout_count") or 0),
+        "revenue_proof_ready": bool(status.get("revenue_proof_ready")),
+        "revenue_proof_accepted_receipt_count": int(status.get("revenue_proof_accepted_receipt_count") or 0),
+        "revenue_proof_today_revenue_cents": int(status.get("revenue_proof_today_revenue_cents") or 0),
+        "actual_daily_revenue_proven": bool(status.get("actual_daily_revenue_proven")),
         "product_checkout_ready": bool(status.get("product_checkout_ready")),
     }
 

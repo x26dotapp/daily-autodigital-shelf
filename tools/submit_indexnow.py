@@ -102,6 +102,8 @@ def collect_candidates(config: dict[str, Any], include_all_packs: bool) -> list[
         "support-signal.json",
         "checkout-readiness.html",
         "checkout-readiness.json",
+        "revenue-proof.html",
+        "revenue-proof.json",
         "assets/support-card.svg",
         "pricing.html",
         "commercial-use.html",

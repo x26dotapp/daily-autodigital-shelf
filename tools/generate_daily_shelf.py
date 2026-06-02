@@ -30,10 +30,13 @@ LEDGER = STATE / "ledger.jsonl"
 SUPPORT_METRICS_SNAPSHOT = STATE / "support-metrics-snapshot.json"
 DOWNLOAD_METRICS_SNAPSHOT = STATE / "download-metrics-snapshot.json"
 CHECKOUT_READINESS_SNAPSHOT = STATE / "checkout-readiness-snapshot.json"
+REVENUE_PROOF_SNAPSHOT = STATE / "revenue-proof-snapshot.json"
 SUPPORT_SIGNAL_JSON_PATH = "support-signal.json"
 SUPPORT_SIGNAL_PAGE_PATH = "support-signal.html"
 CHECKOUT_READINESS_JSON_PATH = "checkout-readiness.json"
 CHECKOUT_READINESS_PAGE_PATH = "checkout-readiness.html"
+REVENUE_PROOF_JSON_PATH = "revenue-proof.json"
+REVENUE_PROOF_PAGE_PATH = "revenue-proof.html"
 DEFAULT_SUPPORT_METRICS_URL = "https://www.calmsprout.com/daily-shelf/support-metrics.json"
 DEFAULT_DOWNLOAD_METRICS_URL = "https://www.calmsprout.com/daily-shelf/download-metrics.json"
 
@@ -1246,6 +1249,33 @@ def blank_checkout_readiness_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def blank_revenue_proof_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "kind": "daily-shelf-revenue-proof-snapshot",
+        "fetched_at": None,
+        "today": dt.datetime.now().astimezone().date().isoformat(),
+        "source_dir": "state/revenue-proofs/inbox",
+        "source_dir_exists": False,
+        "source_file_count": 0,
+        "supported_file_count": 0,
+        "candidate_receipt_count": 0,
+        "accepted_receipt_count": 0,
+        "rejected_receipt_count": 0,
+        "today_receipt_count": 0,
+        "today_revenue_cents": 0,
+        "today_revenue_usd": "0.00",
+        "total_revenue_cents": 0,
+        "total_revenue_usd": "0.00",
+        "actual_daily_revenue_proven": False,
+        "any_revenue_proven": False,
+        "payment_provider_api_verified": False,
+        "by_day_usd": {},
+        "recent_receipts": [],
+        "privacy": "Publishes totals and hashed receipt identifiers only. Raw payment exports stay ignored by git in state/revenue-proofs/inbox.",
+        "boundary": "This monitor only reports sanitized local payment-export evidence. It does not create checkout, collect payment credentials, or guarantee future daily revenue.",
+    }
+
+
 def load_support_metrics_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     if not SUPPORT_METRICS_SNAPSHOT.exists():
         return blank_support_metrics_snapshot(config)
@@ -1293,6 +1323,32 @@ def load_checkout_readiness_snapshot(config: dict[str, Any]) -> dict[str, Any]:
     snapshot["configured_candidate_count"] = safe_count(snapshot.get("configured_candidate_count"))
     snapshot["verified_product_checkout_count"] = safe_count(snapshot.get("verified_product_checkout_count"))
     snapshot["checks"] = snapshot.get("checks") if isinstance(snapshot.get("checks"), list) else []
+    return snapshot
+
+
+def load_revenue_proof_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    if not REVENUE_PROOF_SNAPSHOT.exists():
+        return blank_revenue_proof_snapshot(config)
+    try:
+        raw = json.loads(REVENUE_PROOF_SNAPSHOT.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return blank_revenue_proof_snapshot(config)
+    snapshot = {**blank_revenue_proof_snapshot(config), **raw}
+    for key in [
+        "source_file_count",
+        "supported_file_count",
+        "candidate_receipt_count",
+        "accepted_receipt_count",
+        "rejected_receipt_count",
+        "today_receipt_count",
+        "today_revenue_cents",
+        "total_revenue_cents",
+    ]:
+        snapshot[key] = safe_count(snapshot.get(key))
+    snapshot["today_revenue_usd"] = str(snapshot.get("today_revenue_usd") or "0.00")
+    snapshot["total_revenue_usd"] = str(snapshot.get("total_revenue_usd") or "0.00")
+    snapshot["by_day_usd"] = snapshot.get("by_day_usd") if isinstance(snapshot.get("by_day_usd"), dict) else {}
+    snapshot["recent_receipts"] = snapshot.get("recent_receipts") if isinstance(snapshot.get("recent_receipts"), list) else []
     return snapshot
 
 
@@ -3016,6 +3072,215 @@ def render_checkout_readiness(config: dict[str, Any]) -> dict[str, Any]:
         "monitor_public_support_reachable": bool(monitor.get("public_support_reachable")),
         "monitor_daily_shelf_checkout_reachable": bool(monitor.get("daily_shelf_checkout_reachable")),
         "product_checkout_ready": product_checkout_ready,
+    }
+
+
+def render_revenue_proof(config: dict[str, Any]) -> dict[str, Any]:
+    monetization = config["monetization"]
+    manifests = read_manifests()
+    latest = manifests[0] if manifests else None
+    today = str(latest.get("date") if latest else dt.datetime.now().astimezone().date().isoformat())
+    snapshot = load_revenue_proof_snapshot(config)
+    page_url = pack_url(config, REVENUE_PROOF_PAGE_PATH)
+    json_url = pack_url(config, REVENUE_PROOF_JSON_PATH)
+    branded_page_url = branded_url(config, REVENUE_PROOF_PAGE_PATH)
+    branded_json_url = branded_url(config, REVENUE_PROOF_JSON_PATH)
+    generated_at = stable_generated_at(DOCS / REVENUE_PROOF_JSON_PATH, today)
+    today_revenue_cents = safe_count(snapshot.get("today_revenue_cents"))
+    total_revenue_cents = safe_count(snapshot.get("total_revenue_cents"))
+    today_receipt_count = safe_count(snapshot.get("today_receipt_count"))
+    accepted_receipt_count = safe_count(snapshot.get("accepted_receipt_count"))
+    actual_daily_revenue_proven = bool(snapshot.get("actual_daily_revenue_proven")) and today_revenue_cents > 0
+    any_revenue_proven = bool(snapshot.get("any_revenue_proven")) and total_revenue_cents > 0
+    store_url = safe_public_url(monetization.get("store_url"))
+    support_url = safe_public_url(monetization.get("support_url"))
+    payload = {
+        "kind": "daily-shelf-revenue-proof",
+        "generated_at": generated_at,
+        "today": today,
+        "page_path": REVENUE_PROOF_PAGE_PATH,
+        "json_path": REVENUE_PROOF_JSON_PATH,
+        "page_url": page_url,
+        "json_url": json_url,
+        "branded_page_url": branded_page_url,
+        "branded_json_url": branded_json_url,
+        "proof_sync_ok": bool(snapshot.get("fetched_at")),
+        "proof_fetched_at": snapshot.get("fetched_at"),
+        "source_dir": snapshot.get("source_dir", "state/revenue-proofs/inbox"),
+        "supported_file_count": safe_count(snapshot.get("supported_file_count")),
+        "candidate_receipt_count": safe_count(snapshot.get("candidate_receipt_count")),
+        "accepted_receipt_count": accepted_receipt_count,
+        "rejected_receipt_count": safe_count(snapshot.get("rejected_receipt_count")),
+        "today_receipt_count": today_receipt_count,
+        "today_revenue_cents": today_revenue_cents,
+        "today_revenue_usd": str(snapshot.get("today_revenue_usd") or "0.00"),
+        "total_revenue_cents": total_revenue_cents,
+        "total_revenue_usd": str(snapshot.get("total_revenue_usd") or "0.00"),
+        "actual_daily_revenue_proven": actual_daily_revenue_proven,
+        "any_revenue_proven": any_revenue_proven,
+        "payment_provider_api_verified": bool(snapshot.get("payment_provider_api_verified")),
+        "store_connected": bool(store_url),
+        "support_connected": bool(support_url),
+        "product_checkout_ready": bool(store_url),
+        "recent_receipts": snapshot.get("recent_receipts") if isinstance(snapshot.get("recent_receipts"), list) else [],
+        "by_day_usd": snapshot.get("by_day_usd") if isinstance(snapshot.get("by_day_usd"), dict) else {},
+        "privacy": str(snapshot.get("privacy") or ""),
+        "boundary": str(snapshot.get("boundary") or ""),
+        "guardrails": [
+            "No fake revenue claims",
+            "No raw payment exports committed",
+            "No payment credentials published",
+            "No checkout activation from receipt files",
+        ],
+    }
+    (DOCS / REVENUE_PROOF_JSON_PATH).write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    proof_state = "Daily revenue proof found" if actual_daily_revenue_proven else "No daily revenue proof yet"
+    total_state = "Revenue evidence exists" if any_revenue_proven else "No accepted revenue evidence"
+    image_url = pack_url(config, latest["cover"]) if latest else pack_url(config, SUPPORT_CARD_REL_PATH)
+    receipt_cards = "\n".join(
+        f"""<article class="ledger-row">
+          <strong>{esc(item.get("date", ""))} - ${esc(item.get("amount_usd", "0.00"))}</strong>
+          <p>{esc(item.get("platform", "local-export"))} receipt evidence{f' for {esc(item.get("product", ""))}' if item.get("product") else ""}.</p>
+          <p class="fineprint">Receipt hash: {esc(item.get("receipt_hash") or "not provided")}. Status: {esc(item.get("status", "unknown"))}.</p>
+        </article>"""
+        for item in payload["recent_receipts"][:10]
+        if isinstance(item, dict)
+    )
+    if not receipt_cards:
+        receipt_cards = """<article class="ledger-row">
+          <strong>No accepted receipt rows</strong>
+          <p>The watched folder has not produced any accepted USD paid/settled receipt evidence for this shelf.</p>
+          <p class="fineprint">This is the correct state until a real platform export exists.</p>
+        </article>"""
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Revenue Proof | Daily Autodigital Shelf",
+        "description": "Public revenue-proof ledger boundary for Daily Autodigital Shelf.",
+        "url": page_url,
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": config["site"]["name"],
+            "url": pack_url(config, ""),
+        },
+    }
+    content = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revenue Proof | {esc(config["site"]["name"])}</title>
+  <meta name="description" content="Sanitized revenue-proof ledger for Daily Autodigital Shelf. It reports local receipt-export evidence without exposing raw payment data.">
+  <link rel="canonical" href="{esc(page_url)}">
+{social_meta("Revenue Proof | Daily Autodigital Shelf", "Sanitized receipt evidence without fake revenue claims.", page_url, image_url, "Daily Autodigital Shelf revenue proof")}
+  <script type="application/ld+json">{json_for_script(structured_data)}</script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">D</span>
+        <span class="brand-name">{esc(config["site"]["name"])}</span>
+      </a>
+      <nav class="topnav" aria-label="Revenue proof navigation">
+        <a href="./">Home</a>
+        <a href="./support.html">Support</a>
+        <a href="./support-signal.html">Support signal</a>
+        <a href="./checkout-readiness.html">Checkout readiness</a>
+        <a href="./status.json">Status JSON</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero support-hero">
+        <div class="hero-copy">
+          <p class="label">Revenue proof</p>
+          <h1>{esc(proof_state)}.</h1>
+          <p>This page is the public receipt boundary for the unattended shelf. It reports sanitized local payment-export evidence when it exists and keeps revenue at zero when it does not.</p>
+          <div class="actions">
+            <a class="button primary" href="./support.html">Open support page</a>
+            <a class="button" href="./{esc(REVENUE_PROOF_JSON_PATH)}">Read JSON</a>
+            <a class="button" href="./{esc(CHECKOUT_READINESS_PAGE_PATH)}">Checkout readiness</a>
+            <a class="button" href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
+          </div>
+          <p class="fineprint">This page does not create checkout, collect payment credentials, expose raw payment exports, or guarantee future daily revenue.</p>
+        </div>
+        <aside class="shelf-panel">
+          <div class="panel-head">
+            <div>
+              <p class="label">Current proof</p>
+              <h2>{esc(total_state)}</h2>
+            </div>
+            <span class="status">{esc("proved today" if actual_daily_revenue_proven else "unproved")}</span>
+          </div>
+          <article class="artifact">
+            <div>
+              <h3>${esc(payload["today_revenue_usd"])} today</h3>
+              <p>{today_receipt_count} accepted receipt row{"s" if today_receipt_count != 1 else ""} for {esc(today)}.</p>
+              <p class="fineprint">${esc(payload["total_revenue_usd"])} total accepted local receipt evidence. Provider API verified: {esc("yes" if payload["payment_provider_api_verified"] else "no")}.</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Accepted evidence</p>
+            <h2>Sanitized receipt ledger</h2>
+          </div>
+          <p>The monitor accepts positive USD rows with paid, completed, succeeded, settled, captured, or approved status. It publishes totals and hashed receipt IDs only.</p>
+        </div>
+        <p class="fineprint">Source: {esc(str(payload["source_dir"]))}. Supported files: {payload["supported_file_count"]}. Candidate rows: {payload["candidate_receipt_count"]}. Accepted rows: {accepted_receipt_count}. Rejected rows: {payload["rejected_receipt_count"]}.</p>
+        <div class="ledger">
+          {receipt_cards}
+        </div>
+      </section>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="label">Revenue boundary</p>
+            <h2>What this does not do</h2>
+          </div>
+          <p>This proof monitor is separate from checkout readiness and support-interest metrics. Receipt evidence does not turn downloads into paid products and does not change store_connected.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item done"><span class="setup-dot">1</span><div><strong>Raw exports stay local</strong><p>Payment export files in state/revenue-proofs/inbox are ignored by git.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">2</span><div><strong>Checkout still has its own gate</strong><p>Product checkout remains disconnected unless checkout-readiness and status.json say otherwise.</p></div></article>
+          <article class="setup-item"><span class="setup-dot">3</span><div><strong>Revenue is not guaranteed</strong><p>Accepted local receipt evidence can record a payment after it exists; it cannot create buyers.</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>{esc(monetization.get("affiliate_disclosure", ""))}</p>
+      <p>{policy_links(config)}</p>
+    </footer>
+  </div>
+</body>
+</html>
+"""
+    (DOCS / REVENUE_PROOF_PAGE_PATH).write_text(content, encoding="utf-8")
+    return {
+        "ready": True,
+        "page_path": REVENUE_PROOF_PAGE_PATH,
+        "json_path": REVENUE_PROOF_JSON_PATH,
+        "page_url": page_url,
+        "json_url": json_url,
+        "branded_page_url": branded_page_url,
+        "branded_json_url": branded_json_url,
+        "proof_sync_ok": bool(snapshot.get("fetched_at")),
+        "proof_fetched_at": snapshot.get("fetched_at"),
+        "supported_file_count": safe_count(snapshot.get("supported_file_count")),
+        "candidate_receipt_count": safe_count(snapshot.get("candidate_receipt_count")),
+        "accepted_receipt_count": accepted_receipt_count,
+        "today_receipt_count": today_receipt_count,
+        "today_revenue_cents": today_revenue_cents,
+        "today_revenue_usd": str(snapshot.get("today_revenue_usd") or "0.00"),
+        "total_revenue_cents": total_revenue_cents,
+        "total_revenue_usd": str(snapshot.get("total_revenue_usd") or "0.00"),
+        "actual_daily_revenue_proven": actual_daily_revenue_proven,
+        "any_revenue_proven": any_revenue_proven,
+        "payment_provider_api_verified": bool(snapshot.get("payment_provider_api_verified")),
     }
 
 
@@ -5123,6 +5388,7 @@ def render_index(
     bundle: dict[str, Any],
     support_signal: dict[str, Any],
     checkout_readiness: dict[str, Any],
+    revenue_proof: dict[str, Any],
 ) -> None:
     recent_count = int(config["generation"].get("recent_pack_count", 7))
     manifests = read_manifests()[:recent_count]
@@ -5208,6 +5474,8 @@ def render_index(
     preferred_bundle_label = preferred_collection_label()
     checkout_readiness_page_path = str(checkout_readiness.get("page_path") or CHECKOUT_READINESS_PAGE_PATH)
     checkout_readiness_json_path = str(checkout_readiness.get("json_path") or CHECKOUT_READINESS_JSON_PATH)
+    revenue_proof_page_path = str(revenue_proof.get("page_path") or REVENUE_PROOF_PAGE_PATH)
+    revenue_proof_json_path = str(revenue_proof.get("json_path") or REVENUE_PROOF_JSON_PATH)
     signal_markup = support_signal_card_markup(support_signal, "./")
     content = f"""<!doctype html>
 <html lang="en">
@@ -5249,6 +5517,7 @@ def render_index(
         <a href="./pricing.html">Pricing</a>
         <a href="./{esc(SUPPORT_SIGNAL_PAGE_PATH)}">Support signal</a>
         <a href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a>
+        <a href="./{esc(revenue_proof_page_path)}">Revenue proof</a>
         <a href="./support.html">Support</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./store-import.html">Import kit</a>
@@ -5275,6 +5544,7 @@ def render_index(
             <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./pricing.html">Pricing</a>
             <a class="button" href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a>
+            <a class="button" href="./{esc(revenue_proof_page_path)}">Revenue proof</a>
             <a class="button" href="./store-import.html">Open import kit</a>
             <a class="button" href="#setup">View setup status</a>
           </div>
@@ -5349,13 +5619,39 @@ def render_index(
         </div>
       </section>
 
+      <section id="revenue-proof">
+        <div class="section-head">
+          <div>
+            <p class="label">Receipt boundary</p>
+            <h2>Revenue proof</h2>
+          </div>
+          <p>The daily run publishes sanitized receipt evidence when a real payment export exists. Current daily revenue proof: {esc("yes" if revenue_proof.get("actual_daily_revenue_proven") else "no")}. <a href="./{esc(revenue_proof_page_path)}">Open revenue proof</a> - <a href="./{esc(revenue_proof_json_path)}">JSON</a>.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item">
+            <span class="setup-dot">1</span>
+            <div>
+              <strong>Accepted receipt rows</strong>
+              <p>{safe_count(revenue_proof.get("accepted_receipt_count"))} accepted local receipt row{"s" if safe_count(revenue_proof.get("accepted_receipt_count")) != 1 else ""}. Today: ${esc(str(revenue_proof.get("today_revenue_usd") or "0.00"))}.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">2</span>
+            <div>
+              <strong>No checkout side effects</strong>
+              <p>Revenue proof does not collect payment credentials, trigger support redirects, or change store_connected.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section>
         <div class="section-head">
           <div>
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
+          <p>{esc(recent_monetization_note)} <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./{esc(bundle_page_path)}">Starter bundle</a> - <a href="./{esc(preferred_bundle_page_path)}">{esc(preferred_bundle_label)} bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./{esc(checkout_readiness_page_path)}">Checkout readiness</a> - <a href="./{esc(revenue_proof_page_path)}">Revenue proof</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
         </div>
         <div class="pack-grid">
           {cards}
@@ -5448,6 +5744,13 @@ def render_index(
           </article>
           <article class="setup-item">
             <span class="setup-dot">5</span>
+            <div>
+              <strong>Revenue proof monitor</strong>
+              <p><a href="./{esc(revenue_proof_page_path)}">Open proof page</a>. It publishes sanitized receipt evidence only after a real export exists.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">6</span>
             <div>
               <strong>Payment/legal layer</strong>
               <p>External platforms may require identity, tax, payout, approval, and threshold steps. This automation does not bypass those.</p>
@@ -7120,6 +7423,7 @@ def render_ai_discovery_files(
     sponsor_pages: dict[str, Any],
     support_signal: dict[str, Any],
     checkout_readiness: dict[str, Any],
+    revenue_proof: dict[str, Any],
 ) -> dict[str, Any]:
     manifests = read_manifests()
     site_name = config["site"]["name"]
@@ -7140,6 +7444,8 @@ def render_ai_discovery_files(
     support_signal_json_url = pack_url(config, str(support_signal.get("json_path") or SUPPORT_SIGNAL_JSON_PATH))
     checkout_readiness_page_url = pack_url(config, str(checkout_readiness.get("page_path") or CHECKOUT_READINESS_PAGE_PATH))
     checkout_readiness_json_url = pack_url(config, str(checkout_readiness.get("json_path") or CHECKOUT_READINESS_JSON_PATH))
+    revenue_proof_page_url = pack_url(config, str(revenue_proof.get("page_path") or REVENUE_PROOF_PAGE_PATH))
+    revenue_proof_json_url = pack_url(config, str(revenue_proof.get("json_path") or REVENUE_PROOF_JSON_PATH))
     preferred_bundle_label = preferred_collection_label()
     preferred_bundle_url = preferred_collection_bundle_page_url(config)
     destination_type = str(support.get("destination_type", "none"))
@@ -7192,6 +7498,8 @@ def render_ai_discovery_files(
             f"- Support Signal JSON: {support_signal_json_url}",
             f"- Checkout Readiness report: {checkout_readiness_page_url}",
             f"- Checkout Readiness JSON: {checkout_readiness_json_url}",
+            f"- Revenue Proof report: {revenue_proof_page_url}",
+            f"- Revenue Proof JSON: {revenue_proof_json_url}",
             f"- Offers: {pack_url(config, 'offers/')}",
             f"- Use cases: {pack_url(config, 'use-cases/')}",
             f"- Templates: {pack_url(config, 'templates/')}",
@@ -7217,6 +7525,7 @@ def render_ai_discovery_files(
             monetization_line,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
             "- Checkout Readiness records candidate payment surfaces without marking checkout live.",
+            "- Revenue Proof records sanitized local receipt evidence only; it does not prove future revenue or activate checkout.",
             "- Support is voluntary and downloads remain public unless a real store checkout is connected.",
             "- Support Signal uses aggregate support-intent clicks only; it does not prove payments or daily revenue.",
             "",
@@ -7254,6 +7563,8 @@ def render_ai_discovery_files(
             "- Support Signal JSON: " + support_signal_json_url,
             "- Checkout Readiness report: " + checkout_readiness_page_url,
             "- Checkout Readiness JSON: " + checkout_readiness_json_url,
+            "- Revenue Proof report: " + revenue_proof_page_url,
+            "- Revenue Proof JSON: " + revenue_proof_json_url,
             f"- {preferred_bundle_label} bundle page: {preferred_bundle_url}",
             *latest_branded_lines,
             "- Product checkout is not connected unless `store_connected` is true in status.json.",
@@ -7277,6 +7588,7 @@ def render_ai_discovery_files(
             f"- Sponsor Kit JSON: {sponsor_kit_url}",
             f"- Support Signal JSON: {support_signal_json_url}",
             f"- Checkout Readiness JSON: {checkout_readiness_json_url}",
+            f"- Revenue Proof JSON: {revenue_proof_json_url}",
             f"- Topics JSON: {pack_url(config, 'topics/topics.json')}",
             f"- Offers JSON: {pack_url(config, 'offers/offers.json')}",
             f"- Use Cases JSON: {pack_url(config, 'use-cases/use-cases.json')}",
@@ -7311,6 +7623,8 @@ def render_sitemap(config: dict[str, Any]) -> None:
         pack_url(config, SUPPORT_SIGNAL_JSON_PATH),
         pack_url(config, CHECKOUT_READINESS_PAGE_PATH),
         pack_url(config, CHECKOUT_READINESS_JSON_PATH),
+        pack_url(config, REVENUE_PROOF_PAGE_PATH),
+        pack_url(config, REVENUE_PROOF_JSON_PATH),
         pack_url(config, "pricing.html"),
         pack_url(config, "sponsor.html"),
         pack_url(config, "commercial-use.html"),
@@ -7445,6 +7759,7 @@ def write_status(
     offers: dict[str, Any],
     support_signal: dict[str, Any],
     checkout_readiness: dict[str, Any],
+    revenue_proof: dict[str, Any],
     ai_discovery: dict[str, Any],
     discovery: dict[str, Any],
 ) -> None:
@@ -7629,6 +7944,26 @@ def write_status(
         "checkout_monitor_public_support_reachable": bool(checkout_readiness.get("monitor_public_support_reachable")),
         "checkout_monitor_daily_shelf_checkout_reachable": bool(checkout_readiness.get("monitor_daily_shelf_checkout_reachable")),
         "product_checkout_ready": bool(checkout_readiness.get("product_checkout_ready")),
+        "revenue_proof_ready": bool(revenue_proof.get("ready")),
+        "revenue_proof_page": revenue_proof.get("page_path", REVENUE_PROOF_PAGE_PATH),
+        "revenue_proof_json": revenue_proof.get("json_path", REVENUE_PROOF_JSON_PATH),
+        "revenue_proof_page_url": revenue_proof.get("page_url", pack_url(config, REVENUE_PROOF_PAGE_PATH)),
+        "revenue_proof_json_url": revenue_proof.get("json_url", pack_url(config, REVENUE_PROOF_JSON_PATH)),
+        "revenue_proof_branded_page_url": revenue_proof.get("branded_page_url", branded_url(config, REVENUE_PROOF_PAGE_PATH)),
+        "revenue_proof_branded_json_url": revenue_proof.get("branded_json_url", branded_url(config, REVENUE_PROOF_JSON_PATH)),
+        "revenue_proof_sync_ok": bool(revenue_proof.get("proof_sync_ok")),
+        "revenue_proof_fetched_at": revenue_proof.get("proof_fetched_at"),
+        "revenue_proof_supported_file_count": int(revenue_proof.get("supported_file_count", 0)),
+        "revenue_proof_candidate_receipt_count": int(revenue_proof.get("candidate_receipt_count", 0)),
+        "revenue_proof_accepted_receipt_count": int(revenue_proof.get("accepted_receipt_count", 0)),
+        "revenue_proof_today_receipt_count": int(revenue_proof.get("today_receipt_count", 0)),
+        "revenue_proof_today_revenue_cents": int(revenue_proof.get("today_revenue_cents", 0)),
+        "revenue_proof_today_revenue_usd": str(revenue_proof.get("today_revenue_usd") or "0.00"),
+        "revenue_proof_total_revenue_cents": int(revenue_proof.get("total_revenue_cents", 0)),
+        "revenue_proof_total_revenue_usd": str(revenue_proof.get("total_revenue_usd") or "0.00"),
+        "actual_daily_revenue_proven": bool(revenue_proof.get("actual_daily_revenue_proven")),
+        "any_revenue_proven": bool(revenue_proof.get("any_revenue_proven")),
+        "payment_provider_api_verified": bool(revenue_proof.get("payment_provider_api_verified")),
         "ai_discovery_ready": bool(ai_discovery.get("ready")),
         "llms_txt": ai_discovery.get("llms_txt", "llms.txt"),
         "llms_full_txt": ai_discovery.get("llms_full_txt", "llms-full.txt"),
@@ -7696,16 +8031,17 @@ def generate(day: dt.date) -> dict[str, Any]:
     guides = render_guide_pages(config)
     support_signal = render_support_signal(config, pack)
     checkout_readiness = render_checkout_readiness(config)
+    revenue_proof = render_revenue_proof(config)
     policies = render_policy_pages(config)
     support = render_support_page(config, support_signal)
     support_assets = render_support_assets(config, support)
     pay_page = render_pay_what_you_can_page(config, support)
     sponsor_pages = render_sponsor_pages(config)
     offers = render_offer_pages(config, support)
-    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages, support_signal, checkout_readiness)
+    ai_discovery = render_ai_discovery_files(config, support, pay_page, sponsor_pages, support_signal, checkout_readiness, revenue_proof)
     import_kit = render_store_import_kit(config)
     bundle = render_bundle(config)
-    render_index(pack, config, bundle, support_signal, checkout_readiness)
+    render_index(pack, config, bundle, support_signal, checkout_readiness, revenue_proof)
     render_sitemap(config)
     render_robots(config)
     discovery = render_indexnow_key(config)
@@ -7731,6 +8067,7 @@ def generate(day: dt.date) -> dict[str, Any]:
         offers,
         support_signal,
         checkout_readiness,
+        revenue_proof,
         ai_discovery,
         discovery,
     )

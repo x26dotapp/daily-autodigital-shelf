@@ -47,6 +47,7 @@
         <a href="./pricing.html">Pricing</a>
         <a href="./support-signal.html">Support signal</a>
         <a href="./checkout-readiness.html">Checkout readiness</a>
+        <a href="./revenue-proof.html">Revenue proof</a>
         <a href="./support.html">Support</a>
         <a href="./pay-what-you-can.html">Pay what you can</a>
         <a href="./store-import.html">Import kit</a>
@@ -73,6 +74,7 @@
             <a class="button" href="./sponsor.html">Sponsor</a>
             <a class="button" href="./pricing.html">Pricing</a>
             <a class="button" href="./checkout-readiness.html">Checkout readiness</a>
+            <a class="button" href="./revenue-proof.html">Revenue proof</a>
             <a class="button" href="./store-import.html">Open import kit</a>
             <a class="button" href="#setup">View setup status</a>
           </div>
@@ -159,13 +161,39 @@
         </div>
       </section>
 
+      <section id="revenue-proof">
+        <div class="section-head">
+          <div>
+            <p class="label">Receipt boundary</p>
+            <h2>Revenue proof</h2>
+          </div>
+          <p>The daily run publishes sanitized receipt evidence when a real payment export exists. Current daily revenue proof: no. <a href="./revenue-proof.html">Open revenue proof</a> - <a href="./revenue-proof.json">JSON</a>.</p>
+        </div>
+        <div class="setup-list">
+          <article class="setup-item">
+            <span class="setup-dot">1</span>
+            <div>
+              <strong>Accepted receipt rows</strong>
+              <p>0 accepted local receipt rows. Today: $0.00.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">2</span>
+            <div>
+              <strong>No checkout side effects</strong>
+              <p>Revenue proof does not collect payment credentials, trigger support redirects, or change store_connected.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section>
         <div class="section-head">
           <div>
             <p class="label">Recent shelf</p>
             <h2>Latest generated packs</h2>
           </div>
-          <p>Each pack is plain, reusable, and public while the connected support path can receive voluntary support. <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./starter-bundle.html">Starter bundle</a> - <a href="./bundles/small-business-ops-collection.html">Small Business Ops bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./checkout-readiness.html">Checkout readiness</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
+          <p>Each pack is plain, reusable, and public while the connected support path can receive voluntary support. <a href="./archive.html">Open archive</a> - <a href="./topics/">Topics</a> - <a href="./use-cases/">Use cases</a> - <a href="./templates/">Templates</a> - <a href="./guides/">Guides</a> - <a href="./offers/">Offers</a> - <a href="./starter-bundle.html">Starter bundle</a> - <a href="./bundles/small-business-ops-collection.html">Small Business Ops bundle</a> - <a href="./pricing.html">Pricing</a> - <a href="./support.html">Support</a> - <a href="./checkout-readiness.html">Checkout readiness</a> - <a href="./revenue-proof.html">Revenue proof</a> - <a href="./store-import.html">Import kit</a> - <a href="./terms.html">Policies</a> - <a href="./catalog.csv">Catalog CSV</a> - <a href="./catalog.json">Catalog JSON</a> - <a href="./product-feed.json">Product feed</a> - <a href="./support-funnel.json">Support funnel feed</a></p>
         </div>
         <div class="pack-grid">
           <article class="pack-card">
@@ -323,6 +351,13 @@
           </article>
           <article class="setup-item">
             <span class="setup-dot">5</span>
+            <div>
+              <strong>Revenue proof monitor</strong>
+              <p><a href="./revenue-proof.html">Open proof page</a>. It publishes sanitized receipt evidence only after a real export exists.</p>
+            </div>
+          </article>
+          <article class="setup-item">
+            <span class="setup-dot">6</span>
             <div>
               <strong>Payment/legal layer</strong>
               <p>External platforms may require identity, tax, payout, approval, and threshold steps. This automation does not bypass those.</p>

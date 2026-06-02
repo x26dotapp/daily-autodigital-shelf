@@ -45,6 +45,10 @@ jobs:
         continue-on-error: true
         run: python tools/sync_checkout_readiness.py
 
+      - name: Sync revenue proof evidence
+        continue-on-error: true
+        run: python tools/sync_revenue_proofs.py --date "$SHELF_DATE"
+
       - name: Generate site output
         run: python tools/generate_daily_shelf.py --date "$SHELF_DATE"
 

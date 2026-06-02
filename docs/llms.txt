@@ -16,6 +16,8 @@
 - Support Signal JSON: https://x26dotapp.github.io/daily-autodigital-shelf/support-signal.json
 - Checkout Readiness report: https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.html
 - Checkout Readiness JSON: https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.json
+- Revenue Proof report: https://x26dotapp.github.io/daily-autodigital-shelf/revenue-proof.html
+- Revenue Proof JSON: https://x26dotapp.github.io/daily-autodigital-shelf/revenue-proof.json
 - Offers: https://x26dotapp.github.io/daily-autodigital-shelf/offers/
 - Use cases: https://x26dotapp.github.io/daily-autodigital-shelf/use-cases/
 - Templates: https://x26dotapp.github.io/daily-autodigital-shelf/templates/
@@ -43,6 +45,7 @@
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.
+- Revenue Proof records sanitized local receipt evidence only; it does not prove future revenue or activate checkout.
 - Support is voluntary and downloads remain public unless a real store checkout is connected.
 - Support Signal uses aggregate support-intent clicks only; it does not prove payments or daily revenue.
 

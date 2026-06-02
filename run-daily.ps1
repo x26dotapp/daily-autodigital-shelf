@@ -8,6 +8,7 @@ $verifyPath = Join-Path $root 'tools\verify_daily_shelf.py'
 $supportMetricsPath = Join-Path $root 'tools\sync_support_metrics.py'
 $downloadMetricsPath = Join-Path $root 'tools\sync_download_metrics.py'
 $checkoutReadinessPath = Join-Path $root 'tools\sync_checkout_readiness.py'
+$revenueProofPath = Join-Path $root 'tools\sync_revenue_proofs.py'
 $indexNowPath = Join-Path $root 'tools\submit_indexnow.py'
 $calmSproutIndexNowPath = Join-Path $root 'tools\submit_calmsprout_indexnow.py'
 
@@ -79,6 +80,19 @@ try {
 }
 catch {
     Write-RunLog "Checkout readiness sync failed: $($_.Exception.Message)"
+}
+
+try {
+    & $python $revenueProofPath
+    if ($LASTEXITCODE -eq 0) {
+        Write-RunLog 'Revenue proof sync complete.'
+    }
+    else {
+        Write-RunLog "Revenue proof sync returned exit code $LASTEXITCODE."
+    }
+}
+catch {
+    Write-RunLog "Revenue proof sync failed: $($_.Exception.Message)"
 }
 
 & $python $scriptPath

@@ -4,6 +4,8 @@ config/config.local.json
 state/indexnow-state.json
 state/calmsprout-indexnow-state.json
 state/watchdog-status.json
+state/revenue-proofs/inbox/*
+!state/revenue-proofs/inbox/.gitkeep
 *.tmp
 *.bak
 __pycache__/
