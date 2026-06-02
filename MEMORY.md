@@ -322,6 +322,28 @@
   fallback workflow plus CalmSprout IndexNow automation. The watchdog status
   file reports `status: ok`, `failures: 0`, and `repair_attempts: 0`.
 
+- 2026-06-02 collection bundle landing pages: Daily Shelf commit `ee1a729`
+  (`Add collection bundle landing pages`) generated 5 focused collection bundle
+  product pages under `docs/bundles/*-collection.html`, added
+  `collection_bundle_page_path`, `collection_bundle_page_url`, and
+  `collection_bundle_branded_page_url` to `offers.json`, added page paths/counts
+  to `status.json`, added the URLs to `sitemap.xml`, and wired both IndexNow
+  submitters plus verifier coverage. GitHub Pages run `26831541576` succeeded.
+  CalmSprout commit `ea1db61` (`Index Daily Shelf bundle pages`) adds the
+  bundle page URLs to the branded dynamic sitemap; Cloudflare Worker version
+  `39c6e94a-2ce2-475b-86c2-28d8fd2e236f` is live. `verify-system.ps1` passed
+  with `pack_count: 29`, `collection_bundle_page_count: 5`, `files_checked: 63`,
+  `support_connected: true`, and `store_connected: false`. Live QA verified
+  GitHub Pages and CalmSprout `small-business-ops-collection.html` return HTTP
+  200 with collection ZIP CTA, measured collection support CTA,
+  `Product`/`FAQPage`/`DownloadAction`/`DonateAction` JSON-LD, and the
+  `Product checkout is not connected` boundary. Browser QA at 1280x720 and
+  390x844 found no console errors and no horizontal overflow. IndexNow accepted
+  19 GitHub Pages URLs and 39 CalmSprout URLs; follow-up dry runs returned
+  `submit_count: 0`. No support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is higher-value conversion
+  infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
