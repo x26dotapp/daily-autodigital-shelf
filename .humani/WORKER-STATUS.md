@@ -5,22 +5,22 @@
 - Operator: `DAI-AUT-01`
 - Project: `daily-autodigital-shelf`
 - State: idle
-- Last updated: `2026-06-02T08:29:36-04:00`
+- Last updated: `2026-06-02T08:33:10-04:00`
 - Active broker action: none
 
 ## Latest Verified Work
 
 - Public site: `https://x26dotapp.github.io/daily-autodigital-shelf/`
 - Current pack: `One-Page SOP Builder`
-- Latest handoff update: 29-pack inventory backfill is locally verified
-- Latest functional commit: `93e5d7c` (`Track CalmSprout collection offer pages`)
+- Latest handoff update: full 29-pack inventory is live and submitted
+- Latest functional commit: `0b72b3a` (`Backfill full 29 pack inventory`)
 - Latest adjacent bridge commit: CalmSprout `4b64442` (`Render Daily Shelf collection offers`)
 - Latest CalmSprout commits: `d8fa6d9` (`Add Daily Shelf landing page`), `8a689e1` (`Add CalmSprout IndexNow key`), `8d4d298` (`Add Daily Shelf pay bridge`), `49b00c2` (`Add Daily Shelf LLM discovery`), `9401218` (`Add Daily Shelf bridge aliases`), `0c509a0` (`Add Daily Shelf data aliases`), `6786fe0` (`Add dynamic Daily Shelf current pack routes`), `557e6c5` (`Add Daily Shelf product catalog page`), `9194d08` (`Add Daily Shelf product detail routes`), `d8af561` (`Add Daily Shelf dynamic product sitemap`), `3001f49` (`Add Daily Shelf product support funnels`), `6b5e7bf` (`Add Daily Shelf support intent redirects`), `2821d51` (`Expose support intent in LLM discovery`), `392479e` (`Record support intent LLM deploy`), `187a1b6` (`Add product offer FAQ schema`), `874504d` (`Record product offer FAQ schema deploy`), `53b3183` (`Route shelf downloads through landing pages`), `1d44688` (`Proxy Daily Shelf stylesheet`), `8d70dc3` (`Proxy Daily Shelf product feeds`), `c8c0833` (`Proxy Daily Shelf support funnel feed`), `95534a5` (`Track Daily Shelf support metrics`), `616ebfa` (`Measure general support redirects`), `e1f192b` (`Measure collection support redirects`), and `4b64442` (`Render Daily Shelf collection offers`)
 - CalmSprout deploy: Cloudflare Worker version `99336f51-f942-43c8-9482-d6bc4e3f4f2b`
-- Pages deployment: `26819365767` for CalmSprout collection offer page tracking; prior collection support route deployment `26818824112` succeeded for `4d2ddf7`
+- Pages deployment: `26819825807` for the full 29-pack inventory backfill; prior CalmSprout collection offer page deployment `26819365767` succeeded for `93e5d7c`
 - Fallback proof: run `26805969926` verified `files_checked: 36`, `support_connected: true`, `store_connected: false`, and logged `No generated changes to publish`
 - Verification: `verify-system.ps1` passed locally with `pack_count: 29`, `files_checked: 46`, `bundle_bytes: 517838`, current `download_bytes: 6875`, `store_import_zip_bytes: 286183`, `monetization_enabled: true`, `support_connected: true`, `store_connected: false`
-- Discovery: IndexNow accepted 12 CalmSprout collection/feed URLs with HTTP 200 after adding first-party collection offer pages; GitHub Pages had `submit_count: 0`; follow-up CalmSprout dry run returned `submit_count: 0`
+- Discovery: IndexNow accepted 58 GitHub Pages URLs and 133 CalmSprout URLs with HTTP 200 after the 29-pack backfill; follow-up dry runs returned `submit_count: 0` for both hosts
 - Support/discovery surfaces: `support.html`, `pay-what-you-can.html`, `llms.txt`, and `llms-full.txt` are generated
 - Support metadata: catalog/import JSON and CSV expose `support_page_url`, `pay_what_you_can_url`, `monetization_destination_type`, `monetization_destination_url`, `store_connected`, and `support_connected`; current pack JSON-LD exposes `DonateAction` while only support mode is connected
 - Branded support metadata: catalog/import JSON and CSV expose `branded_product_url`, `branded_support_url`, and `branded_support_intent_url`; `status.json` exposes `today_branded_product_url`, `today_branded_support_url`, and `today_branded_support_intent_url`
@@ -47,6 +47,7 @@
 - General support metrics QA: live `/daily-shelf/support/go` and compatibility route `/daily-shelf/support` return HTTP 302 to Square with `utm_campaign=general_support` and `utm_content=daily-shelf-general`. Two synthetic verification hits changed `total_support_intent_clicks` from `1` to `3` and set `by_slug.daily-shelf-general` to `2`; this is measurement proof, not revenue proof.
 - Collection support metrics QA: live `/daily-shelf/offers/small-business-ops/support/go` returns HTTP 302 to Square with `utm_campaign=collection_support` and `utm_content=collection-small-business-ops`. One synthetic verification hit changed `total_support_intent_clicks` from `3` to `4` and set `by_slug.collection-small-business-ops` to `1`; this is measurement proof, not revenue proof.
 - CalmSprout first-party collection offer QA: live `/daily-shelf/offers/small-business-ops` and `/daily-shelf/offers/small-business-ops.html` return HTTP 200 with `Small Business Ops printable pack collection`, a `Support this collection` CTA, `/daily-shelf/offers/small-business-ops/support/go`, `CollectionPage` JSON-LD, and the `Product checkout is not connected` boundary. Live `/daily-shelf/offers.json`, `/daily-shelf/topics/small-business-ops.html`, `/sitemap.xml`, `/llms.txt`, and `/daily-shelf/support-metrics.json` returned HTTP 200. No new synthetic support click was triggered; metrics remain `total_support_intent_clicks: 4` with `storage_connected: true`.
+- Full inventory backfill QA: commit `0b72b3a` backfilled the remaining deterministic templates so `status.json` now reports 29 packs, 29 product-feed items, 29 support-funnel items, 29 store-import rows, and 70 topic memberships while preserving `today_pack: One-Page SOP Builder`. Live GitHub Pages checks verified `status.json`, `/packs/2026-05-05-weekly-reset/`, `/downloads/2026-05-05-weekly-reset.html`, and `product-feed.json`. Live CalmSprout checks verified `/daily-shelf/status.json`, `/daily-shelf/products/2026-05-05-weekly-reset`, `/daily-shelf/products/2026-05-05-weekly-reset/support`, `/daily-shelf/product-sitemap.xml`, `/daily-shelf/offers/digital-product-prep`, and `/daily-shelf/offers.json`. `verify-system.ps1` passed with `pack_count: 29`, `bundle_bytes: 517838`, `store_import_zip_bytes: 286183`, `support_connected: true`, and `store_connected: false`. No new synthetic support click was triggered; this is inventory/discovery expansion, not revenue proof.
 - Support destination: `https://gift.calmsprout.com` resolves to the Square-hosted CalmSprout gift/support page
 
 ## Boundaries
