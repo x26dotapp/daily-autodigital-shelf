@@ -15,10 +15,11 @@ Verified 2026-06-02:
 - Pack: `One-Page SOP Builder`
 - Starter archive: 21 packs dated `2026-05-13` through `2026-06-02`
 - Individual downloads: 21 product ZIPs under `downloads/`; all seeded pack pages now include `Download pack ZIP`
-- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 264,102 bytes
-- Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 148,744 bytes
+- Bundle surface: `starter-bundle.html` and `bundles/starter-archive.zip` live; current local ZIP size is 272,703 bytes
+- Import surface: `store-import.html`, `imports/store-listings.csv`, `imports/store-listings.json`, and `imports/store-upload-kit.zip` live; import ZIP is 152,453 bytes
+- Metadata: generated pages include Open Graph image tags, Twitter summary-card tags, and richer JSON-LD for products and listing surfaces
 - Catalog surfaces: `archive.html`, `catalog.json`, `catalog.csv`, `feed.json`, `sitemap.xml`, `robots.txt`
-- Discovery: IndexNow key file live; latest `tools/submit_indexnow.py --all` submitted 7 import-kit URLs and received HTTP 200
+- Discovery: IndexNow key file live; latest `tools/submit_indexnow.py --all` submitted 25 social-metadata URLs and received HTTP 200
 - Live verifier: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\verify-system.ps1`
 - Monetization: not connected; public site says `Status: Not connected`
 
