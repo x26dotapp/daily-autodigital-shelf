@@ -225,6 +225,30 @@
   `total_support_intent_clicks: 4`. This is buyer-intent support
   infrastructure, not payment or daily revenue proof.
 
+- 2026-06-02 sponsor/commercial support attribution: Daily Shelf commits
+  `b7f0ea8` (`Attribute sponsor support routes`) and `0e935da` (`Cover
+  CalmSprout static page aliases`) route sponsor CTAs through
+  `https://www.calmsprout.com/daily-shelf/sponsor/support/go`, route
+  commercial/internal-use CTAs through
+  `https://www.calmsprout.com/daily-shelf/commercial-use/support/go`, expose
+  sponsor/commercial/general support intent URLs in `sponsor-kit.json` and
+  `status.json`, and add the new intent/static alias routes to the CalmSprout
+  IndexNow submitter and verifier. GitHub Pages runs `26827996984` and
+  `26828288446` succeeded. CalmSprout commits `e472359` (`Measure sponsor
+  support redirects`) and `a660a6f` (`Add Daily Shelf static aliases`) deployed
+  as Worker versions `b2f3b3b8-db00-4755-a107-f60932134ca7` and
+  `a7f5a23a-6dc4-41bf-a667-a46b94a93863`; the Worker now measures sponsor and
+  commercial support separately and proxies `/daily-shelf/commercial-use.html`,
+  `/daily-shelf/sponsor.html`, `/daily-shelf/starter-bundle.html`,
+  `/daily-shelf/support.html`, `/daily-shelf/license.html`,
+  `/daily-shelf/privacy.html`, and `/daily-shelf/terms.html`. Live QA verified
+  sponsor/commercial pages, sponsor kit, sitemap, all seven aliases, and browser
+  rendering with no console errors or horizontal overflow. IndexNow accepted 5
+  GitHub Pages URLs and 347 CalmSprout URLs; follow-up dry runs returned
+  `submit_count: 0`. No support redirect was triggered; live metrics remain
+  `total_support_intent_clicks: 4`. This is attribution/conversion
+  infrastructure, not payment or daily revenue proof.
+
 ## Operator Rule
 
 - Keep this file honest. Record stable truths, not wishful plans.
