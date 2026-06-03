@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/",
+      "title": "Weekly Reset Board",
+      "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+      "date_published": "2026-06-03"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
       "title": "One-Page SOP Builder",

@@ -119,8 +119,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 11,
+      "count": 12,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
+          "title": "Weekly Reset Board",
+          "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-03-weekly-reset.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-05-31-client-intake-lite",
           "title": "Client Intake Lite",
@@ -263,8 +270,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 29,
+      "count": 30,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
+          "title": "Weekly Reset Board",
+          "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-03-weekly-reset.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
           "title": "One-Page SOP Builder",
@@ -475,8 +489,15 @@
       "label": "Cleanup And Reset",
       "description": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html",
-      "count": 8,
+      "count": 9,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
+          "title": "Weekly Reset Board",
+          "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-03-weekly-reset.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-05-29-download-folder-reset",
           "title": "Downloads Folder Reset",

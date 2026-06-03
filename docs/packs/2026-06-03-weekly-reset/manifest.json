@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
+  "date": "2026-06-03",
+  "date_label": "June 03, 2026",
+  "title": "Weekly Reset Board",
+  "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
+  "buyer": "Busy households and solo workers who need one visible weekly reset page.",
+  "path": "packs/2026-06-03-weekly-reset/",
+  "worksheet": "packs/2026-06-03-weekly-reset/printable.html",
+  "checklist": "packs/2026-06-03-weekly-reset/checklist.html",
+  "cover": "packs/2026-06-03-weekly-reset/cover.svg",
+  "seller_copy": "packs/2026-06-03-weekly-reset/seller-copy.md",
+  "download": "downloads/2026-06-03-weekly-reset.zip"
+}
