@@ -1,7 +1,7 @@
 {
   "by_day": {
     "2026-06-02": 4,
-    "2026-06-03": 67
+    "2026-06-03": 69
   },
   "by_slug": {
     "2026-05-05-weekly-reset": 1,
@@ -39,9 +39,9 @@
     "collection-low-energy-systems": 1,
     "collection-small-business-ops": 2,
     "daily-shelf-commercial-use": 1,
-    "daily-shelf-general": 3,
+    "daily-shelf-general": 4,
     "daily-shelf-pricing": 1,
-    "daily-shelf-sponsor": 1,
+    "daily-shelf-sponsor": 2,
     "template-appointment-prep": 1,
     "template-calm-launch": 1,
     "template-client-intake-lite": 1,
@@ -182,13 +182,13 @@
     },
     "daily-shelf-general": {
       "2026-06-02": 2,
-      "2026-06-03": 1
+      "2026-06-03": 2
     },
     "daily-shelf-pricing": {
       "2026-06-03": 1
     },
     "daily-shelf-sponsor": {
-      "2026-06-03": 1
+      "2026-06-03": 2
     },
     "template-appointment-prep": {
       "2026-06-03": 1
@@ -278,10 +278,26 @@
       "2026-06-03": 1
     }
   },
-  "fetched_at": "2026-06-03T10:10:04+00:00",
+  "fetched_at": "2026-06-03T17:14:48+00:00",
   "kind": "daily-shelf-support-metrics-snapshot",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-03T12:53:19.940Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/sponsor/support/go",
+      "slug": "daily-shelf-sponsor",
+      "utm_campaign": "sponsor_support",
+      "utm_content": "daily-shelf-sponsor"
+    },
+    {
+      "at": "2026-06-03T10:13:28.207Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/support/go",
+      "slug": "daily-shelf-general",
+      "utm_campaign": "general_support",
+      "utm_content": "daily-shelf-general"
+    },
     {
       "at": "2026-06-03T07:02:27.829Z",
       "destination_type": "square-support",
@@ -465,22 +481,6 @@
       "slug": "2026-05-20-receipt-runner",
       "utm_campaign": "product_support",
       "utm_content": "2026-05-20-receipt-runner"
-    },
-    {
-      "at": "2026-06-03T06:44:38.966Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-19-calm-launch/support/go",
-      "slug": "2026-05-19-calm-launch",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-19-calm-launch"
-    },
-    {
-      "at": "2026-06-03T06:41:55.586Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-14-store-import-prep/support/go",
-      "slug": "2026-05-14-store-import-prep",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-14-store-import-prep"
     }
   ],
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
@@ -489,7 +489,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_support_intent_clicks": 71,
-  "updated_at": "2026-06-03T07:02:27.829Z",
+  "total_support_intent_clicks": 73,
+  "updated_at": "2026-06-03T12:53:19.940Z",
   "version": 1
 }
