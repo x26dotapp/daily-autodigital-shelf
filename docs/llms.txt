@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Weekly Reset Board](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/) - A printable reset board for tasks, bills, errands, and loose ends that need one weekly review. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-03-weekly-reset.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-03-weekly-reset
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-03-weekly-reset/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-03-weekly-reset/support/go
+- Latest pack: [Micro Offer Pricing Sheet](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/) - A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
+      "title": "Micro Offer Pricing Sheet",
+      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+      "date_published": "2026-06-04"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/",
       "title": "Weekly Reset Board",

@@ -1,8 +1,8 @@
 {
   "kind": "daily-shelf-revenue-proof-snapshot",
   "version": 1,
-  "fetched_at": "2026-06-03T17:14:49+00:00",
-  "today": "2026-06-03",
+  "fetched_at": "2026-06-04T15:39:38+00:00",
+  "today": "2026-06-04",
   "source_dir": "state/revenue-proofs/inbox",
   "source_dir_exists": true,
   "source_file_count": 0,

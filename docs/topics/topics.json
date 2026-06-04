@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 15,
+      "count": 16,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
+          "title": "Micro Offer Pricing Sheet",
+          "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-02-one-page-sop",
           "title": "One-Page SOP Builder",
@@ -270,8 +277,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 30,
+      "count": 31,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
+          "title": "Micro Offer Pricing Sheet",
+          "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
           "title": "Weekly Reset Board",
