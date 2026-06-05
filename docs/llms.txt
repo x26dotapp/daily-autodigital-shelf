@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Micro Offer Pricing Sheet](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/) - A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go
+- Latest pack: [Tiny Launch Checklist](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/) - A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

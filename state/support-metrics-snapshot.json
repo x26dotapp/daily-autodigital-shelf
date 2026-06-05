@@ -2,7 +2,7 @@
   "by_day": {
     "2026-06-02": 4,
     "2026-06-03": 72,
-    "2026-06-04": 3
+    "2026-06-04": 4
   },
   "by_slug": {
     "2026-05-05-weekly-reset": 1,
@@ -35,6 +35,7 @@
     "2026-06-01-listing-photo-checklist": 1,
     "2026-06-02-one-page-sop": 2,
     "2026-06-03-weekly-reset": 1,
+    "2026-06-04-micro-offer-pricing": 1,
     "collection-cleanup-and-reset": 1,
     "collection-digital-product-prep": 1,
     "collection-home-admin": 1,
@@ -167,6 +168,9 @@
     "2026-06-03-weekly-reset": {
       "2026-06-03": 1
     },
+    "2026-06-04-micro-offer-pricing": {
+      "2026-06-04": 1
+    },
     "collection-cleanup-and-reset": {
       "2026-06-03": 1
     },
@@ -285,10 +289,18 @@
       "2026-06-03": 1
     }
   },
-  "fetched_at": "2026-06-04T15:39:36+00:00",
+  "fetched_at": "2026-06-05T15:27:23+00:00",
   "kind": "daily-shelf-support-metrics-snapshot",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-04T20:46:23.588Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go",
+      "slug": "2026-06-04-micro-offer-pricing",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-04-micro-offer-pricing"
+    },
     {
       "at": "2026-06-04T11:25:36.065Z",
       "destination_type": "square-support",
@@ -480,14 +492,6 @@
       "slug": "2026-05-23-micro-budget",
       "utm_campaign": "product_support",
       "utm_content": "2026-05-23-micro-budget"
-    },
-    {
-      "at": "2026-06-03T06:44:57.308Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-26-subscription-audit/support/go",
-      "slug": "2026-05-26-subscription-audit",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-26-subscription-audit"
     }
   ],
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
@@ -496,7 +500,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_support_intent_clicks": 79,
-  "updated_at": "2026-06-04T11:25:36.065Z",
+  "total_support_intent_clicks": 80,
+  "updated_at": "2026-06-04T20:46:23.588Z",
   "version": 1
 }

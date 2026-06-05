@@ -55,13 +55,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "count": 16,
+      "count": 17,
       "outcomes": [
         "Name the next client or service workflow that needs a written path.",
         "Pick a public worksheet pack that can be downloaded immediately.",
         "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-05-tiny-launch-checklist",
+          "title": "Tiny Launch Checklist",
+          "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
           "title": "Micro Offer Pricing Sheet",
@@ -410,13 +418,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 31,
+      "count": 32,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-05-tiny-launch-checklist",
+          "title": "Tiny Launch Checklist",
+          "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
           "title": "Micro Offer Pricing Sheet",

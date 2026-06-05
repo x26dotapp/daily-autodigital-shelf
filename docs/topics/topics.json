@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 16,
+      "count": 17,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-05-tiny-launch-checklist",
+          "title": "Tiny Launch Checklist",
+          "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
           "title": "Micro Offer Pricing Sheet",
@@ -277,8 +284,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 31,
+      "count": 32,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-05-tiny-launch-checklist",
+          "title": "Tiny Launch Checklist",
+          "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-04-micro-offer-pricing",
           "title": "Micro Offer Pricing Sheet",

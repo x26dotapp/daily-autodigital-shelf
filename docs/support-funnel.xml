@@ -2,10 +2,35 @@
 <supportFunnelFeed>
   <name>Daily Autodigital Shelf Support Funnel Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json</url>
-  <dateModified>2026-06-04</dateModified>
-  <numberOfItems>31</numberOfItems>
+  <dateModified>2026-06-05</dateModified>
+  <numberOfItems>32</numberOfItems>
   <supportConnected>true</supportConnected>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <supportFunnel>
+    <id>daily-autodigital-shelf:2026-06-05-tiny-launch-checklist</id>
+    <date>2026-06-05</date>
+    <title>Tiny Launch Checklist</title>
+    <description>A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.</description>
+    <buyer>People with useful work stuck in draft mode who need a small publish path.</buyer>
+    <productUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/</productUrl>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.zip</downloadUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support/go</brandedSupportIntentUrl>
+    <publicSupportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</publicSupportPageUrl>
+    <payWhatYouCanUrl>https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html</payWhatYouCanUrl>
+    <externalSupportDestination>https://gift.calmsprout.com</externalSupportDestination>
+    <utmSource>calmsprout</utmSource>
+    <utmMedium>daily_shelf</utmMedium>
+    <utmCampaign>product_support</utmCampaign>
+    <utmContent>2026-06-05-tiny-launch-checklist</utmContent>
+    <suggestedSupportTiers>$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.</suggestedSupportTiers>
+    <supportConnected>true</supportConnected>
+    <storeConnected>false</storeConnected>
+    <fulfillment>public digital download with voluntary external support</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  </supportFunnel>
   <supportFunnel>
     <id>daily-autodigital-shelf:2026-06-04-micro-offer-pricing</id>
     <date>2026-06-04</date>

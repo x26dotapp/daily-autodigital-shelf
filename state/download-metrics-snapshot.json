@@ -1,14 +1,16 @@
 {
   "by_day": {
     "2026-06-02": 2,
-    "2026-06-03": 101
+    "2026-06-03": 101,
+    "2026-06-04": 2,
+    "2026-06-05": 1
   },
   "by_kind": {
     "collection-bundle-page": 10,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 53,
-    "product-zip": 30,
+    "product-download-page": 55,
+    "product-zip": 31,
     "starter-page": 2,
     "starter-zip": 2
   },
@@ -42,7 +44,8 @@
     "2026-05-31-client-intake-lite": 2,
     "2026-06-01-listing-photo-checklist": 3,
     "2026-06-02-one-page-sop": 4,
-    "2026-06-03-weekly-reset": 2,
+    "2026-06-03-weekly-reset": 3,
+    "2026-06-04-micro-offer-pricing": 2,
     "collection-cleanup-and-reset": 3,
     "collection-digital-product-prep": 2,
     "collection-home-admin": 2,
@@ -139,7 +142,11 @@
       "2026-06-03": 4
     },
     "2026-06-03-weekly-reset": {
-      "2026-06-03": 2
+      "2026-06-03": 2,
+      "2026-06-05": 1
+    },
+    "2026-06-04-micro-offer-pricing": {
+      "2026-06-04": 2
     },
     "collection-cleanup-and-reset": {
       "2026-06-03": 3
@@ -161,10 +168,31 @@
       "2026-06-03": 4
     }
   },
-  "fetched_at": "2026-06-04T15:39:36+00:00",
+  "fetched_at": "2026-06-05T15:27:23+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-05T08:51:48.898Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-03-weekly-reset.html",
+      "slug": "2026-06-03-weekly-reset"
+    },
+    {
+      "at": "2026-06-04T20:49:44.871Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-04-micro-offer-pricing.zip",
+      "slug": "2026-06-04-micro-offer-pricing"
+    },
+    {
+      "at": "2026-06-04T19:52:28.677Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-04-micro-offer-pricing.html",
+      "slug": "2026-06-04-micro-offer-pricing"
+    },
     {
       "at": "2026-06-03T17:56:48.060Z",
       "destination_type": "public-download-or-download-page",
@@ -318,27 +346,6 @@
       "kind": "product-zip",
       "route": "/daily-shelf/downloads/2026-05-19-calm-launch.zip",
       "slug": "2026-05-19-calm-launch"
-    },
-    {
-      "at": "2026-06-03T06:44:56.305Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-10-project-rescue-map.zip",
-      "slug": "2026-05-10-project-rescue-map"
-    },
-    {
-      "at": "2026-06-03T06:44:55.304Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-12-simple-order-form.zip",
-      "slug": "2026-05-12-simple-order-form"
-    },
-    {
-      "at": "2026-06-03T06:44:48.173Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-20-receipt-runner.zip",
-      "slug": "2026-05-20-receipt-runner"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -347,7 +354,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 103,
-  "updated_at": "2026-06-03T17:56:48.060Z",
+  "total_download_interest": 106,
+  "updated_at": "2026-06-05T08:51:48.898Z",
   "version": 1
 }
