@@ -2,7 +2,8 @@
   "by_day": {
     "2026-06-02": 4,
     "2026-06-03": 72,
-    "2026-06-04": 4
+    "2026-06-04": 4,
+    "2026-06-05": 1
   },
   "by_slug": {
     "2026-05-05-weekly-reset": 1,
@@ -36,6 +37,7 @@
     "2026-06-02-one-page-sop": 2,
     "2026-06-03-weekly-reset": 1,
     "2026-06-04-micro-offer-pricing": 1,
+    "2026-06-05-tiny-launch-checklist": 1,
     "collection-cleanup-and-reset": 1,
     "collection-digital-product-prep": 1,
     "collection-home-admin": 1,
@@ -171,6 +173,9 @@
     "2026-06-04-micro-offer-pricing": {
       "2026-06-04": 1
     },
+    "2026-06-05-tiny-launch-checklist": {
+      "2026-06-05": 1
+    },
     "collection-cleanup-and-reset": {
       "2026-06-03": 1
     },
@@ -289,10 +294,18 @@
       "2026-06-03": 1
     }
   },
-  "fetched_at": "2026-06-05T15:27:23+00:00",
+  "fetched_at": "2026-06-06T14:06:24+00:00",
   "kind": "daily-shelf-support-metrics-snapshot",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-05T21:18:56.138Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-05-tiny-launch-checklist/support/go",
+      "slug": "2026-06-05-tiny-launch-checklist",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-05-tiny-launch-checklist"
+    },
     {
       "at": "2026-06-04T20:46:23.588Z",
       "destination_type": "square-support",
@@ -484,14 +497,6 @@
       "slug": "2026-05-29-download-folder-reset",
       "utm_campaign": "product_support",
       "utm_content": "2026-05-29-download-folder-reset"
-    },
-    {
-      "at": "2026-06-03T06:45:32.305Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-23-micro-budget/support/go",
-      "slug": "2026-05-23-micro-budget",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-23-micro-budget"
     }
   ],
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
@@ -500,7 +505,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_support_intent_clicks": 80,
-  "updated_at": "2026-06-04T20:46:23.588Z",
+  "total_support_intent_clicks": 81,
+  "updated_at": "2026-06-05T21:18:56.138Z",
   "version": 1
 }

@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-06-decision-parking-lot",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-06-decision-parking-lot/",
+      "title": "Decision Parking Lot",
+      "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+      "date_published": "2026-06-06"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-05-tiny-launch-checklist",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
       "title": "Tiny Launch Checklist",

@@ -4,8 +4,15 @@
   <id>https://x26dotapp.github.io/daily-autodigital-shelf/</id>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/"/>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-06-05T00:00:00Z</updated>
+  <updated>2026-06-06T00:00:00Z</updated>
   <subtitle>A quiet system that makes a new sellable pack every day.</subtitle>
+  <entry>
+    <title>Decision Parking Lot</title>
+    <id>daily-autodigital-shelf:2026-06-06-decision-parking-lot</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-06-decision-parking-lot/"/>
+    <updated>2026-06-06T00:00:00Z</updated>
+    <summary>A worksheet for parking unresolved decisions so they stop interrupting the current task.</summary>
+  </entry>
   <entry>
     <title>Tiny Launch Checklist</title>
     <id>daily-autodigital-shelf:2026-06-05-tiny-launch-checklist</id>
