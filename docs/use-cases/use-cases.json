@@ -418,13 +418,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 33,
+      "count": 34,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-07-email-triage",
+          "title": "Email Triage Sprint",
+          "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-07-email-triage/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-07-email-triage.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-07-email-triage.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-06-decision-parking-lot",
           "title": "Decision Parking Lot",
@@ -707,13 +715,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "count": 9,
+      "count": 10,
       "outcomes": [
         "Choose one cleanup surface that can be finished without a marathon.",
         "Use a public worksheet to make the next visible decision.",
         "Keep the collection bundle ready for repeated reset sessions."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-07-email-triage",
+          "title": "Email Triage Sprint",
+          "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-07-email-triage/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-07-email-triage.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-07-email-triage.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
           "title": "Weekly Reset Board",

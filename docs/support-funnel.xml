@@ -2,10 +2,35 @@
 <supportFunnelFeed>
   <name>Daily Autodigital Shelf Support Funnel Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json</url>
-  <dateModified>2026-06-06</dateModified>
-  <numberOfItems>33</numberOfItems>
+  <dateModified>2026-06-07</dateModified>
+  <numberOfItems>34</numberOfItems>
   <supportConnected>true</supportConnected>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <supportFunnel>
+    <id>daily-autodigital-shelf:2026-06-07-email-triage</id>
+    <date>2026-06-07</date>
+    <title>Email Triage Sprint</title>
+    <description>A 15-minute inbox worksheet for finding the few messages that actually need action.</description>
+    <buyer>People who avoid inboxes because every message feels equally urgent.</buyer>
+    <productUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-07-email-triage/</productUrl>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-07-email-triage.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-07-email-triage.zip</downloadUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-07-email-triage</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-07-email-triage/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-07-email-triage/support/go</brandedSupportIntentUrl>
+    <publicSupportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</publicSupportPageUrl>
+    <payWhatYouCanUrl>https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html</payWhatYouCanUrl>
+    <externalSupportDestination>https://gift.calmsprout.com</externalSupportDestination>
+    <utmSource>calmsprout</utmSource>
+    <utmMedium>daily_shelf</utmMedium>
+    <utmCampaign>product_support</utmCampaign>
+    <utmContent>2026-06-07-email-triage</utmContent>
+    <suggestedSupportTiers>$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.</suggestedSupportTiers>
+    <supportConnected>true</supportConnected>
+    <storeConnected>false</storeConnected>
+    <fulfillment>public digital download with voluntary external support</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  </supportFunnel>
   <supportFunnel>
     <id>daily-autodigital-shelf:2026-06-06-decision-parking-lot</id>
     <date>2026-06-06</date>

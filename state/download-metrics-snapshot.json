@@ -3,14 +3,15 @@
     "2026-06-02": 2,
     "2026-06-03": 101,
     "2026-06-04": 2,
-    "2026-06-05": 3
+    "2026-06-05": 3,
+    "2026-06-06": 2
   },
   "by_kind": {
     "collection-bundle-page": 10,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 56,
-    "product-zip": 32,
+    "product-download-page": 57,
+    "product-zip": 33,
     "starter-page": 2,
     "starter-zip": 2
   },
@@ -47,6 +48,7 @@
     "2026-06-03-weekly-reset": 3,
     "2026-06-04-micro-offer-pricing": 2,
     "2026-06-05-tiny-launch-checklist": 2,
+    "2026-06-06-decision-parking-lot": 2,
     "collection-cleanup-and-reset": 3,
     "collection-digital-product-prep": 2,
     "collection-home-admin": 2,
@@ -152,6 +154,9 @@
     "2026-06-05-tiny-launch-checklist": {
       "2026-06-05": 2
     },
+    "2026-06-06-decision-parking-lot": {
+      "2026-06-06": 2
+    },
     "collection-cleanup-and-reset": {
       "2026-06-03": 3
     },
@@ -172,10 +177,24 @@
       "2026-06-03": 4
     }
   },
-  "fetched_at": "2026-06-06T14:06:24+00:00",
+  "fetched_at": "2026-06-07T14:18:23+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-06T17:40:07.987Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-06-decision-parking-lot.zip",
+      "slug": "2026-06-06-decision-parking-lot"
+    },
+    {
+      "at": "2026-06-06T16:30:24.157Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-06-decision-parking-lot.html",
+      "slug": "2026-06-06-decision-parking-lot"
+    },
     {
       "at": "2026-06-05T21:25:33.597Z",
       "destination_type": "public-download-or-download-page",
@@ -336,20 +355,6 @@
       "kind": "product-zip",
       "route": "/daily-shelf/downloads/2026-05-11-daily-proof-log.zip",
       "slug": "2026-05-11-daily-proof-log"
-    },
-    {
-      "at": "2026-06-03T06:48:42.836Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-27-simple-content-calendar.zip",
-      "slug": "2026-05-27-simple-content-calendar"
-    },
-    {
-      "at": "2026-06-03T06:45:36.309Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-29-download-folder-reset.zip",
-      "slug": "2026-05-29-download-folder-reset"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -358,7 +363,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 108,
-  "updated_at": "2026-06-05T21:25:33.597Z",
+  "total_download_interest": 110,
+  "updated_at": "2026-06-06T17:40:07.987Z",
   "version": 1
 }

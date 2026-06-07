@@ -75,7 +75,7 @@
   "configured_candidate_count": 3,
   "counter_route_skip_count": 0,
   "daily_shelf_checkout_reachable": false,
-  "fetched_at": "2026-06-06T14:06:25+00:00",
+  "fetched_at": "2026-06-07T14:18:24+00:00",
   "kind": "daily-shelf-checkout-readiness-snapshot",
   "public_support_reachable": true,
   "reachable_url_count": 2,

@@ -1,7 +1,7 @@
 {
   "kind": "daily-shelf-revenue-proof",
-  "generated_at": "2026-06-06T14:06:26+00:00",
-  "today": "2026-06-06",
+  "generated_at": "2026-06-07T14:18:24+00:00",
+  "today": "2026-06-07",
   "page_path": "revenue-proof.html",
   "json_path": "revenue-proof.json",
   "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/revenue-proof.html",
@@ -9,7 +9,7 @@
   "branded_page_url": "https://www.calmsprout.com/daily-shelf/revenue-proof.html",
   "branded_json_url": "https://www.calmsprout.com/daily-shelf/revenue-proof.json",
   "proof_sync_ok": true,
-  "proof_fetched_at": "2026-06-06T14:06:25+00:00",
+  "proof_fetched_at": "2026-06-07T14:18:24+00:00",
   "source_dir": "state/revenue-proofs/inbox",
   "supported_file_count": 0,
   "candidate_receipt_count": 0,
