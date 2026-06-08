@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Sun, 07 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Project Rescue Map</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/</guid>
+      <description>A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.</description>
+      <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Email Triage Sprint</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-07-email-triage/</link>

@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
+  "date": "2026-06-08",
+  "date_label": "June 08, 2026",
+  "title": "Project Rescue Map",
+  "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+  "buyer": "Builders and operators who need to recover a project without starting over.",
+  "path": "packs/2026-06-08-project-rescue-map/",
+  "worksheet": "packs/2026-06-08-project-rescue-map/printable.html",
+  "checklist": "packs/2026-06-08-project-rescue-map/checklist.html",
+  "cover": "packs/2026-06-08-project-rescue-map/cover.svg",
+  "seller_copy": "packs/2026-06-08-project-rescue-map/seller-copy.md",
+  "download": "downloads/2026-06-08-project-rescue-map.zip"
+}

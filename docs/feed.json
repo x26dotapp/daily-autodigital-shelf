@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/",
+      "title": "Project Rescue Map",
+      "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+      "date_published": "2026-06-08"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-07-email-triage",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-07-email-triage/",
       "title": "Email Triage Sprint",

@@ -418,13 +418,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 34,
+      "count": 35,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
+          "title": "Project Rescue Map",
+          "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-07-email-triage",
           "title": "Email Triage Sprint",
@@ -715,13 +723,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "count": 10,
+      "count": 11,
       "outcomes": [
         "Choose one cleanup surface that can be finished without a marathon.",
         "Use a public worksheet to make the next visible decision.",
         "Keep the collection bundle ready for repeated reset sessions."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
+          "title": "Project Rescue Map",
+          "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-07-email-triage",
           "title": "Email Triage Sprint",

@@ -284,8 +284,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 34,
+      "count": 35,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
+          "title": "Project Rescue Map",
+          "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-07-email-triage",
           "title": "Email Triage Sprint",
@@ -531,8 +538,15 @@
       "label": "Cleanup And Reset",
       "description": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html",
-      "count": 10,
+      "count": 11,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
+          "title": "Project Rescue Map",
+          "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-07-email-triage",
           "title": "Email Triage Sprint",
