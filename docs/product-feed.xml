@@ -2,9 +2,33 @@
 <productFeed>
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
-  <dateModified>2026-06-08</dateModified>
-  <numberOfItems>35</numberOfItems>
+  <dateModified>2026-06-09</dateModified>
+  <numberOfItems>36</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <product>
+    <id>daily-autodigital-shelf:2026-06-09-daily-proof-log</id>
+    <date>2026-06-09</date>
+    <title>Daily Proof Log</title>
+    <description>A receipt-style log for recording visible proof of work without overexplaining the whole day.</description>
+    <buyer>Solo workers who need evidence of progress for themselves, clients, or future handoff.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,daily,proof,log</tags>
+  </product>
   <product>
     <id>daily-autodigital-shelf:2026-06-08-project-rescue-map</id>
     <date>2026-06-08</date>

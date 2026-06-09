@@ -5,7 +5,9 @@
     "2026-06-04": 4,
     "2026-06-05": 1,
     "2026-06-06": 1,
-    "2026-06-07": 1
+    "2026-06-07": 1,
+    "2026-06-08": 1,
+    "2026-06-09": 1
   },
   "by_slug": {
     "2026-05-05-weekly-reset": 1,
@@ -42,13 +44,14 @@
     "2026-06-05-tiny-launch-checklist": 1,
     "2026-06-06-decision-parking-lot": 1,
     "2026-06-07-email-triage": 1,
+    "2026-06-08-project-rescue-map": 1,
     "collection-cleanup-and-reset": 1,
     "collection-digital-product-prep": 1,
     "collection-home-admin": 1,
     "collection-low-energy-systems": 1,
     "collection-small-business-ops": 3,
     "daily-shelf-commercial-use": 1,
-    "daily-shelf-general": 7,
+    "daily-shelf-general": 8,
     "daily-shelf-pricing": 1,
     "daily-shelf-sponsor": 2,
     "template-appointment-prep": 1,
@@ -186,6 +189,9 @@
     "2026-06-07-email-triage": {
       "2026-06-07": 1
     },
+    "2026-06-08-project-rescue-map": {
+      "2026-06-08": 1
+    },
     "collection-cleanup-and-reset": {
       "2026-06-03": 1
     },
@@ -208,7 +214,8 @@
     "daily-shelf-general": {
       "2026-06-02": 2,
       "2026-06-03": 3,
-      "2026-06-04": 2
+      "2026-06-04": 2,
+      "2026-06-09": 1
     },
     "daily-shelf-pricing": {
       "2026-06-03": 1
@@ -304,10 +311,26 @@
       "2026-06-03": 1
     }
   },
-  "fetched_at": "2026-06-08T16:20:09+00:00",
+  "fetched_at": "2026-06-09T15:26:04+00:00",
   "kind": "daily-shelf-support-metrics-snapshot",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-09T08:25:05.844Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/support/go",
+      "slug": "daily-shelf-general",
+      "utm_campaign": "general_support",
+      "utm_content": "daily-shelf-general"
+    },
+    {
+      "at": "2026-06-08T18:59:16.743Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-08-project-rescue-map/support/go",
+      "slug": "2026-06-08-project-rescue-map",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-08-project-rescue-map"
+    },
     {
       "at": "2026-06-07T17:03:58.416Z",
       "destination_type": "square-support",
@@ -491,22 +514,6 @@
       "slug": "2026-05-28-invoice-followup",
       "utm_campaign": "product_support",
       "utm_content": "2026-05-28-invoice-followup"
-    },
-    {
-      "at": "2026-06-03T06:49:55.618Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-11-daily-proof-log/support/go",
-      "slug": "2026-05-11-daily-proof-log",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-11-daily-proof-log"
-    },
-    {
-      "at": "2026-06-03T06:49:52.614Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-25-offer-followup/support/go",
-      "slug": "2026-05-25-offer-followup",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-25-offer-followup"
     }
   ],
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
@@ -515,7 +522,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_support_intent_clicks": 83,
-  "updated_at": "2026-06-07T17:03:58.416Z",
+  "total_support_intent_clicks": 85,
+  "updated_at": "2026-06-09T08:25:05.844Z",
   "version": 1
 }

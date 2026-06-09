@@ -1,7 +1,7 @@
 {
   "kind": "daily-shelf-checkout-readiness",
-  "generated_at": "2026-06-08T16:20:11+00:00",
-  "today": "2026-06-08",
+  "generated_at": "2026-06-09T15:26:06+00:00",
+  "today": "2026-06-09",
   "page_path": "checkout-readiness.html",
   "json_path": "checkout-readiness.json",
   "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/checkout-readiness.html",
@@ -18,7 +18,7 @@
   "publicly_linkable_candidate_count": 1,
   "verified_checkout_candidate_count": 0,
   "monitor_sync_ok": true,
-  "monitor_fetched_at": "2026-06-08T16:20:11+00:00",
+  "monitor_fetched_at": "2026-06-09T15:26:06+00:00",
   "monitor_checked_url_count": 2,
   "monitor_reachable_url_count": 2,
   "monitor_counter_route_skip_count": 0,

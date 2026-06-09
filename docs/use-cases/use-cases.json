@@ -55,13 +55,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "count": 17,
+      "count": 18,
       "outcomes": [
         "Name the next client or service workflow that needs a written path.",
         "Pick a public worksheet pack that can be downloaded immediately.",
         "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
+          "title": "Daily Proof Log",
+          "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-05-tiny-launch-checklist",
           "title": "Tiny Launch Checklist",
@@ -216,13 +224,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "count": 12,
+      "count": 13,
       "outcomes": [
         "Choose one household admin area that needs a visible page.",
         "Download the related pack instead of building a full spreadsheet system.",
         "Use the collection bundle as a small home-admin starter folder."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
+          "title": "Daily Proof Log",
+          "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-03-weekly-reset",
           "title": "Weekly Reset Board",
@@ -418,13 +434,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 35,
+      "count": 36,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
+          "title": "Daily Proof Log",
+          "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
           "title": "Project Rescue Map",
@@ -723,13 +747,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "count": 11,
+      "count": 12,
       "outcomes": [
         "Choose one cleanup surface that can be finished without a marathon.",
         "Use a public worksheet to make the next visible decision.",
         "Keep the collection bundle ready for repeated reset sessions."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
+          "title": "Daily Proof Log",
+          "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-08-project-rescue-map",
           "title": "Project Rescue Map",

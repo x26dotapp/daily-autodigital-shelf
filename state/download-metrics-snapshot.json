@@ -5,14 +5,16 @@
     "2026-06-04": 2,
     "2026-06-05": 3,
     "2026-06-06": 2,
-    "2026-06-07": 2
+    "2026-06-07": 2,
+    "2026-06-08": 2,
+    "2026-06-09": 1
   },
   "by_kind": {
-    "collection-bundle-page": 10,
+    "collection-bundle-page": 11,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 58,
-    "product-zip": 34,
+    "product-download-page": 59,
+    "product-zip": 35,
     "starter-page": 2,
     "starter-zip": 2
   },
@@ -51,7 +53,8 @@
     "2026-06-05-tiny-launch-checklist": 2,
     "2026-06-06-decision-parking-lot": 2,
     "2026-06-07-email-triage": 2,
-    "collection-cleanup-and-reset": 3,
+    "2026-06-08-project-rescue-map": 2,
+    "collection-cleanup-and-reset": 4,
     "collection-digital-product-prep": 2,
     "collection-home-admin": 2,
     "collection-low-energy-systems": 3,
@@ -162,8 +165,12 @@
     "2026-06-07-email-triage": {
       "2026-06-07": 2
     },
+    "2026-06-08-project-rescue-map": {
+      "2026-06-08": 2
+    },
     "collection-cleanup-and-reset": {
-      "2026-06-03": 3
+      "2026-06-03": 3,
+      "2026-06-09": 1
     },
     "collection-digital-product-prep": {
       "2026-06-03": 2
@@ -182,10 +189,31 @@
       "2026-06-03": 4
     }
   },
-  "fetched_at": "2026-06-08T16:20:09+00:00",
+  "fetched_at": "2026-06-09T15:26:05+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-09T13:42:33.966Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "collection-bundle-page",
+      "route": "/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "slug": "collection-cleanup-and-reset"
+    },
+    {
+      "at": "2026-06-08T19:01:55.328Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-08-project-rescue-map.zip",
+      "slug": "2026-06-08-project-rescue-map"
+    },
+    {
+      "at": "2026-06-08T17:50:43.729Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-08-project-rescue-map.html",
+      "slug": "2026-06-08-project-rescue-map"
+    },
     {
       "at": "2026-06-07T17:05:11.787Z",
       "destination_type": "public-download-or-download-page",
@@ -339,27 +367,6 @@
       "kind": "product-zip",
       "route": "/daily-shelf/downloads/2026-05-21-low-energy-week.zip",
       "slug": "2026-05-21-low-energy-week"
-    },
-    {
-      "at": "2026-06-03T06:53:55.777Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-22-home-inventory.zip",
-      "slug": "2026-05-22-home-inventory"
-    },
-    {
-      "at": "2026-06-03T06:53:52.776Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-16-link-in-bio-audit.zip",
-      "slug": "2026-05-16-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-03T06:53:51.775Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-05-09-email-triage.zip",
-      "slug": "2026-05-09-email-triage"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -368,7 +375,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 112,
-  "updated_at": "2026-06-07T17:05:11.787Z",
+  "total_download_interest": 115,
+  "updated_at": "2026-06-09T13:42:33.966Z",
   "version": 1
 }

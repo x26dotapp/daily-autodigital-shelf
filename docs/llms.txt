@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Project Rescue Map](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-08-project-rescue-map/) - A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-08-project-rescue-map.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-08-project-rescue-map
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-08-project-rescue-map/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-08-project-rescue-map/support/go
+- Latest pack: [Daily Proof Log](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/) - A receipt-style log for recording visible proof of work without overexplaining the whole day. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

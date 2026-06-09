@@ -2,10 +2,35 @@
 <supportFunnelFeed>
   <name>Daily Autodigital Shelf Support Funnel Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json</url>
-  <dateModified>2026-06-08</dateModified>
-  <numberOfItems>35</numberOfItems>
+  <dateModified>2026-06-09</dateModified>
+  <numberOfItems>36</numberOfItems>
   <supportConnected>true</supportConnected>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <supportFunnel>
+    <id>daily-autodigital-shelf:2026-06-09-daily-proof-log</id>
+    <date>2026-06-09</date>
+    <title>Daily Proof Log</title>
+    <description>A receipt-style log for recording visible proof of work without overexplaining the whole day.</description>
+    <buyer>Solo workers who need evidence of progress for themselves, clients, or future handoff.</buyer>
+    <productUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/</productUrl>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-09-daily-proof-log.zip</downloadUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-09-daily-proof-log/support/go</brandedSupportIntentUrl>
+    <publicSupportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</publicSupportPageUrl>
+    <payWhatYouCanUrl>https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html</payWhatYouCanUrl>
+    <externalSupportDestination>https://gift.calmsprout.com</externalSupportDestination>
+    <utmSource>calmsprout</utmSource>
+    <utmMedium>daily_shelf</utmMedium>
+    <utmCampaign>product_support</utmCampaign>
+    <utmContent>2026-06-09-daily-proof-log</utmContent>
+    <suggestedSupportTiers>$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.</suggestedSupportTiers>
+    <supportConnected>true</supportConnected>
+    <storeConnected>false</storeConnected>
+    <fulfillment>public digital download with voluntary external support</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  </supportFunnel>
   <supportFunnel>
     <id>daily-autodigital-shelf:2026-06-08-project-rescue-map</id>
     <date>2026-06-08</date>
