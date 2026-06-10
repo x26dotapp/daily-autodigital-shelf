@@ -2,9 +2,33 @@
 <productFeed>
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
-  <dateModified>2026-06-09</dateModified>
-  <numberOfItems>36</numberOfItems>
+  <dateModified>2026-06-10</dateModified>
+  <numberOfItems>37</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <product>
+    <id>daily-autodigital-shelf:2026-06-10-simple-order-form</id>
+    <date>2026-06-10</date>
+    <title>Simple Order Form Draft</title>
+    <description>A draft sheet for designing a small order or request form before building it online.</description>
+    <buyer>Small sellers and service providers who need a clear order form before platform setup.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-10-simple-order-form.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-10-simple-order-form.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-10-simple-order-form</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-10-simple-order-form/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-10-simple-order-form/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,simple,order,form,draft</tags>
+  </product>
   <product>
     <id>daily-autodigital-shelf:2026-06-09-daily-proof-log</id>
     <date>2026-06-09</date>

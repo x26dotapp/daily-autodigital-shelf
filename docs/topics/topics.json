@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 18,
+      "count": 19,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-10-simple-order-form",
+          "title": "Simple Order Form Draft",
+          "summary": "A draft sheet for designing a small order or request form before building it online.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-10-simple-order-form.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
           "title": "Daily Proof Log",
@@ -298,8 +305,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 36,
+      "count": 37,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-10-simple-order-form",
+          "title": "Simple Order Form Draft",
+          "summary": "A draft sheet for designing a small order or request form before building it online.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-10-simple-order-form.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
           "title": "Daily Proof Log",

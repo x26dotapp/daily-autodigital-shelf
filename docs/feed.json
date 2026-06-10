@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-10-simple-order-form",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/",
+      "title": "Simple Order Form Draft",
+      "summary": "A draft sheet for designing a small order or request form before building it online.",
+      "date_published": "2026-06-10"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-09-daily-proof-log/",
       "title": "Daily Proof Log",
