@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-11-two-hour-workblock",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
+      "title": "Two-Hour Workblock Planner",
+      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+      "date_published": "2026-06-11"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-10-simple-order-form",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/",
       "title": "Simple Order Form Draft",

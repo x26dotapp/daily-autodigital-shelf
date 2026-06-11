@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Simple Order Form Draft](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-10-simple-order-form/) - A draft sheet for designing a small order or request form before building it online. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-10-simple-order-form.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-10-simple-order-form
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-10-simple-order-form/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-10-simple-order-form/support/go
+- Latest pack: [Two-Hour Workblock Planner](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/) - A compact planning sheet for choosing one outcome, one timer, and one shutdown note. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

@@ -247,8 +247,15 @@
       "label": "Low-Energy Systems",
       "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
-      "count": 7,
+      "count": 8,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-11-two-hour-workblock",
+          "title": "Two-Hour Workblock Planner",
+          "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-05-28-invoice-followup",
           "title": "Invoice Follow-Up Mini Kit",
@@ -305,8 +312,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 37,
+      "count": 38,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-11-two-hour-workblock",
+          "title": "Two-Hour Workblock Planner",
+          "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-10-simple-order-form",
           "title": "Simple Order Form Draft",
