@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Two-Hour Workblock Planner](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/) - A compact planning sheet for choosing one outcome, one timer, and one shutdown note. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support/go
+- Latest pack: [Store Import Prep Sheet](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/) - A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

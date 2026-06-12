@@ -55,13 +55,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "count": 19,
+      "count": 20,
       "outcomes": [
         "Name the next client or service workflow that needs a written path.",
         "Pick a public worksheet pack that can be downloaded immediately.",
         "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
+          "title": "Store Import Prep Sheet",
+          "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-10-simple-order-form",
           "title": "Simple Order Form Draft",
@@ -450,13 +458,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 38,
+      "count": 39,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
+          "title": "Store Import Prep Sheet",
+          "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-11-two-hour-workblock",
           "title": "Two-Hour Workblock Planner",

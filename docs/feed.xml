@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Thu, 11 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Store Import Prep Sheet</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/</guid>
+      <description>A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.</description>
+      <pubDate>Fri, 12 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Two-Hour Workblock Planner</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/</link>

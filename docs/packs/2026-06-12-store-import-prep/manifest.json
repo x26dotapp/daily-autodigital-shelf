@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
+  "date": "2026-06-12",
+  "date_label": "June 12, 2026",
+  "title": "Store Import Prep Sheet",
+  "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+  "buyer": "Digital sellers preparing listings for Payhip, Gumroad, Etsy-style shops, or similar platforms.",
+  "path": "packs/2026-06-12-store-import-prep/",
+  "worksheet": "packs/2026-06-12-store-import-prep/printable.html",
+  "checklist": "packs/2026-06-12-store-import-prep/checklist.html",
+  "cover": "packs/2026-06-12-store-import-prep/cover.svg",
+  "seller_copy": "packs/2026-06-12-store-import-prep/seller-copy.md",
+  "download": "downloads/2026-06-12-store-import-prep.zip"
+}

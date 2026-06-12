@@ -2,9 +2,33 @@
 <productFeed>
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
-  <dateModified>2026-06-11</dateModified>
-  <numberOfItems>38</numberOfItems>
+  <dateModified>2026-06-12</dateModified>
+  <numberOfItems>39</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <product>
+    <id>daily-autodigital-shelf:2026-06-12-store-import-prep</id>
+    <date>2026-06-12</date>
+    <title>Store Import Prep Sheet</title>
+    <description>A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.</description>
+    <buyer>Digital sellers preparing listings for Payhip, Gumroad, Etsy-style shops, or similar platforms.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,store,import,prep,sheet</tags>
+  </product>
   <product>
     <id>daily-autodigital-shelf:2026-06-11-two-hour-workblock</id>
     <date>2026-06-11</date>
