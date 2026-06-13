@@ -254,8 +254,15 @@
       "label": "Low-Energy Systems",
       "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
-      "count": 8,
+      "count": 9,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
+          "title": "Focus Menu Builder",
+          "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-13-focus-menu/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-13-focus-menu.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-11-two-hour-workblock",
           "title": "Two-Hour Workblock Planner",
@@ -319,8 +326,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 39,
+      "count": 40,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
+          "title": "Focus Menu Builder",
+          "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-13-focus-menu/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-13-focus-menu.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
           "title": "Store Import Prep Sheet",

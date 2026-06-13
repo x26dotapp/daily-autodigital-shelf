@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-13-focus-menu/",
+      "title": "Focus Menu Builder",
+      "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+      "date_published": "2026-06-13"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
       "title": "Store Import Prep Sheet",

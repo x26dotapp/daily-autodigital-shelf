@@ -369,13 +369,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
-      "count": 8,
+      "count": 9,
       "outcomes": [
         "Pick one anchor task instead of an overbuilt plan.",
         "Use a worksheet with a fallback version that still counts.",
         "Keep the bundle available for uneven-energy weeks."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
+          "title": "Focus Menu Builder",
+          "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-13-focus-menu/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-13-focus-menu.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-13-focus-menu.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-11-two-hour-workblock",
           "title": "Two-Hour Workblock Planner",
@@ -458,13 +466,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 39,
+      "count": 40,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
+          "title": "Focus Menu Builder",
+          "summary": "A menu of low, medium, and high energy task options for days when planning from scratch is too expensive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-13-focus-menu/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-13-focus-menu.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-13-focus-menu.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
           "title": "Store Import Prep Sheet",
