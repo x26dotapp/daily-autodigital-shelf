@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-14-link-in-bio-audit",
+  "date": "2026-06-14",
+  "date_label": "June 14, 2026",
+  "title": "Link-in-Bio Audit",
+  "summary": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
+  "buyer": "Creators and small sellers whose public links do not clearly route visitors.",
+  "path": "packs/2026-06-14-link-in-bio-audit/",
+  "worksheet": "packs/2026-06-14-link-in-bio-audit/printable.html",
+  "checklist": "packs/2026-06-14-link-in-bio-audit/checklist.html",
+  "cover": "packs/2026-06-14-link-in-bio-audit/cover.svg",
+  "seller_copy": "packs/2026-06-14-link-in-bio-audit/seller-copy.md",
+  "download": "downloads/2026-06-14-link-in-bio-audit.zip"
+}

@@ -11,19 +11,20 @@
     "2026-06-10": 81,
     "2026-06-11": 83,
     "2026-06-12": 21,
-    "2026-06-13": 11
+    "2026-06-13": 16,
+    "2026-06-14": 2
   },
   "by_kind": {
     "collection-bundle-page": 23,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 241,
-    "product-zip": 39,
+    "product-download-page": 247,
+    "product-zip": 40,
     "starter-page": 5,
     "starter-zip": 2
   },
   "by_slug": {
-    "2026-05-05-weekly-reset": 4,
+    "2026-05-05-weekly-reset": 5,
     "2026-05-06-micro-offer-pricing": 6,
     "2026-05-07-tiny-launch-checklist": 6,
     "2026-05-08-decision-parking-lot": 4,
@@ -59,10 +60,10 @@
     "2026-06-07-email-triage": 10,
     "2026-06-08-project-rescue-map": 9,
     "2026-06-09-daily-proof-log": 8,
-    "2026-06-10-simple-order-form": 9,
-    "2026-06-11-two-hour-workblock": 7,
+    "2026-06-10-simple-order-form": 10,
+    "2026-06-11-two-hour-workblock": 8,
     "2026-06-12-store-import-prep": 3,
-    "2026-06-13-focus-menu": 1,
+    "2026-06-13-focus-menu": 5,
     "collection-cleanup-and-reset": 5,
     "collection-digital-product-prep": 3,
     "collection-home-admin": 3,
@@ -73,7 +74,8 @@
   "by_slug_day": {
     "2026-05-05-weekly-reset": {
       "2026-06-03": 2,
-      "2026-06-10": 2
+      "2026-06-10": 2,
+      "2026-06-13": 1
     },
     "2026-05-06-micro-offer-pricing": {
       "2026-06-03": 3,
@@ -262,18 +264,20 @@
     "2026-06-10-simple-order-form": {
       "2026-06-10": 3,
       "2026-06-11": 4,
-      "2026-06-12": 2
+      "2026-06-12": 2,
+      "2026-06-14": 1
     },
     "2026-06-11-two-hour-workblock": {
       "2026-06-11": 6,
-      "2026-06-12": 1
+      "2026-06-12": 1,
+      "2026-06-14": 1
     },
     "2026-06-12-store-import-prep": {
       "2026-06-12": 2,
       "2026-06-13": 1
     },
     "2026-06-13-focus-menu": {
-      "2026-06-13": 1
+      "2026-06-13": 5
     },
     "collection-cleanup-and-reset": {
       "2026-06-03": 3,
@@ -305,10 +309,59 @@
       "2026-06-12": 2
     }
   },
-  "fetched_at": "2026-06-13T14:22:45+00:00",
+  "fetched_at": "2026-06-14T14:26:20+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-14T04:29:49.405Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-10-simple-order-form.html",
+      "slug": "2026-06-10-simple-order-form"
+    },
+    {
+      "at": "2026-06-14T03:49:51.047Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-11-two-hour-workblock.html",
+      "slug": "2026-06-11-two-hour-workblock"
+    },
+    {
+      "at": "2026-06-13T21:55:06.783Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-13-focus-menu.html",
+      "slug": "2026-06-13-focus-menu"
+    },
+    {
+      "at": "2026-06-13T19:01:28.036Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-13-focus-menu.zip",
+      "slug": "2026-06-13-focus-menu"
+    },
+    {
+      "at": "2026-06-13T17:36:17.191Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-13-focus-menu.html",
+      "slug": "2026-06-13-focus-menu"
+    },
+    {
+      "at": "2026-06-13T15:52:43.469Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-05-weekly-reset.html",
+      "slug": "2026-05-05-weekly-reset"
+    },
+    {
+      "at": "2026-06-13T14:23:26.443Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-13-focus-menu.html",
+      "slug": "2026-06-13-focus-menu"
+    },
     {
       "at": "2026-06-13T12:35:20.118Z",
       "destination_type": "public-download-or-download-page",
@@ -434,55 +487,6 @@
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-10-simple-order-form.html",
       "slug": "2026-06-10-simple-order-form"
-    },
-    {
-      "at": "2026-06-12T14:23:44.254Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-26-subscription-audit.html",
-      "slug": "2026-05-26-subscription-audit"
-    },
-    {
-      "at": "2026-06-12T10:39:21.086Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
-      "slug": "2026-05-07-tiny-launch-checklist"
-    },
-    {
-      "at": "2026-06-12T09:40:38.399Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-21-low-energy-week.html",
-      "slug": "2026-05-21-low-energy-week"
-    },
-    {
-      "at": "2026-06-12T09:14:38.486Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-24-digital-declutter.html",
-      "slug": "2026-05-24-digital-declutter"
-    },
-    {
-      "at": "2026-06-12T08:22:41.003Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-08-project-rescue-map.html",
-      "slug": "2026-06-08-project-rescue-map"
-    },
-    {
-      "at": "2026-06-12T07:54:17.628Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-11-daily-proof-log.html",
-      "slug": "2026-05-11-daily-proof-log"
-    },
-    {
-      "at": "2026-06-12T07:43:56.796Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-16-link-in-bio-audit.html",
-      "slug": "2026-05-16-link-in-bio-audit"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -491,7 +495,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 316,
-  "updated_at": "2026-06-13T12:35:20.118Z",
+  "total_download_interest": 323,
+  "updated_at": "2026-06-14T04:29:49.405Z",
   "version": 1
 }

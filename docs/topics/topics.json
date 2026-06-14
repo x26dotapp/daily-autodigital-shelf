@@ -326,8 +326,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 40,
+      "count": 41,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-14-link-in-bio-audit",
+          "title": "Link-in-Bio Audit",
+          "summary": "A simple audit sheet for checking whether a public profile points visitors to one useful action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-14-link-in-bio-audit/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-14-link-in-bio-audit.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
           "title": "Focus Menu Builder",
