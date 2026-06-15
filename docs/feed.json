@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-15-renewal-reminder",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-15-renewal-reminder/",
+      "title": "Renewal Reminder Sheet",
+      "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+      "date_published": "2026-06-15"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-14-link-in-bio-audit",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-14-link-in-bio-audit/",
       "title": "Link-in-Bio Audit",

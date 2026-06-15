@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 20,
+      "count": 21,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-15-renewal-reminder",
+          "title": "Renewal Reminder Sheet",
+          "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-15-renewal-reminder/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-15-renewal-reminder.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-12-store-import-prep",
           "title": "Store Import Prep Sheet",
@@ -154,8 +161,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 13,
+      "count": 14,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-15-renewal-reminder",
+          "title": "Renewal Reminder Sheet",
+          "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-15-renewal-reminder/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-15-renewal-reminder.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-09-daily-proof-log",
           "title": "Daily Proof Log",
@@ -326,8 +340,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 41,
+      "count": 42,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-15-renewal-reminder",
+          "title": "Renewal Reminder Sheet",
+          "summary": "A small tracker for domain, software, insurance, lease, and service renewal dates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-15-renewal-reminder/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-15-renewal-reminder.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-14-link-in-bio-audit",
           "title": "Link-in-Bio Audit",
