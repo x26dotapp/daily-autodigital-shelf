@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 21,
+      "count": 22,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-16-landing-page-copy",
+          "title": "Landing Page Copy Blocks",
+          "summary": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-16-landing-page-copy/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-16-landing-page-copy.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-15-renewal-reminder",
           "title": "Renewal Reminder Sheet",
@@ -340,8 +347,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 42,
+      "count": 43,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-16-landing-page-copy",
+          "title": "Landing Page Copy Blocks",
+          "summary": "A fill-in worksheet for headline, promise, proof, offer, and next action copy.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-16-landing-page-copy/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-16-landing-page-copy.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-15-renewal-reminder",
           "title": "Renewal Reminder Sheet",

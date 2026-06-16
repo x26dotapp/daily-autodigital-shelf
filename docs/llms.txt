@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Renewal Reminder Sheet](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-15-renewal-reminder/) - A small tracker for domain, software, insurance, lease, and service renewal dates. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-15-renewal-reminder.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-15-renewal-reminder
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-15-renewal-reminder/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-15-renewal-reminder/support/go
+- Latest pack: [Landing Page Copy Blocks](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-16-landing-page-copy/) - A fill-in worksheet for headline, promise, proof, offer, and next action copy. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-16-landing-page-copy.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-16-landing-page-copy
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-16-landing-page-copy/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-16-landing-page-copy/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.
