@@ -55,13 +55,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "count": 22,
+      "count": 23,
       "outcomes": [
         "Name the next client or service workflow that needs a written path.",
         "Pick a public worksheet pack that can be downloaded immediately.",
         "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
+          "title": "Calm Launch One-Page Kit",
+          "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-16-landing-page-copy",
           "title": "Landing Page Copy Blocks",
@@ -393,13 +401,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
-      "count": 9,
+      "count": 10,
       "outcomes": [
         "Pick one anchor task instead of an overbuilt plan.",
         "Use a worksheet with a fallback version that still counts.",
         "Keep the bundle available for uneven-energy weeks."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
+          "title": "Calm Launch One-Page Kit",
+          "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
           "title": "Focus Menu Builder",
@@ -490,13 +506,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 43,
+      "count": 44,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
+          "title": "Calm Launch One-Page Kit",
+          "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-16-landing-page-copy",
           "title": "Landing Page Copy Blocks",

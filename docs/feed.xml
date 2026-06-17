@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Tue, 16 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Calm Launch One-Page Kit</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/</guid>
+      <description>A printable page for turning one messy idea into one offer, one audience, and one next action.</description>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Landing Page Copy Blocks</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-16-landing-page-copy/</link>

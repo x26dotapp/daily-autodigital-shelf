@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 22,
+      "count": 23,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
+          "title": "Calm Launch One-Page Kit",
+          "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-16-landing-page-copy",
           "title": "Landing Page Copy Blocks",
@@ -275,8 +282,15 @@
       "label": "Low-Energy Systems",
       "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
-      "count": 9,
+      "count": 10,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
+          "title": "Calm Launch One-Page Kit",
+          "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-13-focus-menu",
           "title": "Focus Menu Builder",
@@ -347,8 +361,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 43,
+      "count": 44,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
+          "title": "Calm Launch One-Page Kit",
+          "summary": "A printable page for turning one messy idea into one offer, one audience, and one next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-17-calm-launch/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-17-calm-launch.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-16-landing-page-copy",
           "title": "Landing Page Copy Blocks",
