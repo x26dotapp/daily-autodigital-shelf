@@ -2,9 +2,33 @@
 <productFeed>
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
-  <dateModified>2026-06-17</dateModified>
-  <numberOfItems>44</numberOfItems>
+  <dateModified>2026-06-18</dateModified>
+  <numberOfItems>45</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <product>
+    <id>daily-autodigital-shelf:2026-06-18-receipt-runner</id>
+    <date>2026-06-18</date>
+    <title>Receipt Runner Ledger Pack</title>
+    <description>A simple ledger and daily receipt habit for tiny projects that need proof of movement.</description>
+    <buyer>People who lose progress in scattered notes and need a visible record of what changed.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-18-receipt-runner/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-18-receipt-runner.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-18-receipt-runner.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-18-receipt-runner/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-18-receipt-runner/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-18-receipt-runner</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-18-receipt-runner/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-18-receipt-runner/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,receipt,runner,ledger,pack</tags>
+  </product>
   <product>
     <id>daily-autodigital-shelf:2026-06-17-calm-launch</id>
     <date>2026-06-17</date>

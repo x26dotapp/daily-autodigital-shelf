@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-18-receipt-runner",
+  "date": "2026-06-18",
+  "date_label": "June 18, 2026",
+  "title": "Receipt Runner Ledger Pack",
+  "summary": "A simple ledger and daily receipt habit for tiny projects that need proof of movement.",
+  "buyer": "People who lose progress in scattered notes and need a visible record of what changed.",
+  "path": "packs/2026-06-18-receipt-runner/",
+  "worksheet": "packs/2026-06-18-receipt-runner/printable.html",
+  "checklist": "packs/2026-06-18-receipt-runner/checklist.html",
+  "cover": "packs/2026-06-18-receipt-runner/cover.svg",
+  "seller_copy": "packs/2026-06-18-receipt-runner/seller-copy.md",
+  "download": "downloads/2026-06-18-receipt-runner.zip"
+}
