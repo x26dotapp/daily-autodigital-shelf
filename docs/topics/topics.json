@@ -289,8 +289,15 @@
       "label": "Low-Energy Systems",
       "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
-      "count": 10,
+      "count": 11,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
+          "title": "Low-Energy Week Planner",
+          "summary": "A gentle planning sheet for weeks where consistency matters more than intensity.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-19-low-energy-week/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-19-low-energy-week.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-17-calm-launch",
           "title": "Calm Launch One-Page Kit",
@@ -368,8 +375,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 45,
+      "count": 46,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
+          "title": "Low-Energy Week Planner",
+          "summary": "A gentle planning sheet for weeks where consistency matters more than intensity.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-19-low-energy-week/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-19-low-energy-week.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-18-receipt-runner",
           "title": "Receipt Runner Ledger Pack",

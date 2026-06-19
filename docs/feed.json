@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-19-low-energy-week/",
+      "title": "Low-Energy Week Planner",
+      "summary": "A gentle planning sheet for weeks where consistency matters more than intensity.",
+      "date_published": "2026-06-19"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-18-receipt-runner",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-18-receipt-runner/",
       "title": "Receipt Runner Ledger Pack",

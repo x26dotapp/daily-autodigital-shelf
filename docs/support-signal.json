@@ -1,13 +1,13 @@
 {
   "version": 1,
   "kind": "daily-shelf-support-signal",
-  "generated_at": "2026-06-18T15:51:17+00:00",
+  "generated_at": "2026-06-19T15:39:23+00:00",
   "source_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
   "download_source_url": "https://www.calmsprout.com/daily-shelf/download-metrics.json",
-  "snapshot_fetched_at": "2026-06-18T15:51:15+00:00",
-  "download_snapshot_fetched_at": "2026-06-18T15:51:15+00:00",
-  "metrics_updated_at": "2026-06-18T10:38:39.084Z",
-  "download_metrics_updated_at": "2026-06-18T10:25:50.793Z",
+  "snapshot_fetched_at": "2026-06-19T15:39:21+00:00",
+  "download_snapshot_fetched_at": "2026-06-19T15:39:21+00:00",
+  "metrics_updated_at": "2026-06-19T13:09:59.523Z",
+  "download_metrics_updated_at": "2026-06-19T00:30:45.509Z",
   "metrics_sync_ok": true,
   "download_metrics_sync_ok": true,
   "storage_connected": true,
@@ -15,47 +15,42 @@
   "support_connected": true,
   "store_connected": false,
   "monetization_destination_type": "support",
-  "total_support_intent_clicks": 443,
-  "total_download_interest": 564,
+  "total_support_intent_clicks": 450,
+  "total_download_interest": 568,
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "download_revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
   "download_privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "promoted": {
     "type": "collection",
-    "slug": "small-business-ops",
-    "metric_slug": "collection-small-business-ops",
-    "title": "Small Business Ops collection",
-    "label": "Small Business Ops",
-    "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
+    "slug": "home-admin",
+    "metric_slug": "collection-home-admin",
+    "title": "Home Admin collection",
+    "label": "Home Admin",
+    "summary": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
     "support_intent_clicks": 21,
     "support_intent_clicks_by_day": {
-      "2026-06-02": 1,
-      "2026-06-03": 2,
-      "2026-06-10": 2,
-      "2026-06-11": 5,
-      "2026-06-14": 10,
-      "2026-06-16": 1
-    },
-    "download_interest": 26,
-    "download_interest_by_day": {
-      "2026-06-02": 2,
-      "2026-06-03": 3,
-      "2026-06-09": 2,
-      "2026-06-10": 2,
-      "2026-06-11": 3,
+      "2026-06-03": 1,
+      "2026-06-10": 1,
+      "2026-06-11": 4,
+      "2026-06-12": 2,
       "2026-06-14": 11,
-      "2026-06-15": 2,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-18": 1
     },
-    "signal_score": 131,
-    "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
-    "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
-    "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
-    "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
+    "download_interest": 3,
+    "download_interest_by_day": {
+      "2026-06-03": 2,
+      "2026-06-10": 1
+    },
+    "signal_score": 108,
+    "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.html",
+    "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/home-admin-collection.html",
+    "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
+    "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
     "reason": "highest weighted signal from aggregate support intent and download interest",
     "promotion_mode": "support_and_download_interest",
-    "promotion_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html"
+    "promotion_url": "https://www.calmsprout.com/daily-shelf/bundles/home-admin-collection.html"
   },
   "top_products": [
     {
@@ -119,6 +114,36 @@
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support/go"
+    },
+    {
+      "type": "product",
+      "slug": "2026-06-12-store-import-prep",
+      "title": "Store Import Prep Sheet",
+      "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
+      "date": "2026-06-12",
+      "date_label": "June 12, 2026",
+      "support_intent_clicks": 6,
+      "support_intent_clicks_by_day": {
+        "2026-06-12": 1,
+        "2026-06-13": 1,
+        "2026-06-14": 1,
+        "2026-06-16": 1,
+        "2026-06-18": 2
+      },
+      "download_interest": 18,
+      "download_interest_by_day": {
+        "2026-06-12": 2,
+        "2026-06-13": 1,
+        "2026-06-14": 11,
+        "2026-06-15": 1,
+        "2026-06-16": 3
+      },
+      "signal_score": 48,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support/go"
     },
     {
       "type": "product",
@@ -239,72 +264,9 @@
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support/go"
-    },
-    {
-      "type": "product",
-      "slug": "2026-06-12-store-import-prep",
-      "title": "Store Import Prep Sheet",
-      "summary": "A worksheet for gathering product title, description, price hint, tags, and delivery files before using a store platform.",
-      "date": "2026-06-12",
-      "date_label": "June 12, 2026",
-      "support_intent_clicks": 5,
-      "support_intent_clicks_by_day": {
-        "2026-06-12": 1,
-        "2026-06-13": 1,
-        "2026-06-14": 1,
-        "2026-06-16": 1,
-        "2026-06-18": 1
-      },
-      "download_interest": 18,
-      "download_interest_by_day": {
-        "2026-06-12": 2,
-        "2026-06-13": 1,
-        "2026-06-14": 11,
-        "2026-06-15": 1,
-        "2026-06-16": 3
-      },
-      "signal_score": 43,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep/support/go"
     }
   ],
   "top_collections": [
-    {
-      "type": "collection",
-      "slug": "small-business-ops",
-      "metric_slug": "collection-small-business-ops",
-      "title": "Small Business Ops collection",
-      "label": "Small Business Ops",
-      "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
-      "support_intent_clicks": 21,
-      "support_intent_clicks_by_day": {
-        "2026-06-02": 1,
-        "2026-06-03": 2,
-        "2026-06-10": 2,
-        "2026-06-11": 5,
-        "2026-06-14": 10,
-        "2026-06-16": 1
-      },
-      "download_interest": 26,
-      "download_interest_by_day": {
-        "2026-06-02": 2,
-        "2026-06-03": 3,
-        "2026-06-09": 2,
-        "2026-06-10": 2,
-        "2026-06-11": 3,
-        "2026-06-14": 11,
-        "2026-06-15": 2,
-        "2026-06-16": 1
-      },
-      "signal_score": 131,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go"
-    },
     {
       "type": "collection",
       "slug": "home-admin",
@@ -312,21 +274,22 @@
       "title": "Home Admin collection",
       "label": "Home Admin",
       "summary": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
-      "support_intent_clicks": 20,
+      "support_intent_clicks": 21,
       "support_intent_clicks_by_day": {
         "2026-06-03": 1,
         "2026-06-10": 1,
         "2026-06-11": 4,
         "2026-06-12": 2,
         "2026-06-14": 11,
-        "2026-06-16": 1
+        "2026-06-16": 1,
+        "2026-06-18": 1
       },
       "download_interest": 3,
       "download_interest_by_day": {
         "2026-06-03": 2,
         "2026-06-10": 1
       },
-      "signal_score": 103,
+      "signal_score": 108,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/home-admin-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
@@ -413,6 +376,39 @@
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/digital-product-prep-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go"
+    },
+    {
+      "type": "collection",
+      "slug": "small-business-ops",
+      "metric_slug": "collection-small-business-ops",
+      "title": "Small Business Ops collection",
+      "label": "Small Business Ops",
+      "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
+      "support_intent_clicks": 0,
+      "support_intent_clicks_by_day": {
+        "2026-06-02": 1,
+        "2026-06-03": 2,
+        "2026-06-10": 2,
+        "2026-06-11": 5,
+        "2026-06-14": 10,
+        "2026-06-16": 1
+      },
+      "download_interest": 26,
+      "download_interest_by_day": {
+        "2026-06-02": 2,
+        "2026-06-03": 3,
+        "2026-06-09": 2,
+        "2026-06-10": 2,
+        "2026-06-11": 3,
+        "2026-06-14": 11,
+        "2026-06-15": 2,
+        "2026-06-16": 1
+      },
+      "signal_score": 26,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go"
     }
   ],
   "top_download_products": [
@@ -453,13 +449,14 @@
       "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
       "date": "2026-06-02",
       "date_label": "June 02, 2026",
-      "support_intent_clicks": 0,
+      "support_intent_clicks": 1,
       "support_intent_clicks_by_day": {
         "2026-06-02": 1,
         "2026-06-03": 1,
         "2026-06-10": 1,
         "2026-06-14": 1,
-        "2026-06-16": 1
+        "2026-06-16": 1,
+        "2026-06-18": 1
       },
       "download_interest": 22,
       "download_interest_by_day": {
@@ -470,7 +467,7 @@
         "2026-06-14": 10,
         "2026-06-16": 1
       },
-      "signal_score": 22,
+      "signal_score": 27,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-02-one-page-sop/",
       "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop",
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
@@ -635,7 +632,7 @@
       "title": "Small Business Ops collection",
       "label": "Small Business Ops",
       "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
-      "support_intent_clicks": 21,
+      "support_intent_clicks": 0,
       "support_intent_clicks_by_day": {
         "2026-06-02": 1,
         "2026-06-03": 2,
@@ -655,7 +652,7 @@
         "2026-06-15": 2,
         "2026-06-16": 1
       },
-      "signal_score": 131,
+      "signal_score": 26,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
@@ -724,21 +721,22 @@
       "title": "Home Admin collection",
       "label": "Home Admin",
       "summary": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
-      "support_intent_clicks": 20,
+      "support_intent_clicks": 21,
       "support_intent_clicks_by_day": {
         "2026-06-03": 1,
         "2026-06-10": 1,
         "2026-06-11": 4,
         "2026-06-12": 2,
         "2026-06-14": 11,
-        "2026-06-16": 1
+        "2026-06-16": 1,
+        "2026-06-18": 1
       },
       "download_interest": 3,
       "download_interest_by_day": {
         "2026-06-03": 2,
         "2026-06-10": 1
       },
-      "signal_score": 103,
+      "signal_score": 108,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/home-admin-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
@@ -773,6 +771,62 @@
   ],
   "recent": [
     {
+      "at": "2026-06-19T13:09:59.523Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-05-20-receipt-runner/support/go",
+      "slug": "2026-05-20-receipt-runner",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-20-receipt-runner"
+    },
+    {
+      "at": "2026-06-19T05:03:05.984Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-05-18-landing-page-copy/support/go",
+      "slug": "2026-05-18-landing-page-copy",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-18-landing-page-copy"
+    },
+    {
+      "at": "2026-06-18T22:21:59.646Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/home-admin/support/go",
+      "slug": "collection-home-admin",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-home-admin"
+    },
+    {
+      "at": "2026-06-18T21:29:32.242Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-05-17-renewal-reminder/support/go",
+      "slug": "2026-05-17-renewal-reminder",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-17-renewal-reminder"
+    },
+    {
+      "at": "2026-06-18T20:13:38.380Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-18-receipt-runner/support/go",
+      "slug": "2026-06-18-receipt-runner",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-18-receipt-runner"
+    },
+    {
+      "at": "2026-06-18T18:53:00.518Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-12-store-import-prep/support/go",
+      "slug": "2026-06-12-store-import-prep",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-12-store-import-prep"
+    },
+    {
+      "at": "2026-06-18T17:26:08.297Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-02-one-page-sop/support/go",
+      "slug": "2026-06-02-one-page-sop",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-02-one-page-sop"
+    },
+    {
       "at": "2026-06-18T10:38:39.084Z",
       "destination_type": "square-support",
       "route": "/daily-shelf/products/2026-06-16-landing-page-copy/support/go",
@@ -795,65 +849,37 @@
       "slug": "template-micro-budget",
       "utm_campaign": "template_support",
       "utm_content": "template-micro-budget"
-    },
-    {
-      "at": "2026-06-18T08:28:02.322Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-16-landing-page-copy/support/go",
-      "slug": "2026-06-16-landing-page-copy",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-16-landing-page-copy"
-    },
-    {
-      "at": "2026-06-18T08:18:13.895Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-12-store-import-prep/support/go",
-      "slug": "2026-06-12-store-import-prep",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-12-store-import-prep"
-    },
-    {
-      "at": "2026-06-18T08:07:17.673Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-14-link-in-bio-audit/support/go",
-      "slug": "2026-06-14-link-in-bio-audit",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-14-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-18T07:03:16.615Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/low-energy-systems/support/go",
-      "slug": "collection-low-energy-systems",
-      "utm_campaign": "collection_support",
-      "utm_content": "collection-low-energy-systems"
-    },
-    {
-      "at": "2026-06-18T06:15:08.873Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-10-project-rescue-map/support/go",
-      "slug": "2026-05-10-project-rescue-map",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-10-project-rescue-map"
-    },
-    {
-      "at": "2026-06-18T03:28:29.959Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-29-download-folder-reset/support/go",
-      "slug": "2026-05-29-download-folder-reset",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-29-download-folder-reset"
-    },
-    {
-      "at": "2026-06-17T23:04:40.608Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/commercial-use/support/go",
-      "slug": "daily-shelf-commercial-use",
-      "utm_campaign": "commercial_support",
-      "utm_content": "daily-shelf-commercial-use"
     }
   ],
   "recent_download_interest": [
+    {
+      "at": "2026-06-19T00:30:45.509Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-15-renewal-reminder.html",
+      "slug": "2026-06-15-renewal-reminder"
+    },
+    {
+      "at": "2026-06-18T20:29:21.653Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-18-receipt-runner.zip",
+      "slug": "2026-06-18-receipt-runner"
+    },
+    {
+      "at": "2026-06-18T19:07:24.227Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-18-receipt-runner.html",
+      "slug": "2026-06-18-receipt-runner"
+    },
+    {
+      "at": "2026-06-18T15:51:55.455Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-15-renewal-reminder.html",
+      "slug": "2026-06-15-renewal-reminder"
+    },
     {
       "at": "2026-06-18T10:25:50.793Z",
       "destination_type": "public-download-or-download-page",
@@ -895,34 +921,6 @@
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
       "slug": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-17T03:27:07.504Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-14-link-in-bio-audit.html",
-      "slug": "2026-06-14-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-17T00:57:54.087Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-16-link-in-bio-audit.html",
-      "slug": "2026-05-16-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-17T00:57:29.924Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
-      "slug": "2026-05-07-tiny-launch-checklist"
-    },
-    {
-      "at": "2026-06-17T00:55:47.021Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-09-email-triage.html",
-      "slug": "2026-05-09-email-triage"
     }
   ],
   "json_path": "support-signal.json",
