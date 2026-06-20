@@ -264,13 +264,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "count": 15,
+      "count": 16,
       "outcomes": [
         "Choose one household admin area that needs a visible page.",
         "Download the related pack instead of building a full spreadsheet system.",
         "Use the collection bundle as a small home-admin starter folder."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
+          "title": "Tiny Home Inventory Pack",
+          "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-18-receipt-runner",
           "title": "Receipt Runner Ledger Pack",
@@ -522,13 +530,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 46,
+      "count": 47,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
+          "title": "Tiny Home Inventory Pack",
+          "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
           "title": "Low-Energy Week Planner",

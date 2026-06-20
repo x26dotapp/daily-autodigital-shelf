@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Low-Energy Week Planner](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-19-low-energy-week/) - A gentle planning sheet for weeks where consistency matters more than intensity. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-19-low-energy-week.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-19-low-energy-week
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-19-low-energy-week/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-19-low-energy-week/support/go
+- Latest pack: [Tiny Home Inventory Pack](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/) - A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

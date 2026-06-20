@@ -175,8 +175,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 15,
+      "count": 16,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
+          "title": "Tiny Home Inventory Pack",
+          "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-18-receipt-runner",
           "title": "Receipt Runner Ledger Pack",
@@ -375,8 +382,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 46,
+      "count": 47,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
+          "title": "Tiny Home Inventory Pack",
+          "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
           "title": "Low-Energy Week Planner",

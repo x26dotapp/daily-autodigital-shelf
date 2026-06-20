@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/",
+      "title": "Tiny Home Inventory Pack",
+      "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+      "date_published": "2026-06-20"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-19-low-energy-week/",
       "title": "Low-Energy Week Planner",

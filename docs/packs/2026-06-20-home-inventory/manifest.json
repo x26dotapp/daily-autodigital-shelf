@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
+  "date": "2026-06-20",
+  "date_label": "June 20, 2026",
+  "title": "Tiny Home Inventory Pack",
+  "summary": "A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.",
+  "buyer": "People who need a simple physical inventory without a full spreadsheet system.",
+  "path": "packs/2026-06-20-home-inventory/",
+  "worksheet": "packs/2026-06-20-home-inventory/printable.html",
+  "checklist": "packs/2026-06-20-home-inventory/checklist.html",
+  "cover": "packs/2026-06-20-home-inventory/cover.svg",
+  "seller_copy": "packs/2026-06-20-home-inventory/seller-copy.md",
+  "download": "downloads/2026-06-20-home-inventory.zip"
+}

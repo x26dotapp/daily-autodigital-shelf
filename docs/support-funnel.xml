@@ -2,10 +2,35 @@
 <supportFunnelFeed>
   <name>Daily Autodigital Shelf Support Funnel Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json</url>
-  <dateModified>2026-06-19</dateModified>
-  <numberOfItems>46</numberOfItems>
+  <dateModified>2026-06-20</dateModified>
+  <numberOfItems>47</numberOfItems>
   <supportConnected>true</supportConnected>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <supportFunnel>
+    <id>daily-autodigital-shelf:2026-06-20-home-inventory</id>
+    <date>2026-06-20</date>
+    <title>Tiny Home Inventory Pack</title>
+    <description>A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep.</description>
+    <buyer>People who need a simple physical inventory without a full spreadsheet system.</buyer>
+    <productUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/</productUrl>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.zip</downloadUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory/support/go</brandedSupportIntentUrl>
+    <publicSupportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</publicSupportPageUrl>
+    <payWhatYouCanUrl>https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html</payWhatYouCanUrl>
+    <externalSupportDestination>https://gift.calmsprout.com</externalSupportDestination>
+    <utmSource>calmsprout</utmSource>
+    <utmMedium>daily_shelf</utmMedium>
+    <utmCampaign>product_support</utmCampaign>
+    <utmContent>2026-06-20-home-inventory</utmContent>
+    <suggestedSupportTiers>$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.</suggestedSupportTiers>
+    <supportConnected>true</supportConnected>
+    <storeConnected>false</storeConnected>
+    <fulfillment>public digital download with voluntary external support</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  </supportFunnel>
   <supportFunnel>
     <id>daily-autodigital-shelf:2026-06-19-low-energy-week</id>
     <date>2026-06-19</date>
