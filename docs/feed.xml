@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Micro Budget Reset</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/</guid>
+      <description>A one-page reset for seeing near-term bills, small leaks, and the next cash decision.</description>
+      <pubDate>Sun, 21 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Tiny Home Inventory Pack</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/</link>

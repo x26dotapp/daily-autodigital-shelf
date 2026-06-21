@@ -18,7 +18,8 @@
     "2026-06-17": 8,
     "2026-06-18": 14,
     "2026-06-19": 7,
-    "2026-06-20": 15
+    "2026-06-20": 20,
+    "2026-06-21": 6
   },
   "by_slug": {
     "2026-05-05-weekly-reset": 4,
@@ -48,7 +49,7 @@
     "2026-05-29-download-folder-reset": 4,
     "2026-05-30-appointment-prep": 4,
     "2026-05-31-client-intake-lite": 3,
-    "2026-06-01-listing-photo-checklist": 4,
+    "2026-06-01-listing-photo-checklist": 5,
     "2026-06-02-one-page-sop": 1,
     "2026-06-03-weekly-reset": 4,
     "2026-06-04-micro-offer-pricing": 5,
@@ -62,27 +63,27 @@
     "2026-06-12-store-import-prep": 6,
     "2026-06-13-focus-menu": 5,
     "2026-06-14-link-in-bio-audit": 5,
-    "2026-06-15-renewal-reminder": 2,
+    "2026-06-15-renewal-reminder": 3,
     "2026-06-16-landing-page-copy": 4,
-    "2026-06-17-calm-launch": 1,
+    "2026-06-17-calm-launch": 2,
     "2026-06-18-receipt-runner": 2,
-    "collection-cleanup-and-reset": 20,
+    "2026-06-20-home-inventory": 1,
+    "collection-cleanup-and-reset": 21,
     "collection-digital-product-prep": 17,
-    "collection-low-energy-systems": 20,
-    "collection-small-business-ops": 1,
-    "daily-shelf-commercial-use": 1,
-    "daily-shelf-pricing": 1,
-    "daily-shelf-sponsor": 2,
+    "collection-low-energy-systems": 21,
+    "collection-small-business-ops": 2,
+    "daily-shelf-commercial-use": 2,
+    "daily-shelf-pricing": 2,
+    "daily-shelf-sponsor": 3,
     "template-appointment-prep": 4,
     "template-calm-launch": 5,
     "template-client-intake-lite": 4,
     "template-daily-proof-log": 3,
     "template-decision-parking-lot": 4,
-    "template-digital-declutter": 6,
     "template-download-folder-reset": 5,
     "template-email-triage": 4,
     "template-focus-menu": 5,
-    "template-home-inventory": 3,
+    "template-home-inventory": 4,
     "template-invoice-followup": 4,
     "template-landing-page-copy": 5,
     "template-link-in-bio-audit": 4,
@@ -265,7 +266,8 @@
       "2026-06-03": 1,
       "2026-06-10": 1,
       "2026-06-13": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-20": 1
     },
     "2026-06-02-one-page-sop": {
       "2026-06-02": 1,
@@ -356,7 +358,8 @@
     },
     "2026-06-15-renewal-reminder": {
       "2026-06-15": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-21": 1
     },
     "2026-06-16-landing-page-copy": {
       "2026-06-16": 1,
@@ -364,10 +367,14 @@
       "2026-06-20": 1
     },
     "2026-06-17-calm-launch": {
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-21": 1
     },
     "2026-06-18-receipt-runner": {
       "2026-06-18": 1,
+      "2026-06-20": 1
+    },
+    "2026-06-20-home-inventory": {
       "2026-06-20": 1
     },
     "collection-cleanup-and-reset": {
@@ -378,7 +385,7 @@
       "2026-06-14": 10,
       "2026-06-16": 1,
       "2026-06-19": 1,
-      "2026-06-20": 1
+      "2026-06-20": 2
     },
     "collection-digital-product-prep": {
       "2026-06-03": 1,
@@ -405,7 +412,8 @@
       "2026-06-14": 9,
       "2026-06-16": 1,
       "2026-06-18": 1,
-      "2026-06-19": 1
+      "2026-06-19": 1,
+      "2026-06-21": 1
     },
     "collection-small-business-ops": {
       "2026-06-02": 1,
@@ -414,7 +422,7 @@
       "2026-06-11": 5,
       "2026-06-14": 10,
       "2026-06-16": 1,
-      "2026-06-20": 1
+      "2026-06-20": 2
     },
     "daily-shelf-commercial-use": {
       "2026-06-03": 1,
@@ -422,7 +430,7 @@
       "2026-06-13": 1,
       "2026-06-16": 1,
       "2026-06-17": 1,
-      "2026-06-20": 1
+      "2026-06-20": 2
     },
     "daily-shelf-general": {
       "2026-06-02": 2,
@@ -440,14 +448,16 @@
       "2026-06-10": 1,
       "2026-06-11": 1,
       "2026-06-16": 1,
-      "2026-06-19": 1
+      "2026-06-19": 1,
+      "2026-06-21": 1
     },
     "daily-shelf-sponsor": {
       "2026-06-03": 2,
       "2026-06-10": 2,
       "2026-06-11": 3,
       "2026-06-16": 1,
-      "2026-06-20": 2
+      "2026-06-20": 2,
+      "2026-06-21": 1
     },
     "template-appointment-prep": {
       "2026-06-03": 1,
@@ -506,7 +516,8 @@
     "template-home-inventory": {
       "2026-06-03": 1,
       "2026-06-10": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-21": 1
     },
     "template-invoice-followup": {
       "2026-06-03": 1,
@@ -621,10 +632,98 @@
       "2026-06-16": 1
     }
   },
-  "fetched_at": "2026-06-20T14:27:50+00:00",
+  "fetched_at": "2026-06-21T14:31:00+00:00",
   "kind": "daily-shelf-support-metrics-snapshot",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-21T10:20:17.907Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/templates/home-inventory/support/go",
+      "slug": "template-home-inventory",
+      "utm_campaign": "template_support",
+      "utm_content": "template-home-inventory"
+    },
+    {
+      "at": "2026-06-21T08:12:12.300Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-17-calm-launch/support/go",
+      "slug": "2026-06-17-calm-launch",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-17-calm-launch"
+    },
+    {
+      "at": "2026-06-21T08:05:19.776Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-15-renewal-reminder/support/go",
+      "slug": "2026-06-15-renewal-reminder",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-15-renewal-reminder"
+    },
+    {
+      "at": "2026-06-21T07:19:05.609Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/low-energy-systems/support/go",
+      "slug": "collection-low-energy-systems",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-low-energy-systems"
+    },
+    {
+      "at": "2026-06-21T05:42:30.446Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/pricing/support/go",
+      "slug": "daily-shelf-pricing",
+      "utm_campaign": "pricing_support",
+      "utm_content": "daily-shelf-pricing"
+    },
+    {
+      "at": "2026-06-21T03:16:49.159Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/sponsor/support/go",
+      "slug": "daily-shelf-sponsor",
+      "utm_campaign": "sponsor_support",
+      "utm_content": "daily-shelf-sponsor"
+    },
+    {
+      "at": "2026-06-20T21:57:56.939Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/small-business-ops/support/go",
+      "slug": "collection-small-business-ops",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-small-business-ops"
+    },
+    {
+      "at": "2026-06-20T21:51:12.297Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-01-listing-photo-checklist/support/go",
+      "slug": "2026-06-01-listing-photo-checklist",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-01-listing-photo-checklist"
+    },
+    {
+      "at": "2026-06-20T21:50:25.244Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/commercial-use/support/go",
+      "slug": "daily-shelf-commercial-use",
+      "utm_campaign": "commercial_support",
+      "utm_content": "daily-shelf-commercial-use"
+    },
+    {
+      "at": "2026-06-20T17:50:03.162Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/cleanup-and-reset/support/go",
+      "slug": "collection-cleanup-and-reset",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-cleanup-and-reset"
+    },
+    {
+      "at": "2026-06-20T17:15:46.523Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-20-home-inventory/support/go",
+      "slug": "2026-06-20-home-inventory",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-20-home-inventory"
+    },
     {
       "at": "2026-06-20T14:11:03.457Z",
       "destination_type": "square-support",
@@ -736,94 +835,6 @@
       "slug": "2026-05-07-tiny-launch-checklist",
       "utm_campaign": "product_support",
       "utm_content": "2026-05-07-tiny-launch-checklist"
-    },
-    {
-      "at": "2026-06-20T00:18:10.824Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-06-micro-offer-pricing/support/go",
-      "slug": "2026-05-06-micro-offer-pricing",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-06-micro-offer-pricing"
-    },
-    {
-      "at": "2026-06-19T21:29:30.153Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/digital-declutter/support/go",
-      "slug": "template-digital-declutter",
-      "utm_campaign": "template_support",
-      "utm_content": "template-digital-declutter"
-    },
-    {
-      "at": "2026-06-19T20:43:45.178Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/pricing/support/go",
-      "slug": "daily-shelf-pricing",
-      "utm_campaign": "pricing_support",
-      "utm_content": "daily-shelf-pricing"
-    },
-    {
-      "at": "2026-06-19T19:24:53.886Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/low-energy-systems/support/go",
-      "slug": "collection-low-energy-systems",
-      "utm_campaign": "collection_support",
-      "utm_content": "collection-low-energy-systems"
-    },
-    {
-      "at": "2026-06-19T18:24:59.337Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/cleanup-and-reset/support/go",
-      "slug": "collection-cleanup-and-reset",
-      "utm_campaign": "collection_support",
-      "utm_content": "collection-cleanup-and-reset"
-    },
-    {
-      "at": "2026-06-19T16:56:38.939Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/low-energy-week/support/go",
-      "slug": "template-low-energy-week",
-      "utm_campaign": "template_support",
-      "utm_content": "template-low-energy-week"
-    },
-    {
-      "at": "2026-06-19T13:09:59.523Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-20-receipt-runner/support/go",
-      "slug": "2026-05-20-receipt-runner",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-20-receipt-runner"
-    },
-    {
-      "at": "2026-06-19T05:03:05.984Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-18-landing-page-copy/support/go",
-      "slug": "2026-05-18-landing-page-copy",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-18-landing-page-copy"
-    },
-    {
-      "at": "2026-06-18T22:21:59.646Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/home-admin/support/go",
-      "slug": "collection-home-admin",
-      "utm_campaign": "collection_support",
-      "utm_content": "collection-home-admin"
-    },
-    {
-      "at": "2026-06-18T21:29:32.242Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-17-renewal-reminder/support/go",
-      "slug": "2026-05-17-renewal-reminder",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-17-renewal-reminder"
-    },
-    {
-      "at": "2026-06-18T20:13:38.380Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-18-receipt-runner/support/go",
-      "slug": "2026-06-18-receipt-runner",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-18-receipt-runner"
     }
   ],
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
@@ -832,7 +843,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_support_intent_clicks": 470,
-  "updated_at": "2026-06-20T14:11:03.457Z",
+  "total_support_intent_clicks": 481,
+  "updated_at": "2026-06-21T10:20:17.907Z",
   "version": 1
 }

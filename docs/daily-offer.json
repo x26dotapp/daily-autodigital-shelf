@@ -1,7 +1,7 @@
 {
   "kind": "daily-shelf-daily-offer",
-  "generated_at": "2026-06-20T14:27:52+00:00",
-  "today": "2026-06-20",
+  "generated_at": "2026-06-21T14:31:02+00:00",
+  "today": "2026-06-21",
   "page_path": "daily-offer.html",
   "json_path": "daily-offer.json",
   "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/daily-offer.html",
@@ -18,7 +18,7 @@
     "title": "Low-Energy Systems collection",
     "label": "Low-Energy Systems",
     "summary": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
-    "support_intent_clicks": 20,
+    "support_intent_clicks": 21,
     "support_intent_clicks_by_day": {
       "2026-06-03": 1,
       "2026-06-10": 1,
@@ -27,14 +27,15 @@
       "2026-06-14": 9,
       "2026-06-16": 1,
       "2026-06-18": 1,
-      "2026-06-19": 1
+      "2026-06-19": 1,
+      "2026-06-21": 1
     },
     "download_interest": 5,
     "download_interest_by_day": {
       "2026-06-03": 3,
       "2026-06-10": 2
     },
-    "signal_score": 105,
+    "signal_score": 110,
     "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.html",
     "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
     "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
@@ -77,7 +78,7 @@
   "actual_daily_revenue_proven": false,
   "today_revenue_usd": "0.00",
   "checkout_boundary": "Product checkout is not connected; this offer routes to voluntary support only.",
-  "revenue_boundary": "Daily revenue proof is not available for 2026-06-20. Today recorded revenue: $0.00.",
+  "revenue_boundary": "Daily revenue proof is not available for 2026-06-21. Today recorded revenue: $0.00.",
   "privacy": "Aggregate support/download signal only. This page does not store buyer identity or payment data.",
   "guardrails": [
     "No guaranteed-income claims",

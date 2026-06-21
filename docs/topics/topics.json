@@ -175,8 +175,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 16,
+      "count": 17,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
+          "title": "Micro Budget Reset",
+          "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-21-micro-budget.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
           "title": "Tiny Home Inventory Pack",
@@ -382,8 +389,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 47,
+      "count": 48,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
+          "title": "Micro Budget Reset",
+          "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-21-micro-budget.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
           "title": "Tiny Home Inventory Pack",
@@ -720,8 +734,15 @@
       "label": "Cleanup And Reset",
       "description": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html",
-      "count": 13,
+      "count": 14,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
+          "title": "Micro Budget Reset",
+          "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-21-micro-budget.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-18-receipt-runner",
           "title": "Receipt Runner Ledger Pack",

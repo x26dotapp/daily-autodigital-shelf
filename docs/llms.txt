@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Tiny Home Inventory Pack](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/) - A room-by-room mini inventory for renters, homeowners, resellers, and insurance prep. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-20-home-inventory.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-20-home-inventory/support/go
+- Latest pack: [Micro Budget Reset](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/) - A one-page reset for seeing near-term bills, small leaks, and the next cash decision. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-21-micro-budget.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-21-micro-budget
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-21-micro-budget/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-21-micro-budget/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

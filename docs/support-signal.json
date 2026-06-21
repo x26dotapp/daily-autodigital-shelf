@@ -1,13 +1,13 @@
 {
   "version": 1,
   "kind": "daily-shelf-support-signal",
-  "generated_at": "2026-06-20T14:27:52+00:00",
+  "generated_at": "2026-06-21T14:31:02+00:00",
   "source_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
   "download_source_url": "https://www.calmsprout.com/daily-shelf/download-metrics.json",
-  "snapshot_fetched_at": "2026-06-20T14:27:50+00:00",
-  "download_snapshot_fetched_at": "2026-06-20T14:27:51+00:00",
-  "metrics_updated_at": "2026-06-20T14:11:03.457Z",
-  "download_metrics_updated_at": "2026-06-20T10:37:13.975Z",
+  "snapshot_fetched_at": "2026-06-21T14:31:00+00:00",
+  "download_snapshot_fetched_at": "2026-06-21T14:31:01+00:00",
+  "metrics_updated_at": "2026-06-21T10:20:17.907Z",
+  "download_metrics_updated_at": "2026-06-21T10:52:57.373Z",
   "metrics_sync_ok": true,
   "download_metrics_sync_ok": true,
   "storage_connected": true,
@@ -15,8 +15,8 @@
   "support_connected": true,
   "store_connected": false,
   "monetization_destination_type": "support",
-  "total_support_intent_clicks": 470,
-  "total_download_interest": 576,
+  "total_support_intent_clicks": 481,
+  "total_download_interest": 582,
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "download_revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -28,7 +28,7 @@
     "title": "Low-Energy Systems collection",
     "label": "Low-Energy Systems",
     "summary": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
-    "support_intent_clicks": 20,
+    "support_intent_clicks": 21,
     "support_intent_clicks_by_day": {
       "2026-06-03": 1,
       "2026-06-10": 1,
@@ -37,14 +37,15 @@
       "2026-06-14": 9,
       "2026-06-16": 1,
       "2026-06-18": 1,
-      "2026-06-19": 1
+      "2026-06-19": 1,
+      "2026-06-21": 1
     },
     "download_interest": 5,
     "download_interest_by_day": {
       "2026-06-03": 3,
       "2026-06-10": 2
     },
-    "signal_score": 105,
+    "signal_score": 110,
     "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.html",
     "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
     "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
@@ -275,7 +276,7 @@
       "title": "Low-Energy Systems collection",
       "label": "Low-Energy Systems",
       "summary": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
-      "support_intent_clicks": 20,
+      "support_intent_clicks": 21,
       "support_intent_clicks_by_day": {
         "2026-06-03": 1,
         "2026-06-10": 1,
@@ -284,14 +285,15 @@
         "2026-06-14": 9,
         "2026-06-16": 1,
         "2026-06-18": 1,
-        "2026-06-19": 1
+        "2026-06-19": 1,
+        "2026-06-21": 1
       },
       "download_interest": 5,
       "download_interest_by_day": {
         "2026-06-03": 3,
         "2026-06-10": 2
       },
-      "signal_score": 105,
+      "signal_score": 110,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
@@ -304,7 +306,7 @@
       "title": "Cleanup And Reset collection",
       "label": "Cleanup And Reset",
       "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "support_intent_clicks": 20,
+      "support_intent_clicks": 21,
       "support_intent_clicks_by_day": {
         "2026-06-03": 1,
         "2026-06-10": 1,
@@ -313,7 +315,7 @@
         "2026-06-14": 10,
         "2026-06-16": 1,
         "2026-06-19": 1,
-        "2026-06-20": 1
+        "2026-06-20": 2
       },
       "download_interest": 5,
       "download_interest_by_day": {
@@ -321,7 +323,7 @@
         "2026-06-09": 1,
         "2026-06-10": 1
       },
-      "signal_score": 105,
+      "signal_score": 110,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
@@ -360,7 +362,7 @@
       "title": "Small Business Ops collection",
       "label": "Small Business Ops",
       "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
-      "support_intent_clicks": 1,
+      "support_intent_clicks": 2,
       "support_intent_clicks_by_day": {
         "2026-06-02": 1,
         "2026-06-03": 2,
@@ -368,7 +370,7 @@
         "2026-06-11": 5,
         "2026-06-14": 10,
         "2026-06-16": 1,
-        "2026-06-20": 1
+        "2026-06-20": 2
       },
       "download_interest": 26,
       "download_interest_by_day": {
@@ -381,7 +383,7 @@
         "2026-06-15": 2,
         "2026-06-16": 1
       },
-      "signal_score": 31,
+      "signal_score": 36,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
@@ -638,7 +640,7 @@
       "title": "Small Business Ops collection",
       "label": "Small Business Ops",
       "summary": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
-      "support_intent_clicks": 1,
+      "support_intent_clicks": 2,
       "support_intent_clicks_by_day": {
         "2026-06-02": 1,
         "2026-06-03": 2,
@@ -646,7 +648,7 @@
         "2026-06-11": 5,
         "2026-06-14": 10,
         "2026-06-16": 1,
-        "2026-06-20": 1
+        "2026-06-20": 2
       },
       "download_interest": 26,
       "download_interest_by_day": {
@@ -659,7 +661,7 @@
         "2026-06-15": 2,
         "2026-06-16": 1
       },
-      "signal_score": 31,
+      "signal_score": 36,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/small-business-ops-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
@@ -672,7 +674,7 @@
       "title": "Low-Energy Systems collection",
       "label": "Low-Energy Systems",
       "summary": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
-      "support_intent_clicks": 20,
+      "support_intent_clicks": 21,
       "support_intent_clicks_by_day": {
         "2026-06-03": 1,
         "2026-06-10": 1,
@@ -681,14 +683,15 @@
         "2026-06-14": 9,
         "2026-06-16": 1,
         "2026-06-18": 1,
-        "2026-06-19": 1
+        "2026-06-19": 1,
+        "2026-06-21": 1
       },
       "download_interest": 5,
       "download_interest_by_day": {
         "2026-06-03": 3,
         "2026-06-10": 2
       },
-      "signal_score": 105,
+      "signal_score": 110,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
@@ -701,7 +704,7 @@
       "title": "Cleanup And Reset collection",
       "label": "Cleanup And Reset",
       "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "support_intent_clicks": 20,
+      "support_intent_clicks": 21,
       "support_intent_clicks_by_day": {
         "2026-06-03": 1,
         "2026-06-10": 1,
@@ -710,7 +713,7 @@
         "2026-06-14": 10,
         "2026-06-16": 1,
         "2026-06-19": 1,
-        "2026-06-20": 1
+        "2026-06-20": 2
       },
       "download_interest": 5,
       "download_interest_by_day": {
@@ -718,7 +721,7 @@
         "2026-06-09": 1,
         "2026-06-10": 1
       },
-      "signal_score": 105,
+      "signal_score": 110,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
@@ -782,47 +785,55 @@
   ],
   "recent": [
     {
-      "at": "2026-06-20T14:11:03.457Z",
+      "at": "2026-06-21T10:20:17.907Z",
       "destination_type": "square-support",
-      "route": "/daily-shelf/sponsor/support/go",
-      "slug": "daily-shelf-sponsor",
-      "utm_campaign": "sponsor_support",
-      "utm_content": "daily-shelf-sponsor"
-    },
-    {
-      "at": "2026-06-20T10:04:15.030Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-13-focus-menu/support/go",
-      "slug": "2026-06-13-focus-menu",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-13-focus-menu"
-    },
-    {
-      "at": "2026-06-20T09:22:30.816Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/commercial-use/support/go",
-      "slug": "daily-shelf-commercial-use",
-      "utm_campaign": "commercial_support",
-      "utm_content": "daily-shelf-commercial-use"
-    },
-    {
-      "at": "2026-06-20T09:02:30.607Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/sponsor/support/go",
-      "slug": "daily-shelf-sponsor",
-      "utm_campaign": "sponsor_support",
-      "utm_content": "daily-shelf-sponsor"
-    },
-    {
-      "at": "2026-06-20T08:43:58.476Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/download-folder-reset/support/go",
-      "slug": "template-download-folder-reset",
+      "route": "/daily-shelf/templates/home-inventory/support/go",
+      "slug": "template-home-inventory",
       "utm_campaign": "template_support",
-      "utm_content": "template-download-folder-reset"
+      "utm_content": "template-home-inventory"
     },
     {
-      "at": "2026-06-20T08:35:10.860Z",
+      "at": "2026-06-21T08:12:12.300Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-17-calm-launch/support/go",
+      "slug": "2026-06-17-calm-launch",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-17-calm-launch"
+    },
+    {
+      "at": "2026-06-21T08:05:19.776Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-15-renewal-reminder/support/go",
+      "slug": "2026-06-15-renewal-reminder",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-15-renewal-reminder"
+    },
+    {
+      "at": "2026-06-21T07:19:05.609Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/low-energy-systems/support/go",
+      "slug": "collection-low-energy-systems",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-low-energy-systems"
+    },
+    {
+      "at": "2026-06-21T05:42:30.446Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/pricing/support/go",
+      "slug": "daily-shelf-pricing",
+      "utm_campaign": "pricing_support",
+      "utm_content": "daily-shelf-pricing"
+    },
+    {
+      "at": "2026-06-21T03:16:49.159Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/sponsor/support/go",
+      "slug": "daily-shelf-sponsor",
+      "utm_campaign": "sponsor_support",
+      "utm_content": "daily-shelf-sponsor"
+    },
+    {
+      "at": "2026-06-20T21:57:56.939Z",
       "destination_type": "square-support",
       "route": "/daily-shelf/offers/small-business-ops/support/go",
       "slug": "collection-small-business-ops",
@@ -830,39 +841,73 @@
       "utm_content": "collection-small-business-ops"
     },
     {
-      "at": "2026-06-20T07:49:45.444Z",
+      "at": "2026-06-20T21:51:12.297Z",
       "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-14-link-in-bio-audit/support/go",
-      "slug": "2026-06-14-link-in-bio-audit",
+      "route": "/daily-shelf/products/2026-06-01-listing-photo-checklist/support/go",
+      "slug": "2026-06-01-listing-photo-checklist",
       "utm_campaign": "product_support",
-      "utm_content": "2026-06-14-link-in-bio-audit"
+      "utm_content": "2026-06-01-listing-photo-checklist"
     },
     {
-      "at": "2026-06-20T07:49:38.360Z",
+      "at": "2026-06-20T21:50:25.244Z",
       "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-16-landing-page-copy/support/go",
-      "slug": "2026-06-16-landing-page-copy",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-16-landing-page-copy"
+      "route": "/daily-shelf/commercial-use/support/go",
+      "slug": "daily-shelf-commercial-use",
+      "utm_campaign": "commercial_support",
+      "utm_content": "daily-shelf-commercial-use"
     },
     {
-      "at": "2026-06-20T07:47:46.021Z",
+      "at": "2026-06-20T17:50:03.162Z",
       "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-18-receipt-runner/support/go",
-      "slug": "2026-06-18-receipt-runner",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-18-receipt-runner"
-    },
-    {
-      "at": "2026-06-20T06:07:04.954Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/home-admin/support/go",
-      "slug": "collection-home-admin",
+      "route": "/daily-shelf/offers/cleanup-and-reset/support/go",
+      "slug": "collection-cleanup-and-reset",
       "utm_campaign": "collection_support",
-      "utm_content": "collection-home-admin"
+      "utm_content": "collection-cleanup-and-reset"
     }
   ],
   "recent_download_interest": [
+    {
+      "at": "2026-06-21T10:52:57.373Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "starter-page",
+      "route": "/daily-shelf/starter-bundle.html",
+      "slug": "starter-archive"
+    },
+    {
+      "at": "2026-06-21T10:10:38.152Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.html",
+      "slug": "2026-06-21-micro-budget"
+    },
+    {
+      "at": "2026-06-21T04:38:41.922Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-18-receipt-runner.html",
+      "slug": "2026-06-18-receipt-runner"
+    },
+    {
+      "at": "2026-06-20T17:19:13.660Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.zip",
+      "slug": "2026-06-20-home-inventory"
+    },
+    {
+      "at": "2026-06-20T16:02:41.729Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
+      "slug": "2026-06-20-home-inventory"
+    },
+    {
+      "at": "2026-06-20T14:28:33.172Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
+      "slug": "2026-06-20-home-inventory"
+    },
     {
       "at": "2026-06-20T10:37:13.975Z",
       "destination_type": "public-download-or-download-page",
@@ -890,48 +935,6 @@
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
       "slug": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-19T21:43:00.987Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "starter-page",
-      "route": "/daily-shelf/starter-bundle.html",
-      "slug": "starter-archive"
-    },
-    {
-      "at": "2026-06-19T19:37:52.144Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-15-renewal-reminder.html",
-      "slug": "2026-06-15-renewal-reminder"
-    },
-    {
-      "at": "2026-06-19T18:22:57.101Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-16-landing-page-copy.html",
-      "slug": "2026-06-16-landing-page-copy"
-    },
-    {
-      "at": "2026-06-19T15:39:53.945Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
-      "slug": "2026-06-19-low-energy-week"
-    },
-    {
-      "at": "2026-06-19T00:30:45.509Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-15-renewal-reminder.html",
-      "slug": "2026-06-15-renewal-reminder"
-    },
-    {
-      "at": "2026-06-18T20:29:21.653Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-18-receipt-runner.zip",
-      "slug": "2026-06-18-receipt-runner"
     }
   ],
   "json_path": "support-signal.json",

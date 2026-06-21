@@ -2,10 +2,35 @@
 <supportFunnelFeed>
   <name>Daily Autodigital Shelf Support Funnel Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/support-funnel.json</url>
-  <dateModified>2026-06-20</dateModified>
-  <numberOfItems>47</numberOfItems>
+  <dateModified>2026-06-21</dateModified>
+  <numberOfItems>48</numberOfItems>
   <supportConnected>true</supportConnected>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <supportFunnel>
+    <id>daily-autodigital-shelf:2026-06-21-micro-budget</id>
+    <date>2026-06-21</date>
+    <title>Micro Budget Reset</title>
+    <description>A one-page reset for seeing near-term bills, small leaks, and the next cash decision.</description>
+    <buyer>Solo households and freelancers who need a short money picture without a complex finance app.</buyer>
+    <productUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/</productUrl>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-21-micro-budget.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-21-micro-budget.zip</downloadUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-21-micro-budget</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-21-micro-budget/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-21-micro-budget/support/go</brandedSupportIntentUrl>
+    <publicSupportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</publicSupportPageUrl>
+    <payWhatYouCanUrl>https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html</payWhatYouCanUrl>
+    <externalSupportDestination>https://gift.calmsprout.com</externalSupportDestination>
+    <utmSource>calmsprout</utmSource>
+    <utmMedium>daily_shelf</utmMedium>
+    <utmCampaign>product_support</utmCampaign>
+    <utmContent>2026-06-21-micro-budget</utmContent>
+    <suggestedSupportTiers>$3 Small thank-you: A light support nudge for one useful worksheet. | $9 Bundle supporter: A fair support level for the starter archive. | $21 Keep it running: Helps keep daily publishing, hosting, and maintenance alive.</suggestedSupportTiers>
+    <supportConnected>true</supportConnected>
+    <storeConnected>false</storeConnected>
+    <fulfillment>public digital download with voluntary external support</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  </supportFunnel>
   <supportFunnel>
     <id>daily-autodigital-shelf:2026-06-20-home-inventory</id>
     <date>2026-06-20</date>

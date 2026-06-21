@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-21-micro-budget/",
+      "title": "Micro Budget Reset",
+      "summary": "A one-page reset for seeing near-term bills, small leaks, and the next cash decision.",
+      "date_published": "2026-06-21"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-20-home-inventory",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-20-home-inventory/",
       "title": "Tiny Home Inventory Pack",
