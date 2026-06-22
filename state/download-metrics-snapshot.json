@@ -19,14 +19,15 @@
     "2026-06-18": 6,
     "2026-06-19": 5,
     "2026-06-20": 7,
-    "2026-06-21": 3
+    "2026-06-21": 6,
+    "2026-06-22": 1
   },
   "by_kind": {
     "collection-bundle-page": 37,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 484,
-    "product-zip": 46,
+    "product-download-page": 486,
+    "product-zip": 48,
     "starter-page": 7,
     "starter-zip": 2
   },
@@ -76,9 +77,9 @@
     "2026-06-16-landing-page-copy": 9,
     "2026-06-17-calm-launch": 3,
     "2026-06-18-receipt-runner": 5,
-    "2026-06-19-low-energy-week": 2,
+    "2026-06-19-low-energy-week": 4,
     "2026-06-20-home-inventory": 3,
-    "2026-06-21-micro-budget": 1,
+    "2026-06-21-micro-budget": 3,
     "checklist": 1,
     "collection-cleanup-and-reset": 5,
     "collection-digital-product-prep": 3,
@@ -379,13 +380,15 @@
     },
     "2026-06-19-low-energy-week": {
       "2026-06-19": 1,
-      "2026-06-20": 1
+      "2026-06-20": 1,
+      "2026-06-21": 1,
+      "2026-06-22": 1
     },
     "2026-06-20-home-inventory": {
       "2026-06-20": 3
     },
     "2026-06-21-micro-budget": {
-      "2026-06-21": 1
+      "2026-06-21": 3
     },
     "checklist": {
       "2026-06-16": 1
@@ -428,10 +431,38 @@
       "2026-06-21": 1
     }
   },
-  "fetched_at": "2026-06-21T14:31:01+00:00",
+  "fetched_at": "2026-06-22T17:12:12+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-22T08:39:16.277Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.zip",
+      "slug": "2026-06-19-low-energy-week"
+    },
+    {
+      "at": "2026-06-21T21:01:52.275Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
+      "slug": "2026-06-19-low-energy-week"
+    },
+    {
+      "at": "2026-06-21T18:27:00.362Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.zip",
+      "slug": "2026-06-21-micro-budget"
+    },
+    {
+      "at": "2026-06-21T16:57:52.527Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.html",
+      "slug": "2026-06-21-micro-budget"
+    },
     {
       "at": "2026-06-21T10:52:57.373Z",
       "destination_type": "public-download-or-download-page",
@@ -578,34 +609,6 @@
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-16-landing-page-copy.html",
       "slug": "2026-06-16-landing-page-copy"
-    },
-    {
-      "at": "2026-06-17T19:27:40.485Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.zip",
-      "slug": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-17T18:28:00.622Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-16-landing-page-copy.html",
-      "slug": "2026-06-16-landing-page-copy"
-    },
-    {
-      "at": "2026-06-17T18:02:42.444Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
-      "slug": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-17T03:27:07.504Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-14-link-in-bio-audit.html",
-      "slug": "2026-06-14-link-in-bio-audit"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -614,7 +617,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 582,
-  "updated_at": "2026-06-21T10:52:57.373Z",
+  "total_download_interest": 586,
+  "updated_at": "2026-06-22T08:39:16.277Z",
   "version": 1
 }

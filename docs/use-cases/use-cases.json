@@ -264,13 +264,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "count": 17,
+      "count": 18,
       "outcomes": [
         "Choose one household admin area that needs a visible page.",
         "Download the related pack instead of building a full spreadsheet system.",
         "Use the collection bundle as a small home-admin starter folder."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
           "title": "Micro Budget Reset",
@@ -425,13 +433,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
-      "count": 11,
+      "count": 12,
       "outcomes": [
         "Pick one anchor task instead of an overbuilt plan.",
         "Use a worksheet with a fallback version that still counts.",
         "Keep the bundle available for uneven-energy weeks."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
           "title": "Low-Energy Week Planner",
@@ -538,13 +554,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 48,
+      "count": 49,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
           "title": "Micro Budget Reset",
@@ -947,13 +971,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "count": 14,
+      "count": 15,
       "outcomes": [
         "Choose one cleanup surface that can be finished without a marathon.",
         "Use a public worksheet to make the next visible decision.",
         "Keep the collection bundle ready for repeated reset sessions."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
           "title": "Micro Budget Reset",

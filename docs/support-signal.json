@@ -1,13 +1,13 @@
 {
   "version": 1,
   "kind": "daily-shelf-support-signal",
-  "generated_at": "2026-06-21T14:31:02+00:00",
+  "generated_at": "2026-06-22T17:12:14+00:00",
   "source_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
   "download_source_url": "https://www.calmsprout.com/daily-shelf/download-metrics.json",
-  "snapshot_fetched_at": "2026-06-21T14:31:00+00:00",
-  "download_snapshot_fetched_at": "2026-06-21T14:31:01+00:00",
-  "metrics_updated_at": "2026-06-21T10:20:17.907Z",
-  "download_metrics_updated_at": "2026-06-21T10:52:57.373Z",
+  "snapshot_fetched_at": "2026-06-22T17:12:12+00:00",
+  "download_snapshot_fetched_at": "2026-06-22T17:12:12+00:00",
+  "metrics_updated_at": "2026-06-22T16:44:26.864Z",
+  "download_metrics_updated_at": "2026-06-22T08:39:16.277Z",
   "metrics_sync_ok": true,
   "download_metrics_sync_ok": true,
   "storage_connected": true,
@@ -15,44 +15,45 @@
   "support_connected": true,
   "store_connected": false,
   "monetization_destination_type": "support",
-  "total_support_intent_clicks": 481,
-  "total_download_interest": 582,
+  "total_support_intent_clicks": 493,
+  "total_download_interest": 586,
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "download_revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
   "download_privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "promoted": {
     "type": "collection",
-    "slug": "low-energy-systems",
-    "metric_slug": "collection-low-energy-systems",
-    "title": "Low-Energy Systems collection",
-    "label": "Low-Energy Systems",
-    "summary": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
-    "support_intent_clicks": 21,
+    "slug": "cleanup-and-reset",
+    "metric_slug": "collection-cleanup-and-reset",
+    "title": "Cleanup And Reset collection",
+    "label": "Cleanup And Reset",
+    "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
+    "support_intent_clicks": 22,
     "support_intent_clicks_by_day": {
       "2026-06-03": 1,
       "2026-06-10": 1,
-      "2026-06-11": 5,
+      "2026-06-11": 4,
       "2026-06-12": 1,
-      "2026-06-14": 9,
+      "2026-06-14": 10,
       "2026-06-16": 1,
-      "2026-06-18": 1,
       "2026-06-19": 1,
-      "2026-06-21": 1
+      "2026-06-20": 2,
+      "2026-06-22": 1
     },
     "download_interest": 5,
     "download_interest_by_day": {
       "2026-06-03": 3,
-      "2026-06-10": 2
+      "2026-06-09": 1,
+      "2026-06-10": 1
     },
-    "signal_score": 110,
-    "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.html",
-    "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
-    "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
-    "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
+    "signal_score": 115,
+    "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
+    "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
+    "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
+    "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
     "reason": "highest weighted signal from aggregate support intent and download interest",
     "promotion_mode": "support_and_download_interest",
-    "promotion_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html"
+    "promotion_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html"
   },
   "top_products": [
     {
@@ -271,6 +272,37 @@
   "top_collections": [
     {
       "type": "collection",
+      "slug": "cleanup-and-reset",
+      "metric_slug": "collection-cleanup-and-reset",
+      "title": "Cleanup And Reset collection",
+      "label": "Cleanup And Reset",
+      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
+      "support_intent_clicks": 22,
+      "support_intent_clicks_by_day": {
+        "2026-06-03": 1,
+        "2026-06-10": 1,
+        "2026-06-11": 4,
+        "2026-06-12": 1,
+        "2026-06-14": 10,
+        "2026-06-16": 1,
+        "2026-06-19": 1,
+        "2026-06-20": 2,
+        "2026-06-22": 1
+      },
+      "download_interest": 5,
+      "download_interest_by_day": {
+        "2026-06-03": 3,
+        "2026-06-09": 1,
+        "2026-06-10": 1
+      },
+      "signal_score": 115,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
+    },
+    {
+      "type": "collection",
       "slug": "low-energy-systems",
       "metric_slug": "collection-low-energy-systems",
       "title": "Low-Energy Systems collection",
@@ -298,62 +330,6 @@
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go"
-    },
-    {
-      "type": "collection",
-      "slug": "cleanup-and-reset",
-      "metric_slug": "collection-cleanup-and-reset",
-      "title": "Cleanup And Reset collection",
-      "label": "Cleanup And Reset",
-      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "support_intent_clicks": 21,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10,
-        "2026-06-16": 1,
-        "2026-06-19": 1,
-        "2026-06-20": 2
-      },
-      "download_interest": 5,
-      "download_interest_by_day": {
-        "2026-06-03": 3,
-        "2026-06-09": 1,
-        "2026-06-10": 1
-      },
-      "signal_score": 110,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
-    },
-    {
-      "type": "collection",
-      "slug": "digital-product-prep",
-      "metric_slug": "collection-digital-product-prep",
-      "title": "Digital Product Prep collection",
-      "label": "Digital Product Prep",
-      "summary": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
-      "support_intent_clicks": 17,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10
-      },
-      "download_interest": 3,
-      "download_interest_by_day": {
-        "2026-06-03": 2,
-        "2026-06-10": 1
-      },
-      "signal_score": 88,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/digital-product-prep-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go"
     },
     {
       "type": "collection",
@@ -417,6 +393,32 @@
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/home-admin-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go"
+    },
+    {
+      "type": "collection",
+      "slug": "digital-product-prep",
+      "metric_slug": "collection-digital-product-prep",
+      "title": "Digital Product Prep collection",
+      "label": "Digital Product Prep",
+      "summary": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
+      "support_intent_clicks": 0,
+      "support_intent_clicks_by_day": {
+        "2026-06-03": 1,
+        "2026-06-10": 1,
+        "2026-06-11": 4,
+        "2026-06-12": 1,
+        "2026-06-14": 10
+      },
+      "download_interest": 3,
+      "download_interest_by_day": {
+        "2026-06-03": 2,
+        "2026-06-10": 1
+      },
+      "signal_score": 3,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/digital-product-prep-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go"
     }
   ],
   "top_download_products": [
@@ -669,6 +671,37 @@
     },
     {
       "type": "collection",
+      "slug": "cleanup-and-reset",
+      "metric_slug": "collection-cleanup-and-reset",
+      "title": "Cleanup And Reset collection",
+      "label": "Cleanup And Reset",
+      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
+      "support_intent_clicks": 22,
+      "support_intent_clicks_by_day": {
+        "2026-06-03": 1,
+        "2026-06-10": 1,
+        "2026-06-11": 4,
+        "2026-06-12": 1,
+        "2026-06-14": 10,
+        "2026-06-16": 1,
+        "2026-06-19": 1,
+        "2026-06-20": 2,
+        "2026-06-22": 1
+      },
+      "download_interest": 5,
+      "download_interest_by_day": {
+        "2026-06-03": 3,
+        "2026-06-09": 1,
+        "2026-06-10": 1
+      },
+      "signal_score": 115,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
+    },
+    {
+      "type": "collection",
       "slug": "low-energy-systems",
       "metric_slug": "collection-low-energy-systems",
       "title": "Low-Energy Systems collection",
@@ -699,62 +732,6 @@
     },
     {
       "type": "collection",
-      "slug": "cleanup-and-reset",
-      "metric_slug": "collection-cleanup-and-reset",
-      "title": "Cleanup And Reset collection",
-      "label": "Cleanup And Reset",
-      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "support_intent_clicks": 21,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10,
-        "2026-06-16": 1,
-        "2026-06-19": 1,
-        "2026-06-20": 2
-      },
-      "download_interest": 5,
-      "download_interest_by_day": {
-        "2026-06-03": 3,
-        "2026-06-09": 1,
-        "2026-06-10": 1
-      },
-      "signal_score": 110,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
-    },
-    {
-      "type": "collection",
-      "slug": "digital-product-prep",
-      "metric_slug": "collection-digital-product-prep",
-      "title": "Digital Product Prep collection",
-      "label": "Digital Product Prep",
-      "summary": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
-      "support_intent_clicks": 17,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10
-      },
-      "download_interest": 3,
-      "download_interest_by_day": {
-        "2026-06-03": 2,
-        "2026-06-10": 1
-      },
-      "signal_score": 88,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/digital-product-prep-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go"
-    },
-    {
-      "type": "collection",
       "slug": "home-admin",
       "metric_slug": "collection-home-admin",
       "title": "Home Admin collection",
@@ -781,27 +758,45 @@
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/home-admin-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go"
+    },
+    {
+      "type": "collection",
+      "slug": "digital-product-prep",
+      "metric_slug": "collection-digital-product-prep",
+      "title": "Digital Product Prep collection",
+      "label": "Digital Product Prep",
+      "summary": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
+      "support_intent_clicks": 0,
+      "support_intent_clicks_by_day": {
+        "2026-06-03": 1,
+        "2026-06-10": 1,
+        "2026-06-11": 4,
+        "2026-06-12": 1,
+        "2026-06-14": 10
+      },
+      "download_interest": 3,
+      "download_interest_by_day": {
+        "2026-06-03": 2,
+        "2026-06-10": 1
+      },
+      "signal_score": 3,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/digital-product-prep-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go"
     }
   ],
   "recent": [
     {
-      "at": "2026-06-21T10:20:17.907Z",
+      "at": "2026-06-22T16:44:26.864Z",
       "destination_type": "square-support",
-      "route": "/daily-shelf/templates/home-inventory/support/go",
-      "slug": "template-home-inventory",
+      "route": "/daily-shelf/templates/low-energy-week/support/go",
+      "slug": "template-low-energy-week",
       "utm_campaign": "template_support",
-      "utm_content": "template-home-inventory"
+      "utm_content": "template-low-energy-week"
     },
     {
-      "at": "2026-06-21T08:12:12.300Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-17-calm-launch/support/go",
-      "slug": "2026-06-17-calm-launch",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-21T08:05:19.776Z",
+      "at": "2026-06-22T16:29:59.570Z",
       "destination_type": "square-support",
       "route": "/daily-shelf/products/2026-06-15-renewal-reminder/support/go",
       "slug": "2026-06-15-renewal-reminder",
@@ -809,47 +804,7 @@
       "utm_content": "2026-06-15-renewal-reminder"
     },
     {
-      "at": "2026-06-21T07:19:05.609Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/low-energy-systems/support/go",
-      "slug": "collection-low-energy-systems",
-      "utm_campaign": "collection_support",
-      "utm_content": "collection-low-energy-systems"
-    },
-    {
-      "at": "2026-06-21T05:42:30.446Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/pricing/support/go",
-      "slug": "daily-shelf-pricing",
-      "utm_campaign": "pricing_support",
-      "utm_content": "daily-shelf-pricing"
-    },
-    {
-      "at": "2026-06-21T03:16:49.159Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/sponsor/support/go",
-      "slug": "daily-shelf-sponsor",
-      "utm_campaign": "sponsor_support",
-      "utm_content": "daily-shelf-sponsor"
-    },
-    {
-      "at": "2026-06-20T21:57:56.939Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/offers/small-business-ops/support/go",
-      "slug": "collection-small-business-ops",
-      "utm_campaign": "collection_support",
-      "utm_content": "collection-small-business-ops"
-    },
-    {
-      "at": "2026-06-20T21:51:12.297Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-01-listing-photo-checklist/support/go",
-      "slug": "2026-06-01-listing-photo-checklist",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-01-listing-photo-checklist"
-    },
-    {
-      "at": "2026-06-20T21:50:25.244Z",
+      "at": "2026-06-22T13:38:19.778Z",
       "destination_type": "square-support",
       "route": "/daily-shelf/commercial-use/support/go",
       "slug": "daily-shelf-commercial-use",
@@ -857,15 +812,91 @@
       "utm_content": "daily-shelf-commercial-use"
     },
     {
-      "at": "2026-06-20T17:50:03.162Z",
+      "at": "2026-06-22T10:40:03.230Z",
       "destination_type": "square-support",
       "route": "/daily-shelf/offers/cleanup-and-reset/support/go",
       "slug": "collection-cleanup-and-reset",
       "utm_campaign": "collection_support",
       "utm_content": "collection-cleanup-and-reset"
+    },
+    {
+      "at": "2026-06-22T08:57:23.819Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/templates/daily-proof-log/support/go",
+      "slug": "template-daily-proof-log",
+      "utm_campaign": "template_support",
+      "utm_content": "template-daily-proof-log"
+    },
+    {
+      "at": "2026-06-22T08:41:28.006Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-16-landing-page-copy/support/go",
+      "slug": "2026-06-16-landing-page-copy",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-16-landing-page-copy"
+    },
+    {
+      "at": "2026-06-22T08:37:03.989Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-18-receipt-runner/support/go",
+      "slug": "2026-06-18-receipt-runner",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-18-receipt-runner"
+    },
+    {
+      "at": "2026-06-22T08:32:21.420Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-20-home-inventory/support/go",
+      "slug": "2026-06-20-home-inventory",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-20-home-inventory"
+    },
+    {
+      "at": "2026-06-22T08:32:21.028Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-19-low-energy-week/support/go",
+      "slug": "2026-06-19-low-energy-week",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-19-low-energy-week"
+    },
+    {
+      "at": "2026-06-21T23:43:25.965Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/commercial-use/support/go",
+      "slug": "daily-shelf-commercial-use",
+      "utm_campaign": "commercial_support",
+      "utm_content": "daily-shelf-commercial-use"
     }
   ],
   "recent_download_interest": [
+    {
+      "at": "2026-06-22T08:39:16.277Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.zip",
+      "slug": "2026-06-19-low-energy-week"
+    },
+    {
+      "at": "2026-06-21T21:01:52.275Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
+      "slug": "2026-06-19-low-energy-week"
+    },
+    {
+      "at": "2026-06-21T18:27:00.362Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.zip",
+      "slug": "2026-06-21-micro-budget"
+    },
+    {
+      "at": "2026-06-21T16:57:52.527Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.html",
+      "slug": "2026-06-21-micro-budget"
+    },
     {
       "at": "2026-06-21T10:52:57.373Z",
       "destination_type": "public-download-or-download-page",
@@ -907,34 +938,6 @@
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
       "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-20T10:37:13.975Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
-      "slug": "2026-06-19-low-energy-week"
-    },
-    {
-      "at": "2026-06-20T08:08:32.426Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-14-link-in-bio-audit.html",
-      "slug": "2026-06-14-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-20T05:42:03.251Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-16-landing-page-copy.html",
-      "slug": "2026-06-16-landing-page-copy"
-    },
-    {
-      "at": "2026-06-20T02:15:38.227Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
-      "slug": "2026-06-17-calm-launch"
     }
   ],
   "json_path": "support-signal.json",

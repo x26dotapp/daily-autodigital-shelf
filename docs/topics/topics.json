@@ -175,8 +175,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 17,
+      "count": 18,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
           "title": "Micro Budget Reset",
@@ -303,8 +310,15 @@
       "label": "Low-Energy Systems",
       "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
-      "count": 11,
+      "count": 12,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-19-low-energy-week",
           "title": "Low-Energy Week Planner",
@@ -389,8 +403,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 48,
+      "count": 49,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
           "title": "Micro Budget Reset",
@@ -734,8 +755,15 @@
       "label": "Cleanup And Reset",
       "description": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/cleanup-and-reset.html",
-      "count": 14,
+      "count": 15,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
+          "title": "Digital Declutter Sprint",
+          "summary": "A focused cleanup sheet for one folder, inbox, download pile, or project archive.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-22-digital-declutter.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-21-micro-budget",
           "title": "Micro Budget Reset",
