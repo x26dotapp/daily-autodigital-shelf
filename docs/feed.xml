@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Mon, 22 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Honest Follow-Up Draft Kit</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-23-offer-followup/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-23-offer-followup/</guid>
+      <description>A non-spam template sheet for following up with one real person or lead.</description>
+      <pubDate>Tue, 23 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Digital Declutter Sprint</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-22-digital-declutter/</link>
