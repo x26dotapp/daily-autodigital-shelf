@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Tue, 23 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Subscription Audit Sheet</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/</guid>
+      <description>A quick worksheet for finding recurring charges, renewal dates, and pause candidates.</description>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Honest Follow-Up Draft Kit</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-23-offer-followup/</link>
@@ -348,13 +355,6 @@
       <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/</guid>
       <description>A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.</description>
       <pubDate>Wed, 06 May 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Weekly Reset Board</title>
-      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/</link>
-      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/</guid>
-      <description>A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.</description>
-      <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

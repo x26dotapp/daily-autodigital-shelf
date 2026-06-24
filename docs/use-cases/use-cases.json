@@ -272,13 +272,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "count": 18,
+      "count": 19,
       "outcomes": [
         "Choose one household admin area that needs a visible page.",
         "Download the related pack instead of building a full spreadsheet system.",
         "Use the collection bundle as a small home-admin starter folder."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
+          "title": "Subscription Audit Sheet",
+          "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
           "title": "Digital Declutter Sprint",
@@ -562,13 +570,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 50,
+      "count": 51,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
+          "title": "Subscription Audit Sheet",
+          "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-23-offer-followup",
           "title": "Honest Follow-Up Draft Kit",

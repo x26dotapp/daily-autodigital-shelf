@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Honest Follow-Up Draft Kit](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-23-offer-followup/) - A non-spam template sheet for following up with one real person or lead. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-23-offer-followup.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-23-offer-followup
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-23-offer-followup/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-23-offer-followup/support/go
+- Latest pack: [Subscription Audit Sheet](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/) - A quick worksheet for finding recurring charges, renewal dates, and pause candidates. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-24-subscription-audit
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-24-subscription-audit/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-24-subscription-audit/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

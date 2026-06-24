@@ -1,0 +1,14 @@
+{
+  "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
+  "date": "2026-06-24",
+  "date_label": "June 24, 2026",
+  "title": "Subscription Audit Sheet",
+  "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+  "buyer": "Households and freelancers who need a clearer view of subscriptions without a finance app.",
+  "path": "packs/2026-06-24-subscription-audit/",
+  "worksheet": "packs/2026-06-24-subscription-audit/printable.html",
+  "checklist": "packs/2026-06-24-subscription-audit/checklist.html",
+  "cover": "packs/2026-06-24-subscription-audit/cover.svg",
+  "seller_copy": "packs/2026-06-24-subscription-audit/seller-copy.md",
+  "download": "downloads/2026-06-24-subscription-audit.zip"
+}

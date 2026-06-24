@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/",
+      "title": "Subscription Audit Sheet",
+      "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+      "date_published": "2026-06-24"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-23-offer-followup",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-23-offer-followup/",
       "title": "Honest Follow-Up Draft Kit",
@@ -347,13 +354,6 @@
       "title": "Micro Offer Pricing Sheet",
       "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
       "date_published": "2026-05-06"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-05-weekly-reset",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-05-weekly-reset/",
-      "title": "Weekly Reset Board",
-      "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
-      "date_published": "2026-05-05"
     }
   ]
 }

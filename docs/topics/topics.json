@@ -182,8 +182,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 18,
+      "count": 19,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
+          "title": "Subscription Audit Sheet",
+          "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
           "title": "Digital Declutter Sprint",
@@ -410,8 +417,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 50,
+      "count": 51,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
+          "title": "Subscription Audit Sheet",
+          "summary": "A quick worksheet for finding recurring charges, renewal dates, and pause candidates.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-23-offer-followup",
           "title": "Honest Follow-Up Draft Kit",

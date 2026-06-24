@@ -21,14 +21,15 @@
     "2026-06-20": 7,
     "2026-06-21": 6,
     "2026-06-22": 6,
-    "2026-06-23": 7
+    "2026-06-23": 9,
+    "2026-06-24": 2
   },
   "by_kind": {
-    "collection-bundle-page": 39,
+    "collection-bundle-page": 41,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 495,
-    "product-zip": 49,
+    "product-download-page": 496,
+    "product-zip": 50,
     "starter-page": 7,
     "starter-zip": 2
   },
@@ -82,12 +83,12 @@
     "2026-06-20-home-inventory": 4,
     "2026-06-21-micro-budget": 3,
     "2026-06-22-digital-declutter": 3,
-    "2026-06-23-offer-followup": 1,
+    "2026-06-23-offer-followup": 3,
     "checklist": 1,
     "collection-cleanup-and-reset": 5,
     "collection-digital-product-prep": 3,
-    "collection-home-admin": 4,
-    "collection-low-energy-systems": 5,
+    "collection-home-admin": 5,
+    "collection-low-energy-systems": 6,
     "collection-small-business-ops": 27,
     "printable": 1,
     "starter-archive": 9
@@ -402,7 +403,8 @@
       "2026-06-23": 1
     },
     "2026-06-23-offer-followup": {
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-24": 2
     },
     "checklist": {
       "2026-06-16": 1
@@ -419,11 +421,12 @@
     "collection-home-admin": {
       "2026-06-03": 2,
       "2026-06-10": 1,
-      "2026-06-23": 1
+      "2026-06-23": 2
     },
     "collection-low-energy-systems": {
       "2026-06-03": 3,
-      "2026-06-10": 2
+      "2026-06-10": 2,
+      "2026-06-23": 1
     },
     "collection-small-business-ops": {
       "2026-06-02": 2,
@@ -447,10 +450,38 @@
       "2026-06-21": 1
     }
   },
-  "fetched_at": "2026-06-23T15:22:55+00:00",
+  "fetched_at": "2026-06-24T14:52:14+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-24T04:10:12.283Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-zip",
+      "route": "/daily-shelf/downloads/2026-06-23-offer-followup.zip",
+      "slug": "2026-06-23-offer-followup"
+    },
+    {
+      "at": "2026-06-24T02:36:50.606Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-23-offer-followup.html",
+      "slug": "2026-06-23-offer-followup"
+    },
+    {
+      "at": "2026-06-23T18:28:02.253Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "collection-bundle-page",
+      "route": "/daily-shelf/bundles/low-energy-systems-collection.html",
+      "slug": "collection-low-energy-systems"
+    },
+    {
+      "at": "2026-06-23T16:16:21.944Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "collection-bundle-page",
+      "route": "/daily-shelf/bundles/home-admin-collection.html",
+      "slug": "collection-home-admin"
+    },
     {
       "at": "2026-06-23T10:11:13.816Z",
       "destination_type": "public-download-or-download-page",
@@ -597,34 +628,6 @@
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
       "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-20T14:28:33.172Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
-      "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-20T10:37:13.975Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
-      "slug": "2026-06-19-low-energy-week"
-    },
-    {
-      "at": "2026-06-20T08:08:32.426Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-14-link-in-bio-audit.html",
-      "slug": "2026-06-14-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-20T05:42:03.251Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-16-landing-page-copy.html",
-      "slug": "2026-06-16-landing-page-copy"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -633,7 +636,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 598,
-  "updated_at": "2026-06-23T10:11:13.816Z",
+  "total_download_interest": 602,
+  "updated_at": "2026-06-24T04:10:12.283Z",
   "version": 1
 }
