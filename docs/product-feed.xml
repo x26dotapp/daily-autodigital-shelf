@@ -2,9 +2,33 @@
 <productFeed>
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
-  <dateModified>2026-06-24</dateModified>
-  <numberOfItems>51</numberOfItems>
+  <dateModified>2026-06-25</dateModified>
+  <numberOfItems>52</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <product>
+    <id>daily-autodigital-shelf:2026-06-25-simple-content-calendar</id>
+    <date>2026-06-25</date>
+    <title>Simple Content Calendar</title>
+    <description>A low-pressure one-week content planner for small brands, creators, and solo operators.</description>
+    <buyer>People who need a content plan that does not become a second full-time job.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,simple,content,calendar</tags>
+  </product>
   <product>
     <id>daily-autodigital-shelf:2026-06-24-subscription-audit</id>
     <date>2026-06-24</date>

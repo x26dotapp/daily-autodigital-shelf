@@ -22,73 +22,75 @@
     "2026-06-21": 6,
     "2026-06-22": 6,
     "2026-06-23": 9,
-    "2026-06-24": 2
+    "2026-06-24": 20,
+    "2026-06-25": 37
   },
   "by_kind": {
-    "collection-bundle-page": 41,
+    "collection-bundle-page": 44,
     "collection-bundle-zip": 5,
     "current-pack-zip": 1,
-    "product-download-page": 496,
-    "product-zip": 50,
+    "product-download-page": 547,
+    "product-zip": 51,
     "starter-page": 7,
     "starter-zip": 2
   },
   "by_slug": {
-    "2026-05-05-weekly-reset": 6,
-    "2026-05-06-micro-offer-pricing": 7,
-    "2026-05-07-tiny-launch-checklist": 7,
-    "2026-05-08-decision-parking-lot": 6,
-    "2026-05-09-email-triage": 7,
-    "2026-05-10-project-rescue-map": 7,
-    "2026-05-11-daily-proof-log": 6,
-    "2026-05-12-simple-order-form": 6,
-    "2026-05-13-two-hour-workblock": 7,
-    "2026-05-14-store-import-prep": 6,
-    "2026-05-15-focus-menu": 7,
-    "2026-05-16-link-in-bio-audit": 7,
+    "2026-05-05-weekly-reset": 7,
+    "2026-05-06-micro-offer-pricing": 8,
+    "2026-05-07-tiny-launch-checklist": 8,
+    "2026-05-08-decision-parking-lot": 7,
+    "2026-05-09-email-triage": 8,
+    "2026-05-10-project-rescue-map": 8,
+    "2026-05-11-daily-proof-log": 7,
+    "2026-05-12-simple-order-form": 7,
+    "2026-05-13-two-hour-workblock": 8,
+    "2026-05-14-store-import-prep": 7,
+    "2026-05-15-focus-menu": 8,
+    "2026-05-16-link-in-bio-audit": 8,
     "2026-05-17-renewal-reminder": 7,
-    "2026-05-18-landing-page-copy": 6,
-    "2026-05-19-calm-launch": 6,
-    "2026-05-20-receipt-runner": 7,
-    "2026-05-21-low-energy-week": 6,
-    "2026-05-22-home-inventory": 5,
-    "2026-05-23-micro-budget": 7,
-    "2026-05-24-digital-declutter": 7,
-    "2026-05-25-offer-followup": 9,
-    "2026-05-26-subscription-audit": 10,
-    "2026-05-27-simple-content-calendar": 11,
-    "2026-05-28-invoice-followup": 20,
-    "2026-05-29-download-folder-reset": 18,
-    "2026-05-30-appointment-prep": 19,
-    "2026-05-31-client-intake-lite": 16,
-    "2026-06-01-listing-photo-checklist": 17,
-    "2026-06-02-one-page-sop": 22,
-    "2026-06-03-weekly-reset": 19,
+    "2026-05-18-landing-page-copy": 7,
+    "2026-05-19-calm-launch": 7,
+    "2026-05-20-receipt-runner": 8,
+    "2026-05-21-low-energy-week": 7,
+    "2026-05-22-home-inventory": 6,
+    "2026-05-23-micro-budget": 8,
+    "2026-05-24-digital-declutter": 8,
+    "2026-05-25-offer-followup": 10,
+    "2026-05-26-subscription-audit": 11,
+    "2026-05-27-simple-content-calendar": 12,
+    "2026-05-28-invoice-followup": 21,
+    "2026-05-29-download-folder-reset": 19,
+    "2026-05-30-appointment-prep": 20,
+    "2026-05-31-client-intake-lite": 17,
+    "2026-06-01-listing-photo-checklist": 18,
+    "2026-06-02-one-page-sop": 23,
+    "2026-06-03-weekly-reset": 20,
     "2026-06-04-micro-offer-pricing": 22,
-    "2026-06-05-tiny-launch-checklist": 19,
-    "2026-06-06-decision-parking-lot": 20,
-    "2026-06-07-email-triage": 20,
-    "2026-06-08-project-rescue-map": 19,
-    "2026-06-09-daily-proof-log": 18,
-    "2026-06-10-simple-order-form": 21,
-    "2026-06-11-two-hour-workblock": 21,
-    "2026-06-12-store-import-prep": 18,
-    "2026-06-13-focus-menu": 18,
-    "2026-06-14-link-in-bio-audit": 16,
-    "2026-06-15-renewal-reminder": 5,
-    "2026-06-16-landing-page-copy": 9,
-    "2026-06-17-calm-launch": 5,
-    "2026-06-18-receipt-runner": 5,
-    "2026-06-19-low-energy-week": 5,
-    "2026-06-20-home-inventory": 4,
-    "2026-06-21-micro-budget": 3,
-    "2026-06-22-digital-declutter": 3,
+    "2026-06-05-tiny-launch-checklist": 20,
+    "2026-06-06-decision-parking-lot": 21,
+    "2026-06-07-email-triage": 21,
+    "2026-06-08-project-rescue-map": 20,
+    "2026-06-09-daily-proof-log": 19,
+    "2026-06-10-simple-order-form": 22,
+    "2026-06-11-two-hour-workblock": 22,
+    "2026-06-12-store-import-prep": 19,
+    "2026-06-13-focus-menu": 19,
+    "2026-06-14-link-in-bio-audit": 17,
+    "2026-06-15-renewal-reminder": 6,
+    "2026-06-16-landing-page-copy": 10,
+    "2026-06-17-calm-launch": 7,
+    "2026-06-18-receipt-runner": 6,
+    "2026-06-19-low-energy-week": 6,
+    "2026-06-20-home-inventory": 5,
+    "2026-06-21-micro-budget": 5,
+    "2026-06-22-digital-declutter": 5,
     "2026-06-23-offer-followup": 3,
+    "2026-06-24-subscription-audit": 2,
     "checklist": 1,
-    "collection-cleanup-and-reset": 5,
-    "collection-digital-product-prep": 3,
+    "collection-cleanup-and-reset": 6,
+    "collection-digital-product-prep": 4,
     "collection-home-admin": 5,
-    "collection-low-energy-systems": 6,
+    "collection-low-energy-systems": 7,
     "collection-small-business-ops": 27,
     "printable": 1,
     "starter-archive": 9
@@ -98,69 +100,81 @@
       "2026-06-03": 2,
       "2026-06-10": 2,
       "2026-06-13": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-24": 1
     },
     "2026-05-06-micro-offer-pricing": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-13": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-24": 1
     },
     "2026-05-07-tiny-launch-checklist": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-12": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-25": 1
     },
     "2026-05-08-decision-parking-lot": {
       "2026-06-03": 2,
       "2026-06-10": 2,
       "2026-06-14": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-25": 1
     },
     "2026-05-09-email-triage": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-15": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-24": 1
     },
     "2026-05-10-project-rescue-map": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-15": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-24": 1
     },
     "2026-05-11-daily-proof-log": {
       "2026-06-03": 3,
       "2026-06-10": 2,
-      "2026-06-12": 1
+      "2026-06-12": 1,
+      "2026-06-24": 1
     },
     "2026-05-12-simple-order-form": {
       "2026-06-03": 3,
       "2026-06-10": 2,
-      "2026-06-12": 1
+      "2026-06-12": 1,
+      "2026-06-24": 1
     },
     "2026-05-13-two-hour-workblock": {
       "2026-06-03": 4,
       "2026-06-10": 2,
-      "2026-06-12": 1
+      "2026-06-12": 1,
+      "2026-06-25": 1
     },
     "2026-05-14-store-import-prep": {
       "2026-06-03": 3,
       "2026-06-10": 2,
-      "2026-06-13": 1
+      "2026-06-13": 1,
+      "2026-06-25": 1
     },
     "2026-05-15-focus-menu": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-11": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-25": 1
     },
     "2026-05-16-link-in-bio-audit": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-12": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-24": 1
     },
     "2026-05-17-renewal-reminder": {
       "2026-06-03": 3,
@@ -172,59 +186,69 @@
       "2026-06-03": 2,
       "2026-06-10": 2,
       "2026-06-11": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-05-19-calm-launch": {
       "2026-06-03": 3,
       "2026-06-10": 2,
-      "2026-06-11": 1
+      "2026-06-11": 1,
+      "2026-06-25": 1
     },
     "2026-05-20-receipt-runner": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-12": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-05-21-low-energy-week": {
       "2026-06-03": 3,
       "2026-06-10": 2,
-      "2026-06-12": 1
+      "2026-06-12": 1,
+      "2026-06-25": 1
     },
     "2026-05-22-home-inventory": {
       "2026-06-03": 2,
       "2026-06-10": 2,
-      "2026-06-15": 1
+      "2026-06-15": 1,
+      "2026-06-25": 1
     },
     "2026-05-23-micro-budget": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-13": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-05-24-digital-declutter": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-12": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-05-25-offer-followup": {
       "2026-06-03": 2,
       "2026-06-10": 2,
       "2026-06-11": 4,
-      "2026-06-13": 1
+      "2026-06-13": 1,
+      "2026-06-25": 1
     },
     "2026-05-26-subscription-audit": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-11": 3,
       "2026-06-12": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-24": 1
     },
     "2026-05-27-simple-content-calendar": {
       "2026-06-03": 3,
       "2026-06-10": 2,
       "2026-06-11": 5,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-24": 1
     },
     "2026-05-28-invoice-followup": {
       "2026-06-03": 2,
@@ -232,7 +256,8 @@
       "2026-06-11": 4,
       "2026-06-12": 1,
       "2026-06-14": 10,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-05-29-download-folder-reset": {
       "2026-06-03": 3,
@@ -240,7 +265,8 @@
       "2026-06-11": 3,
       "2026-06-13": 1,
       "2026-06-14": 8,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-24": 1
     },
     "2026-05-30-appointment-prep": {
       "2026-06-03": 3,
@@ -248,7 +274,8 @@
       "2026-06-11": 4,
       "2026-06-13": 1,
       "2026-06-14": 8,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-05-31-client-intake-lite": {
       "2026-06-03": 2,
@@ -256,7 +283,8 @@
       "2026-06-11": 3,
       "2026-06-13": 1,
       "2026-06-14": 7,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-01-listing-photo-checklist": {
       "2026-06-03": 3,
@@ -264,7 +292,8 @@
       "2026-06-11": 4,
       "2026-06-12": 1,
       "2026-06-14": 6,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-02-one-page-sop": {
       "2026-06-03": 4,
@@ -272,7 +301,8 @@
       "2026-06-11": 4,
       "2026-06-13": 1,
       "2026-06-14": 10,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-24": 1
     },
     "2026-06-03-weekly-reset": {
       "2026-06-03": 2,
@@ -280,7 +310,8 @@
       "2026-06-10": 2,
       "2026-06-11": 5,
       "2026-06-14": 8,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-04-micro-offer-pricing": {
       "2026-06-04": 2,
@@ -294,14 +325,16 @@
       "2026-06-10": 2,
       "2026-06-11": 5,
       "2026-06-14": 9,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-06-decision-parking-lot": {
       "2026-06-06": 2,
       "2026-06-10": 2,
       "2026-06-11": 5,
       "2026-06-14": 10,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-07-email-triage": {
       "2026-06-07": 2,
@@ -309,7 +342,8 @@
       "2026-06-10": 2,
       "2026-06-11": 5,
       "2026-06-14": 9,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-08-project-rescue-map": {
       "2026-06-08": 2,
@@ -318,7 +352,8 @@
       "2026-06-12": 2,
       "2026-06-14": 8,
       "2026-06-16": 1,
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-25": 1
     },
     "2026-06-09-daily-proof-log": {
       "2026-06-09": 2,
@@ -328,7 +363,8 @@
       "2026-06-13": 1,
       "2026-06-14": 8,
       "2026-06-16": 1,
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-24": 1
     },
     "2026-06-10-simple-order-form": {
       "2026-06-10": 3,
@@ -336,74 +372,91 @@
       "2026-06-12": 2,
       "2026-06-14": 10,
       "2026-06-15": 1,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-11-two-hour-workblock": {
       "2026-06-11": 6,
       "2026-06-12": 1,
       "2026-06-14": 13,
-      "2026-06-16": 1
+      "2026-06-16": 1,
+      "2026-06-25": 1
     },
     "2026-06-12-store-import-prep": {
       "2026-06-12": 2,
       "2026-06-13": 1,
       "2026-06-14": 11,
       "2026-06-15": 1,
-      "2026-06-16": 3
+      "2026-06-16": 3,
+      "2026-06-24": 1
     },
     "2026-06-13-focus-menu": {
       "2026-06-13": 5,
       "2026-06-14": 11,
       "2026-06-16": 1,
-      "2026-06-17": 1
+      "2026-06-17": 1,
+      "2026-06-25": 1
     },
     "2026-06-14-link-in-bio-audit": {
       "2026-06-14": 12,
       "2026-06-15": 1,
       "2026-06-16": 1,
       "2026-06-17": 1,
-      "2026-06-20": 1
+      "2026-06-20": 1,
+      "2026-06-25": 1
     },
     "2026-06-15-renewal-reminder": {
       "2026-06-15": 2,
       "2026-06-18": 1,
-      "2026-06-19": 2
+      "2026-06-19": 2,
+      "2026-06-25": 1
     },
     "2026-06-16-landing-page-copy": {
       "2026-06-16": 5,
       "2026-06-17": 1,
       "2026-06-18": 1,
       "2026-06-19": 1,
-      "2026-06-20": 1
+      "2026-06-20": 1,
+      "2026-06-25": 1
     },
     "2026-06-17-calm-launch": {
       "2026-06-17": 2,
       "2026-06-20": 1,
-      "2026-06-22": 2
+      "2026-06-22": 2,
+      "2026-06-25": 2
     },
     "2026-06-18-receipt-runner": {
       "2026-06-18": 4,
-      "2026-06-21": 1
+      "2026-06-21": 1,
+      "2026-06-25": 1
     },
     "2026-06-19-low-energy-week": {
       "2026-06-19": 1,
       "2026-06-20": 1,
       "2026-06-21": 1,
-      "2026-06-22": 2
+      "2026-06-22": 2,
+      "2026-06-25": 1
     },
     "2026-06-20-home-inventory": {
       "2026-06-20": 3,
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-24": 1
     },
     "2026-06-21-micro-budget": {
-      "2026-06-21": 3
+      "2026-06-21": 3,
+      "2026-06-25": 2
     },
     "2026-06-22-digital-declutter": {
       "2026-06-22": 2,
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-24": 1,
+      "2026-06-25": 1
     },
     "2026-06-23-offer-followup": {
       "2026-06-23": 1,
+      "2026-06-24": 2
+    },
+    "2026-06-24-subscription-audit": {
       "2026-06-24": 2
     },
     "checklist": {
@@ -412,11 +465,13 @@
     "collection-cleanup-and-reset": {
       "2026-06-03": 3,
       "2026-06-09": 1,
-      "2026-06-10": 1
+      "2026-06-10": 1,
+      "2026-06-25": 1
     },
     "collection-digital-product-prep": {
       "2026-06-03": 2,
-      "2026-06-10": 1
+      "2026-06-10": 1,
+      "2026-06-24": 1
     },
     "collection-home-admin": {
       "2026-06-03": 2,
@@ -426,7 +481,8 @@
     "collection-low-energy-systems": {
       "2026-06-03": 3,
       "2026-06-10": 2,
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-25": 1
     },
     "collection-small-business-ops": {
       "2026-06-02": 2,
@@ -450,184 +506,184 @@
       "2026-06-21": 1
     }
   },
-  "fetched_at": "2026-06-24T14:52:14+00:00",
+  "fetched_at": "2026-06-25T15:09:57+00:00",
   "kind": "daily-shelf-download-metrics-snapshot",
   "privacy": "Aggregate download and download-page interest counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
     {
-      "at": "2026-06-24T04:10:12.283Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-23-offer-followup.zip",
-      "slug": "2026-06-23-offer-followup"
-    },
-    {
-      "at": "2026-06-24T02:36:50.606Z",
+      "at": "2026-06-25T14:54:44.187Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-23-offer-followup.html",
-      "slug": "2026-06-23-offer-followup"
+      "route": "/daily-shelf/downloads/2026-06-03-weekly-reset.html",
+      "slug": "2026-06-03-weekly-reset"
     },
     {
-      "at": "2026-06-23T18:28:02.253Z",
+      "at": "2026-06-25T14:44:42.946Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-28-invoice-followup.html",
+      "slug": "2026-05-28-invoice-followup"
+    },
+    {
+      "at": "2026-06-25T14:04:43.134Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-14-link-in-bio-audit.html",
+      "slug": "2026-06-14-link-in-bio-audit"
+    },
+    {
+      "at": "2026-06-25T12:56:56.752Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
+      "slug": "2026-06-17-calm-launch"
+    },
+    {
+      "at": "2026-06-25T12:00:37.293Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-06-decision-parking-lot.html",
+      "slug": "2026-06-06-decision-parking-lot"
+    },
+    {
+      "at": "2026-06-25T11:09:34.179Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-07-email-triage.html",
+      "slug": "2026-06-07-email-triage"
+    },
+    {
+      "at": "2026-06-25T11:03:33.383Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-22-home-inventory.html",
+      "slug": "2026-05-22-home-inventory"
+    },
+    {
+      "at": "2026-06-25T10:57:35.467Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-15-focus-menu.html",
+      "slug": "2026-05-15-focus-menu"
+    },
+    {
+      "at": "2026-06-25T10:50:06.424Z",
       "destination_type": "public-download-or-download-page",
       "kind": "collection-bundle-page",
       "route": "/daily-shelf/bundles/low-energy-systems-collection.html",
       "slug": "collection-low-energy-systems"
     },
     {
-      "at": "2026-06-23T16:16:21.944Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "collection-bundle-page",
-      "route": "/daily-shelf/bundles/home-admin-collection.html",
-      "slug": "collection-home-admin"
-    },
-    {
-      "at": "2026-06-23T10:11:13.816Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-23-offer-followup.html",
-      "slug": "2026-06-23-offer-followup"
-    },
-    {
-      "at": "2026-06-23T08:07:24.500Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-08-project-rescue-map.html",
-      "slug": "2026-06-08-project-rescue-map"
-    },
-    {
-      "at": "2026-06-23T08:07:24.286Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-09-daily-proof-log.html",
-      "slug": "2026-06-09-daily-proof-log"
-    },
-    {
-      "at": "2026-06-23T08:07:22.544Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-22-digital-declutter.html",
-      "slug": "2026-06-22-digital-declutter"
-    },
-    {
-      "at": "2026-06-23T08:07:21.609Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "collection-bundle-page",
-      "route": "/daily-shelf/bundles/small-business-ops-collection.html",
-      "slug": "collection-small-business-ops"
-    },
-    {
-      "at": "2026-06-23T04:57:35.461Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "collection-bundle-page",
-      "route": "/daily-shelf/bundles/home-admin-collection.html",
-      "slug": "collection-home-admin"
-    },
-    {
-      "at": "2026-06-23T01:46:45.665Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
-      "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-22T23:28:13.036Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
-      "slug": "2026-06-19-low-energy-week"
-    },
-    {
-      "at": "2026-06-22T20:34:50.561Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-22-digital-declutter.zip",
-      "slug": "2026-06-22-digital-declutter"
-    },
-    {
-      "at": "2026-06-22T19:18:19.625Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-22-digital-declutter.html",
-      "slug": "2026-06-22-digital-declutter"
-    },
-    {
-      "at": "2026-06-22T18:04:45.110Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
-      "slug": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-22T17:18:54.044Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
-      "slug": "2026-06-17-calm-launch"
-    },
-    {
-      "at": "2026-06-22T08:39:16.277Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.zip",
-      "slug": "2026-06-19-low-energy-week"
-    },
-    {
-      "at": "2026-06-21T21:01:52.275Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-19-low-energy-week.html",
-      "slug": "2026-06-19-low-energy-week"
-    },
-    {
-      "at": "2026-06-21T18:27:00.362Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.zip",
-      "slug": "2026-06-21-micro-budget"
-    },
-    {
-      "at": "2026-06-21T16:57:52.527Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.html",
-      "slug": "2026-06-21-micro-budget"
-    },
-    {
-      "at": "2026-06-21T10:52:57.373Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "starter-page",
-      "route": "/daily-shelf/starter-bundle.html",
-      "slug": "starter-archive"
-    },
-    {
-      "at": "2026-06-21T10:10:38.152Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.html",
-      "slug": "2026-06-21-micro-budget"
-    },
-    {
-      "at": "2026-06-21T04:38:41.922Z",
+      "at": "2026-06-25T10:05:09.101Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-18-receipt-runner.html",
       "slug": "2026-06-18-receipt-runner"
     },
     {
-      "at": "2026-06-20T17:19:13.660Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-zip",
-      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.zip",
-      "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-20T16:02:41.729Z",
+      "at": "2026-06-25T09:57:12.650Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
-      "slug": "2026-06-20-home-inventory"
+      "route": "/daily-shelf/downloads/2026-06-15-renewal-reminder.html",
+      "slug": "2026-06-15-renewal-reminder"
+    },
+    {
+      "at": "2026-06-25T09:51:47.045Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-10-simple-order-form.html",
+      "slug": "2026-06-10-simple-order-form"
+    },
+    {
+      "at": "2026-06-25T09:46:18.909Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-13-two-hour-workblock.html",
+      "slug": "2026-05-13-two-hour-workblock"
+    },
+    {
+      "at": "2026-06-25T09:02:39.385Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-17-calm-launch.html",
+      "slug": "2026-06-17-calm-launch"
+    },
+    {
+      "at": "2026-06-25T08:58:46.109Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
+      "slug": "2026-06-05-tiny-launch-checklist"
+    },
+    {
+      "at": "2026-06-25T07:41:01.632Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-21-micro-budget.html",
+      "slug": "2026-06-21-micro-budget"
+    },
+    {
+      "at": "2026-06-25T07:09:47.002Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-30-appointment-prep.html",
+      "slug": "2026-05-30-appointment-prep"
+    },
+    {
+      "at": "2026-06-25T07:04:46.570Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-20-receipt-runner.html",
+      "slug": "2026-05-20-receipt-runner"
+    },
+    {
+      "at": "2026-06-25T06:45:29.157Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-08-project-rescue-map.html",
+      "slug": "2026-06-08-project-rescue-map"
+    },
+    {
+      "at": "2026-06-25T06:40:28.336Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-25-offer-followup.html",
+      "slug": "2026-05-25-offer-followup"
+    },
+    {
+      "at": "2026-06-25T06:35:28.662Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-18-landing-page-copy.html",
+      "slug": "2026-05-18-landing-page-copy"
+    },
+    {
+      "at": "2026-06-25T05:55:09.750Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-19-calm-launch.html",
+      "slug": "2026-05-19-calm-launch"
+    },
+    {
+      "at": "2026-06-25T05:49:11.305Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "collection-bundle-page",
+      "route": "/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "slug": "collection-cleanup-and-reset"
+    },
+    {
+      "at": "2026-06-25T05:07:11.338Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-16-landing-page-copy.html",
+      "slug": "2026-06-16-landing-page-copy"
+    },
+    {
+      "at": "2026-06-25T05:01:11.925Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-05-23-micro-budget.html",
+      "slug": "2026-05-23-micro-budget"
     }
   ],
   "revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -636,7 +692,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_download_interest": 602,
-  "updated_at": "2026-06-24T04:10:12.283Z",
+  "total_download_interest": 657,
+  "updated_at": "2026-06-25T14:54:44.187Z",
   "version": 1
 }

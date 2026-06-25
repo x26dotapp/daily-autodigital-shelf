@@ -1,7 +1,7 @@
 {
   "kind": "daily-shelf-daily-offer",
-  "generated_at": "2026-06-24T14:52:16+00:00",
-  "today": "2026-06-24",
+  "generated_at": "2026-06-25T15:09:59+00:00",
+  "today": "2026-06-25",
   "page_path": "daily-offer.html",
   "json_path": "daily-offer.json",
   "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/daily-offer.html",
@@ -27,15 +27,16 @@
       "2026-06-18": 2,
       "2026-06-23": 1
     },
-    "download_interest": 18,
+    "download_interest": 19,
     "download_interest_by_day": {
       "2026-06-12": 2,
       "2026-06-13": 1,
       "2026-06-14": 11,
       "2026-06-15": 1,
-      "2026-06-16": 3
+      "2026-06-16": 3,
+      "2026-06-24": 1
     },
-    "signal_score": 53,
+    "signal_score": 54,
     "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
     "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep",
     "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
@@ -79,7 +80,7 @@
   "actual_daily_revenue_proven": false,
   "today_revenue_usd": "0.00",
   "checkout_boundary": "Product checkout is not connected; this offer routes to voluntary support only.",
-  "revenue_boundary": "Daily revenue proof is not available for 2026-06-24. Today recorded revenue: $0.00.",
+  "revenue_boundary": "Daily revenue proof is not available for 2026-06-25. Today recorded revenue: $0.00.",
   "privacy": "Aggregate support/download signal only. This page does not store buyer identity or payment data.",
   "guardrails": [
     "No guaranteed-income claims",

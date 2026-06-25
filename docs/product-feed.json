@@ -3,13 +3,48 @@
   "@type": "ItemList",
   "name": "Daily Autodigital Shelf Product Feed",
   "url": "https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json",
-  "dateModified": "2026-06-24",
-  "numberOfItems": 51,
+  "dateModified": "2026-06-25",
+  "numberOfItems": 52,
   "checkoutBoundary": "Product checkout is not connected. Downloads remain public and support is voluntary.",
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
+      "item": {
+        "@type": [
+          "CreativeWork",
+          "Product"
+        ],
+        "identifier": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
+        "name": "Simple Content Calendar",
+        "description": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+        "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/",
+        "image": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/cover.svg",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.html",
+          "price": "0.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "description": "Product checkout is not connected. Downloads remain public and support is voluntary."
+        },
+        "potentialAction": {
+          "@type": "DonateAction",
+          "target": "https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support/go",
+          "name": "Support this pack"
+        },
+        "downloadUrl": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.zip",
+        "sameAs": [
+          "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.html",
+          "https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar",
+          "https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support"
+        ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
       "item": {
         "@type": [
           "CreativeWork",
@@ -44,7 +79,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": [
           "CreativeWork",
@@ -79,7 +114,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": [
           "CreativeWork",
@@ -114,7 +149,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": [
           "CreativeWork",
@@ -149,7 +184,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "@type": [
           "CreativeWork",
@@ -184,7 +219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
       "item": {
         "@type": [
           "CreativeWork",
@@ -219,7 +254,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "item": {
         "@type": [
           "CreativeWork",
@@ -254,7 +289,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "item": {
         "@type": [
           "CreativeWork",
@@ -289,7 +324,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "item": {
         "@type": [
           "CreativeWork",
@@ -324,7 +359,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "item": {
         "@type": [
           "CreativeWork",
@@ -359,7 +394,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "item": {
         "@type": [
           "CreativeWork",
@@ -394,7 +429,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "item": {
         "@type": [
           "CreativeWork",
@@ -429,7 +464,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": [
           "CreativeWork",
@@ -464,7 +499,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": [
           "CreativeWork",
@@ -499,7 +534,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": [
           "CreativeWork",
@@ -534,7 +569,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": [
           "CreativeWork",
@@ -569,7 +604,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "item": {
         "@type": [
           "CreativeWork",
@@ -604,7 +639,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 19,
       "item": {
         "@type": [
           "CreativeWork",
@@ -639,7 +674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 20,
       "item": {
         "@type": [
           "CreativeWork",
@@ -674,7 +709,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 21,
       "item": {
         "@type": [
           "CreativeWork",
@@ -709,7 +744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 22,
       "item": {
         "@type": [
           "CreativeWork",
@@ -744,7 +779,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 23,
       "item": {
         "@type": [
           "CreativeWork",
@@ -779,7 +814,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 24,
       "item": {
         "@type": [
           "CreativeWork",
@@ -814,7 +849,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 25,
       "item": {
         "@type": [
           "CreativeWork",
@@ -849,7 +884,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 26,
       "item": {
         "@type": [
           "CreativeWork",
@@ -884,7 +919,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 27,
       "item": {
         "@type": [
           "CreativeWork",
@@ -919,7 +954,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 28,
       "item": {
         "@type": [
           "CreativeWork",
@@ -954,7 +989,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 29,
       "item": {
         "@type": [
           "CreativeWork",
@@ -989,7 +1024,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 30,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1024,7 +1059,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 31,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1059,7 +1094,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 32,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1094,7 +1129,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 33,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1129,7 +1164,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 34,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1164,7 +1199,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 35,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1199,7 +1234,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 36,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1234,7 +1269,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 37,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1269,7 +1304,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 38,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1304,7 +1339,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 39,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1339,7 +1374,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 40,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1374,7 +1409,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 41,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1409,7 +1444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 42,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1444,7 +1479,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 43,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1479,7 +1514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 44,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1514,7 +1549,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 45,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1549,7 +1584,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 46,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1584,7 +1619,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 47,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1619,7 +1654,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 48,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1654,7 +1689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 49,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1689,7 +1724,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 50,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1724,7 +1759,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 51,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1759,7 +1794,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 52,
       "item": {
         "@type": [
           "CreativeWork",
@@ -1794,6 +1829,31 @@
     }
   ],
   "items": [
+    {
+      "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
+      "date": "2026-06-25",
+      "title": "Simple Content Calendar",
+      "description": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+      "buyer": "People who need a content plan that does not become a second full-time job.",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.zip",
+      "cover_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/cover.svg",
+      "seller_copy_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/seller-copy.md",
+      "support_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/support.html",
+      "pay_what_you_can_url": "https://x26dotapp.github.io/daily-autodigital-shelf/pay-what-you-can.html",
+      "branded_product_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar",
+      "branded_support_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support",
+      "branded_support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support/go",
+      "price_hint": "$3 to $9 digital pack",
+      "currency": "USD",
+      "store_connected": false,
+      "support_connected": true,
+      "is_accessible_for_free": true,
+      "fulfillment": "public digital download",
+      "checkout_boundary": "Product checkout is not connected. Downloads remain public and support is voluntary.",
+      "tags": "digital download,printable worksheet,planner,checklist,low maintenance,simple,content,calendar"
+    },
     {
       "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
       "date": "2026-06-24",

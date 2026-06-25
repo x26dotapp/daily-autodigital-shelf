@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Subscription Audit Sheet](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/) - A quick worksheet for finding recurring charges, renewal dates, and pause candidates. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-24-subscription-audit.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-24-subscription-audit
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-24-subscription-audit/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-24-subscription-audit/support/go
+- Latest pack: [Simple Content Calendar](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/) - A low-pressure one-week content planner for small brands, creators, and solo operators. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-25-simple-content-calendar.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-25-simple-content-calendar/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

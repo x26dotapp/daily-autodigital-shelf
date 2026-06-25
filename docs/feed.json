@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/",
+      "title": "Simple Content Calendar",
+      "summary": "A low-pressure one-week content planner for small brands, creators, and solo operators.",
+      "date_published": "2026-06-25"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-24-subscription-audit/",
       "title": "Subscription Audit Sheet",
@@ -347,13 +354,6 @@
       "title": "Tiny Launch Checklist",
       "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
       "date_published": "2026-05-07"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-06-micro-offer-pricing",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-06-micro-offer-pricing/",
-      "title": "Micro Offer Pricing Sheet",
-      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
-      "date_published": "2026-05-06"
     }
   ]
 }
