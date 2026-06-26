@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 25,
+      "count": 26,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+          "title": "Invoice Follow-Up Mini Kit",
+          "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
           "title": "Simple Content Calendar",
@@ -331,8 +338,15 @@
       "label": "Low-Energy Systems",
       "description": "Gentle planning packs for uneven energy, neurodivergent workflows, shutdown notes, and low-friction task choices.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/low-energy-systems.html",
-      "count": 13,
+      "count": 14,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+          "title": "Invoice Follow-Up Mini Kit",
+          "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
           "title": "Simple Content Calendar",
@@ -431,8 +445,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 52,
+      "count": 53,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+          "title": "Invoice Follow-Up Mini Kit",
+          "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
           "title": "Simple Content Calendar",

@@ -55,13 +55,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "count": 25,
+      "count": 26,
       "outcomes": [
         "Name the next client or service workflow that needs a written path.",
         "Pick a public worksheet pack that can be downloaded immediately.",
         "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+          "title": "Invoice Follow-Up Mini Kit",
+          "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
           "title": "Simple Content Calendar",
@@ -457,13 +465,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go",
-      "count": 13,
+      "count": 14,
       "outcomes": [
         "Pick one anchor task instead of an overbuilt plan.",
         "Use a worksheet with a fallback version that still counts.",
         "Keep the bundle available for uneven-energy weeks."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+          "title": "Invoice Follow-Up Mini Kit",
+          "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
           "title": "Simple Content Calendar",
@@ -586,13 +602,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 52,
+      "count": 53,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+          "title": "Invoice Follow-Up Mini Kit",
+          "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-26-invoice-followup.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
           "title": "Simple Content Calendar",

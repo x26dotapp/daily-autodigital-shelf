@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
+      "title": "Invoice Follow-Up Mini Kit",
+      "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
+      "date_published": "2026-06-26"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-25-simple-content-calendar",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-25-simple-content-calendar/",
       "title": "Simple Content Calendar",
@@ -347,13 +354,6 @@
       "title": "Decision Parking Lot",
       "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
       "date_published": "2026-05-08"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-07-tiny-launch-checklist",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-07-tiny-launch-checklist/",
-      "title": "Tiny Launch Checklist",
-      "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
-      "date_published": "2026-05-07"
     }
   ]
 }
