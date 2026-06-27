@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-27-download-folder-reset",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/",
+      "title": "Downloads Folder Reset",
+      "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+      "date_published": "2026-06-27"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-26-invoice-followup/",
       "title": "Invoice Follow-Up Mini Kit",
@@ -347,13 +354,6 @@
       "title": "Email Triage Sprint",
       "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
       "date_published": "2026-05-09"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-08-decision-parking-lot",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/",
-      "title": "Decision Parking Lot",
-      "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
-      "date_published": "2026-05-08"
     }
   ]
 }

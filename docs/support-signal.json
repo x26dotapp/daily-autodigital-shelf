@@ -1,13 +1,13 @@
 {
   "version": 1,
   "kind": "daily-shelf-support-signal",
-  "generated_at": "2026-06-26T14:45:35+00:00",
+  "generated_at": "2026-06-27T14:04:46+00:00",
   "source_url": "https://www.calmsprout.com/daily-shelf/support-metrics.json",
   "download_source_url": "https://www.calmsprout.com/daily-shelf/download-metrics.json",
-  "snapshot_fetched_at": "2026-06-26T14:45:33+00:00",
-  "download_snapshot_fetched_at": "2026-06-26T14:45:34+00:00",
-  "metrics_updated_at": "2026-06-26T11:55:42.159Z",
-  "download_metrics_updated_at": "2026-06-26T14:25:04.353Z",
+  "snapshot_fetched_at": "2026-06-27T14:04:44+00:00",
+  "download_snapshot_fetched_at": "2026-06-27T14:04:44+00:00",
+  "metrics_updated_at": "2026-06-27T05:14:50.040Z",
+  "download_metrics_updated_at": "2026-06-27T12:57:41.709Z",
   "metrics_sync_ok": true,
   "download_metrics_sync_ok": true,
   "storage_connected": true,
@@ -15,8 +15,8 @@
   "support_connected": true,
   "store_connected": false,
   "monetization_destination_type": "support",
-  "total_support_intent_clicks": 574,
-  "total_download_interest": 707,
+  "total_support_intent_clicks": 577,
+  "total_download_interest": 724,
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "download_revenue_boundary": "This measures public download/page interest. It does not prove payments or daily revenue.",
@@ -37,7 +37,7 @@
       "2026-06-18": 2,
       "2026-06-23": 1
     },
-    "download_interest": 20,
+    "download_interest": 21,
     "download_interest_by_day": {
       "2026-06-12": 2,
       "2026-06-13": 1,
@@ -45,9 +45,10 @@
       "2026-06-15": 1,
       "2026-06-16": 3,
       "2026-06-24": 1,
-      "2026-06-25": 1
+      "2026-06-25": 1,
+      "2026-06-27": 1
     },
-    "signal_score": 55,
+    "signal_score": 56,
     "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
     "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep",
     "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
@@ -74,7 +75,7 @@
         "2026-06-18": 2,
         "2026-06-23": 1
       },
-      "download_interest": 20,
+      "download_interest": 21,
       "download_interest_by_day": {
         "2026-06-12": 2,
         "2026-06-13": 1,
@@ -82,9 +83,10 @@
         "2026-06-15": 1,
         "2026-06-16": 3,
         "2026-06-24": 1,
-        "2026-06-25": 1
+        "2026-06-25": 1,
+        "2026-06-27": 1
       },
-      "signal_score": 55,
+      "signal_score": 56,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-12-store-import-prep/",
       "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-12-store-import-prep",
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-12-store-import-prep.html",
@@ -141,16 +143,17 @@
         "2026-06-16": 1,
         "2026-06-17": 1
       },
-      "download_interest": 21,
+      "download_interest": 22,
       "download_interest_by_day": {
         "2026-06-06": 2,
         "2026-06-10": 2,
         "2026-06-11": 5,
         "2026-06-14": 10,
         "2026-06-16": 1,
-        "2026-06-25": 1
+        "2026-06-25": 1,
+        "2026-06-27": 1
       },
-      "signal_score": 51,
+      "signal_score": 52,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-06-decision-parking-lot/",
       "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-06-decision-parking-lot",
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-06-decision-parking-lot.html",
@@ -173,7 +176,7 @@
         "2026-06-15": 1,
         "2026-06-16": 1
       },
-      "download_interest": 21,
+      "download_interest": 22,
       "download_interest_by_day": {
         "2026-06-05": 2,
         "2026-06-10": 2,
@@ -181,14 +184,78 @@
         "2026-06-14": 9,
         "2026-06-16": 1,
         "2026-06-25": 1,
-        "2026-06-26": 1
+        "2026-06-26": 1,
+        "2026-06-27": 1
       },
-      "signal_score": 51,
+      "signal_score": 52,
       "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
       "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist",
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support/go"
+    },
+    {
+      "type": "product",
+      "slug": "2026-06-04-micro-offer-pricing",
+      "title": "Micro Offer Pricing Sheet",
+      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+      "date": "2026-06-04",
+      "date_label": "June 04, 2026",
+      "support_intent_clicks": 5,
+      "support_intent_clicks_by_day": {
+        "2026-06-04": 1,
+        "2026-06-10": 1,
+        "2026-06-13": 1,
+        "2026-06-14": 1,
+        "2026-06-16": 1
+      },
+      "download_interest": 25,
+      "download_interest_by_day": {
+        "2026-06-04": 2,
+        "2026-06-10": 2,
+        "2026-06-11": 5,
+        "2026-06-14": 12,
+        "2026-06-16": 1,
+        "2026-06-26": 1,
+        "2026-06-27": 2
+      },
+      "signal_score": 50,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go"
+    },
+    {
+      "type": "product",
+      "slug": "2026-06-11-two-hour-workblock",
+      "title": "Two-Hour Workblock Planner",
+      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+      "date": "2026-06-11",
+      "date_label": "June 11, 2026",
+      "support_intent_clicks": 5,
+      "support_intent_clicks_by_day": {
+        "2026-06-11": 1,
+        "2026-06-13": 2,
+        "2026-06-16": 1,
+        "2026-06-17": 1
+      },
+      "download_interest": 24,
+      "download_interest_by_day": {
+        "2026-06-11": 6,
+        "2026-06-12": 1,
+        "2026-06-14": 13,
+        "2026-06-16": 1,
+        "2026-06-25": 1,
+        "2026-06-26": 1,
+        "2026-06-27": 1
+      },
+      "signal_score": 49,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support/go"
     },
     {
       "type": "product",
@@ -220,67 +287,6 @@
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-14-link-in-bio-audit.html",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-14-link-in-bio-audit/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-14-link-in-bio-audit/support/go"
-    },
-    {
-      "type": "product",
-      "slug": "2026-06-11-two-hour-workblock",
-      "title": "Two-Hour Workblock Planner",
-      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
-      "date": "2026-06-11",
-      "date_label": "June 11, 2026",
-      "support_intent_clicks": 5,
-      "support_intent_clicks_by_day": {
-        "2026-06-11": 1,
-        "2026-06-13": 2,
-        "2026-06-16": 1,
-        "2026-06-17": 1
-      },
-      "download_interest": 23,
-      "download_interest_by_day": {
-        "2026-06-11": 6,
-        "2026-06-12": 1,
-        "2026-06-14": 13,
-        "2026-06-16": 1,
-        "2026-06-25": 1,
-        "2026-06-26": 1
-      },
-      "signal_score": 48,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support/go"
-    },
-    {
-      "type": "product",
-      "slug": "2026-06-04-micro-offer-pricing",
-      "title": "Micro Offer Pricing Sheet",
-      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
-      "date": "2026-06-04",
-      "date_label": "June 04, 2026",
-      "support_intent_clicks": 5,
-      "support_intent_clicks_by_day": {
-        "2026-06-04": 1,
-        "2026-06-10": 1,
-        "2026-06-13": 1,
-        "2026-06-14": 1,
-        "2026-06-16": 1
-      },
-      "download_interest": 23,
-      "download_interest_by_day": {
-        "2026-06-04": 2,
-        "2026-06-10": 2,
-        "2026-06-11": 5,
-        "2026-06-14": 12,
-        "2026-06-16": 1,
-        "2026-06-26": 1
-      },
-      "signal_score": 48,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go"
     }
   ],
   "top_collections": [
@@ -383,6 +389,40 @@
     },
     {
       "type": "collection",
+      "slug": "cleanup-and-reset",
+      "metric_slug": "collection-cleanup-and-reset",
+      "title": "Cleanup And Reset collection",
+      "label": "Cleanup And Reset",
+      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
+      "support_intent_clicks": 0,
+      "support_intent_clicks_by_day": {
+        "2026-06-03": 1,
+        "2026-06-10": 1,
+        "2026-06-11": 4,
+        "2026-06-12": 1,
+        "2026-06-14": 10,
+        "2026-06-16": 1,
+        "2026-06-19": 1,
+        "2026-06-20": 2,
+        "2026-06-22": 1,
+        "2026-06-23": 1
+      },
+      "download_interest": 8,
+      "download_interest_by_day": {
+        "2026-06-03": 3,
+        "2026-06-09": 1,
+        "2026-06-10": 1,
+        "2026-06-25": 2,
+        "2026-06-27": 1
+      },
+      "signal_score": 8,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
+    },
+    {
+      "type": "collection",
       "slug": "low-energy-systems",
       "metric_slug": "collection-low-energy-systems",
       "title": "Low-Energy Systems collection",
@@ -412,42 +452,72 @@
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go"
-    },
-    {
-      "type": "collection",
-      "slug": "cleanup-and-reset",
-      "metric_slug": "collection-cleanup-and-reset",
-      "title": "Cleanup And Reset collection",
-      "label": "Cleanup And Reset",
-      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "support_intent_clicks": 0,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10,
-        "2026-06-16": 1,
-        "2026-06-19": 1,
-        "2026-06-20": 2,
-        "2026-06-22": 1,
-        "2026-06-23": 1
-      },
-      "download_interest": 7,
-      "download_interest_by_day": {
-        "2026-06-03": 3,
-        "2026-06-09": 1,
-        "2026-06-10": 1,
-        "2026-06-25": 2
-      },
-      "signal_score": 7,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
     }
   ],
   "top_download_products": [
+    {
+      "type": "product",
+      "slug": "2026-06-04-micro-offer-pricing",
+      "title": "Micro Offer Pricing Sheet",
+      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
+      "date": "2026-06-04",
+      "date_label": "June 04, 2026",
+      "support_intent_clicks": 5,
+      "support_intent_clicks_by_day": {
+        "2026-06-04": 1,
+        "2026-06-10": 1,
+        "2026-06-13": 1,
+        "2026-06-14": 1,
+        "2026-06-16": 1
+      },
+      "download_interest": 25,
+      "download_interest_by_day": {
+        "2026-06-04": 2,
+        "2026-06-10": 2,
+        "2026-06-11": 5,
+        "2026-06-14": 12,
+        "2026-06-16": 1,
+        "2026-06-26": 1,
+        "2026-06-27": 2
+      },
+      "signal_score": 50,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go"
+    },
+    {
+      "type": "product",
+      "slug": "2026-06-11-two-hour-workblock",
+      "title": "Two-Hour Workblock Planner",
+      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
+      "date": "2026-06-11",
+      "date_label": "June 11, 2026",
+      "support_intent_clicks": 5,
+      "support_intent_clicks_by_day": {
+        "2026-06-11": 1,
+        "2026-06-13": 2,
+        "2026-06-16": 1,
+        "2026-06-17": 1
+      },
+      "download_interest": 24,
+      "download_interest_by_day": {
+        "2026-06-11": 6,
+        "2026-06-12": 1,
+        "2026-06-14": 13,
+        "2026-06-16": 1,
+        "2026-06-25": 1,
+        "2026-06-26": 1,
+        "2026-06-27": 1
+      },
+      "signal_score": 49,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support/go"
+    },
     {
       "type": "product",
       "slug": "2026-06-02-one-page-sop",
@@ -481,67 +551,6 @@
       "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-02-one-page-sop.html",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-02-one-page-sop/support/go"
-    },
-    {
-      "type": "product",
-      "slug": "2026-06-11-two-hour-workblock",
-      "title": "Two-Hour Workblock Planner",
-      "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
-      "date": "2026-06-11",
-      "date_label": "June 11, 2026",
-      "support_intent_clicks": 5,
-      "support_intent_clicks_by_day": {
-        "2026-06-11": 1,
-        "2026-06-13": 2,
-        "2026-06-16": 1,
-        "2026-06-17": 1
-      },
-      "download_interest": 23,
-      "download_interest_by_day": {
-        "2026-06-11": 6,
-        "2026-06-12": 1,
-        "2026-06-14": 13,
-        "2026-06-16": 1,
-        "2026-06-25": 1,
-        "2026-06-26": 1
-      },
-      "signal_score": 48,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-11-two-hour-workblock/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-11-two-hour-workblock.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-11-two-hour-workblock/support/go"
-    },
-    {
-      "type": "product",
-      "slug": "2026-06-04-micro-offer-pricing",
-      "title": "Micro Offer Pricing Sheet",
-      "summary": "A simple worksheet for pricing a small digital or service offer without pretending the market is guaranteed.",
-      "date": "2026-06-04",
-      "date_label": "June 04, 2026",
-      "support_intent_clicks": 5,
-      "support_intent_clicks_by_day": {
-        "2026-06-04": 1,
-        "2026-06-10": 1,
-        "2026-06-13": 1,
-        "2026-06-14": 1,
-        "2026-06-16": 1
-      },
-      "download_interest": 23,
-      "download_interest_by_day": {
-        "2026-06-04": 2,
-        "2026-06-10": 2,
-        "2026-06-11": 5,
-        "2026-06-14": 12,
-        "2026-06-16": 1,
-        "2026-06-26": 1
-      },
-      "signal_score": 48,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-04-micro-offer-pricing/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-04-micro-offer-pricing.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-04-micro-offer-pricing/support/go"
     },
     {
       "type": "product",
@@ -610,67 +619,70 @@
     },
     {
       "type": "product",
-      "slug": "2026-05-28-invoice-followup",
-      "title": "Invoice Follow-Up Mini Kit",
-      "summary": "A calm worksheet for tracking unpaid invoices and writing one clear follow-up.",
-      "date": "2026-05-28",
-      "date_label": "May 28, 2026",
-      "support_intent_clicks": 5,
+      "slug": "2026-06-06-decision-parking-lot",
+      "title": "Decision Parking Lot",
+      "summary": "A worksheet for parking unresolved decisions so they stop interrupting the current task.",
+      "date": "2026-06-06",
+      "date_label": "June 06, 2026",
+      "support_intent_clicks": 6,
       "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
+        "2026-06-06": 1,
         "2026-06-10": 1,
+        "2026-06-13": 1,
+        "2026-06-14": 1,
+        "2026-06-16": 1,
+        "2026-06-17": 1
+      },
+      "download_interest": 22,
+      "download_interest_by_day": {
+        "2026-06-06": 2,
+        "2026-06-10": 2,
+        "2026-06-11": 5,
+        "2026-06-14": 10,
+        "2026-06-16": 1,
+        "2026-06-25": 1,
+        "2026-06-27": 1
+      },
+      "signal_score": 52,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-06-decision-parking-lot/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-06-decision-parking-lot",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-06-decision-parking-lot.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-06-decision-parking-lot/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-06-decision-parking-lot/support/go"
+    },
+    {
+      "type": "product",
+      "slug": "2026-06-05-tiny-launch-checklist",
+      "title": "Tiny Launch Checklist",
+      "summary": "A compact launch checklist for publishing a small page, pack, or offer without waiting for perfect.",
+      "date": "2026-06-05",
+      "date_label": "June 05, 2026",
+      "support_intent_clicks": 6,
+      "support_intent_clicks_by_day": {
+        "2026-06-05": 1,
+        "2026-06-10": 1,
+        "2026-06-13": 1,
         "2026-06-14": 1,
         "2026-06-15": 1,
         "2026-06-16": 1
       },
       "download_interest": 22,
       "download_interest_by_day": {
-        "2026-06-03": 2,
-        "2026-06-10": 2,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10,
-        "2026-06-16": 1,
-        "2026-06-25": 1,
-        "2026-06-26": 1
-      },
-      "signal_score": 47,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-28-invoice-followup/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-05-28-invoice-followup.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-05-28-invoice-followup/support/go"
-    },
-    {
-      "type": "product",
-      "slug": "2026-06-03-weekly-reset",
-      "title": "Weekly Reset Board",
-      "summary": "A printable reset board for tasks, bills, errands, and loose ends that need one weekly review.",
-      "date": "2026-06-03",
-      "date_label": "June 03, 2026",
-      "support_intent_clicks": 4,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 1,
-        "2026-06-16": 1
-      },
-      "download_interest": 22,
-      "download_interest_by_day": {
-        "2026-06-03": 2,
-        "2026-06-05": 1,
+        "2026-06-05": 2,
         "2026-06-10": 2,
         "2026-06-11": 5,
-        "2026-06-14": 8,
+        "2026-06-14": 9,
         "2026-06-16": 1,
-        "2026-06-25": 3
+        "2026-06-25": 1,
+        "2026-06-26": 1,
+        "2026-06-27": 1
       },
-      "signal_score": 42,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-03-weekly-reset/",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-03-weekly-reset",
-      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-03-weekly-reset.html",
-      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-03-weekly-reset/support",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-03-weekly-reset/support/go"
+      "signal_score": 52,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-05-tiny-launch-checklist/",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist",
+      "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
+      "support_page_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/products/2026-06-05-tiny-launch-checklist/support/go"
     }
   ],
   "top_download_collections": [
@@ -712,6 +724,40 @@
     },
     {
       "type": "collection",
+      "slug": "cleanup-and-reset",
+      "metric_slug": "collection-cleanup-and-reset",
+      "title": "Cleanup And Reset collection",
+      "label": "Cleanup And Reset",
+      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
+      "support_intent_clicks": 0,
+      "support_intent_clicks_by_day": {
+        "2026-06-03": 1,
+        "2026-06-10": 1,
+        "2026-06-11": 4,
+        "2026-06-12": 1,
+        "2026-06-14": 10,
+        "2026-06-16": 1,
+        "2026-06-19": 1,
+        "2026-06-20": 2,
+        "2026-06-22": 1,
+        "2026-06-23": 1
+      },
+      "download_interest": 8,
+      "download_interest_by_day": {
+        "2026-06-03": 3,
+        "2026-06-09": 1,
+        "2026-06-10": 1,
+        "2026-06-25": 2,
+        "2026-06-27": 1
+      },
+      "signal_score": 8,
+      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
+      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
+      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
+    },
+    {
+      "type": "collection",
       "slug": "low-energy-systems",
       "metric_slug": "collection-low-energy-systems",
       "title": "Low-Energy Systems collection",
@@ -741,39 +787,6 @@
       "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/low-energy-systems-collection.html",
       "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/low-energy-systems-collection.zip",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/low-energy-systems/support/go"
-    },
-    {
-      "type": "collection",
-      "slug": "cleanup-and-reset",
-      "metric_slug": "collection-cleanup-and-reset",
-      "title": "Cleanup And Reset collection",
-      "label": "Cleanup And Reset",
-      "summary": "Short reset worksheets for files, folders, digital clutter, weekly planning, receipts, and stalled projects.",
-      "support_intent_clicks": 0,
-      "support_intent_clicks_by_day": {
-        "2026-06-03": 1,
-        "2026-06-10": 1,
-        "2026-06-11": 4,
-        "2026-06-12": 1,
-        "2026-06-14": 10,
-        "2026-06-16": 1,
-        "2026-06-19": 1,
-        "2026-06-20": 2,
-        "2026-06-22": 1,
-        "2026-06-23": 1
-      },
-      "download_interest": 7,
-      "download_interest_by_day": {
-        "2026-06-03": 3,
-        "2026-06-09": 1,
-        "2026-06-10": 1,
-        "2026-06-25": 2
-      },
-      "signal_score": 7,
-      "public_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.html",
-      "branded_url": "https://www.calmsprout.com/daily-shelf/bundles/cleanup-and-reset-collection.html",
-      "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
-      "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go"
     },
     {
       "type": "collection",
@@ -839,6 +852,30 @@
   ],
   "recent": [
     {
+      "at": "2026-06-27T05:14:50.040Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-05-23-micro-budget/support/go",
+      "slug": "2026-05-23-micro-budget",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-05-23-micro-budget"
+    },
+    {
+      "at": "2026-06-26T22:38:21.025Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-25-simple-content-calendar/support/go",
+      "slug": "2026-06-25-simple-content-calendar",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-25-simple-content-calendar"
+    },
+    {
+      "at": "2026-06-26T17:29:40.476Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-26-invoice-followup/support/go",
+      "slug": "2026-06-26-invoice-followup",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-26-invoice-followup"
+    },
+    {
       "at": "2026-06-26T11:55:42.159Z",
       "destination_type": "square-support",
       "route": "/daily-shelf/templates/home-inventory/support/go",
@@ -893,102 +930,78 @@
       "slug": "template-landing-page-copy",
       "utm_campaign": "template_support",
       "utm_content": "template-landing-page-copy"
-    },
-    {
-      "at": "2026-06-25T03:46:56.175Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-06-10-simple-order-form/support/go",
-      "slug": "2026-06-10-simple-order-form",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-06-10-simple-order-form"
-    },
-    {
-      "at": "2026-06-24T22:58:31.423Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/home-inventory/support/go",
-      "slug": "template-home-inventory",
-      "utm_campaign": "template_support",
-      "utm_content": "template-home-inventory"
-    },
-    {
-      "at": "2026-06-24T19:31:59.493Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/appointment-prep/support/go",
-      "slug": "template-appointment-prep",
-      "utm_campaign": "template_support",
-      "utm_content": "template-appointment-prep"
     }
   ],
   "recent_download_interest": [
     {
-      "at": "2026-06-26T14:25:04.353Z",
+      "at": "2026-06-27T12:57:41.709Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-07-tiny-launch-checklist.html",
-      "slug": "2026-05-07-tiny-launch-checklist"
+      "route": "/daily-shelf/downloads/2026-06-04-micro-offer-pricing.html",
+      "slug": "2026-06-04-micro-offer-pricing"
     },
     {
-      "at": "2026-06-26T13:56:20.457Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
-      "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-26T13:50:20.556Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-11-two-hour-workblock.html",
-      "slug": "2026-06-11-two-hour-workblock"
-    },
-    {
-      "at": "2026-06-26T12:01:55.257Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-20-home-inventory.html",
-      "slug": "2026-06-20-home-inventory"
-    },
-    {
-      "at": "2026-06-26T11:02:20.978Z",
-      "destination_type": "public-download-or-download-page",
-      "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-22-digital-declutter.html",
-      "slug": "2026-06-22-digital-declutter"
-    },
-    {
-      "at": "2026-06-26T10:44:26.643Z",
+      "at": "2026-06-27T11:11:02.425Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
       "route": "/daily-shelf/downloads/2026-06-05-tiny-launch-checklist.html",
       "slug": "2026-06-05-tiny-launch-checklist"
     },
     {
-      "at": "2026-06-26T10:37:47.257Z",
+      "at": "2026-06-27T10:06:29.937Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-15-focus-menu.html",
-      "slug": "2026-05-15-focus-menu"
+      "route": "/daily-shelf/downloads/2026-06-11-two-hour-workblock.html",
+      "slug": "2026-06-11-two-hour-workblock"
     },
     {
-      "at": "2026-06-26T09:53:58.324Z",
+      "at": "2026-06-27T09:17:39.766Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-05-06-micro-offer-pricing.html",
-      "slug": "2026-05-06-micro-offer-pricing"
+      "route": "/daily-shelf/downloads/2026-06-09-daily-proof-log.html",
+      "slug": "2026-06-09-daily-proof-log"
     },
     {
-      "at": "2026-06-26T09:00:36.743Z",
+      "at": "2026-06-27T09:06:57.111Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-01-listing-photo-checklist.html",
-      "slug": "2026-06-01-listing-photo-checklist"
+      "route": "/daily-shelf/downloads/2026-06-22-digital-declutter.html",
+      "slug": "2026-06-22-digital-declutter"
     },
     {
-      "at": "2026-06-26T08:39:03.048Z",
+      "at": "2026-06-27T08:41:08.135Z",
       "destination_type": "public-download-or-download-page",
       "kind": "product-download-page",
-      "route": "/daily-shelf/downloads/2026-06-13-focus-menu.html",
-      "slug": "2026-06-13-focus-menu"
+      "route": "/daily-shelf/downloads/2026-05-25-offer-followup.html",
+      "slug": "2026-05-25-offer-followup"
+    },
+    {
+      "at": "2026-06-27T08:11:00.114Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-06-decision-parking-lot.html",
+      "slug": "2026-06-06-decision-parking-lot"
+    },
+    {
+      "at": "2026-06-27T07:55:13.439Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "collection-bundle-page",
+      "route": "/daily-shelf/bundles/cleanup-and-reset-collection.html",
+      "slug": "collection-cleanup-and-reset"
+    },
+    {
+      "at": "2026-06-27T07:06:22.702Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-12-store-import-prep.html",
+      "slug": "2026-06-12-store-import-prep"
+    },
+    {
+      "at": "2026-06-27T01:54:13.795Z",
+      "destination_type": "public-download-or-download-page",
+      "kind": "product-download-page",
+      "route": "/daily-shelf/downloads/2026-06-04-micro-offer-pricing.html",
+      "slug": "2026-06-04-micro-offer-pricing"
     }
   ],
   "json_path": "support-signal.json",

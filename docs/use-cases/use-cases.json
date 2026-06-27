@@ -288,13 +288,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/home-admin-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/home-admin/support/go",
-      "count": 19,
+      "count": 20,
       "outcomes": [
         "Choose one household admin area that needs a visible page.",
         "Download the related pack instead of building a full spreadsheet system.",
         "Use the collection bundle as a small home-admin starter folder."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-27-download-folder-reset",
+          "title": "Downloads Folder Reset",
+          "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-24-subscription-audit",
           "title": "Subscription Audit Sheet",
@@ -602,13 +610,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 53,
+      "count": 54,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-27-download-folder-reset",
+          "title": "Downloads Folder Reset",
+          "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-26-invoice-followup",
           "title": "Invoice Follow-Up Mini Kit",
@@ -1051,13 +1067,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/cleanup-and-reset-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/cleanup-and-reset/support/go",
-      "count": 15,
+      "count": 16,
       "outcomes": [
         "Choose one cleanup surface that can be finished without a marathon.",
         "Use a public worksheet to make the next visible decision.",
         "Keep the collection bundle ready for repeated reset sessions."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-27-download-folder-reset",
+          "title": "Downloads Folder Reset",
+          "summary": "A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-22-digital-declutter",
           "title": "Digital Declutter Sprint",

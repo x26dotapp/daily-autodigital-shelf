@@ -4,8 +4,15 @@
   <id>https://x26dotapp.github.io/daily-autodigital-shelf/</id>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/"/>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-06-26T00:00:00Z</updated>
+  <updated>2026-06-27T00:00:00Z</updated>
   <subtitle>A quiet system that makes a new sellable pack every day.</subtitle>
+  <entry>
+    <title>Downloads Folder Reset</title>
+    <id>daily-autodigital-shelf:2026-06-27-download-folder-reset</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/"/>
+    <updated>2026-06-27T00:00:00Z</updated>
+    <summary>A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.</summary>
+  </entry>
   <entry>
     <title>Invoice Follow-Up Mini Kit</title>
     <id>daily-autodigital-shelf:2026-06-26-invoice-followup</id>
@@ -348,12 +355,5 @@
     <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/"/>
     <updated>2026-05-09T00:00:00Z</updated>
     <summary>A 15-minute inbox worksheet for finding the few messages that actually need action.</summary>
-  </entry>
-  <entry>
-    <title>Decision Parking Lot</title>
-    <id>daily-autodigital-shelf:2026-05-08-decision-parking-lot</id>
-    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-08-decision-parking-lot/"/>
-    <updated>2026-05-08T00:00:00Z</updated>
-    <summary>A worksheet for parking unresolved decisions so they stop interrupting the current task.</summary>
   </entry>
 </feed>

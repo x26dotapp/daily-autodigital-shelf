@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-label="Downloads Folder Reset">
+  <rect width="1200" height="1600" fill="#f7f8f5"/>
+  <path d="M90 110H1110V1490H90Z" fill="#ffffff" stroke="#aeb8b0" stroke-width="3"/>
+  <path d="M152 188H1048V398H152Z" fill="#d7f2ee"/>
+  <text x="152" y="520" fill="#141716" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="86" font-weight="900">
+    <tspan x="152" dy="0">Downloads Folder Reset</tspan>
+  </text>
+  <text x="152" y="640" fill="#0f766e" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">June 27, 2026</text>
+  <foreignObject x="152" y="720" width="880" height="260">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, Segoe UI, Arial, sans-serif; color: #626b66; font-size: 42px; line-height: 1.42;">A 20-minute digital cleanup worksheet for turning a downloads pile into decisions.</div>
+  </foreignObject>
+  <path d="M152 1110H1048" stroke="#d9ded8" stroke-width="3"/>
+  <text x="152" y="1215" fill="#d88a1d" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="900">Daily Autodigital Shelf</text>
+  <text x="152" y="1285" fill="#626b66" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30">Generated automatically. Payment links are explicit and optional.</text>
+</svg>
