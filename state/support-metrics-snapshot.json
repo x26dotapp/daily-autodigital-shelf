@@ -25,7 +25,8 @@
     "2026-06-24": 28,
     "2026-06-25": 5,
     "2026-06-26": 5,
-    "2026-06-27": 1
+    "2026-06-27": 4,
+    "2026-06-28": 2
   },
   "by_slug": {
     "2026-05-05-weekly-reset": 4,
@@ -73,17 +74,19 @@
     "2026-06-18-receipt-runner": 3,
     "2026-06-19-low-energy-week": 1,
     "2026-06-20-home-inventory": 2,
-    "2026-06-21-micro-budget": 1,
+    "2026-06-21-micro-budget": 2,
     "2026-06-22-digital-declutter": 2,
     "2026-06-23-offer-followup": 2,
     "2026-06-24-subscription-audit": 1,
     "2026-06-25-simple-content-calendar": 2,
-    "2026-06-26-invoice-followup": 1,
+    "2026-06-26-invoice-followup": 2,
+    "2026-06-27-download-folder-reset": 1,
+    "collection-cleanup-and-reset": 1,
     "collection-digital-product-prep": 2,
     "collection-home-admin": 1,
     "collection-small-business-ops": 3,
     "daily-shelf-commercial-use": 4,
-    "daily-shelf-general": 2,
+    "daily-shelf-general": 3,
     "daily-shelf-pricing": 2,
     "daily-shelf-sponsor": 4,
     "template-appointment-prep": 3,
@@ -93,8 +96,6 @@
     "template-decision-parking-lot": 7,
     "template-digital-declutter": 2,
     "template-focus-menu": 1,
-    "template-home-inventory": 8,
-    "template-invoice-followup": 6,
     "template-landing-page-copy": 7,
     "template-listing-photo-checklist": 7,
     "template-micro-offer-pricing": 1,
@@ -400,7 +401,8 @@
       "2026-06-22": 1
     },
     "2026-06-21-micro-budget": {
-      "2026-06-21": 1
+      "2026-06-21": 1,
+      "2026-06-28": 1
     },
     "2026-06-22-digital-declutter": {
       "2026-06-22": 1,
@@ -418,7 +420,11 @@
       "2026-06-26": 1
     },
     "2026-06-26-invoice-followup": {
-      "2026-06-26": 1
+      "2026-06-26": 1,
+      "2026-06-27": 1
+    },
+    "2026-06-27-download-folder-reset": {
+      "2026-06-27": 1
     },
     "collection-cleanup-and-reset": {
       "2026-06-03": 1,
@@ -430,7 +436,8 @@
       "2026-06-19": 1,
       "2026-06-20": 2,
       "2026-06-22": 1,
-      "2026-06-23": 1
+      "2026-06-23": 1,
+      "2026-06-28": 1
     },
     "collection-digital-product-prep": {
       "2026-06-03": 1,
@@ -493,7 +500,8 @@
       "2026-06-14": 12,
       "2026-06-15": 2,
       "2026-06-16": 1,
-      "2026-06-23": 2
+      "2026-06-23": 2,
+      "2026-06-27": 1
     },
     "daily-shelf-pricing": {
       "2026-06-03": 1,
@@ -738,10 +746,50 @@
       "2026-06-23": 1
     }
   },
-  "fetched_at": "2026-06-27T14:04:44+00:00",
+  "fetched_at": "2026-06-28T14:14:07+00:00",
   "kind": "daily-shelf-support-metrics-snapshot",
   "privacy": "Aggregate support-intent counts only. No IP address, user-agent, cookie, email, or payment data is stored.",
   "recent": [
+    {
+      "at": "2026-06-28T10:53:18.878Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/offers/cleanup-and-reset/support/go",
+      "slug": "collection-cleanup-and-reset",
+      "utm_campaign": "collection_support",
+      "utm_content": "collection-cleanup-and-reset"
+    },
+    {
+      "at": "2026-06-28T07:13:46.149Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-21-micro-budget/support/go",
+      "slug": "2026-06-21-micro-budget",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-21-micro-budget"
+    },
+    {
+      "at": "2026-06-27T19:40:18.668Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-26-invoice-followup/support/go",
+      "slug": "2026-06-26-invoice-followup",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-26-invoice-followup"
+    },
+    {
+      "at": "2026-06-27T19:19:48.651Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/support/go",
+      "slug": "daily-shelf-general",
+      "utm_campaign": "general_support",
+      "utm_content": "daily-shelf-general"
+    },
+    {
+      "at": "2026-06-27T17:17:10.738Z",
+      "destination_type": "square-support",
+      "route": "/daily-shelf/products/2026-06-27-download-folder-reset/support/go",
+      "slug": "2026-06-27-download-folder-reset",
+      "utm_campaign": "product_support",
+      "utm_content": "2026-06-27-download-folder-reset"
+    },
     {
       "at": "2026-06-27T05:14:50.040Z",
       "destination_type": "square-support",
@@ -901,46 +949,6 @@
       "slug": "template-link-in-bio-audit",
       "utm_campaign": "template_support",
       "utm_content": "template-link-in-bio-audit"
-    },
-    {
-      "at": "2026-06-24T09:31:06.370Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/products/2026-05-27-simple-content-calendar/support/go",
-      "slug": "2026-05-27-simple-content-calendar",
-      "utm_campaign": "product_support",
-      "utm_content": "2026-05-27-simple-content-calendar"
-    },
-    {
-      "at": "2026-06-24T08:25:41.565Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/micro-offer-pricing/support/go",
-      "slug": "template-micro-offer-pricing",
-      "utm_campaign": "template_support",
-      "utm_content": "template-micro-offer-pricing"
-    },
-    {
-      "at": "2026-06-24T08:13:41.777Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/email-triage/support/go",
-      "slug": "template-email-triage",
-      "utm_campaign": "template_support",
-      "utm_content": "template-email-triage"
-    },
-    {
-      "at": "2026-06-24T07:38:43.448Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/subscription-audit/support/go",
-      "slug": "template-subscription-audit",
-      "utm_campaign": "template_support",
-      "utm_content": "template-subscription-audit"
-    },
-    {
-      "at": "2026-06-24T07:08:43.577Z",
-      "destination_type": "square-support",
-      "route": "/daily-shelf/templates/simple-content-calendar/support/go",
-      "slug": "template-simple-content-calendar",
-      "utm_campaign": "template_support",
-      "utm_content": "template-simple-content-calendar"
     }
   ],
   "revenue_boundary": "This measures clicks to the external Square support page. It does not prove payments or daily revenue.",
@@ -949,7 +957,7 @@
   "storage_connected": true,
   "sync_error": "",
   "sync_ok": true,
-  "total_support_intent_clicks": 577,
-  "updated_at": "2026-06-27T05:14:50.040Z",
+  "total_support_intent_clicks": 582,
+  "updated_at": "2026-06-28T10:53:18.878Z",
   "version": 1
 }

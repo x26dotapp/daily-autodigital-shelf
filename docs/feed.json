@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-28-appointment-prep",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-28-appointment-prep/",
+      "title": "Appointment Prep Card",
+      "summary": "A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.",
+      "date_published": "2026-06-28"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-27-download-folder-reset",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/",
       "title": "Downloads Folder Reset",
@@ -347,13 +354,6 @@
       "title": "Project Rescue Map",
       "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
       "date_published": "2026-05-10"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-09-email-triage",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/",
-      "title": "Email Triage Sprint",
-      "summary": "A 15-minute inbox worksheet for finding the few messages that actually need action.",
-      "date_published": "2026-05-09"
     }
   ]
 }

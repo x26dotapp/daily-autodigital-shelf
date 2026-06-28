@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Appointment Prep Card</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-28-appointment-prep/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-28-appointment-prep/</guid>
+      <description>A one-page prep card for collecting questions, documents, and follow-up notes before an appointment.</description>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Downloads Folder Reset</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/</link>
@@ -348,13 +355,6 @@
       <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/</guid>
       <description>A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.</description>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Email Triage Sprint</title>
-      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/</link>
-      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-09-email-triage/</guid>
-      <description>A 15-minute inbox worksheet for finding the few messages that actually need action.</description>
-      <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

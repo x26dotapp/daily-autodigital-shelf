@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Downloads Folder Reset](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-27-download-folder-reset/) - A 20-minute digital cleanup worksheet for turning a downloads pile into decisions. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-27-download-folder-reset.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-27-download-folder-reset
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-27-download-folder-reset/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-27-download-folder-reset/support/go
+- Latest pack: [Appointment Prep Card](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-28-appointment-prep/) - A one-page prep card for collecting questions, documents, and follow-up notes before an appointment. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-28-appointment-prep.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-28-appointment-prep
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-28-appointment-prep/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-28-appointment-prep/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.
