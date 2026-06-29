@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 27,
+      "count": 28,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
+          "title": "Client Intake Lite",
+          "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-29-client-intake-lite/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-29-client-intake-lite.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-28-appointment-prep",
           "title": "Appointment Prep Card",
@@ -203,8 +210,15 @@
       "label": "Home Admin",
       "description": "Printable tools for household paperwork, appointments, renewals, subscriptions, budgets, receipts, and inventories.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/home-admin.html",
-      "count": 21,
+      "count": 22,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
+          "title": "Client Intake Lite",
+          "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-29-client-intake-lite/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-29-client-intake-lite.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-28-appointment-prep",
           "title": "Appointment Prep Card",
@@ -466,8 +480,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 55,
+      "count": 56,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
+          "title": "Client Intake Lite",
+          "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-29-client-intake-lite/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-29-client-intake-lite.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-28-appointment-prep",
           "title": "Appointment Prep Card",

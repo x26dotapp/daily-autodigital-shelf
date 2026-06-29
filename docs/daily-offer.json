@@ -1,7 +1,7 @@
 {
   "kind": "daily-shelf-daily-offer",
-  "generated_at": "2026-06-28T14:14:09+00:00",
-  "today": "2026-06-28",
+  "generated_at": "2026-06-29T16:08:05+00:00",
+  "today": "2026-06-29",
   "page_path": "daily-offer.html",
   "json_path": "daily-offer.json",
   "page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/daily-offer.html",
@@ -83,7 +83,7 @@
   "actual_daily_revenue_proven": false,
   "today_revenue_usd": "0.00",
   "checkout_boundary": "Product checkout is not connected; this offer routes to voluntary support only.",
-  "revenue_boundary": "Daily revenue proof is not available for 2026-06-28. Today recorded revenue: $0.00.",
+  "revenue_boundary": "Daily revenue proof is not available for 2026-06-29. Today recorded revenue: $0.00.",
   "privacy": "Aggregate support/download signal only. This page does not store buyer identity or payment data.",
   "guardrails": [
     "No guaranteed-income claims",

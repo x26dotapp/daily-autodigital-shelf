@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-29-client-intake-lite/",
+      "title": "Client Intake Lite",
+      "summary": "A small intake sheet for turning a vague request into scope, timeline, budget, and next action.",
+      "date_published": "2026-06-29"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-28-appointment-prep",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-28-appointment-prep/",
       "title": "Appointment Prep Card",
@@ -347,13 +354,6 @@
       "title": "Daily Proof Log",
       "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
       "date_published": "2026-05-11"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-10-project-rescue-map",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-10-project-rescue-map/",
-      "title": "Project Rescue Map",
-      "summary": "A one-page map for rescuing a messy project by separating assets, blockers, risks, and next moves.",
-      "date_published": "2026-05-10"
     }
   ]
 }
