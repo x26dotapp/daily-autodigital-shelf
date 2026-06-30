@@ -4,8 +4,15 @@
   <id>https://x26dotapp.github.io/daily-autodigital-shelf/</id>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/"/>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-06-29T00:00:00Z</updated>
+  <updated>2026-06-30T00:00:00Z</updated>
   <subtitle>A quiet system that makes a new sellable pack every day.</subtitle>
+  <entry>
+    <title>Listing Photo Checklist</title>
+    <id>daily-autodigital-shelf:2026-06-30-listing-photo-checklist</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/"/>
+    <updated>2026-06-30T00:00:00Z</updated>
+    <summary>A practical shot list for creating clearer marketplace, rental, or product listing photos.</summary>
+  </entry>
   <entry>
     <title>Client Intake Lite</title>
     <id>daily-autodigital-shelf:2026-06-29-client-intake-lite</id>
@@ -348,12 +355,5 @@
     <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/"/>
     <updated>2026-05-12T00:00:00Z</updated>
     <summary>A draft sheet for designing a small order or request form before building it online.</summary>
-  </entry>
-  <entry>
-    <title>Daily Proof Log</title>
-    <id>daily-autodigital-shelf:2026-05-11-daily-proof-log</id>
-    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/"/>
-    <updated>2026-05-11T00:00:00Z</updated>
-    <summary>A receipt-style log for recording visible proof of work without overexplaining the whole day.</summary>
   </entry>
 </feed>

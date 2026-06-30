@@ -5,8 +5,15 @@
       "label": "Small Business Ops",
       "description": "Digital worksheets for client intake, invoices, SOPs, listings, follow-up, and simple operating routines.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/small-business-ops.html",
-      "count": 28,
+      "count": 29,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-30-listing-photo-checklist",
+          "title": "Listing Photo Checklist",
+          "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
           "title": "Client Intake Lite",
@@ -480,8 +487,15 @@
       "label": "Digital Product Prep",
       "description": "Sheets for preparing small digital products, listing copy, import details, content calendars, and public launch assets.",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/topics/digital-product-prep.html",
-      "count": 56,
+      "count": 57,
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-30-listing-photo-checklist",
+          "title": "Listing Photo Checklist",
+          "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
           "title": "Client Intake Lite",

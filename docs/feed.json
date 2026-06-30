@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-06-30-listing-photo-checklist",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/",
+      "title": "Listing Photo Checklist",
+      "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+      "date_published": "2026-06-30"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-29-client-intake-lite/",
       "title": "Client Intake Lite",
@@ -347,13 +354,6 @@
       "title": "Simple Order Form Draft",
       "summary": "A draft sheet for designing a small order or request form before building it online.",
       "date_published": "2026-05-12"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-11-daily-proof-log",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-11-daily-proof-log/",
-      "title": "Daily Proof Log",
-      "summary": "A receipt-style log for recording visible proof of work without overexplaining the whole day.",
-      "date_published": "2026-05-11"
     }
   ]
 }

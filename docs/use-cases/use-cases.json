@@ -55,13 +55,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/small-business-ops-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/small-business-ops/support/go",
-      "count": 28,
+      "count": 29,
       "outcomes": [
         "Name the next client or service workflow that needs a written path.",
         "Pick a public worksheet pack that can be downloaded immediately.",
         "Use the collection bundle when a single ZIP is easier than one-by-one downloads."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-30-listing-photo-checklist",
+          "title": "Listing Photo Checklist",
+          "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
           "title": "Client Intake Lite",
@@ -642,13 +650,21 @@
       "collection_bundle_url": "https://x26dotapp.github.io/daily-autodigital-shelf/bundles/digital-product-prep-collection.zip",
       "support_page_url": "https://www.calmsprout.com/daily-shelf/support",
       "support_intent_url": "https://www.calmsprout.com/daily-shelf/offers/digital-product-prep/support/go",
-      "count": 56,
+      "count": 57,
       "outcomes": [
         "Choose the product-prep worksheet that matches the next launch bottleneck.",
         "Inspect seller-copy files before putting anything into a store.",
         "Download the collection bundle for product listing preparation."
       ],
       "items": [
+        {
+          "id": "daily-autodigital-shelf:2026-06-30-listing-photo-checklist",
+          "title": "Listing Photo Checklist",
+          "summary": "A practical shot list for creating clearer marketplace, rental, or product listing photos.",
+          "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/",
+          "download_page_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.html",
+          "download_url": "https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.zip"
+        },
         {
           "id": "daily-autodigital-shelf:2026-06-29-client-intake-lite",
           "title": "Client Intake Lite",
