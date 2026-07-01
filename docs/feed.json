@@ -6,6 +6,13 @@
   "atom_url": "https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml",
   "items": [
     {
+      "id": "daily-autodigital-shelf:2026-07-01-one-page-sop",
+      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/",
+      "title": "One-Page SOP Builder",
+      "summary": "A worksheet for documenting one repeatable task so someone else can follow it.",
+      "date_published": "2026-07-01"
+    },
+    {
       "id": "daily-autodigital-shelf:2026-06-30-listing-photo-checklist",
       "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/",
       "title": "Listing Photo Checklist",
@@ -347,13 +354,6 @@
       "title": "Two-Hour Workblock Planner",
       "summary": "A compact planning sheet for choosing one outcome, one timer, and one shutdown note.",
       "date_published": "2026-05-13"
-    },
-    {
-      "id": "daily-autodigital-shelf:2026-05-12-simple-order-form",
-      "url": "https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/",
-      "title": "Simple Order Form Draft",
-      "summary": "A draft sheet for designing a small order or request form before building it online.",
-      "date_published": "2026-05-12"
     }
   ]
 }

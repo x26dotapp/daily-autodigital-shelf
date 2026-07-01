@@ -40,10 +40,10 @@
 
 ## Current State
 
-- Latest pack: [Listing Photo Checklist](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/) - A practical shot list for creating clearer marketplace, rental, or product listing photos. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-06-30-listing-photo-checklist.html
-- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-06-30-listing-photo-checklist
-- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-06-30-listing-photo-checklist/support
-- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-06-30-listing-photo-checklist/support/go
+- Latest pack: [One-Page SOP Builder](https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/) - A worksheet for documenting one repeatable task so someone else can follow it. Download page: https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-07-01-one-page-sop.html
+- Branded latest product: https://www.calmsprout.com/daily-shelf/products/2026-07-01-one-page-sop
+- Branded product support page: https://www.calmsprout.com/daily-shelf/products/2026-07-01-one-page-sop/support
+- Branded support intent redirect: https://www.calmsprout.com/daily-shelf/products/2026-07-01-one-page-sop/support/go
 - Monetization destination: support at https://gift.calmsprout.com
 - Product checkout is not connected unless `store_connected` is true in status.json.
 - Checkout Readiness records candidate payment surfaces without marking checkout live.

@@ -2,9 +2,33 @@
 <productFeed>
   <name>Daily Autodigital Shelf Product Feed</name>
   <url>https://x26dotapp.github.io/daily-autodigital-shelf/product-feed.json</url>
-  <dateModified>2026-06-30</dateModified>
-  <numberOfItems>57</numberOfItems>
+  <dateModified>2026-07-01</dateModified>
+  <numberOfItems>58</numberOfItems>
   <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+  <product>
+    <id>daily-autodigital-shelf:2026-07-01-one-page-sop</id>
+    <date>2026-07-01</date>
+    <title>One-Page SOP Builder</title>
+    <description>A worksheet for documenting one repeatable task so someone else can follow it.</description>
+    <buyer>Small teams and solo operators who need process notes without a full operations manual.</buyer>
+    <url>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/</url>
+    <downloadPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-07-01-one-page-sop.html</downloadPageUrl>
+    <downloadUrl>https://x26dotapp.github.io/daily-autodigital-shelf/downloads/2026-07-01-one-page-sop.zip</downloadUrl>
+    <coverUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/cover.svg</coverUrl>
+    <sellerCopyUrl>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/seller-copy.md</sellerCopyUrl>
+    <supportPageUrl>https://x26dotapp.github.io/daily-autodigital-shelf/support.html</supportPageUrl>
+    <brandedProductUrl>https://www.calmsprout.com/daily-shelf/products/2026-07-01-one-page-sop</brandedProductUrl>
+    <brandedSupportUrl>https://www.calmsprout.com/daily-shelf/products/2026-07-01-one-page-sop/support</brandedSupportUrl>
+    <brandedSupportIntentUrl>https://www.calmsprout.com/daily-shelf/products/2026-07-01-one-page-sop/support/go</brandedSupportIntentUrl>
+    <priceHint>$3 to $9 digital pack</priceHint>
+    <currency>USD</currency>
+    <storeConnected>false</storeConnected>
+    <supportConnected>true</supportConnected>
+    <isAccessibleForFree>true</isAccessibleForFree>
+    <fulfillment>public digital download</fulfillment>
+    <checkoutBoundary>Product checkout is not connected. Downloads remain public and support is voluntary.</checkoutBoundary>
+    <tags>digital download,printable worksheet,planner,checklist,low maintenance,one,page,sop,builder</tags>
+  </product>
   <product>
     <id>daily-autodigital-shelf:2026-06-30-listing-photo-checklist</id>
     <date>2026-06-30</date>

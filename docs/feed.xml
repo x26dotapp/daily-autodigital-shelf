@@ -4,8 +4,15 @@
     <title>Daily Autodigital Shelf</title>
     <link>https://x26dotapp.github.io/daily-autodigital-shelf/</link>
     <description>A quiet system that makes a new sellable pack every day.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://x26dotapp.github.io/daily-autodigital-shelf/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>One-Page SOP Builder</title>
+      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/</link>
+      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/</guid>
+      <description>A worksheet for documenting one repeatable task so someone else can follow it.</description>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Listing Photo Checklist</title>
       <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-06-30-listing-photo-checklist/</link>
@@ -348,13 +355,6 @@
       <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/</guid>
       <description>A compact planning sheet for choosing one outcome, one timer, and one shutdown note.</description>
       <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Simple Order Form Draft</title>
-      <link>https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/</link>
-      <guid isPermaLink="true">https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/</guid>
-      <description>A draft sheet for designing a small order or request form before building it online.</description>
-      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

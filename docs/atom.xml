@@ -4,8 +4,15 @@
   <id>https://x26dotapp.github.io/daily-autodigital-shelf/</id>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/"/>
   <link href="https://x26dotapp.github.io/daily-autodigital-shelf/atom.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-06-30T00:00:00Z</updated>
+  <updated>2026-07-01T00:00:00Z</updated>
   <subtitle>A quiet system that makes a new sellable pack every day.</subtitle>
+  <entry>
+    <title>One-Page SOP Builder</title>
+    <id>daily-autodigital-shelf:2026-07-01-one-page-sop</id>
+    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-07-01-one-page-sop/"/>
+    <updated>2026-07-01T00:00:00Z</updated>
+    <summary>A worksheet for documenting one repeatable task so someone else can follow it.</summary>
+  </entry>
   <entry>
     <title>Listing Photo Checklist</title>
     <id>daily-autodigital-shelf:2026-06-30-listing-photo-checklist</id>
@@ -348,12 +355,5 @@
     <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-13-two-hour-workblock/"/>
     <updated>2026-05-13T00:00:00Z</updated>
     <summary>A compact planning sheet for choosing one outcome, one timer, and one shutdown note.</summary>
-  </entry>
-  <entry>
-    <title>Simple Order Form Draft</title>
-    <id>daily-autodigital-shelf:2026-05-12-simple-order-form</id>
-    <link href="https://x26dotapp.github.io/daily-autodigital-shelf/packs/2026-05-12-simple-order-form/"/>
-    <updated>2026-05-12T00:00:00Z</updated>
-    <summary>A draft sheet for designing a small order or request form before building it online.</summary>
   </entry>
 </feed>
